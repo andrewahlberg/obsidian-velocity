@@ -122,12 +122,10 @@
 
 	/*------------- Custom colors -------------*/
 
-	--bevel-inset: linear-gradient(to bottom, var(--color-base-20) 20%, var(--color-base-05));
-
 	--large-border-color: var(--color-base-55);
 	
-	--left-panel-gradient: linear-gradient(to left, var(--color-base-10) -1%, var(--color-base-20) 48%, var(--color-base-35) 110%);
-	--right-panel-gradient: linear-gradient(to right, var(--color-base-10) -1%, var(--color-base-20) 48%, var(--color-base-35) 110%);
+	--left-panel-gradient: linear-gradient(to left, var(--color-base-10) -2%, var(--color-base-20) 48%, var(--color-base-35) 118%);
+	--right-panel-gradient: linear-gradient(to right, var(--color-base-10) -2%, var(--color-base-20) 48%, var(--color-base-35) 118%);
 
 	--fake-shadow-left: linear-gradient(to left, var(--glass-trans) -4px, transparent 6px);
 	--fake-shadow-right: linear-gradient(to right, var(--glass-trans) -4px, transparent 6px);
@@ -137,8 +135,8 @@
 	--tab-gradient: linear-gradient(to top, var(--border-trans) 1px, var(--color-base-40) 1px, var(--color-base-20) 90%);
 	--tab-gradient-1: linear-gradient(to bottom, var(--border-trans) 1px, var(--color-base-40) 1px, var(--color-base-25) 90%);
 	--tab-gradient-2: linear-gradient(to top, var(--color-base-40) -10%,  var(--color-base-10) 105%);
-	--tab-gradient-3: linear-gradient(to top, var(--color-base-10) 39%, var(--color-base-00) 55%);
-	--tab-gradient-3-mod: linear-gradient(to top, var(--color-base-10) 34%, var(--color-base-00) 50%);
+	--tab-gradient-3: linear-gradient(to top, var(--color-base-10) 42%, var(--color-base-00) 56%);
+	--tab-gradient-3-mod: linear-gradient(to top, var(--color-base-10) 36%, var(--color-base-00) 50%);
 	--tab-gradient-4: linear-gradient(to top, var(--color-base-30) -10%, var(--color-base-10) 60%);
 	--tab-gradient-4-mod: linear-gradient(to top, var(--color-base-30) -16%, var(--color-base-10) 54%);
 	--tab-gradient-5: linear-gradient(to bottom, var(--color-base-05) -10%, var(--color-base-25) 80%, var(--color-base-30) 105%);
@@ -177,7 +175,7 @@
 	--color-base-20: #dfdfe1;
 	--color-base-25: #d8d9db; 
 	--color-base-30: #cfcfd3; 
-	--color-base-35: #bfc1c4; 
+	--color-base-35: #bbbdc0; 
 	--color-base-40: #b0b1b5; 
 	--color-base-50: #a1a3a8; 
 	--color-base-55: #898d91; 
@@ -221,8 +219,8 @@
 	--input-height: var(--size-4-8);
 	
 	--input-shadow: 
-	inset 0 0 0 0.75px var(--border-trans), 
-	inset 0 0 0 1px var(--nav-trans);
+	inset 0 0 0 0.9px var(--color-base-35), 
+	inset 0 0px 0 1.6px white;
 
 	--input-shadow-dark: 
 	inset 0 0 0 0.75px var(--color-base-50),
@@ -242,7 +240,7 @@
 	--link-unresolved-color: var(--accent-dim);
 	--link-unresolved-decoration-color: var(--accent-dim-ul);
 
-	--link-external-decoration-color: var(--accent-ul);
+	--link-external-decoration-color: var(--accent-ul-color);
     --link-external-color-hover: var(--link-color-hover);
 
 	--text-highlight-bg-rgb: var(--color-yellow-rgb);
@@ -270,6 +268,8 @@ body {
 
 	--dropdown-background: var(--background-primary);
 	
+	--file-line-width: 692px;
+
 	--header-height: var(--size-4-12); 	
 	
 	--line-height-normal: 1.625;
@@ -407,6 +407,7 @@ body {
 /*---------------- Headings ---------------*/
 
 body {
+	--file-header-font: var(--font-text-theme);
 	--heading-font: Segoe UI, Arial, sans-serif;
 	--heading-spacing: 2.25rem;
 
@@ -1488,7 +1489,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 
 .view-content > .markdown-source-view.mod-cm6 > 
 .cm-editor > .cm-scroller, .markdown-preview-view {
-	padding-top: 1.25em;
+	padding-top: 1em;
 }
 
 .view-header {
@@ -1497,7 +1498,6 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 	margin-top: 2px;
 }
 .view-header-title-container {
-    font-family: var(--file-header-font);
 	cursor: pointer;
 }
 
