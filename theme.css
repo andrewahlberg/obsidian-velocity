@@ -2476,7 +2476,7 @@ body:not(.is-phone) .community-item.is-selected:hover
 }
 .modal.mod-settings .vertical-tab-nav-item.is-active {
 	padding-left: 16px;
-	background-color: var(--se);
+	background-color: var(--search-trans);
     background-image: var(--gradient-glass-1);
 	box-shadow: var(--glass-shadow);
     color: var(--nav-item-color-active);
