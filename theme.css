@@ -61,9 +61,9 @@
 
 	/*---------------- Accents ---------------*/
 
-	--accent-h: 212;	
+	--accent-h: 210;	
 	--accent-s: 88%;	
-	--accent-l: 50%;
+	--accent-l: 52%;
 
 	--accent-bright: hsl(var(--accent-h), var(--accent-s), 55%);	
 
@@ -71,7 +71,7 @@
 
  	 --color-accent-2: hsla(var(--accent-h), var(--accent-s), calc(var(--accent-l) * 1.5), 0.75);
 
-	  --color-accent-3: hsla(var(--accent-h), var(--accent-s), calc(var(--accent-l) * 0.93));
+	  --color-accent-3: hsla(var(--accent-h), var(--accent-s), calc(var(--accent-l) * 0.9));
 
 	--accent-ul-color: hsla(var(--accent-h), var(--accent-s),var(--accent-l), 0.15);
 
@@ -89,11 +89,11 @@
 
 	--large-border-color: var(--color-base-55);
 	
-	--left-panel-gradient: linear-gradient(to left, var(--color-base-10) -2%, var(--color-base-20) 49%, var(--color-base-35) 120%);
-	--right-panel-gradient: linear-gradient(to right, var(--color-base-10) -2%, var(--color-base-20) 49%, var(--color-base-35) 120%);
+	--left-panel-gradient: linear-gradient(to left, var(--color-base-10) -2%, var(--color-base-20) 50%, var(--color-base-35) 125%);
+	--right-panel-gradient: linear-gradient(to right, var(--color-base-10) -2%, var(--color-base-20) 50%, var(--color-base-35) 125%);
 
-	--fake-shadow-left: linear-gradient(to left, var(--glass-trans) -4px, transparent 6px);
-	--fake-shadow-right: linear-gradient(to right, var(--glass-trans) -4px, transparent 6px);
+	--fake-shadow-left: linear-gradient(to left, var(--glass-trans) -4px, transparent 5px);
+	--fake-shadow-right: linear-gradient(to right, var(--glass-trans) -4px, transparent 5px);
 
 	--menu-gradient: linear-gradient(to bottom, var(--color-base-05), var(--color-base-10));
 
@@ -106,9 +106,9 @@
 	--tab-gradient-4-mod: linear-gradient(to top, var(--color-base-30) -16%, var(--color-base-10) 54%);
 	--tab-gradient-5: linear-gradient(to bottom, var(--color-base-05) -10%, var(--color-base-25) 80%, var(--color-base-30) 105%);
 	
-	--gradient-glass: linear-gradient(to top, var(--glass-trans) 28%, var(--glass-trans-2) 56%, var(--menu-trans) 160%);
-	--gradient-glass: linear-gradient(to top, var(--faint-trans) -10%, var(--glass-trans) 30%, var(--glass-trans-2) 60%, var(--menu-trans) 160%);
-	--gradient-glass-1: linear-gradient(to top, var(--gray-trans) 16%, var(--menu-trans) 64%);
+	--gradient-glass: linear-gradient(to top, var(--glass-trans-2) -90%, var(--glass-trans) 30%, var(--glass-trans-2) 60%, var(--menu-trans) 150%);
+	--gradient-glass-1: linear-gradient(to top, var(--color-base-00) -65%, var(--gray-trans) 30%, var(--glass-trans-2) 60%, var(--menu-trans));
+	/* --gradient-glass-1: linear-gradient(to top, var(--gray-trans) 16%, var(--menu-trans) 64%); */
 	--gradient-glass-2: linear-gradient(to top, var(--nav-trans) -5%, var(--menu-hover) 24%, var(--fainter-trans) 60%, var(--faint-trans));
 
 	--menu-trans: #ffffff9e;
@@ -128,10 +128,6 @@
 	inset 0 -0.5px 2px 0.2px var(--menu-trans),
 	0 0 0 0.875px var(--dark-trans),
 	0px 1.5px 2.5px 0px var(--glass-trans);
-	--glass-shadow-2: 
-	inset 0 -0.4px 2.5px 0.4px var(--menu-trans),
-	0 0 0 0.65px var(--border-trans),
-	0px 1px 3px 0px var(--glass-trans);
 
 	/*--------------- Color Base --------------*/
 	
@@ -148,9 +144,9 @@
 	--color-base-58: #707377; 
 	--color-base-60: #686b6f;
 	--color-base-70: #585b5f; 
-	--color-base-80: #494b50;
-	--color-base-90: #313235; 
-	--color-base-100: #111111;
+	--color-base-80: #4c4e53;
+	--color-base-90: #36373a; 
+	--color-base-100: #0a0a0a;
 	
 	/*------------ Semantic colors ------------*/
 
@@ -165,7 +161,7 @@
 	--divider-color-hover: var(--color-accent-2);
 	--dropdown-background: var(--background-primary);
 
-	--hr-color: var(--color-base-25);
+	--hr-color: var(--color-base-30);
 
     --icon-m-stroke-width: 1.625px;
     --icon-l-stroke-width: 1.5px;
@@ -242,6 +238,8 @@ body {
 	--file-line-width: 692px;
 
 	--header-height: var(--size-4-12); 	
+
+	--hr-thickness: 1px;
 	
 	--line-height-normal: 1.6;
 	--line-height-tight: 1.3;
@@ -272,7 +270,7 @@ body {
 
 	/*-------------- Navigation --------------*/
 
-	--nav-heading-weight: 600;
+	--nav-heading-weight: 550;
 	
 	--nav-item-background-hover: var(--search-trans);
     --nav-item-background-active: var(--fainter-trans);
@@ -355,7 +353,6 @@ body {
 	inset 0 0.5px 1px 1px var(--menu-trans);
 
 	--tab-font-weight: 450;
-	--tab-font-weight-active: 470;
 	--tab-text-color-focused-active-current: var(--text-normal);
 
 	--tab-stacked-font-size: var(--font-text-size);
@@ -381,7 +378,7 @@ body {
 
 	--font-normal: 410;
 	--font-weight: 400;
-	--link-weight: 405;
+	--link-weight: 400;
 	--bold-modifier: 230;
 }
 
@@ -778,7 +775,7 @@ body:not(.is-phone) .workspace-leaf.mod-active
 .tree-item-self {
 	align-items: center;
 	min-height: 28px;
-	--nav-item-weight-hover: 400;
+	--nav-item-weight-hover: 410;
 	transition: none;
 }
 
@@ -798,7 +795,6 @@ body:not(.is-phone) .workspace-leaf.mod-active
 	background-image: var(--gradient-glass);
 	backdrop-filter: blur(0.5px);
 	box-shadow: var(--glass-shadow);
-	height: 28px;
 	text-shadow: var(--text-glass-shadow);
 }
 
@@ -856,7 +852,7 @@ body:not(.is-phone) .workspace-leaf.mod-active
     box-shadow: var(--glass-shadow);
 }
 body:not(.is-grabbing) .nav-file-title:not(.is-active):hover {
-	box-shadow: 0 0 0 1px var(--nav-trans);
+	box-shadow: 0 0 0 1px var(--hover-trans);
 }
 .nav-file-title:not(.is-active):hover .nav-file-tag,
 .tree-item-self.is-active .nav-file-tag {
@@ -962,12 +958,10 @@ body:not(.is-grabbing) .nav-file-title.is-active.is-being-dragged,
 }
 .workspace-tab-header:not(.is-active):hover {
 	color: var(--text-normal);
-	--tab-font-weight: var(--tab-font-weight-active);
 	transform: translate3d(0, -3px, 0);
 }
 
 .workspace-tab-header.is-active {
-	--tab-font-weight: var(--tab-font-weight-active);
 	animation: slide-down var(--anim-duration-normal) var(--anim-motion-swing);
 	background-image: var(--tab-gradient-3);
 	box-shadow: var(--tab-shadow);
@@ -1135,7 +1129,7 @@ body:not(.is-grabbing) .nav-file-title.is-active.is-being-dragged,
 }
 
 .search-result-file-match:hover {
-    background-color: transparent;
+    background-color: var(--search-trans);
     color: var(--text-normal);
 }
 
@@ -1181,7 +1175,6 @@ body:not(.is-grabbing) .nav-file-title.is-active.is-being-dragged,
 
 .backlink-pane>.tree-item-self, .embedded-backlinks .backlink-pane>.tree-item-self, .outgoing-link-pane>.tree-item-self {
 	color: var(--icon-color);
-	font-family: var(--font-interface-bold);
     font-size: 12px;
     letter-spacing: 1.5px;
 	text-transform: uppercase;
@@ -1194,7 +1187,6 @@ body:not(.is-grabbing) .nav-file-title.is-active.is-being-dragged,
 }
 
 .outgoing-link-pane .tree-item-self.is-clickable.outgoing-link-item {
-	margin-block: var(--size-2-1);
 	padding-left: var(--size-4-7);
 }
 
@@ -1206,7 +1198,6 @@ body:not(.is-grabbing) .nav-file-title.is-active.is-being-dragged,
 /*--------------- Tag Pane ----------------*/
 
 .tag-pane-tag .tree-item-inner {
-	color: var(--color-base-90);
 	font-size: 13.5px;
 	padding-left: var(--size-4-1);
 }
@@ -1466,24 +1457,22 @@ body:not(.is-mobile) .workspace-split.mod-left-split
 .HyperMD-header-2), 
 .markdown-rendered :is(h1, h2) {
 	color: var(--heading-color);
-	box-shadow: inset 0 -1.125px 0 0 var(--hr-color);
-	padding-bottom: 0.15ch;
+	border-bottom: 1px solid var(--hr-color);
+	padding-bottom: 0.08em;
 }
 
 
 /*================== P Spacing ==================*/
 
-.markdown-rendered p {
-    margin-block-start: var(--p-spacing-s);
-    margin-block-end: var(--p-spacing);
+.markdown-rendered :is(p, li) {
 	font-weight: var(--font-weight);
 	/* text-align: justify; */
 }
 
 /* Note to self: use this to adjust font spacing if necessary. */
-.markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
+/* .markdown-source-view.mod-cm6.is-readable-line-width .cm-line {
     max-width: var(--file-line-width);
-}
+} */
 
 /* Reduces properties bottom padding. */
 .markdown-source-view .metadata-container, 
@@ -1567,24 +1556,18 @@ a:hover {
     text-decoration-line: none;
 }
 
-/* special H1-H3 feature */
+/* special H1,H2 feature */
 
-.markdown-rendered :is(h1,h2,h3):has(a.internal-link) {
-	box-shadow: inset 0 -1.125px 0 0 var(--accent-ul-color);
-	& > a.internal-link {
+.markdown-rendered :is(h1,h2):has(a) {
+	border-bottom: 2px solid var(--accent-ul-color);
+	& > a {
 		text-decoration: none !important;	
 	}
-	&:hover {
-		box-shadow: inset 0 -1.125px 0 0 var(--link-color);
-	}
-}
-.markdown-rendered :is(h1,h2,h3):has(a.external-link) {
-	box-shadow: inset 0 -1.125px 0 0 var(--link-external-decoration-color);
-	& > a.external-link {
-		text-decoration: none;	
-	}
-	&:hover {
-		box-shadow: inset 0 -1.125px 0 0 var(--link-external-color);
+	&:has(a:hover) {
+		border-color: var(--color-accent-2);
+		& > * {
+			color: var(--color-accent-2) !important;
+		}
 	}
 }
 
@@ -1801,7 +1784,9 @@ body:not(.new-tab-text-btn-restore) .workspace-leaf-content[data-type="empty"] .
 	border-radius: var(--radius-s);
 	box-shadow: inset 0 0 0 1.25px var(--search-trans),
 	0 1px 4px var(--background-modifier-box-shadow);
-	font-weight: var(--tab-font-weight-active);
+}
+.notice {
+	font-weight: var(--tab-font-weight);
 }
 
 .tooltip .tooltip-arrow {
@@ -2028,7 +2013,7 @@ body:not(.native-scrollbars) .modal-close-button {
 }
 .menu-item.selected {
 	background-image: var(--gradient-glass-1);
-	box-shadow: var(--glass-shadow-2);
+	box-shadow: var(--glass-shadow);
 	text-shadow: var(--text-glass-shadow);
 }
 
@@ -2491,9 +2476,9 @@ body:not(.is-phone) .community-item.is-selected:hover
 }
 .modal.mod-settings .vertical-tab-nav-item.is-active {
 	padding-left: 16px;
-	background-color: transparent;
+	background-color: var(--se);
     background-image: var(--gradient-glass-1);
-	box-shadow: var(--glass-shadow-2);
+	box-shadow: var(--glass-shadow);
     color: var(--nav-item-color-active);
 	font-weight: var(--nav-item-weight-active);
 	text-shadow: var(--text-glass-shadow);
@@ -2576,7 +2561,7 @@ input[type="color"] {
 }
 
 .suggestion-item {
-	font-family: var(--font-text-theme);
+	color: var(--color-base-90);
 	padding-block: var(--size-4-2);
 }
 .prompt .suggestion-item {
@@ -2585,16 +2570,15 @@ input[type="color"] {
 
 .suggestion-item.is-selected {
 	background-image: var(--gradient-glass-1);
-	box-shadow: var(--glass-shadow-2);
-	text-shadow: var(--text-glass-shadow);
+	box-shadow: var(--glass-shadow);
 }
 
 .prompt .suggestion-item.mod-complex.is-selected .suggestion-content {
-	font-weight: var(--font-medium);
+	font-weight: var(--font-semibold);
     padding-left: 6px;
 }
 .prompt .suggestion-item:not(.mod-complex).is-selected {
-	font-weight: var(--font-medium);
+	font-weight: var(--font-semibold);
     padding-left: 18px;
 }
 .prompt .suggestion-content,
@@ -2604,13 +2588,13 @@ input[type="color"] {
 
 .prompt .suggestion-hotkey,
 .suggestion-item.mod-complex .suggestion-action {
+	line-height: normal;
     color: var(--color-base-90);
 	background-image: var(--tab-gradient-3);
 	font-weight: var(--font-medium);
 	margin-inline-start: 0px;
 	border-radius: 0;
 	box-shadow: 0 0 0 0.75px var(--color-base-35);
-	padding-block: 3px !important;
 	text-shadow: 0.5px 0.5px 0.5px var(--color-base-05);
 }
 .suggestion-item.mod-complex .suggestion-hotkey:only-child,
@@ -2634,7 +2618,6 @@ input[type="color"] {
 .prompt input.prompt-input,
 .prompt input.prompt-input:hover,
 .prompt input.prompt-input:focus {
-	font-family: var(--font-text-theme);
 	font-size: 17px;
     width: 100%;
     padding-bottom: var(--size-4-7);
@@ -2683,6 +2666,7 @@ input[type="color"] {
 }
 .prompt-instruction-command {
 	font-family: Inter, Arial, sans-serif;
+	font-weight: var(--font-semibold);
 }
 .prompt-instruction:hover,
 .suggestion-item.is-selected:hover {
