@@ -1,0 +1,16 @@
+.theme-light {
+    --icon-m-stroke-width: 1.625px;
+    --icon-l-stroke-width: 1.5px;
+
+	--icon-active-bg: linear-gradient(to bottom, var(--menu-trans) -30%, var(--color-accent-2) 180%);
+	/* --icon-active-bg: linear-gradient(to bottom, var(--menu-trans) -25%, var(--accent-ul-color) 50%, var(--color-accent-2) 50%, var(--glass-trans-2) 100%); */
+	--icon-active-shadow: 
+	inset 0 0px 1px 1.125px var(--glass-trans-2),
+	0 0 0 0.75px var(--text-selection);
+	
+	--icon-color: var(--color-base-58);
+	--icon-color-hover: var(--color-base-100);
+	--icon-opacity: 1;
+	--icon-opacity-hover: 1;
+	--clickable-icon-radius: var(--size-4-1);
+}

@@ -1,0 +1,26 @@
+.theme-light {
+	--input-font-weight: var(--font-normal);
+	--input-height: var(--size-4-8);
+	
+	--input-shadow: 
+	inset 0 0 0 0.9px var(--color-base-35), 
+	inset 0 0px 0 1.8px var(--menu-trans);
+
+	/* --input-shadow-cta: 
+	inset 0 0 0 0.8px var(--color-base-50), 
+	inset 0 0px 0 1.5px white; */
+
+	--input-shadow-dark: 
+	inset 0 0 0 0.75px var(--color-base-50),
+	inset 0 0px 0 1px var(--border-trans), 
+	0 1px 2px 0 var(--glass-trans), 
+	0 1px 3px 0 rgb(1, 1, 1, 0.0125);
+
+	--input-shadow-warning: 
+	inset 0 0 0 1px rgb(var(--color-red-rgb), 0.4), 
+	0 1px 2px 0 var(--menu-hover), 
+	0 1px 3px 0 rgb(1, 1, 1, 0.02), 0 0 0 0 transparent;
+
+	/* --input-shadow-hover: inset 0 0 0 1px rgb(0, 0, 0, 0.17), 0 2px 3px 0 rgb(0,0,0,.1), 0 1px 1.5px 0 rgb(0,0,0,.03), 0 1px 2px 0 rgb(0,0,0,.04), 0 0 0 0 transparent; */
+
+}

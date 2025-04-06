@@ -1,0 +1,61 @@
+/*------------- Custom colors -------------*/
+.theme-light {
+	--large-border-color: var(--color-base-55);
+	
+	--left-panel-gradient: linear-gradient(to left, var(--color-base-10) -7%, var(--color-base-20) 53%, var(--color-base-35) 165%);
+	--right-panel-gradient: linear-gradient(to right, var(--color-base-10) -7%, var(--color-base-20) 53%, var(--color-base-35) 165%);
+
+	--fake-shadow-left: linear-gradient(to left, var(--glass-trans) -4px, transparent 4px);
+	--fake-shadow-right: linear-gradient(to right, var(--glass-trans) -4px, transparent 4px);
+
+	--menu-gradient: linear-gradient(to bottom, var(--color-base-05), var(--color-base-10));
+
+	--tab-gradient: linear-gradient(to top, var(--border-trans) 1px, var(--color-base-40) 1px, var(--color-base-10) 105%);
+	--tab-gradient-1: linear-gradient(to bottom, var(--border-trans) 1px, var(--color-base-40) 1px, var(--color-base-20) 110%);
+	--tab-gradient-2: linear-gradient(to top, var(--color-base-40) -10%,  var(--color-base-10) 105%);
+	--tab-gradient-3: linear-gradient(to top, var(--color-base-10) 44%, var(--color-base-00) 58%);
+	--tab-gradient-3-mod: linear-gradient(to top, var(--color-base-10) 38%, var(--color-base-00) 52%);
+	--tab-gradient-4: linear-gradient(to top, var(--color-base-30) -10%, var(--color-base-10) 60%);
+	--tab-gradient-4-mod: linear-gradient(to top, var(--color-base-30) -16%, var(--color-base-10) 54%);
+	--tab-gradient-5: linear-gradient(to bottom, var(--color-base-10) 5%, var(--color-base-20) 75%, var(--color-base-25) 100%);
+	
+	--gradient-glass: linear-gradient(to top, var(--fainter-trans) -75%, var(--glass-trans) 32%, var(--glass-trans-2) 58%, var(--menu-trans) 160%);
+	--gradient-glass-1: linear-gradient(to top, var(--menu-trans) -150%, var(--gray-trans) 32%, var(--glass-trans-2) 58%, var(--menu-trans) 150%);
+	/* --gradient-glass-1: linear-gradient(to top, var(--gray-trans) 16%, var(--menu-trans) 64%); */
+	--gradient-glass-2: linear-gradient(to top, var(--glass-trans) 32%, var(--menu-trans) 62%);
+
+	--menu-trans: #ffffffbb;
+	--search-trans: #ffffff2a;
+	--fainter-trans: #ffffff0f;
+	--faint-trans: #9494950d;
+	--menu-hover: #e4e5e580;
+	--nav-trans: #0000000d;
+	--gray-trans: #18181814;
+	--hover-trans: #00000017;
+	--dark-trans: #00000020;
+	--border-trans: #00000033;
+
+	--glass-trans: #a0a1a720;
+	--glass-trans-2: #ffffff40;
+	--glass-shadow: 
+	inset 0px -0.7px 2.75px 0 var(--menu-trans),
+	0 0 1.25px 0px var(--color-base-60),
+	0 1.25px 2.5px 0.5px var(--glass-trans);
+	--glass-shadow-left: 
+	inset -0.5px -0.7px 2.75px 0 var(--menu-trans),
+	0 0 1.25px 0px var(--color-base-60),
+	0 1.25px 2.5px 0.25px var(--glass-trans);
+	--glass-shadow-right: 
+	inset 0.5px -0.7px 2px 0.1px var(--menu-trans),
+	0 0 1.25px 0px var(--color-base-60),
+	0 1.25px 2.5px 0.25px var(--glass-trans);
+
+	--tab-shadow: 
+	0 0 0 1.25px var(--border-trans),
+	0 2px 5px 0px var(--nav-trans),
+	inset 0 0.5px 1px 1px var(--menu-trans);
+	--tab-shadow-top: 
+	0 0 0 1.25px var(--dark-trans),
+	0 0 0 1.25px var(--dark-trans),
+	inset 0px 2px 1px 1px var(--menu-trans);
+}

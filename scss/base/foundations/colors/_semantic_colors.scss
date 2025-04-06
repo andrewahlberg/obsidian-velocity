@@ -1,0 +1,12 @@
+
+/*------------ Semantic colors ------------*/
+.theme-light {
+	--color-base-hover: var(--hover-trans); 
+	--divider-color-hover: var(--color-accent-2);
+	--dropdown-background: var(--background-primary);
+
+	--hr-color: var(--color-base-20);
+
+	--vault-profile-color: var(--color-base-70);
+	--vault-profile-color-hover: var(--color-base-100);
+}

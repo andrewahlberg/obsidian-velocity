@@ -1,0 +1,30 @@
+/*-------------- RGB Colors ---------------*/
+// --color-red should be hexadecimal so it conforms with expected behavior when users try to style it
+// TODO: Refactor affected styles
+
+.theme-light {
+    --color-red-rgb: 232, 33, 42;
+    --color-red: #E8212A;
+
+    --color-orange-rgb: 235, 106, 0;
+    --color-orange: #EB6A00;
+
+    --color-yellow-rgb: 231, 173, 28;
+    --color-yellow: #E7AD1C;
+
+    --color-green-rgb: 8, 186, 97;
+    --color-green: #08ba61; 
+
+    --color-cyan-rgb: 5, 169, 169;
+    --color-cyan: #05a9a9;
+
+    --color-blue-rgb: 6, 115, 239;
+    --color-blue: #0673EF;
+
+    --color-purple-rgb: 120, 82, 238;
+    --color-purple: #7852ee;
+    --color-pink-rgb: 213, 57, 132;
+    --color-pink: #e348a0;
+
+    --color-yellow-10: rgb(240, 180, 0);
+}

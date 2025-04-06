@@ -1,0 +1,11 @@
+.theme-light {
+	--link-color: var(--color-accent);
+	--link-color-hover: var(--color-accent-5);
+	--link-decoration-color-hover: var(--accent-ul-color-2);
+
+	--link-unresolved-color: var(--accent-dim);
+	--link-unresolved-decoration-color: var(--accent-dim-ul);
+
+	--link-external-decoration-color: var(--accent-ul-color);
+    --link-external-color-hover: var(--link-color-hover);
+}

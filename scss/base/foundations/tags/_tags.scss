@@ -1,0 +1,16 @@
+.theme-light {
+	--tag-color: var(--color-accent-3);
+	--tag-color-hover: var(--color-accent-3);
+	--tag-background: var(--accent-ul-color);
+	--tag-background-hover: var(--accent-ul-color);
+	--tag-border-color: var(--color-accent-4);
+	--tag-border-color-hover: var(--color-accent-4);
+	--tag-bg-image: linear-gradient(to bottom, var(--menu-trans) 0%, var(--accent-ul-color) 225%);
+	
+	--tag-shadow: 
+	inset 0px -1.4px 0px 0px var(--glass-trans-2),
+	inset 0px 1.5px 0px 0px var(--glass-trans-2);
+	/* --tag-bg-image: linear-gradient(to top, var(--menu-trans), var(--accent-ul-color) 175%);
+	--tag-shadow: inset 0 1.5px 0px 0px var(--menu-trans),
+	0 0 0 0.875px var(--tag-border-color); */
+}

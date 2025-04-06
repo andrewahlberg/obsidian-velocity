@@ -1,6 +1,13 @@
 # Note
 To learn more about how to install and use SASS, [click on this link](https://sass-lang.com).
 
+## Why even use SASS?
+- Separation of concerns
+- DRY
+- Readability
+- Maintainability
+- Additional useful functionality like `@mixin`s
+
 ## Installation of SASS
 ### Via NPM
 ```pwsh
@@ -30,14 +37,12 @@ Head over to https://github.com/sass/dart-sass/releases/tag/1.86.3
 |   |---- base
 |   |   |---- animations
 |   |   |---- foundations
-|   |   |   |---- base_colors
 |   |   |   |---- buttons
-|   |   |   |---- custom_colors
+|   |   |   |---- colors
 |   |   |   |---- editor
 |   |   |   |---- embeds
 |   |   |   |---- metadata
 |   |   |   |---- min_widths
-|   |   |   |---- semantic_colors
 |   |   |   |---- slider
 |   |   |   |---- tags
 |   |   |   |---- toggles
@@ -54,6 +59,8 @@ Head over to https://github.com/sass/dart-sass/releases/tag/1.86.3
 |   |   |---- tabs
 |   |---- modifiers
 |   |   |---- plugins
+|   |   |   |---- dataview
+|   |   |   |---- kanban
 |   |   |---- snippets
 ```
 
