@@ -9,3 +9,12 @@
 	--link-external-decoration-color: var(--accent-ul-color);
     --link-external-color-hover: var(--link-color-hover);
 }
+
+body {
+	--line-height-normal: 1.5;
+	--line-height-tight: 1.3;
+
+	--link-decoration: underline;
+	--link-decoration-thickness: 1.5px;
+	--link-underline-offset: 2px;
+}

@@ -1,0 +1,35 @@
+body {
+	--hr-thickness: 2px;
+
+	--list-indent: 1.5em;
+	--list-indent-editing: 0.5em;	
+	--list-spacing: 0.25em;
+
+	--menu-font-weight: var(--font-weight);
+
+	--pill-background: var(--menu-trans);
+	--pill-color: var(--color-base-80);	
+	--pill-border-color: var(--color-base-25);
+	--pill-radius: var(--button-radius);
+	--pill-padding-y: 2px;
+
+	--p-spacing-l: 1.5rem;
+	--p-spacing-s: 0.75rem;
+	--p-spacing-xs: 0.5rem;
+
+	--size-4-7: 28px;
+	--size-4-11: 44px;
+	--size-4-13: 52px;
+	--size-4-14: 56px;
+	--size-4-15: 60px;
+
+    --titlebar-background: transparent;
+    --titlebar-background-focused: transparent;
+
+	--vault-profile-font-size: 17px;
+	--vault-profile-font-weight: var(--font-normal);
+
+	--window-radius: var(--size-2-3);
+
+	--input-radius: var(--radius-s);
+}

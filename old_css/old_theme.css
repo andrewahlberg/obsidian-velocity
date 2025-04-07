@@ -450,7 +450,6 @@ body {
 }
 
 body {	
-
 	--table-background: none;
 	--table-row-alt-background: var(--faint-trans);
 	--table-row-background-hover: none;

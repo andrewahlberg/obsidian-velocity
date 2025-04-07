@@ -14,3 +14,21 @@
 	--icon-opacity-hover: 1;
 	--clickable-icon-radius: var(--size-4-1);
 }
+
+/*-------------- min-widths --------------*/
+.vertical-tab-content button:not(.clickable-icon) {
+	min-width: 88px;
+}
+.vertical-tab-content button.mod-cta:not(.clickable-icon) {
+	min-width: 100px;
+}
+.vertical-tab-content button:has(.svg-icon) {
+	min-width: unset;
+}
+.markdown-preview-view button:not(.clickable-icon), 
+.markdown-source-view .cm-scroller button:not(.clickable-icon) {
+    min-width: 120px;
+}
+.mod-sidedock button:not(.clickable-icon) {
+	min-width: 48px;
+}

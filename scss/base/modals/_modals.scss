@@ -1,0 +1,15 @@
+body {
+	--modal-border-color: var(--color-base-60);
+	--modal-radius: var(--size-2-3);
+
+	--prompt-border-color: var(--color-base-60);
+
+	--ribbon-background: var(--color-base-40);
+	--ribbon-background-collapsed: var(--color-base-40);
+	--ribbon-width: 40px;
+
+	--toggle-width: var(--size-4-10);
+	--toggle-border-width: 1.75px;
+	--toggle-thumb-height: 18px;
+	--toggle-thumb-width: 18px;
+}

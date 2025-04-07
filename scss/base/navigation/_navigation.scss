@@ -1,0 +1,22 @@
+/*-------------- Navigation --------------*/
+body {
+	--nav-heading-weight: 600;
+	
+	--nav-item-background-hover: var(--search-trans);
+    --nav-item-background-active: var(--fainter-trans);
+    --nav-item-background-selected: var(--fainter-trans);
+
+	--nav-item-color: var(--color-base-80);
+	--nav-item-color-active: var(--text-normal);
+	--nav-collapse-icon-color: var(--icon-color);
+
+	--nav-item-weight: var(--font-normal);
+	--nav-item-weight-active: 550;
+	--nav-item-weight-hover: 600;
+
+	--nav-indentation-guide-color: var(--border-trans);
+	--nav-indentation-guide-width: 1px;
+	
+	--nav-item-children-margin-start: 11px;
+	--nav-item-children-padding-start: 0;
+}

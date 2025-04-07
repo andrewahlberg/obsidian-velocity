@@ -36,7 +36,11 @@ Head over to https://github.com/sass/dart-sass/releases/tag/1.86.3
 |---- scss
 |   |---- base
 |   |   |---- animations
+|   |   |---- callouts
+|   |   |---- checkboxes
+|   |   |---- editor
 |   |   |---- foundations
+|   |   |   |---- background
 |   |   |   |---- buttons
 |   |   |   |---- colors
 |   |   |   |---- editor
@@ -49,11 +53,14 @@ Head over to https://github.com/sass/dart-sass/releases/tag/1.86.3
 |   |   |   |---- typography
 |   |   |---- icons
 |   |   |---- links
+|   |   |---- metadata
 |   |   |---- modals
 |   |   |---- navigation
 |   |   |---- new_tab
+|   |   |---- scrollbar
 |   |   |---- search
 |   |   |---- settings
+|   |   |---- slider
 |   |   |---- status_bar
 |   |   |---- tables
 |   |   |---- tabs

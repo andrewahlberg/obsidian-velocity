@@ -1,1 +1,67 @@
 // Include mod warning section here
+
+body {
+	--button-radius: var(--input-radius);
+	--button-anim: var(--anim-duration-fast) var(--anim-motion-smooth);
+}
+
+/*----------------- Buttons ---------------*/
+button:not(.clickable-icon) {
+	background-image: var(--tab-gradient-3);
+	box-shadow: var(--input-shadow);
+	color: var(--color-base-100);
+	font-family: var(--font-text-theme);
+	font-weight: var(--tab-font-weight);
+	padding-inline: 14px;
+	transition: var(--anim-duration-superfast) ease-out;
+	min-width: 92px;
+}
+button.mod-cta:not(.clickable-icon) {
+	box-shadow: var(--input-shadow);
+	font-weight: var(--font-semibold);
+	padding-inline: 16px;
+}
+
+button:not(.clickable-icon):active:focus {
+	background-image: var(--tab-gradient-3-mod);
+	box-shadow: inset 0 1px 0.5px 1px var(--slider-thumb-border-color), inset 0 -1.5px 4px -2px var(--color-base-50);
+	padding-top: var(--size-4-1);
+	padding-bottom: 0;
+}
+button:not(.clickable-icon):hover,
+button:not(.clickable-icon):active:focus {
+	color: var(--color-base-100);
+	background-color: transparent;
+	filter: brightness(95%);
+	cursor: pointer;
+}
+
+
+/*------------- mod-warning --------------*/
+button.mod-warning {
+	background-image: var(--tab-gradient-3);
+	box-shadow: var(--input-shadow-warning);
+    color: var(--background-modifier-error);
+	font-weight: var(--font-medium);
+	text-shadow: none;
+}
+button.mod-warning:hover {
+    color: var(--background-modifier-error);
+}
+button.mod-warning:active:focus {
+    color: rgb(var(--color-red-rgb), 0.75);
+}
+
+/*-------------- copy code ---------------*/
+
+.markdown-preview-view pre button:not(.clickable-icon) {
+	min-width: 60px;
+}
+
+/* button.mod-cta:not(.clickable-icon):hover,
+button.mod-cta:not(.clickable-icon):active:focus {
+	color: var(--color-base-100);
+} */
+/* button.mod-cta:not(.clickable-icon):active:focus {
+	box-shadow: inset 0 1px 0.5px 1px var(--color-base-60);
+} */

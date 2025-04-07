@@ -1,3 +1,19 @@
+/*------------------ Tabs ----------------*/
 .theme-light {
 	--tab-divider-color: var(--hover-trans);
+}
+
+body {
+	--tab-container-background: transparent;
+	--tab-radius:  var(--size-4-16);
+    --tab-outline-color: transparent;
+    --tab-outline-width: 1.25px;
+
+	--tab-font-weight: var(--font-normal);
+	--tab-text-color-focused-active-current: var(--text-normal);
+
+	--tab-stacked-font-size: var(--font-text-size);
+	--tab-stacked-header-width: 48px;
+	/* --tab-stacked-text-align: end; */
+	/* --tab-stacked-text-transform: rotate3d(0,0,1,180deg); */
 }

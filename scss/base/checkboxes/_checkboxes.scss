@@ -1,0 +1,44 @@
+/*----------------- Toggles ---------------*/
+body {
+	--checkbox-radius: var(--tab-radius);
+}
+.checkbox-container,
+.checkbox-container > * {
+	cursor: pointer;
+}
+.checkbox-container,
+.checkbox-container:hover {
+	background-color: var(--color-base-25);
+	box-shadow: 
+	0 0 0 1px var(--color-base-40),
+	inset 0 3px 6px 1px var(--border-trans);
+}
+:is(.checkbox-container:hover, .checkbox-container:focus)::after {
+    filter: brightness(0.95);
+}
+.checkbox-container.is-enabled {
+    background-color: var(--accent-fade);
+	box-shadow: 
+	0 0 0 1px var(--color-base-50),
+	inset 0 3px 6px 1px var(--border-trans);
+}
+
+.checkbox-container::after {
+    background: var(--tab-gradient-3);
+	box-shadow: 0 0 0 1px var(--slider-thumb-border-color);
+}
+.checkbox-container.is-enabled::after {
+	box-shadow: 0 0 0 1px var(--color-base-50);
+	transform: translate3d(calc(var(--toggle-width) - var(--toggle-thumb-width) - 2px), 0, 0);
+}
+/*
+.checkbox-container.mod-small:after {
+    width: 14px;
+    height: 14px;
+    margin: 0 0 0 0px;
+	top: 0.5px;
+	transform: none;
+}
+.checkbox-container.mod-small.is-enabled:after {
+    transform: translate3d(calc(var(--toggle-width) - var(--toggle-thumb-width) - 5px), 0, 0);
+} */

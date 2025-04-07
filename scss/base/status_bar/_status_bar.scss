@@ -1,3 +1,11 @@
 .theme-light {
 	--status-bar-text-color: var(--color-base-90);
 }
+
+body {
+	--status-bar-border-width: var(--size-2-1) 0 0 0;
+	--status-bar-font-size: 11px;
+	--status-bar-font-weight: 550;
+	--status-bar-position: bottom;
+	--status-bar-radius: 0;
+}
