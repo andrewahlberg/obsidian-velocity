@@ -19,3 +19,35 @@
 	/* --tag-padding-x: 0.6em;
 	--tag-padding-y: 0.15em; */
 }
+
+/*----------------- Tags ------------------*/
+.cm-hashtag, a.tag {
+	background-image: var(--tag-bg-image);
+	box-shadow: var(--tag-shadow);
+	font-weight: 375;
+	line-height: 2;
+	padding-top: 4px;
+	transition: var(--anim-duration-superfast) ease-out;
+}
+
+.cm-hashtag:hover, a.tag:hover {
+	box-shadow: var(--tag-shadow), 0 0 0px 1px var(--nav-trans);
+	filter: var(--tag-active-filter);
+}
+a.tag:active {
+	color: var(--color-accent-2);
+    box-shadow: var(--tag-shadow);
+	filter: opacity(0.75);
+	user-select: none;
+}
+
+
+/* ENABLE THE FOLLOWING ONLY IF NO SIDEBAR WHITE BG IS IMPLEMENTED */
+/* .mod-sidedock :is(
+.metadata-property[data-property-key="tags"] .multi-select-pill,
+.cm-hashtag, 
+a.tag) {
+	background-image: var(--icon-active-bg);
+	box-shadow: var(--icon-active-shadow);
+	border: none;
+} */

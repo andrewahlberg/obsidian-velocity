@@ -1,0 +1,114 @@
+/*===== Dataview Calendar =====*/
+
+.dataview.small-text {
+	color: var(--table-header-color);
+	letter-spacing: 0.5px;
+}
+div.dataview-error-box {
+	border: none;
+	transform: translate3d(0, -12px, 0);
+	cursor: not-allowed;
+	user-select: none;
+}
+div.dataview-error-box > p {
+    color: var(--color-base-55);
+	font-weight: var(--font-light);
+}
+
+#calendar-container {
+    --color-dot: var(--color-accent-5);
+    --color-arrow: var(--dark-trans);
+    --color-button: var(--text-muted);
+    --color-text-today: var(--color-accent);
+    --color-text-weeknum: var(--text-muted);
+	padding-inline: 0;
+}
+#calendar-container th {
+	color: var(--text-muted);
+	user-select: none;
+	cursor: pointer;
+	padding: 0 0 16px 0;
+}
+#calendar-container td {
+	border-inline: none;
+    width: 12.5%;
+}
+
+#calendar-container table .day {
+	font-size: 13px;
+	border-radius: 3px;
+	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
+}
+
+
+#calendar-container .day:hover {
+	background-color: var(--glass-trans);
+}
+#calendar-container .today {
+	font-weight: var(--font-semibold);
+	color: var(--color-text-today);
+}
+
+
+:is(.markdown-preview-view, .markdown-source-view) #calendar-container .nav {
+    padding: var(--size-2-3) 0 var(--size-2-3) var(--size-2-1);
+    margin: var(--size-4-1) 0;
+	margin-top: 0;
+}
+/* :is(.markdown-preview-view, .markdown-source-view) #calendar-container .right-nav {
+    margin-left: 0;
+	margin-right: auto;
+} */
+/* #calendar-container h3 {
+	font-family: unset;
+} */
+
+#calendar-container .month {
+	color: var(--color-base-90);
+	font-size: 0.875em;
+    font-weight:var(--font-normal);
+}
+#calendar-container .year {
+	color: var(--color-base-90);
+	font-size: 0.875em;
+    font-weight: var(--font-normal);
+}
+
+#calendar-container .nav .reset-button {
+	color: var(--text-faint);
+    font-size: 0.75em; 
+    letter-spacing: 0.15em;
+}  
+
+.mod-sidedock #calendar-container {
+	margin-top: -4px;
+}
+.mod-sidedock #calendar-container th {
+	border-bottom: 1px solid var(--glass-trans);
+	color: transparent;
+	font-size: 12px;
+	font-weight: var(--font-medium);
+	padding-bottom: 12px;
+	padding-top: 0;
+	transform: translateX(20%);
+}
+.mod-sidedock #calendar-container th:first-letter {
+	color: var(--color-base-50);
+}
+.mod-sidedock #calendar-container table .day {
+	color: var(--color-base-70);
+	font-size: 13px;
+}
+.mod-sidedock #calendar-container table .today {
+	color: var(--color-text-today);
+}
+
+.mod-sidedock #calendar-container .nav {
+	padding-right: 0;
+	padding-left: 4px;
+}  
+
+.mod-sidedock #calendar-container :is(.month, .year) {
+	color: var(--text-muted);
+	font-size: 0.8em;
+}  

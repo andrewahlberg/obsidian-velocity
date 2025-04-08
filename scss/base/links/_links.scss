@@ -18,3 +18,69 @@ body {
 	--link-decoration-thickness: 1.5px;
 	--link-underline-offset: 2px;
 }
+
+.outgoing-link-item[aria-label="Not created yet"] .tree-item-inner-text {
+	color: var(--accent-dim-sidebar);
+	text-decoration-color: var(--link-unresolved-decoration-color);
+
+	&:hover {
+		color: var(--accent-dim) !important;
+		text-decoration-color: var(--accent-dim-sidebar) !important;
+		}
+}
+
+/*--------------- Backlinks ---------------*/
+
+.backlink-pane {
+    margin-top: var(--size-4-10);
+	padding-top: var(--size-4-1);
+}
+
+.backlink-pane .search-result-container {
+    padding-top: 0;
+}
+
+.backlink-pane > .tree-item-self, 
+.embedded-backlinks .backlink-pane > .tree-item-self, 
+.outgoing-link-pane > .tree-item-self {
+	color: var(--icon-color);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+	text-transform: uppercase;
+}
+.backlink-pane > .tree-item-self[aria-label="Click to collapse"]:hover, 
+.embedded-backlinks .backlink-pane > .tree-item-self[aria-label="Click to collapse"]:hover, 
+.outgoing-link-pane .tree-item-self[aria-label="Click to collapse"]:hover {
+	background-color: var(--glass-trans) !important;
+	box-shadow: none !important;
+	& .tree-item-inner{
+	color: var(--color-base-100) !important;
+	font-weight: unset !important;
+	}
+}
+.backlink-pane > .tree-item-self[aria-label="Click to expand"]:hover, 
+.embedded-backlinks .backlink-pane > .tree-item-self[aria-label="Click to expand"]:hover, 
+.outgoing-link-pane .tree-item-self[aria-label="Click to expand"]:hover {
+	background-color: var(--glass-trans) !important;
+	box-shadow: none !important;
+	& .tree-item-inner{
+	color: var(--color-base-100) !important;
+	font-weight: unset !important;
+	}
+}
+
+
+/*--------------- Out-links ---------------*/
+
+.outgoing-link-pane {
+    padding-top: var(--size-4-4);
+}
+
+.outgoing-link-pane .tree-item-self.is-clickable.outgoing-link-item {
+	padding-left: var(--size-4-7);
+}
+
+.outgoing-link-pane .tree-item-self .tree-item-icon {
+    top: 8px;
+	padding-right: 2px;
+}

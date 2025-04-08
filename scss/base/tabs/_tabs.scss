@@ -17,3 +17,156 @@ body {
 	/* --tab-stacked-text-align: end; */
 	/* --tab-stacked-text-transform: rotate3d(0,0,1,180deg); */
 }
+
+
+/*------------ Workspace Tabs ------------*/
+
+/* Removes tab gutter curves */
+.workspace-split.mod-root .workspace-tab-header::before, 
+.workspace-split.mod-root .workspace-tab-header::after {
+    display: none;
+}
+
+.workspace .mod-root .workspace-tab-header {
+	border-radius: var(--button-radius);
+	color: var(--status-bar-text-color);
+	height: 34px;
+    padding: 0 var(--size-2-1) 0 var(--size-4-1);
+	z-index: 1;
+	cursor: pointer;
+}
+
+.workspace-tab-header:not(.is-active) {
+	transition: all 0s, transform var(--anim-duration-fast) var(--anim-motion-swing);
+}
+.workspace-tab-header:not(.is-active):hover {
+	color: var(--text-normal);
+	transform: translate3d(0, -3px, 0);
+}
+
+.workspace-tab-header.is-active {
+	animation: slide-down var(--anim-duration-normal) var(--anim-motion-swing);
+	background-image: var(--tab-gradient-3);
+	box-shadow: var(--tab-shadow);
+}
+.mod-root .mod-top .workspace-tab-header.is-active {
+	background-image: var(--gradient-glass-2), var(--tab-gradient-3);
+	box-shadow: var(--tab-shadow-top);
+}
+
+.workspace-tab-header-container-inner {
+	height: var(--header-height);
+	margin: 0 -8px 0 -20px;
+	align-items: center;
+}
+.workspace-tab-header-inner-title {
+	text-shadow: var(--text-metal-shadow);
+	padding-top: 2px;
+}
+.workspace-tab-header.is-active 
+.workspace-tab-header-inner-title {
+	text-shadow: var(--text-glass-shadow);
+}
+
+.workspace .mod-root .workspace-tab-header
+.workspace-tab-header-inner-close-button {
+	height: 24px;
+	width: 24px;
+	align-items: center;
+	padding: 4px;
+	margin-top: 1px;
+	color: var(--icon-color);
+}
+.workspace .mod-root .workspace-tab-header
+.workspace-tab-header-inner-close-button:hover {
+    color: var(--status-bar-text-color);
+	cursor: pointer;
+}
+.workspace .mod-root .workspace-tab-header.is-active
+.workspace-tab-header-inner-close-button:hover {
+	color: var(--status-bar-text-color);
+    background-color: var(--menu-hover);
+}
+
+/*------------- Sidebar Tabs -------------*/
+
+.mod-sidedock .workspace-tab-header-container-inner {
+	margin: 0 0 0 -4px;
+	padding: 0 3px 0 3px;
+	cursor: pointer;
+}
+.mod-sidedock .workspace-tab-header {
+	border-radius: var(--tab-radius);
+	height: var(--size-4-9);
+	width: var(--size-4-9);
+	z-index: 1;
+}
+.mod-sidedock .workspace-tab-header-inner {
+	cursor: pointer;
+    width: 99%;
+}
+
+.mod-sidedock .mod-top .workspace-tab-header.is-active {
+	background-image: var(--gradient-glass-2), var(--tab-gradient-3);
+	box-shadow: var(--tab-shadow-top);
+}
+
+.workspace-tab-header-inner .workspace-tab-header-inner-icon {
+    color: var(--text-muted);
+}
+.mod-top .workspace-tab-header-inner .workspace-tab-header-inner-icon {
+    color: var(--color-base-80);
+}
+.mod-top .workspace-tab-header-inner:hover .workspace-tab-header-inner-icon {
+    color: var(--icon-color-hover);
+}
+.workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+	color: var(--icon-color-hover) !important;
+	filter: drop-shadow(0px 1px 0.5px var(--color-base-00));
+}
+
+/*------------- Stacked Tabs -------------*/
+
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header {
+	letter-spacing: 0.5px;
+	height: 100%;
+	animation: none;
+	border-left: 1px solid var(--color-base-25);
+	background: none;
+	background-color: var(--background-primary);
+	box-shadow:  var(--tab-stacked-shadow);
+	padding-top: var(--size-4-1);
+}
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header:first-child {
+	border-left: none;
+}
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header:hover {
+	transform: none;
+}
+
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header-inner-title {
+	color: var(--color-base-100);
+    padding: var(--size-4-4) 0;
+	order: 1;
+}
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header-inner-close-button {
+    color: var(--icon-color);
+}
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header-inner-icon {
+    cursor: unset;
+    display: none;
+	pointer-events: none;
+}
+
+
+.tabs-nav-item {
+    /* padding: 5px 16px 5px 16px;
+    font-size: 16px; */
+    font-weight: normal;
+    /* user-select: none;
+    white-space: nowrap;
+    border-width: 0 0 3px 0;
+    border-style: solid;
+    border-color: transparent;
+    transition: border-bottom 0.1s cubic-bezier(0.4, 0, 0.2, 1); */
+}

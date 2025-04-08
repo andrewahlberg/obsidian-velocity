@@ -57,6 +57,7 @@ Head over to https://github.com/sass/dart-sass/releases/tag/1.86.3
 |   |   |---- modals
 |   |   |---- navigation
 |   |   |---- new_tab
+|   |   |---- prompts
 |   |   |---- scrollbar
 |   |   |---- search
 |   |   |---- settings

@@ -1,0 +1,91 @@
+/*==================== New Tab ====================*/
+body:not(.new-tab-text-btn-restore) .workspace-leaf-content[data-type="empty"] .empty-state-action-list {
+	display: flex;
+	gap: 0px;
+	padding-inline: var(--size-4-1);
+	background: var(--tab-gradient-3); 
+	border-radius: var(--size-4-6);
+	box-shadow: var(--input-shadow);
+	overflow: hidden;
+}
+
+body:not(.new-tab-text-btn-restore).is-mobile.theme-light .workspace-leaf-content[data-type="empty"] .empty-state-action-list {
+    box-shadow: var(--input-shadow-light);
+}
+
+body:not(.new-tab-text-btn-restore).is-mobile.theme-dark .workspace-leaf-content[data-type="empty"] .empty-state-action-list {
+    box-shadow: var(--input-shadow-dark);
+}
+
+body:not(.new-tab-text-btn-restore) .workspace-leaf-content[data-type="empty"] .empty-state-action {
+    font-size: 0;
+    background-color: transparent !important;
+    color: var(--text-muted);
+    cursor: var(--cursor);
+    height: 40px;
+    width: 44px;
+    padding: 10px 12px;
+    border-radius: 0;
+	transition: var(--anim-duration-fast) var(--anim-motion-swing);
+}
+
+/* body:not(.new-tab-text-btn-restore) .workspace-leaf-content[data-type="empty"] .empty-state-action:hover {
+    background: var(--gray) !important;
+    color: var(--text-normal);
+} */
+
+body:not(.new-tab-text-btn-restore) .workspace-leaf-content[data-type="empty"] .empty-state-action:nth-child(1):before {
+    content: " ";
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-base-58);
+    mask-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg id="svg0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs><style>.cls-1{fill:none;}</style></defs><path d="M15,19.17H3.33c-1.38,0-2.5-1.12-2.5-2.5V5c0-1.38,1.12-2.5,2.5-2.5h5.83c.46,0,.83,.37,.83,.83s-.37,.83-.83,.83H3.33c-.46,0-.83,.37-.83,.83v11.67c0,.46,.37,.83,.83,.83H15c.46,0,.83-.37,.83-.83v-5.83c0-.46,.37-.83,.83-.83s.83,.37,.83,.83v5.83c0,1.38-1.12,2.5-2.5,2.5Z"/><path d="M6.67,14.17c-.22,0-.43-.09-.59-.24-.21-.21-.29-.51-.22-.79l.83-3.33c.04-.15,.11-.28,.22-.39L14.83,1.49h0c1.01-1.01,2.66-1.01,3.68,0,.49,.49,.76,1.14,.76,1.84s-.27,1.35-.76,1.84l-7.92,7.92c-.11,.11-.24,.18-.39,.22l-3.33,.83c-.07,.02-.13,.03-.2,.03Zm1.59-3.74l-.44,1.76,1.76-.44,7.75-7.75c.18-.18,.27-.41,.27-.66s-.1-.48-.27-.66c-.36-.36-.96-.36-1.32,0l-7.75,7.75Z"/><rect class="cls-1" width="20" height="20"/></svg>');
+}
+
+body:not(.new-tab-text-btn-restore) .workspace-leaf-content[data-type="empty"] .empty-state-action:nth-child(2):before {
+    content: " ";
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-base-58);
+    mask-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg id="svg0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs><style>.cls-1{fill:none;}</style></defs><g><path d="M17.26,5.66L12.67,1.08c-.16-.16-.37-.24-.59-.24H5c-1.38,0-2.5,1.12-2.5,2.5v2.5c0,.46,.37,.83,.83,.83s.83-.37,.83-.83V3.33c0-.46,.37-.83,.83-.83h5.83V6.67c0,.46,.37,.83,.83,.83h4.17v9.17c0,.46-.37,.83-.83,.83H3.33c-.46,0-.83,.37-.83,.83s.37,.83,.83,.83H15c1.38,0,2.5-1.12,2.5-2.5V6.25c0-.22-.09-.43-.24-.59Zm-4.76-2.4l2.57,2.57h-2.57V3.26Z"/><path d="M5.85,14.53l1.06,1.06c.16,.16,.38,.24,.59,.24s.43-.08,.59-.24c.33-.33,.33-.85,0-1.18l-1.06-1.06c.29-.5,.47-1.07,.47-1.68,0-1.84-1.5-3.33-3.33-3.33s-3.33,1.49-3.33,3.33,1.5,3.33,3.33,3.33c.62,0,1.19-.18,1.68-.47Zm-3.35-2.86c0-.92,.75-1.67,1.67-1.67s1.67,.75,1.67,1.67-.75,1.67-1.67,1.67-1.67-.75-1.67-1.67Z"/></g><rect class="cls-1" width="20" height="20"/></svg>');
+}
+
+body:not(.new-tab-text-btn-restore) .workspace-leaf-content[data-type="empty"] .empty-state-action:nth-child(3) {
+    display: none;
+}
+
+body:not(.new-tab-text-btn-restore) .workspace-leaf-content[data-type="empty"] .empty-state-action:nth-child(4):before {
+    content: " ";
+    display: block;
+    height: 20px;
+    width: 20px;
+    background: var(--color-base-58);
+    mask-image: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg id="svg0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><defs><style>.cls-1{fill:none;}</style></defs><path d="M11.18,10l5.24-5.24c.33-.33,.33-.85,0-1.18s-.85-.33-1.18,0l-5.24,5.24L4.76,3.58c-.33-.33-.85-.33-1.18,0s-.33,.85,0,1.18l5.24,5.24L3.58,15.24c-.33,.33-.33,.85,0,1.18,.16,.16,.38,.24,.59,.24s.43-.08,.59-.24l5.24-5.24,5.24,5.24c.16,.16,.38,.24,.59,.24s.43-.08,.59-.24c.33-.33,.33-.85,0-1.18l-5.24-5.24Z"/><rect class="cls-1" width="20" height="20"/></svg>');
+}
+
+/*new tab image*/
+.workspace-leaf-content[data-type="empty"] .empty-state::before {
+    content: "";
+    width: 100%;
+    height: 33%;
+    background-color: var(--color-base-70);
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2280%22%20height%3D%2280%22%20fill%3D%22none%22%20viewBox%3D%220%200%2080%2080%22%3E%3Cpath%20fill%3D%22%23000%22%20fill-opacity%3D%22.1%22%20fill-rule%3D%22evenodd%22%20d%3D%22M41.025%2044.046c-1.565-4.198-2.066-7.455-1.95-10.13.126-2.9.975-5.058%201.89-6.923.243-.495.485-.96.717-1.406.66-1.27%201.243-2.393%201.57-3.657.398-1.537.4-3.279-.519-5.633a3.197%203.197%200%200%200-3.486.523l-9.875%208.884a3.197%203.197%200%200%200-1.023%201.9c-.118.78-.259%201.752-.404%202.757-.25%201.72-.512%203.537-.7%204.67%202.313%201.47%205.437%203.94%207.093%207.98.226.553.424%201.132.589%201.74%202.033-.46%204.085-.765%206.098-.705Zm1.587.128c.957.129%201.901.355%202.827.701%203.307%201.238%206.25%203.964%208.665%208.966l.08-.12a139.935%20139.935%200%200%200%204.196-6.627%201.618%201.618%200%200%200-.122-1.797c-1.03-1.364-3-4.138-4.074-6.706-1.104-2.64-1.269-6.74-1.278-8.736a3.406%203.406%200%200%200-.714-2.097l-7.383-9.38a9.237%209.237%200%200%201-.165%203.912c-.371%201.437-1.062%202.763-1.744%204.075a60.2%2060.2%200%200%200-.644%201.26c-.87%201.771-1.631%203.728-1.745%206.353-.111%202.562.393%205.815%202.101%2010.196Zm4.66%2019.708c2.13.59%204.273-1.12%204.567-3.31.218-1.618.633-3.462%201.408-5.16-2.394-5.402-5.261-8.05-8.312-9.19-2.97-1.112-6.244-.85-9.698-.068.666%203.863.018%208.748-3%2014.906.158.036.32.06.483.072l4.844.367c2.362.182%204.92.956%207.328%201.684.816.246%201.613.488%202.38.7Zm-16.329-3.449c3.777-7.702%203.612-13.101%202.065-16.876-1.404-3.426-3.996-5.637-6.134-7.054-.91%202.125-5.19%2011.535-5.19%2011.535a3.196%203.196%200%200%200%20.622%203.535l8.348%208.597c.091.094.188.182.29.263Z%22%20clip-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.empty-state-action:hover {
+    transform: translateY(-4px);
+}
+
+.workspace-leaf-content[data-type="empty"] .empty-state-title {
+    display: none;
+}
+
+.is-mobile .workspace-leaf-content[data-type="empty"] .empty-state-action-list,
+.workspace-leaf-content[data-type="empty"] .empty-state-action-list {
+    margin-top: -16px;
+}

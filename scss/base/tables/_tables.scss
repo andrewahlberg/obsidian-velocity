@@ -1,4 +1,3 @@
-
 body {	
 	--table-background: none;
 	--table-row-alt-background: var(--faint-trans);
@@ -12,3 +11,35 @@ body {
 	--table-text-size: 14.5px;
 	--table-text-weight: var(--font-normal);
 }
+
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper, :is(.markdown-rendered, .markdown-source-view.is-live-preview) table {
+	width: 100%;
+}
+
+/* body .markdown-rendered table thead  {
+	box-shadow: 0 1.25px 1.5px 0 var(--color-base-20);
+}  */
+body .markdown-rendered table thead tr > th {
+	border: none;
+	border-bottom: 2px solid var(--table-header-border-color);
+	font-size: var(--table-header-size);
+	font-weight: 550;
+	line-height: var(--table-line-height);
+	padding-inline: 12px;
+	padding-bottom: 6px;
+} 
+body .markdown-rendered table tr td {
+	border: none;
+	border-left: 1px solid var(--table-border-color);
+	padding-inline: 12px;
+	font-weight: var(--font-normal);
+}
+
+body .markdown-rendered table tr td:first-child, 
+body .markdown-rendered table tr th:first-child {
+	border-left: none;
+}
+
+/* body .markdown-source-view .cm-table-widget tr:first-child .cm-line {
+    font-family: var(--table-header-font);
+} */

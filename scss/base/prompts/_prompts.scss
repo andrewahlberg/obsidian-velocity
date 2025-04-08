@@ -1,0 +1,145 @@
+/*=================== Prompts ====================*/
+
+.prompt {
+	border-radius: var(--window-radius);
+	/* animation: var(--anim-duration-fast) open; */
+}
+.prompt-results {
+	padding-block: var(--size-4-1);
+	margin-block: var(--size-2-1);
+    overflow-y: auto;
+}
+.suggestion-container {
+	border-color: var(--color-base-40);
+}
+.suggestion-container:not(:has(.prompt-instructions)) .suggestion {
+	background-image: var(--menu-gradient);
+}
+
+.suggestion-item {
+	color: var(--color-base-90);
+	padding-block: var(--size-4-2);
+}
+.prompt .suggestion-item {
+	align-items: center;
+}
+
+.suggestion-item.is-selected {
+	color: unset;
+	background-image: var(--gradient-glass-1);
+	box-shadow: var(--glass-shadow);
+}
+
+.prompt .suggestion-item.mod-complex.is-selected .suggestion-content {
+	font-weight: var(--font-semibold);
+    padding-left: 6px;
+}
+.prompt .suggestion-item:not(.mod-complex).is-selected {
+	font-weight: var(--font-semibold);
+    padding-left: 18px;
+}
+.prompt .suggestion-content,
+.prompt .suggestion-item:not(.mod-complex) {
+	transition: padding-left var(--anim-duration-fast) var(--anim-motion-swing);
+}
+
+.prompt .suggestion-hotkey,
+.suggestion-item.mod-complex .suggestion-action {
+	line-height: 1.5;
+    color: var(--color-base-90);
+	background-image: var(--tab-gradient-3);
+	font-weight: var(--font-medium);
+	margin-inline-start: 0px;
+	border-radius: 0;
+	box-shadow: 0 0 0 0.75px var(--color-base-35);
+	text-shadow: 0.5px 0.5px 0.5px var(--color-base-05);
+}
+.suggestion-item.mod-complex .suggestion-hotkey:only-child,
+.suggestion-item.mod-complex .suggestion-action {
+	border-radius: var(--button-radius);
+}
+.suggestion-item.mod-complex .suggestion-hotkey:not(:last-child) {
+   	border-top-left-radius: var(--button-radius);
+	border-bottom-left-radius: var(--button-radius);
+	padding-inline-end: 8px !important;
+}
+.suggestion-item.mod-complex .suggestion-hotkey:last-child:not(:only-child) {
+	border-top-right-radius: var(--button-radius);
+	border-bottom-right-radius: var(--button-radius);
+	padding-inline-start: 8px !important;
+}
+
+.prompt-input-container {
+	--search-clear-button-size: 20px;
+}
+.prompt input.prompt-input,
+.prompt input.prompt-input:hover,
+.prompt input.prompt-input:focus {
+	font-size: 17px;
+    width: 100%;
+    padding-bottom: var(--size-4-7);
+	padding-top: 29px;
+    background-color: var(--color-base-10);
+	border-color: var(--color-base-30);
+	border-radius: 0;
+	box-shadow: 
+	0 0.75px 0 0.5px var(--color-base-00),
+	inset 0 0.5px 2px 0 var(--color-base-25);
+	color: var(--text-normal);
+}
+
+.prompt-instructions:last-child {
+	box-shadow: inset 0 1.5px 1px -1px var(--color-base-00);
+	background-image: var(--tab-gradient-2);
+	border-top: 1px solid var(--color-base-55);
+    color: var(--status-bar-text-color);
+	column-gap: 0;
+	padding-block: var(--size-2-3);
+	padding-inline: var(--size-4-12);
+	row-gap: var(--size-4-2);
+	z-index: 1;
+}
+.prompt-instructions:last-child::before {
+	content: '';
+	width: 100%;
+	height: 12px;
+	background: linear-gradient(transparent, var(--color-base-05) 100%);
+	position: absolute;
+	pointer-events: none;
+	transform: translateY(-19px);
+}
+.prompt-instructions .prompt-instruction {
+	border-left: 1px dotted var(--text-muted);
+	padding-inline: var(--size-4-1);
+}
+.prompt-instructions:last-child .prompt-instruction {
+	font-weight: var(--font-medium);
+	padding-block: var(--size-2-1);
+	padding-inline: var(--size-4-2);
+	text-shadow: var(--text-metal-shadow);
+}
+.prompt-instruction:first-child {
+	border: none;
+}
+.prompt-instruction-command {
+	font-family: Inter, Arial, sans-serif;
+	font-weight: var(--font-semibold);
+}
+.prompt-instruction:hover,
+.suggestion-item.is-selected:hover {
+	cursor: pointer;
+}
+
+.suggestion-item.mod-complex .suggestion-action {
+    margin-inline-end: var(--size-2-2);
+	padding-inline: 0.7em;
+	padding-block: 0.2em;
+} 
+
+.suggestion-container .prompt-instructions {
+	padding-block: var(--size-4-2);
+	padding-inline: var(--size-4-2);
+}
+.suggestion-container .prompt-instructions::before {
+	transform: translateY(-21px);
+}
