@@ -1,8 +1,8 @@
 {
-	"name": "Velocity",
+	"name": "V-Prototype",
 	"repo": "Gonzalo-D-Sales/obsidian-velocity",
-	"version": "0.6.3",
-	"minAppVersion": "1.7.0",
+	"version": "1.0.0",
+	"minAppVersion": "1.8.0",
 	"author": "Floodlight",
 	"modes": ["light"]
 }
