@@ -116,10 +116,9 @@ body {
 	--h5-weight: 650;
 	--h6-weight: 700;
 	
-	/* View header */
 	--header-height: 48px;
-	/* Horizontal rules */
-
+	--hr-color: var(--color-base-20);
+	
 	/* Icons */
 
 	/* Indent size */
@@ -175,7 +174,7 @@ body {
 	/* Swatch for color inputs */
 
 	/* Tabs */
-
+	--tab-container-background: transparent;
 	/* Mobile tab switcher */
 
 	/* Stacked tabs */
@@ -185,6 +184,10 @@ body {
 	/* Tags */
 
 	/* Window frame */
+	--titlebar-background: transparent;
+	--titlebar-background-focused: transparent;
+	--titlebar-text-color: var(--icon-color);
+	--titlebar-text-color-focused: var(--text-muted);
 
 	/* Toggles */
 
@@ -198,6 +201,81 @@ body {
 	/* Text */
 
 }
+.theme-light {
+	/* --color-red-rgb: 233, 49, 71;
+	--color-red: #e93147;
+	--color-orange-rgb: 236, 117, 0;
+	--color-orange: #ec7500;
+	--color-yellow-rgb: 224, 172, 0;
+	--color-yellow: #e0ac00;
+	--color-green-rgb: 8, 185, 78;
+	--color-green: #08b94e;
+	--color-cyan-rgb: 0, 191, 188;
+	--color-cyan: #00bfbc;
+	--color-blue-rgb: 8, 109, 221;
+	--color-blue: #086ddd;
+	--color-purple-rgb: 120, 82, 238;
+	--color-purple: #7852ee;
+	--color-pink-rgb: 213, 57, 132;
+	--color-pink: #d53984; */
+
+	--color-base-00: #ffffff;
+	--color-base-05: #fbfbfc;
+	--color-base-10: #f2f2f4;
+	--color-base-20: #00000016;
+	--color-base-25: #dadbdd; 
+	--color-base-30: #d0d0d1; 
+	--color-base-35: #bbbdc0; 
+	--color-base-40: #b2b2b2; 
+	--color-base-50: #a2a4ab; 
+	--color-base-55: #93969e; 
+	--color-base-58: #76787e; 
+	--color-base-60: #6d6f74;
+	--color-base-70: #0000009e; 
+	--color-base-80: #4e4e4e;
+	--color-base-90: #000000d8; 
+	--color-base-100:#000000e0;
+
+	--nav-trans: #0000000d;
+	--gray-trans: #0000000c;
+	--temp-trans: #aaaaaa1a;
+	--border-trans: #0000001d;
+
+	--background-gradient: radial-gradient( at 50% 52%, 
+		var(--color-base-05) 44%, 
+		var(--color-base-50) 220%
+		);
+
+	/* --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--color-accent-1: hsl(calc(var(--accent-h) - 1), calc(var(--accent-s) * 1.01), calc(var(--accent-l) * 1.075));
+	--color-accent-2: hsl(calc(var(--accent-h) - 3), calc(var(--accent-s) * 1.02), calc(var(--accent-l) * 1.15)); */
+
+	--icon-color: var(--color-base-60);
+
+	/* --background-primary: var(--color-base-00);
+	--background-primary-alt: var(--color-base-10);
+	--background-secondary: var(--color-base-20);
+	--background-secondary-alt: var(--color-base-05);
+	--background-modifier-box-shadow: rgba(0, 0, 0, 0.1);
+	--background-modifier-cover: rgba(220, 220, 220, 0.4); */
+
+	/* --input-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+		0 2px 3px 0 rgba(0,0,0,.05),
+		0 1px 1.5px 0 rgba(0,0,0,.03),
+		0 1px 2px 0 rgba(0,0,0,.04),
+		0 0 0 0 transparent;
+	--input-shadow-hover: inset 0 0 0 1px rgba(0, 0, 0, 0.17),
+		0 2px 3px 0 rgba(0,0,0,.1),
+		0 1px 1.5px 0 rgba(0,0,0,.03),
+		0 1px 2px 0 rgba(0,0,0,.04),
+		0 0 0 0 transparent;
+	--shadow-s: 0px 1px 2px rgba(0, 0, 0, 0.028),
+		0px 3.4px 6.7px rgba(0, 0, 0, .042),
+		0px 15px 30px rgba(0, 0, 0, .07);
+	--shadow-l: 0px 1.8px 7.3px rgba(0, 0, 0, 0.071),
+		0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
+		0px 30px 90px rgba(0, 0, 0, 0.2); */
+}
 
 /*--> Theme Default Typeface <--*/
 
@@ -205,7 +283,7 @@ body {
 	--accent-h: 216;	
 	--accent-s: 92%;	
 	--accent-l: 52%;
-	
+
 	--font-interface-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	--font-text-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	--font-monospace-theme: '??';
@@ -270,6 +348,26 @@ body {
 =========================== ===========================
 */
 
+body:not(.is-phone) .workspace {
+	background-image: var(--background-gradient);
+}
+
+.workspace .mod-root,
+.workspace-tabs .workspace-leaf,
+.workspace-tab-header-container,
+.workspace :is(.mod-left-split,.mod-right-split) .workspace-tab-container {
+	background-color: transparent;
+}
+
+body:not(.is-mobile) .mod-root .workspace-tabs {
+	overflow: visible;
+}
+
+.mod-windows .titlebar-button.mod-close:hover {
+	background: rgb(var(--color-red-rgb), 0.3);
+    color: var(--color-red);
+}
+
 /*
 =========================== ===========================
 			4 - Modals
@@ -281,4 +379,3 @@ body {
 			5 - Plugins
 =========================== ===========================
 */
-}
