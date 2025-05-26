@@ -241,6 +241,8 @@ body {
 	--temp-trans: #aaaaaa1a;
 	--border-trans: #0000001d;
 
+	--text-normal: var(--color-base-90);
+
 	--background-gradient: radial-gradient( at 50% 52%, 
 		var(--color-base-05) 44%, 
 		var(--color-base-50) 220%
@@ -307,21 +309,21 @@ body {
 
 /*--> Headings H1-H6 <--*/
 
-.HyperMD-header,
-:is(h1,h2,h3,h4,h5,h6) {
+.cm-s-obsidian .cm-line.HyperMD-header,
+.markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
 	font-feature-settings: "ss01";
 }
-:is(.HyperMD-header-2, .HyperMD-header-3), 
-:is(h2,h3) {
+.cm-s-obsidian .cm-line:is(.HyperMD-header-2, .HyperMD-header-3), 
+.markdown-rendered :is(h2,h3) {
 	font-variation-settings: 'opsz' 28;
 	text-indent: -0.03125em;
 }
-:is(.HyperMD-header-4, .HyperMD-header-5),
-:is(h4,h5) {
+.cm-s-obsidian .cm-line:is(.HyperMD-header-4, .HyperMD-header-5),
+.markdown-rendered :is(h4,h5) {
 	font-variation-settings: 'opsz' 26;
 }
-:is(.HyperMD-header-6), 
-:is(h6) {
+.cm-s-obsidian .cm-line:is(.HyperMD-header-6), 
+.markdown-rendered :is(h6) {
 	font-variation-settings: 'opsz' 20;
 }
 
