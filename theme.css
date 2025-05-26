@@ -73,6 +73,9 @@ body {
 	/* Blocks */
 
 	/* File layout */
+	--file-line-width: 43.625rem;
+	--file-margins: 32px 6.5%;
+	--file-header-font-weight: var(--font-normal);
 
 	/* Relative font sizes */
 
@@ -199,6 +202,10 @@ body {
 /*--> Theme Default Typeface <--*/
 
 body {
+	--accent-h: 216;	
+	--accent-s: 92%;	
+	--accent-l: 52%;
+	
 	--font-interface-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	--font-text-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	--font-monospace-theme: '??';
