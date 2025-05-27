@@ -135,9 +135,14 @@ body {
 
 	/* Line heights */
 	--line-height-normal: 1.6;
+
 	/* Links */
+	--link-decoration: none;
+	--link-decoration-hover: none;
+	--list-marker-color: var(--color-base-80);
 
 	/* Lists */
+	--list-spacing: 0.15em;
 
 	/* File navigator */
 
@@ -158,6 +163,7 @@ body {
 	/* Radiuses */
 
 	/* Ribbon */
+	--ribbon-background: transparent;
 
 	/* Scrollbars */
 
@@ -175,6 +181,8 @@ body {
 
 	/* Tabs */
 	--tab-container-background: transparent;
+	--tab-background-active: var(--gray-trans);
+
 	/* Mobile tab switcher */
 
 	/* Stacked tabs */
@@ -242,11 +250,12 @@ body {
 	--border-trans: #0000001d;
 
 	--text-normal: var(--color-base-90);
-
+	
 	--background-gradient: radial-gradient( at 50% 52%, 
 		var(--color-base-05) 44%, 
 		var(--color-base-50) 220%
 		);
+	--background-modifier-border: var(--nav-trans);
 
 	/* --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(calc(var(--accent-h) - 1), calc(var(--accent-s) * 1.01), calc(var(--accent-l) * 1.075));
@@ -275,6 +284,11 @@ body {
 	--shadow-l: 0px 1.8px 7.3px rgba(0, 0, 0, 0.071),
 		0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
 		0px 30px 90px rgba(0, 0, 0, 0.2); */
+	--shadow-workspace: 
+	0px 0px 0px 0.8px var(--color-base-20),
+	0 0.5px 3px 0px var(--gray-trans),
+ 	0px 2px 45px -9px var(--color-base-25),
+	0px 6px 8px -4px var(--color-base-20);
 }
 
 /*--> Theme Default Typeface <--*/
@@ -359,6 +373,13 @@ body:not(.is-phone) .workspace {
 	background-color: transparent;
 }
 
+.workspace-tabs .workspace-leaf {
+	background-color: transparent;
+}
+.workspace-tab-header-container {
+	border-block: none;
+}
+
 body:not(.is-mobile) .mod-root .workspace-tabs {
 	overflow: visible;
 }
@@ -367,6 +388,151 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 	background: rgb(var(--color-red-rgb), 0.3);
     color: var(--color-red);
 }
+
+.workspace :is(.mod-left-split,.mod-right-split) .workspace-tab-container {
+	background-color: transparent;
+}
+
+.mod-root .workspace-tabs .workspace-leaf {
+	background-color: transparent;
+}
+.workspace .mod-root {
+	background-color: transparent;
+}
+
+/* left & right split */
+/* .workspace-split.mod-left-split {
+	margin-inline-start: 4px;
+}
+.workspace-split.mod-right-split {
+	margin-inline-end: 4px;
+} */
+.workspace-split:is(.mod-left-split,.mod-right-split) > .workspace-leaf-resize-handle {
+    border: none;
+}
+
+body:not(.is-mobile) .mod-root {
+    padding-bottom: 8px;
+}
+body:not(.is-mobile) .mod-root .workspace-tab-container {
+    box-shadow: var(--shadow-workspace);
+    border-radius: 8px;
+}
+body:not(.is-mobile) .mod-root .workspace-tabs {
+	overflow: visible;
+}
+
+/* .workspace-split.mod-right-split {
+	padding-bottom: 8px;
+} */
+
+
+/*--> Workspace Tabs <--*/
+
+
+/* Removes tab gutter curves */
+
+.workspace-split.mod-root .workspace-tab-header::before, 
+.workspace-split.mod-root .workspace-tab-header::after,
+.workspace-split.mod-root .workspace-tab-header-inner::after {
+    display: none;
+}
+
+/*--> View header FAB <--*/
+
+.view-header-title-container > * {
+	padding-top: 3px;
+}
+
+.view-actions {
+	column-gap: 4px;
+}
+.view-actions > * {
+	transform: translateX(-8px) translateY(12px);
+}
+.view-actions .clickable-icon.view-action[aria-label="More options"] {
+	height: 32px;
+	width: 20px;
+	padding: 1px 0 0 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: var(--anim-duration-fast) ease-out;
+	--icon-size: var(--icon-xl);
+}
+.view-actions:hover .clickable-icon.view-action[aria-label="More options"] {
+	opacity: 0.33;
+	pointer-events: unset;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.view-actions .clickable-icon.view-action[aria-label*="Current view: "] {
+	height: 40px;
+	width: 40px;
+	background-color: var(--background-primary);
+	border-radius: 100px;
+	box-shadow: 0px 0.25px 0px 0.75px var(--border-trans),
+	0px 2px 8px -2px var(--border-trans);
+	--icon-size: var(--icon-m);
+	padding-block: 1px 0;
+	padding-inline: 0 1px;
+	order: 2;
+}
+.view-actions .clickable-icon.view-action.mod-bookmark {
+	order: 1;
+}
+
+/* Vault profile */
+body:not(.is-mobile)
+	.workspace-split.mod-left-split
+	.workspace-sidedock-vault-profile {
+	border: none;
+	background-color: transparent;
+}
+
+/* Status bar */
+
+.status-bar {
+	background-color: transparent;
+	border: none;
+	border-radius: 5px 0 0 5px;
+	font-weight: var(--font-normal);
+	max-height: 26px;
+	margin-bottom: 9px;
+	padding-inline: 12px;
+	filter: opacity(0.25) blur(0.375px);
+	transition: var(--anim-duration-superfast) ease-in;
+}
+.status-bar:hover {
+	background-color: var(--search-trans);
+	box-shadow: 
+	inset -6px 0 8px -6px var(--border-trans),
+	-0.25px 1px 1.5px 0.5px var(--border-trans);
+	filter: unset;
+}
+
+/* .status-bar {
+	background-color: var(--search-trans);
+	backdrop-filter: blur(var(--blur-radius));
+	box-shadow: 
+	inset -6px 0 8px -6px var(--border-trans),
+	-0.25px 1px 1.5px 0.5px var(--border-trans);
+	border: none;
+	border-radius: 5px 0 0 5px;
+	color: var(--color-base-58);
+	font-weight: var(--font-normal);
+	max-height: 26px;
+	margin-bottom: 9px;
+	padding-inline: 12px;
+	transition: var(--anim-duration-superfast) ease-in;
+} */
+
+
+/* outline */
+/* .workspace-leaf-content[data-type="outline"] {
+	border-radius: var(--radius-m);
+} */
 
 /*
 =========================== ===========================
