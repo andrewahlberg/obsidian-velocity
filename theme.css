@@ -86,6 +86,7 @@ body {
 	--font-extralight: 200;
 	--font-light: 300; */
 	--font-normal: 450;
+	--font-medium: 550;
 	/* --font-medium: 500;
 	--font-semibold: 600;
 	--font-bold: 700;
@@ -145,6 +146,12 @@ body {
 	--list-spacing: 0.15em;
 
 	/* File navigator */
+	/* --nav-item-padding: var(--size-2-3) var(--size-4-2) var(--size-2-3) var(--size-4-6);
+    --nav-item-parent-padding: var(--nav-item-padding); */
+	--nav-item-weight: var(--font-normal);
+	--nav-item-weight-active: var(--font-normal);
+	--nav-file-weight: 650;
+	--nav-file-weight-active: 700;
 
 	/* Metadata */
 
@@ -161,6 +168,8 @@ body {
 	/* Prompts - e.g. quick switcher, command palette */
 
 	/* Radiuses */
+	--radius-s: 6px;
+	--radius-m: 12px;
 
 	/* Ribbon */
 	--ribbon-background: transparent;
@@ -168,6 +177,7 @@ body {
 	/* Scrollbars */
 
 	/* Search */
+	--search-result-background: #ffffff75;
 
 	/* Sidebar */
 
@@ -181,7 +191,6 @@ body {
 
 	/* Tabs */
 	--tab-container-background: transparent;
-	--tab-background-active: var(--gray-trans);
 
 	/* Mobile tab switcher */
 
@@ -227,6 +236,9 @@ body {
 	--color-pink-rgb: 213, 57, 132;
 	--color-pink: #d53984; */
 
+	--color-orange-00: #fbf2ea;
+	--color-orange-10: #ff8800;
+
 	--color-base-00: #ffffff;
 	--color-base-05: #fbfbfc;
 	--color-base-10: #f2f2f4;
@@ -244,12 +256,23 @@ body {
 	--color-base-90: #000000d8; 
 	--color-base-100:#000000e0;
 
+	--trans-base-00: color-mix(in oklab, var(--color-base-00), transparent 5%);
+	--trans-base-10: color-mix(in oklab, var(--color-base-00), transparent 25%);
+	--fainter-trans: #11111105;
+	--faint-trans: #11111107;
 	--nav-trans: #0000000d;
-	--gray-trans: #0000000c;
+	--gray-trans: #0000000b;
 	--temp-trans: #aaaaaa1a;
 	--border-trans: #0000001d;
 
 	--text-normal: var(--color-base-90);
+	--text-faint: var(--color-base-40);
+    --text-highlight-bg: var(--color-orange-00);
+	--text-highlight-bg-rgb: var(--color-orange-rgb);
+	--text-highlight-color: var(--color-orange-10);
+	--text-highlight-bg-sidebar: rgb(var(--text-highlight-bg-rgb), 0.125);
+	--text-highlight-bg-hover: rgb(var(--text-highlight-bg-rgb), 0.3);
+	--text-selection: color-mix(in oklab, var(--color-accent), transparent 85%);
 	
 	--background-gradient: radial-gradient( at 50% 52%, 
 		var(--color-base-05) 44%, 
@@ -277,18 +300,24 @@ body {
 		0 2px 3px 0 rgba(0,0,0,.1),
 		0 1px 1.5px 0 rgba(0,0,0,.03),
 		0 1px 2px 0 rgba(0,0,0,.04),
-		0 0 0 0 transparent;
+		0 0 0 0 transparent; 
 	--shadow-s: 0px 1px 2px rgba(0, 0, 0, 0.028),
 		0px 3.4px 6.7px rgba(0, 0, 0, .042),
 		0px 15px 30px rgba(0, 0, 0, .07);
 	--shadow-l: 0px 1.8px 7.3px rgba(0, 0, 0, 0.071),
 		0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
 		0px 30px 90px rgba(0, 0, 0, 0.2); */
+	--shadow-xs: 
+		0px 0.125px 0px 0.0625px rgba(0, 0, 0, 0.25),
+		0px 0.75px 1px 0.75px rgba(40, 40, 40, 0.05),
+		0px 1px 2px rgba(0, 0, 0, 4%);
 	--shadow-workspace: 
-	0px 0px 0px 0.8px var(--color-base-20),
-	0 0.5px 3px 0px var(--gray-trans),
- 	0px 2px 45px -9px var(--color-base-25),
-	0px 6px 8px -4px var(--color-base-20);
+		0px 0px 0px 0.8px var(--color-base-20),
+		0 0.5px 3px 0px var(--gray-trans),
+		0px 2px 45px -9px var(--color-base-25),
+		0px 6px 8px -4px var(--color-base-20);
+
+	--tab-background-active: var(--trans-base-10);
 }
 
 /*--> Theme Default Typeface <--*/
@@ -356,22 +385,82 @@ body {
     padding-top: 0;
 }
 
+/*--> Lists + paragraphs <--*/
+
+/* List items */
+.markdown-rendered ul > li {
+	margin-inline-start: 28px;
+}
+
+/*--> Formatting <--*/
+
+.cm-formatting {
+	color: var(--color-base-35);
+}
+.cm-formatting-strong {
+	font-weight: var(--font-light);
+}
+
+.cm-strikethrough, del, del > * {
+    color: var(--color-base-30);
+	filter: blur(0.4px);
+}
+
+.search-result-file-matched-text {
+	padding-inline: 2px;
+	padding-bottom: 1px;
+}
+.cm-s-obsidian span.cm-highlight,
+:is(.markdown-source-view, .markdown-preview-view) mark {
+	--font-normal: 550;
+	font-weight: var(--font-normal);
+	border-radius: 4px;
+	box-decoration-break: clone;
+	box-shadow: 0 0 5px 1.25px var(--text-highlight-bg);
+	color: var(--text-highlight-color);
+	padding-block: 1px;
+	& > * {
+		color: var(--text-highlight-color);
+		--bold-modifier: 350;
+	}
+}
+:is(.markdown-source-view, .markdown-preview-view) mark {
+	padding-inline: 0.25em;
+	margin-inline: -0.09375em;
+}
+
+/* shadow overlap correcting */
+.cm-s-obsidian span.cm-highlight {
+	z-index: -1;
+	position: relative;
+}
+.cm-s-obsidian span.cm-formatting-highlight {
+	color: rgb(var(--text-highlight-bg-rgb), 0.5);
+	z-index: -2;
+}
+
 /*
 =========================== ===========================
 			3 - Interface
 =========================== ===========================
 */
 
-body:not(.is-phone) .workspace {
-	background-image: var(--background-gradient);
+/*--> Clickable Icons <--*/
+
+.clickable-icon {
+	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
+}
+:is(.workspace-sidedock-vault-profile,.view-header) .clickable-icon {
+    padding: var(--size-4-2);
 }
 
-.workspace .mod-root,
-.workspace-tabs .workspace-leaf,
-.workspace-tab-header-container,
-.workspace :is(.mod-left-split,.mod-right-split) .workspace-tab-container {
-	background-color: transparent;
+/*--> Workspace Layout <--*/
+
+body:not(.is-phone) .workspace {
+	background-image: var(--background-gradient);
+	font-weight: var(--font-weight);
 }
+
 
 .workspace-tabs .workspace-leaf {
 	background-color: transparent;
@@ -401,14 +490,22 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 }
 
 /* left & right split */
-/* .workspace-split.mod-left-split {
-	margin-inline-start: 4px;
+.mod-left-split {
+	padding-inline: 0 2px;
 }
-.workspace-split.mod-right-split {
-	margin-inline-end: 4px;
-} */
-.workspace-split:is(.mod-left-split,.mod-right-split) > .workspace-leaf-resize-handle {
-    border: none;
+.mod-right-split {
+	padding-inline: 2px 0;
+}
+/* FROM: Primary */
+.workspace-split.mod-left-split > .workspace-leaf-resize-handle, 
+.workspace-split.mod-right-split > .workspace-leaf-resize-handle, 
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
+    height: calc(100% - calc(var(--header-height) + 8px) - 15px);
+    bottom: calc(8px + 7.5px);
+}
+/* Remove horizontal handle lines */
+.workspace-split.mod-horizontal > * > .workspace-leaf-resize-handle {
+   --divider-color: transparent;
 }
 
 body:not(.is-mobile) .mod-root {
@@ -416,7 +513,7 @@ body:not(.is-mobile) .mod-root {
 }
 body:not(.is-mobile) .mod-root .workspace-tab-container {
     box-shadow: var(--shadow-workspace);
-    border-radius: 8px;
+    border-radius: calc(var(--radius-s) * 1.25);
 }
 body:not(.is-mobile) .mod-root .workspace-tabs {
 	overflow: visible;
@@ -426,16 +523,116 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 	padding-bottom: 8px;
 } */
 
+/*--> Navigation / File Tree <--*/
+
+.tree-item-self {
+	margin-bottom: 0;
+	padding-block: 6.5px 5.5px;
+}
+
+body:not(.is-grabbing) .tree-item.nav-file {
+	font-weight: var(--nav-item-weight);
+}
+.tree-item-self.nav-file-title {
+	margin-block: 1px;
+}
+.tree-item-self.nav-file-title.is-active {
+	background-color: var(--gray-trans);
+	box-shadow: var(--glass-shadow);
+}
+
+body:not(.is-grabbing) .tree-item.nav-folder {
+	--nav-item-background-hover: var(--temp-trans);
+	font-weight: var(--nav-file-weight);
+}
+.tree-item-self.nav-folder-title {
+	color: var(--color-base-80);
+	font-weight: var(--nav-file-weight);
+	font-feature-settings: 'ss01';
+	padding-block: 8px;
+	margin-block: 2px;
+	--nav-item-parent-padding: var(--size-4-2) var(--size-4-2) var(--size-4-2) var(--size-4-6);
+}
+
+/* @media (hover: hover) {
+    body:not(.is-grabbing) .tree-item.nav-file {
+		--nav-item-background-hover: var(--temp-trans);
+    }
+	body:not(.is-grabbing) .tree-item.nav-folder {
+        --nav-item-color-hover: var(--color-base-80);
+    }
+} */
 
 /*--> Workspace Tabs <--*/
 
-
-/* Removes tab gutter curves */
-
+/* Remove tab gutter curves */
 .workspace-split.mod-root .workspace-tab-header::before, 
 .workspace-split.mod-root .workspace-tab-header::after,
 .workspace-split.mod-root .workspace-tab-header-inner::after {
     display: none;
+}
+
+
+.mod-root .workspace-tab-header-container-inner {
+	height: var(--header-height);
+	margin: 0 -8px 0 -16px;
+	align-items: center;
+}
+
+.mod-sidedock .workspace-tab-header-container-inner {
+	height: 34px;
+    /* padding: 1px 0 7px;
+    margin: 6px 0 0 0;
+    gap: 3px; */
+	background-color: var(--fainter-trans);
+	border-radius: 7.5px;
+	box-shadow: 
+	inset 0 -0.125px 2px 0.375px var(--gray-trans);
+	padding: 2px 1.5px;
+	margin: 7px 0 0 0;
+	gap: 0;
+}
+.mod-sidedock .mod-top .workspace-tab-header-container-inner {
+	background-color: var(--faint-trans);
+}
+
+.workspace .mod-root .workspace-tab-header {
+	border-radius: var(--radius-s);
+	height: 34px;
+    padding: 0 var(--size-2-1) 0 var(--size-4-1);
+}
+.mod-root .mod-top .workspace-tab-header.is-active {
+	background-color: var(--gray-trans);
+	box-shadow: none;
+	border: none;
+}
+
+.mod-sidedock .workspace-tab-header {
+	width: 36px;
+}
+.mod-sidedock .workspace-tab-header.is-active {
+	--tab-background-active: var(--trans-base-00);
+	background-color: var(--tab-background-active);
+	box-shadow: var(--shadow-xs);
+}
+.mod-sidedock .mod-top .workspace-tab-header.is-active {
+	--tab-background-active: var(--trans-base-10);
+}
+
+
+/*--> Workspace Sidebar leaves <--*/
+
+/* .search-result-file-matches {
+    margin: var(--size-4-1) 0 var(--size-4-2);
+    color: var(--text-muted);
+    box-shadow: 0 0 0 1px var(--background-modifier-border);
+} */
+
+.search-result-file-title .tree-item-inner,
+.outgoing-link-pane .tree-item-inner-text {
+	color: var(--color-accent);
+	color: color-mix(in oklab, var(--color-accent) 95%, transparent 5%);
+	font-size: 14px;
 }
 
 /*--> View header FAB <--*/
