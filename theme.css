@@ -461,7 +461,7 @@ body {
 			3 - Interface
 =========================== ===========================
 */
-.workspace, .workspace-tab-container, .mod-root {
+body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
     transition: all var(--anim-duration-fast);
 }
 
@@ -477,7 +477,7 @@ body {
 /*--> Workspace Layout <--*/
 
 body:not(.is-phone) .workspace {
-	background: var(--background-gradient);
+	background-image: var(--background-gradient);
 	font-weight: var(--font-weight);
 }
 body:not(.is-mobile) .mod-vertical.mod-root {
@@ -531,11 +531,12 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
     border-radius: 0;
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
-	background: var(--background-primary-alt);
+	background-image: none;
+	background-color: var(--background-primary);
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .workspace-split.mod-vertical.mod-root {
 	padding-bottom: initial;
-	& .workspace-tab-container {
+	& .workspace-tabs > .workspace-tab-container {
 	box-shadow: none;
 	}
 }
