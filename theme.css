@@ -73,8 +73,8 @@ body {
 	/* Blocks */
 
 	/* File layout */
-	--file-line-width: 43.625rem;
-	--file-margins: 32px 6.5%;
+	--file-line-width: 43.75rem;
+	--file-margins: 32px 5%;
 	--file-header-font-weight: var(--font-normal);
 
 	/* Relative font sizes */
@@ -120,7 +120,7 @@ body {
 	--header-height: 48px;
 	--hr-color: var(--color-base-20);
 	
-	/* Icons */
+	/* Icons */ 
 
 	/* Indent size */
 
@@ -140,10 +140,10 @@ body {
 	/* Links */
 	--link-decoration: none;
 	--link-decoration-hover: none;
-	--list-marker-color: var(--color-base-80);
 
 	/* Lists */
 	--list-spacing: 0.15em;
+	--list-marker-color: var(--color-base-80);
 
 	/* File navigator */
 	/* --nav-item-padding: var(--size-2-3) var(--size-4-2) var(--size-2-3) var(--size-4-6);
@@ -169,6 +169,7 @@ body {
 
 	/* Radiuses */
 	--radius-s: 6px;
+	--radius-sm: calc(var(--radius-s) * 1.25);
 	--radius-m: 12px;
 
 	/* Ribbon */
@@ -177,7 +178,7 @@ body {
 	/* Scrollbars */
 
 	/* Search */
-	--search-result-background: #ffffff75;
+	--search-result-background: var(--trans-base-20);
 
 	/* Sidebar */
 
@@ -203,8 +204,8 @@ body {
 	/* Window frame */
 	--titlebar-background: transparent;
 	--titlebar-background-focused: transparent;
-	--titlebar-text-color: var(--icon-color);
-	--titlebar-text-color-focused: var(--text-muted);
+	--titlebar-text-color: var(--text-faint);
+	--titlebar-text-color-focused: var(--icon-color);
 
 	/* Toggles */
 
@@ -258,8 +259,9 @@ body {
 
 	--trans-base-00: color-mix(in oklab, var(--color-base-00), transparent 5%);
 	--trans-base-10: color-mix(in oklab, var(--color-base-00), transparent 25%);
-	--fainter-trans: #11111105;
-	--faint-trans: #11111107;
+	--trans-base-20: color-mix(in oklab, var(--color-base-00), transparent 65%);
+	--fainter-trans: #22222205;
+	--faint-trans: #44444407;
 	--nav-trans: #0000000d;
 	--gray-trans: #0000000b;
 	--temp-trans: #aaaaaa1a;
@@ -272,7 +274,7 @@ body {
 	--text-highlight-color: var(--color-orange-10);
 	--text-highlight-bg-sidebar: rgb(var(--text-highlight-bg-rgb), 0.125);
 	--text-highlight-bg-hover: rgb(var(--text-highlight-bg-rgb), 0.3);
-	--text-selection: color-mix(in oklab, var(--color-accent), transparent 85%);
+	--text-selection: hsla(var(--color-accent-hsl), 0.15);
 	
 	--background-gradient: radial-gradient( at 50% 52%, 
 		var(--color-base-05) 44%, 
@@ -284,7 +286,11 @@ body {
 	--color-accent-1: hsl(calc(var(--accent-h) - 1), calc(var(--accent-s) * 1.01), calc(var(--accent-l) * 1.075));
 	--color-accent-2: hsl(calc(var(--accent-h) - 3), calc(var(--accent-s) * 1.02), calc(var(--accent-l) * 1.15)); */
 
+	--color-accent-1: color-mix(in oklab, var(--color-accent), transparent 10%);
+	--color-accent-2: color-mix(in oklab, var(--color-accent) 100%, white 25%);
+
 	--icon-color: var(--color-base-60);
+	--icon-color-hover: var(--text-normal);
 
 	--background-primary: var(--color-base-05);
 	--background-secondary: var(--color-base-10);
@@ -323,9 +329,9 @@ body {
 /*--> Theme Default Typeface <--*/
 
 body {
-	--accent-h: 216;	
-	--accent-s: 92%;	
-	--accent-l: 52%;
+	--accent-h: 210;	
+	--accent-s: 96%;	
+	--accent-l: 48%;
 
 	--font-interface-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	--font-text-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
@@ -474,7 +480,7 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 }
 
 .mod-windows .titlebar-button.mod-close:hover {
-	background: rgb(var(--color-red-rgb), 0.3);
+	background: rgb(var(--color-red-rgb), 0.333);
     color: var(--color-red);
 }
 
@@ -482,29 +488,30 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 	background-color: transparent;
 }
 
-.mod-root .workspace-tabs .workspace-leaf {
-	background-color: transparent;
-}
 .workspace .mod-root {
 	background-color: transparent;
 }
 
 /* left & right split */
-.mod-left-split {
-	padding-inline: 0 2px;
+.mod-left-split .workspace-leaf-content {
+	padding-inline: 2px 4px;
 }
-.mod-right-split {
-	padding-inline: 2px 0;
+.mod-right-split .workspace-leaf-content {
+	padding-inline: 4px 2px;
 }
 /* FROM: Primary */
 .workspace-split.mod-left-split > .workspace-leaf-resize-handle, 
-.workspace-split.mod-right-split > .workspace-leaf-resize-handle, 
-.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
-    height: calc(100% - calc(var(--header-height) + 8px) - 15px);
-    bottom: calc(8px + 7.5px);
+.workspace-split.mod-right-split > .workspace-leaf-resize-handle {
+    height: calc(100% - 72px);
+    bottom: 16px;	
 }
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
+    height: calc(100% - 64px);
+	bottom: 8.5px;	
+}
+
 /* Remove horizontal handle lines */
-.workspace-split.mod-horizontal > * > .workspace-leaf-resize-handle {
+.workspace-leaf-resize-handle {
    --divider-color: transparent;
 }
 
@@ -513,15 +520,11 @@ body:not(.is-mobile) .mod-root {
 }
 body:not(.is-mobile) .mod-root .workspace-tab-container {
     box-shadow: var(--shadow-workspace);
-    border-radius: calc(var(--radius-s) * 1.25);
+    border-radius: var(--radius-sm);
 }
 body:not(.is-mobile) .mod-root .workspace-tabs {
 	overflow: visible;
 }
-
-/* .workspace-split.mod-right-split {
-	padding-bottom: 8px;
-} */
 
 /*--> Navigation / File Tree <--*/
 
@@ -571,34 +574,29 @@ body:not(.is-grabbing) .tree-item.nav-folder {
 .workspace-split.mod-root .workspace-tab-header-inner::after {
     display: none;
 }
-
-
+/* Tab Containers */
 .mod-root .workspace-tab-header-container-inner {
 	height: var(--header-height);
-	margin: 0 -8px 0 -16px;
+	padding-block: 0;
+	margin: 0 -6px 0 -5px;
 	align-items: center;
 }
-
+.workspace.is-left-sidedock-open .mod-root .workspace-tab-header-container-inner {
+	margin: 0 -6px 0 -16px;
+}
 .mod-sidedock .workspace-tab-header-container-inner {
-	height: 34px;
-    /* padding: 1px 0 7px;
-    margin: 6px 0 0 0;
-    gap: 3px; */
-	background-color: var(--fainter-trans);
-	border-radius: 7.5px;
-	box-shadow: 
-	inset 0 -0.125px 2px 0.375px var(--gray-trans);
-	padding: 2px 1.5px;
-	margin: 7px 0 0 0;
+	height: 36px;
+	background-color: var(--faint-trans);
+	border-radius: var(--radius-sm);
+	box-shadow: inset 0 0 2.5px -0.25px var(--color-base-20);
+	padding: 2px 1px;
+	margin: 6px 0 0 0;
 	gap: 0;
 }
-.mod-sidedock .mod-top .workspace-tab-header-container-inner {
-	background-color: var(--faint-trans);
-}
-
+/* Root Tabs */
 .workspace .mod-root .workspace-tab-header {
 	border-radius: var(--radius-s);
-	height: 34px;
+	height: 35px;
     padding: 0 var(--size-2-1) 0 var(--size-4-1);
 }
 .mod-root .mod-top .workspace-tab-header.is-active {
@@ -606,41 +604,61 @@ body:not(.is-grabbing) .tree-item.nav-folder {
 	box-shadow: none;
 	border: none;
 }
-
-.mod-sidedock .workspace-tab-header {
-	width: 36px;
+.mod-root .workspace-tab-header-inner {
+    padding-inline-end: 4px;
+	padding-block: 1px 0;
 }
-.mod-sidedock .workspace-tab-header.is-active {
-	--tab-background-active: var(--trans-base-00);
-	background-color: var(--tab-background-active);
+/* Sidebar Tabs */
+.mod-sidedock .workspace-tab-header {
+	width: 34px;
+}
+.mod-sidedock .workspace-tab-header:hover {
+	--background-modifier-hover: transparent;
+	--icon-color-hover: var(--color-base-80);
+}
+.mod-sidedock .workspace-tab-header.is-active,
+.mod-sidedock .workspace-tab-header.is-active:hover {
+	background-color: var(--trans-base-00);
+	--icon-color-focused: black;
+	--tab-text-color-focused-active-current: var(--icon-color-focused);
 	box-shadow: var(--shadow-xs);
 }
 .mod-sidedock .mod-top .workspace-tab-header.is-active {
 	--tab-background-active: var(--trans-base-10);
 }
-
+/* Tab Icons */
+.workspace-tab-header-inner .workspace-tab-header-inner-icon {
+    --icon-opacity: 0.75;
+	transition: color, opacity var(--anim-duration-superfast) var(--anim-motion-smooth);
+}
+.mod-sidedock .workspace-tab-header-container-inner:hover .workspace-tab-header-inner-icon {
+	--icon-color: var(--color-base-80);
+	--icon-opacity: 1;
+}
 
 /*--> Workspace Sidebar leaves <--*/
 
-/* .search-result-file-matches {
-    margin: var(--size-4-1) 0 var(--size-4-2);
-    color: var(--text-muted);
-    box-shadow: 0 0 0 1px var(--background-modifier-border);
-} */
-
+/* Backlinks + Outgoing links */
+.search-result-file-matches {
+    box-shadow: 0 0.25px 0px 0.625px var(--color-base-20);
+}
+.search-result-file-title {
+	font-size: 14px;
+	padding-bottom: 5px;
+	margin-inline: -1px;
+}
 .search-result-file-title .tree-item-inner,
 .outgoing-link-pane .tree-item-inner-text {
-	color: var(--color-accent);
-	color: color-mix(in oklab, var(--color-accent) 95%, transparent 5%);
-	font-size: 14px;
+	color: var(--color-accent-1);
 }
 
-/*--> View header FAB <--*/
+/*--> View Header <--*/
 
 .view-header-title-container > * {
 	padding-top: 3px;
 }
 
+/* View header FAB */
 .view-actions {
 	column-gap: 4px;
 }
@@ -663,7 +681,6 @@ body:not(.is-grabbing) .tree-item.nav-folder {
 		opacity: 1;
 	}
 }
-
 .view-actions .clickable-icon.view-action[aria-label*="Current view: "] {
 	height: 40px;
 	width: 40px;
@@ -680,7 +697,7 @@ body:not(.is-grabbing) .tree-item.nav-folder {
 	order: 1;
 }
 
-/* Vault profile */
+/* Vault Profile */
 body:not(.is-mobile)
 	.workspace-split.mod-left-split
 	.workspace-sidedock-vault-profile {
@@ -688,8 +705,7 @@ body:not(.is-mobile)
 	background-color: transparent;
 }
 
-/* Status bar */
-
+/* Status Bar */
 .status-bar {
 	background-color: transparent;
 	border: none;
@@ -702,7 +718,7 @@ body:not(.is-mobile)
 	transition: var(--anim-duration-superfast) ease-in;
 }
 .status-bar:hover {
-	background-color: var(--search-trans);
+	background-color: var(--trans-base-00);
 	box-shadow: 
 	inset -6px 0 8px -6px var(--border-trans),
 	-0.25px 1px 1.5px 0.5px var(--border-trans);
