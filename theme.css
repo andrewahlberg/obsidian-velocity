@@ -87,6 +87,7 @@ body {
 	--font-light: 300; */
 	--font-normal: 450;
 	--font-medium: 550;
+	--font-bold: 650;
 	/* --font-medium: 500;
 	--font-semibold: 600;
 	--font-bold: 700;
@@ -150,8 +151,14 @@ body {
     --nav-item-parent-padding: var(--nav-item-padding); */
 	--nav-item-weight: var(--font-normal);
 	--nav-item-weight-active: var(--font-normal);
-	--nav-file-weight: 650;
-	--nav-file-weight-active: 700;
+	--nav-item-color: var(--text-muted);
+	--nav-item-color-hover: var(--color-base-80);
+	--nav-item-color-active: var(--color-base-80);
+	--nav-item-color-selected: var(--color-base-80);
+	--nav-item-color-highlighted: var(--text-accent);
+	--nav-item-background-hover: var(--background-modifier-hover);
+	--nav-item-background-active: var(--background-modifier-hover);
+	--nav-file-weight: var(--font-bold);	
 
 	/* Metadata */
 
@@ -192,6 +199,11 @@ body {
 
 	/* Tabs */
 	--tab-container-background: transparent;
+	--tab-font-weight: var(--font-normal);
+	--tab-text-color-active: var(--color-base-80);
+	--tab-text-color-focused-active-current: var(--color-base-80);
+	--tab-text-color-focused-active: var(--color-base-80);
+	--tab-text-color-focused: var(--icon-color);
 
 	/* Mobile tab switcher */
 
@@ -257,9 +269,9 @@ body {
 	--color-base-90: #000000d8; 
 	--color-base-100:#000000e0;
 
-	--trans-base-00: color-mix(in oklab, var(--color-base-00), transparent 5%);
-	--trans-base-10: color-mix(in oklab, var(--color-base-00), transparent 25%);
-	--trans-base-20: color-mix(in oklab, var(--color-base-00), transparent 65%);
+	--trans-base-00: rgba(255,255,255,0.95);
+	--trans-base-10: rgba(255,255,255,0.75);
+	--trans-base-20: rgba(255,255,255,0.36);
 	--fainter-trans: #22222205;
 	--faint-trans: #44444407;
 	--nav-trans: #0000000d;
@@ -281,6 +293,7 @@ body {
 		var(--color-base-50) 220%
 		);
 	--background-modifier-border: var(--nav-trans);
+	--background-modifier-hover: var(--gray-trans);
 
 	/* --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
 	--color-accent-1: hsl(calc(var(--accent-h) - 1), calc(var(--accent-s) * 1.01), calc(var(--accent-l) * 1.075));
@@ -316,7 +329,7 @@ body {
 	--shadow-xs: 
 		0px 0.125px 0px 0.0625px rgba(0, 0, 0, 0.25),
 		0px 0.75px 1px 0.75px rgba(40, 40, 40, 0.05),
-		0px 1px 2px rgba(0, 0, 0, 4%);
+		0px 0.5px 4px rgba(0, 0, 0, 0.05);
 	--shadow-workspace: 
 		0px 0px 0px 0.8px var(--color-base-20),
 		0 0.5px 3px 0px var(--gray-trans),
@@ -418,8 +431,7 @@ body {
 }
 .cm-s-obsidian span.cm-highlight,
 :is(.markdown-source-view, .markdown-preview-view) mark {
-	--font-normal: 550;
-	font-weight: var(--font-normal);
+	font-weight: 550;
 	border-radius: 4px;
 	box-decoration-break: clone;
 	box-shadow: 0 0 5px 1.25px var(--text-highlight-bg);
@@ -431,8 +443,7 @@ body {
 	}
 }
 :is(.markdown-source-view, .markdown-preview-view) mark {
-	padding-inline: 0.25em;
-	margin-inline: -0.09375em;
+	padding-inline: 0.1875em;
 }
 
 /* shadow overlap correcting */
@@ -450,6 +461,9 @@ body {
 			3 - Interface
 =========================== ===========================
 */
+.workspace, .workspace-tab-container, .mod-root {
+    transition: all var(--anim-duration-fast);
+}
 
 /*--> Clickable Icons <--*/
 
@@ -463,10 +477,12 @@ body {
 /*--> Workspace Layout <--*/
 
 body:not(.is-phone) .workspace {
-	background-image: var(--background-gradient);
+	background: var(--background-gradient);
 	font-weight: var(--font-weight);
 }
-
+body:not(.is-mobile) .mod-vertical.mod-root {
+    padding-bottom: 8px;
+}
 
 .workspace-tabs .workspace-leaf {
 	background-color: transparent;
@@ -484,21 +500,46 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
     color: var(--color-red);
 }
 
-.workspace :is(.mod-left-split,.mod-right-split) .workspace-tab-container {
+.workspace-split:is(.mod-left-split,.mod-right-split) > *:not(hr),
+.workspace-split.mod-vertical.mod-root {
 	background-color: transparent;
 }
 
-.workspace .mod-root {
-	background-color: transparent;
-}
-
-/* left & right split */
-.mod-left-split .workspace-leaf-content {
+/* Sidedock / workspace-split */
+body:not(.is-mobile) .is-hidden-frameless .mod-left-split .workspace-leaf-content {
 	padding-inline: 2px 4px;
 }
-.mod-right-split .workspace-leaf-content {
+body:not(.is-mobile) .is-hidden-frameless .mod-right-split .workspace-leaf-content {
 	padding-inline: 4px 2px;
 }
+body:not(.is-mobile) .is-hidden-frameless .workspace-split.mod-left-split .workspace-tabs .workspace-tab-header-container {
+    padding-left: calc(var(--size-2-3) + var(--frame-left-space));
+}
+
+/* Main Card margins */
+body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container {
+    margin-right: 8px;
+}
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container {
+    margin-left: 8px;
+}
+/* Margin OFF when sidebars closed */
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container {
+    margin: 0;
+}
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root .workspace-tab-container {
+    border-radius: 0;
+}
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
+	background: var(--background-primary-alt);
+}
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .workspace-split.mod-vertical.mod-root {
+	padding-bottom: initial;
+	& .workspace-tab-container {
+	box-shadow: none;
+	}
+}
+
 /* FROM: Primary */
 .workspace-split.mod-left-split > .workspace-leaf-resize-handle, 
 .workspace-split.mod-right-split > .workspace-leaf-resize-handle {
@@ -515,9 +556,6 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
    --divider-color: transparent;
 }
 
-body:not(.is-mobile) .mod-root {
-    padding-bottom: 8px;
-}
 body:not(.is-mobile) .mod-root .workspace-tab-container {
     box-shadow: var(--shadow-workspace);
     border-radius: var(--radius-sm);
@@ -533,28 +571,25 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 	padding-block: 6.5px 5.5px;
 }
 
-body:not(.is-grabbing) .tree-item.nav-file {
+.tree-item.nav-file {
 	font-weight: var(--nav-item-weight);
 }
 .tree-item-self.nav-file-title {
 	margin-block: 1px;
 }
 .tree-item-self.nav-file-title.is-active {
-	background-color: var(--gray-trans);
-	box-shadow: var(--glass-shadow);
+	box-shadow: none;
 }
 
-body:not(.is-grabbing) .tree-item.nav-folder {
+.tree-item.nav-folder {
 	--nav-item-background-hover: var(--temp-trans);
 	font-weight: var(--nav-file-weight);
 }
 .tree-item-self.nav-folder-title {
 	color: var(--color-base-80);
 	font-weight: var(--nav-file-weight);
-	font-feature-settings: 'ss01';
 	padding-block: 8px;
 	margin-block: 2px;
-	--nav-item-parent-padding: var(--size-4-2) var(--size-4-2) var(--size-4-2) var(--size-4-6);
 }
 
 /* @media (hover: hover) {
@@ -589,7 +624,7 @@ body:not(.is-grabbing) .tree-item.nav-folder {
 	background-color: var(--faint-trans);
 	border-radius: var(--radius-sm);
 	box-shadow: inset 0 0 2.5px -0.25px var(--color-base-20);
-	padding: 2px 1px;
+	padding: 2px;
 	margin: 6px 0 0 0;
 	gap: 0;
 }
@@ -602,7 +637,6 @@ body:not(.is-grabbing) .tree-item.nav-folder {
 .mod-root .mod-top .workspace-tab-header.is-active {
 	background-color: var(--gray-trans);
 	box-shadow: none;
-	border: none;
 }
 .mod-root .workspace-tab-header-inner {
     padding-inline-end: 4px;
@@ -614,25 +648,25 @@ body:not(.is-grabbing) .tree-item.nav-folder {
 }
 .mod-sidedock .workspace-tab-header:hover {
 	--background-modifier-hover: transparent;
-	--icon-color-hover: var(--color-base-80);
+	--icon-color-hover: var(--color-base-70);
 }
 .mod-sidedock .workspace-tab-header.is-active,
 .mod-sidedock .workspace-tab-header.is-active:hover {
 	background-color: var(--trans-base-00);
-	--icon-color-focused: black;
+	--icon-color-focused: var(--color-base-100);
 	--tab-text-color-focused-active-current: var(--icon-color-focused);
 	box-shadow: var(--shadow-xs);
 }
 .mod-sidedock .mod-top .workspace-tab-header.is-active {
-	--tab-background-active: var(--trans-base-10);
+	background-color: var(--trans-base-10);
 }
 /* Tab Icons */
 .workspace-tab-header-inner .workspace-tab-header-inner-icon {
-    --icon-opacity: 0.75;
-	transition: color, opacity var(--anim-duration-superfast) var(--anim-motion-smooth);
+    --icon-opacity: 0.7;
+	transition: color, opacity var(--anim-duration-fast) var(--anim-motion-smooth);
 }
 .mod-sidedock .workspace-tab-header-container-inner:hover .workspace-tab-header-inner-icon {
-	--icon-color: var(--color-base-80);
+	--icon-color: var(--color-base-70);
 	--icon-opacity: 1;
 }
 
@@ -640,12 +674,14 @@ body:not(.is-grabbing) .tree-item.nav-folder {
 
 /* Backlinks + Outgoing links */
 .search-result-file-matches {
-    box-shadow: 0 0.25px 0px 0.625px var(--color-base-20);
+    box-shadow: 
+	0 0.25px 0 0.75px var(--nav-trans),
+	0 1.5px 6px -3px var(--nav-trans);
 }
 .search-result-file-title {
 	font-size: 14px;
 	padding-bottom: 5px;
-	margin-inline: -1px;
+	padding-inline: 24px 7px;
 }
 .search-result-file-title .tree-item-inner,
 .outgoing-link-pane .tree-item-inner-text {
