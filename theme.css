@@ -53,6 +53,7 @@ body {
 	/* Caret (text entry cursor) */
 
 	/* Checkboxes */
+	--checkbox-radius: 50%;
 
 	/* Code */
 
@@ -130,6 +131,7 @@ body {
 	/* Inline title */
 
 	/* Inputs */
+	--input-radius: var(--radius-s);
 
 	/* Italic */
 
@@ -208,6 +210,17 @@ body {
 	/* Stacked tabs */
 
 	/* Tables */
+	--table-background: none;
+	--table-row-alt-background: var(--faint-trans);
+	--table-row-background-hover: none;
+	--table-row-alt-background-hover: var(--faint-trans);
+	--table-column-alt-background: none;
+	--table-border-color: var(--hr-color);
+	--table-header-size: 13px;
+	--table-header-color: var(--text-normal);
+	--table-line-height: 1.6;
+	--table-text-size: 14.5px;
+	--table-text-weight: var(--font-normal);
 
 	/* Tags */
 
@@ -267,9 +280,9 @@ body {
 	--color-base-90: #000000d8; 
 	--color-base-100:#000000e0;
 
-	--trans-base-00: rgba(255,255,255,0.95);
-	--trans-base-10: rgba(255,255,255,0.75);
-	--trans-base-20: rgba(255,255,255,0.36);
+	--trans-base-00: #fffffff2;
+	--trans-base-10: #ffffffbf;
+	--trans-base-20: #ffffff5c;
 	--fainter-trans: #22222205;
 	--faint-trans: #44444407;
 	--nav-trans: #0000000d;
@@ -358,6 +371,19 @@ body {
 			2 - Markdown
 =========================== ===========================
 */
+
+/*--> Typography variation settings <--*/
+
+.menu,
+.view-header-title-container { 
+	font-variation-settings: 'opsz' 18;
+	text-rendering: optimizeLegibility;
+}
+.mod-sidedock,
+.workspace-tab-header-inner { 
+	font-variation-settings: 'opsz' 16;
+	text-rendering: optimizeLegibility;
+}
 
 .markdown-source-view,
 .markdown-preview-view {
@@ -454,14 +480,49 @@ body {
 	z-index: -2;
 }
 
+/* Tables */
+
+.markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper, 
+:is(.markdown-rendered, .markdown-source-view.is-live-preview) table {
+	width: 100%;
+}
+body .markdown-rendered table thead tr > th {
+	border: none;
+	border-bottom: 2px solid var(--table-header-border-color);
+	font-size: var(--table-header-size);
+	font-weight: 550;
+	line-height: var(--table-line-height);
+	padding: 4px 12px 6px;
+} 
+body .markdown-rendered table tr td {
+	border: none;
+	border-left: 1px solid var(--table-border-color);
+	padding-inline: 12px;
+	font-weight: var(--font-normal);
+}
+body .markdown-rendered table tr td:first-child, 
+body .markdown-rendered table tr th:first-child {
+	border-left: none;
+}
+
 /*
 =========================== ===========================
 			3 - Interface
 =========================== ===========================
 */
+
+body:not(.is-mobile) .mod-root .workspace-tab-container {
+    box-shadow: var(--shadow-workspace);
+    border-radius: var(--radius-sm);
+}
+body:not(.is-mobile) .mod-root {
+	overflow: visible;
+}
+
 body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
     transition: all var(--anim-duration-fast);
 }
+
 
 /*--> Clickable Icons <--*/
 
@@ -558,13 +619,6 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
    --divider-color: transparent;
 }
 
-body:not(.is-mobile) .mod-root .workspace-tab-container {
-    box-shadow: var(--shadow-workspace);
-    border-radius: var(--radius-sm);
-}
-body:not(.is-mobile) .mod-root .workspace-tabs {
-	overflow: visible;
-}
 
 /*--> Navigation / File Tree <--*/
 
@@ -592,6 +646,7 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 	font-weight: var(--nav-file-weight);
 	padding-block: 8px;
 	margin-block: 2px;
+	font-variation-settings: 'opsz' 14;
 }
 
 /* @media (hover: hover) {
@@ -611,6 +666,7 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 .workspace-split.mod-root .workspace-tab-header-inner::after {
     display: none;
 }
+
 /* Tab Containers */
 .mod-root .workspace-tab-header-container-inner {
 	height: var(--header-height);
@@ -626,10 +682,11 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 	background-color: var(--faint-trans);
 	border-radius: var(--radius-sm);
 	box-shadow: inset 0 0 2.5px -0.25px var(--color-base-20);
-	padding: 2px;
+	padding: 2px 0;
 	margin: 6px 0 0 0;
 	gap: 0;
 }
+
 /* Root Tabs */
 .workspace .mod-root .workspace-tab-header {
 	border-radius: var(--radius-s);
@@ -644,9 +701,11 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
     padding-inline-end: 4px;
 	padding-block: 1px 0;
 }
+
 /* Sidebar Tabs */
 .mod-sidedock .workspace-tab-header {
-	width: 34px;
+	margin-inline: 2px;
+	max-width: 34px;
 }
 .mod-sidedock .workspace-tab-header:hover {
 	--background-modifier-hover: transparent;
@@ -682,7 +741,8 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 }
 .search-result-file-title {
 	font-size: 14px;
-	padding-bottom: 5px;
+	padding-top: 8px;
+	padding-bottom: 6px;
 	padding-inline: 24px 7px;
 }
 .search-result-file-title .tree-item-inner,
@@ -723,7 +783,7 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 	height: 40px;
 	width: 40px;
 	background-color: var(--background-primary);
-	border-radius: 100px;
+	border-radius: 50%;
 	box-shadow: 0px 0.25px 0px 0.75px var(--border-trans),
 	0px 2px 8px -2px var(--border-trans);
 	--icon-size: var(--icon-m);
@@ -791,15 +851,13 @@ body:not(.is-mobile)
 =========================== ===========================
 */
 
-.menu { 
-	font-variation-settings: 'opsz' 20;
-}
+/*--> Right-click Menu <--*/
 
 .menu {
 	background-color: var(--color-base-05);
 	color: var(--color-base-90);
 	font-weight: 500;
-	border-color: var(--color-base-25);
+	border-color: var(--border-trans);
 	border-radius: var(--radius-sm);
 }
 .menu-item {
@@ -808,12 +866,13 @@ body:not(.is-mobile)
 /* .menu-item.selected {
 	background-image: var(--gradient-glass-1);
 } */
-
 .menu-separator {
 	border-color: var(--color-base-20);
 	margin-block: 4px;
 	margin-inline-start: 28px;
 }
+
+/* Menu icons */
 .menu-item-icon {
 	color: var(--text-faint);
 	transform: translate3d(1px, 0, 0);
@@ -833,6 +892,7 @@ body:not(.is-mobile)
 	filter: opacity(0.5);
 }
 
+/* Menu label (graph mode) */
 .menu-item.is-label {
     color: var(--text-normal);
 	font-family: var(--font-interface-bold);
@@ -848,7 +908,7 @@ body:not(.is-mobile)
 =========================== ===========================
 */
 
-/*===== Dataview Calendar =====*/
+/*--> Dataview Calendar <--*/
 
 .dataview.small-text {
 	color: var(--table-header-color);
@@ -873,8 +933,12 @@ div.dataview-error-box > p {
     --color-text-weeknum: var(--text-muted);
 	padding-inline: 0;
 }
+#calendar-container thead {
+    border-bottom: 2px solid var(--gray-trans);
+}
 #calendar-container th {
 	color: var(--text-muted);
+	border-bottom: 0;
 	user-select: none;
 	cursor: pointer;
 	padding: 0 0 16px 0;
@@ -883,14 +947,11 @@ div.dataview-error-box > p {
 	border-inline: none;
     width: 12.5%;
 }
-
 #calendar-container table .day {
 	font-size: 13px;
 	border-radius: 3px;
 	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
 }
-
-
 #calendar-container .day:hover {
 	background-color: var(--glass-trans);
 }
@@ -899,42 +960,31 @@ div.dataview-error-box > p {
 	color: var(--color-text-today);
 }
 
-
 :is(.markdown-preview-view, .markdown-source-view) #calendar-container .nav {
-    padding: var(--size-2-3) 0 var(--size-2-3) var(--size-2-1);
+    padding: var(--size-2-3) 0;
     margin: var(--size-4-1) 0;
 	margin-top: 0;
 }
-/* :is(.markdown-preview-view, .markdown-source-view) #calendar-container .right-nav {
-    margin-left: 0;
-	margin-right: auto;
-} */
 #calendar-container h3 {
-	text-indent: -2px;
+	text-indent: -1px;
 }
-
-#calendar-container .month {
-	color: var(--color-base-90);
-	font-size: 0.875em;
-    font-weight:var(--font-normal);
-}
+#calendar-container .month,
 #calendar-container .year {
 	color: var(--color-base-90);
 	font-size: 0.875em;
-    font-weight: var(--font-normal);
+    font-weight:var(--font-medium);
 }
-
 #calendar-container .nav .reset-button {
-	color: var(--text-faint);
-    font-size: 0.75em; 
-    letter-spacing: 0.15em;
-=}  
+	text-transform: capitalize;
+    font-size: 0.875em; 
+	letter-spacing: normal;
+}  
 
 .mod-sidedock #calendar-container {
 	margin-top: -4px;
 }
 .mod-sidedock #calendar-container th {
-	border-bottom: 1px solid var(--glass-trans);
+	border-bottom: 1px solid var(--temp-trans);
 	color: transparent;
 	font-size: 12px;
 	font-weight: var(--font-medium);
