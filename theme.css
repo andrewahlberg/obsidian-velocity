@@ -277,8 +277,8 @@ body {
 	--color-base-60: #6d6f74;
 	--color-base-70: #0000009e; 
 	--color-base-80: #4e4e4e;
-	--color-base-90: #000000d8; 
-	--color-base-100:#000000e0;
+	--color-base-90: #000000da; 
+	--color-base-100:#000000e2;
 
 	--trans-base-00: #fffffff2;
 	--trans-base-10: #ffffffbf;
@@ -376,23 +376,26 @@ body {
 /*--> Typography variation settings <--*/
 
 .mod-sidedock,
+.setting-item-description,
+.view-header-title-container,
 .workspace-tab-header-inner { 
 	font-variation-settings: 'opsz' 16;
 }
 .menu,
-.vertical-tab-header-group-items,
-.view-header-title-container { 
+.markdown-preview-view,
+.setting-item-name,
+.vertical-tab-header-group-items {
+	font-feature-settings: 'ss01';
 	font-variation-settings: 'opsz' 18;
 }
+
 .markdown-source-view,
 .markdown-preview-view {
 	font-weight: var(--font-weight);
 	font-feature-settings: 'ss01', 'cv11';
 }
-.markdown-preview-view,
-.setting-item-info {
-	font-feature-settings: 'ss01';
-	font-variation-settings: 'opsz' 20;
+.setting-item.setting-item-heading .setting-item-name {
+	font-variation-settings: 'opsz' 15;
 }
 
 /*--> Headings H1-H6 <--*/
@@ -813,6 +816,7 @@ body:not(.is-mobile)
 	.workspace-sidedock-vault-profile {
 	border: none;
 	background-color: transparent;
+	padding-inline: 8px 12px;
 }
 
 /* Status Bar */
