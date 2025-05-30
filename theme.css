@@ -174,8 +174,8 @@ body {
 	/* Prompts - e.g. quick switcher, command palette */
 
 	/* Radiuses */
-	--radius-s: 6px;
-	--radius-sm: 8px;
+	--radius-s: 5px;
+	--radius-sm: 7px;
 	--radius-m: 12px;
 
 	/* Ribbon */
@@ -719,7 +719,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 .mod-sidedock .workspace-tab-header:hover {
 	--background-modifier-hover: transparent;
-	--icon-color-hover: var(--color-base-70);
+	--icon-color-hover: var(--color-base-80);
 }
 .mod-sidedock .workspace-tab-header.is-active,
 .mod-sidedock .workspace-tab-header.is-active:hover {
@@ -734,13 +734,13 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /* Tab Icons */
 .workspace-tab-header-inner .workspace-tab-header-inner-icon {
-    --icon-opacity: 0.7;
-	transition: color, opacity var(--anim-duration-fast) var(--anim-motion-smooth);
+    --icon-opacity: 0.75;
+	transition: color, opacity var(--anim-duration-superfast) var(--anim-motion-swing);
 }
-.mod-sidedock .workspace-tab-header-container-inner:hover .workspace-tab-header-inner-icon {
+/* .mod-sidedock .workspace-tab-header-container-inner:hover .workspace-tab-header-inner-icon {
 	--icon-color: var(--color-base-70);
-	--icon-opacity: 1;
-}
+	--icon-opacity: 0.875;
+} */
 
 /*--> Workspace Sidebar leaves <--*/
 
