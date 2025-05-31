@@ -302,6 +302,10 @@ body {
 		var(--color-base-05) 44%, 
 		var(--color-base-50) 220%
 		);
+	--background-gradient-menu: radial-gradient( at 64% 50%, 
+		var(--color-base-05) 36%, 
+		var(--color-base-35) 234%
+		); 
 	--background-modifier-border: var(--nav-trans);
 	--background-modifier-hover: var(--gray-trans);
 
@@ -346,8 +350,8 @@ body {
 		0px 2px 45px -9px var(--color-base-25),
 		0px 6px 8px -4px var(--color-base-20);
     --shadow-workspace-2: 
-		0px 3px 24px -8px var(--nav-trans),
-		0px 1px 1px 0px var(--temp-trans);
+		0px 2px 12px 0 var(--faint-trans),
+		0px 0.375px 1px 0px var(--nav-trans);
 	--tab-background-active: var(--trans-base-10);
 }
 
@@ -728,6 +732,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	--icon-color-focused: var(--color-base-100);
 	--tab-text-color-focused-active-current: var(--icon-color-focused);
 	box-shadow: var(--shadow-xs);
+	transition: background-color var(--anim-duration-superfast) var(--anim-motion-swing);
 }
 .mod-sidedock .mod-top .workspace-tab-header.is-active {
 	background-color: var(--trans-base-10);
@@ -931,24 +936,32 @@ body:not(.is-mobile)
 
 /*--> Modal Settings Content <--*/
 
-.vertical-tab-content {
-	background-color: var(--background-secondary);
+.vertical-tabs-container {
+	background-image: var(--background-gradient-menu);
 }
+.vertical-tab-header {
+	background-color: transparent;
+}
+.vertical-tab-content {
+	background-color: transparent;
+	padding-inline: 46px 44px;
+}
+
 .setting-item {
-	background-color: var(--trans-base-10);
-	border-inline: 1px solid var(--border-trans);
+	background-color: var(--faint-trans);
+	border-inline: 1px solid var(--background-modifier-border);
 	box-shadow: var(--shadow-workspace-2);
 	clip-path: inset(0 -24px 0 -24px);
 	font-weight: var(--font-normal);
-	padding: 12px 20px;
+	padding: 12px 22px;
 }
 .setting-item:last-of-type,
 .setting-item:has( + .setting-item.setting-item-heading),
 .setting-item:has( + :not(.setting-item)) {
-	border-bottom: 1px solid var(--border-trans);
+	border-bottom: 1px solid var(--background-modifier-border);
 	border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 	clip-path: inset(0 -24px -24px -24px);
-	padding-bottom: 16px;
+	padding-bottom: 14px;
 }
 .setting-item.setting-item-heading + .setting-item:last-of-type,
 .setting-item:not(.setting-item-heading):only-of-type,
@@ -958,17 +971,18 @@ body:not(.is-mobile)
 .setting-item:first-child:not(:has( + .setting-item)),
 .setting-item.setting-item-heading + .setting-item:not(.setting-item-heading):has( + .setting-item.setting-item-heading),
 div[class*="settings-section"] > .setting-item {
-	border: 1px solid var(--border-trans);
+	border: 1px solid var(--background-modifier-border);
 	border-radius: var(--radius-sm) !important; 
 	clip-path: none !important;
+	padding-block: 14px;
 }
 .setting-item:not(.setting-item-heading):first-of-type,
 .setting-item.setting-item-heading + .setting-item,
 :not(.setting-item) + .setting-item:has( + .setting-item) {
-	border-top: 1px solid var(--border-trans);
+	border-top: 1px solid var(--background-modifier-border);
 	border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 	clip-path: inset(-24px -24px 0 -24px);
-	padding-top: 16px;
+	padding-top: 14px;
 }
 .setting-item.setting-item-heading  {
 	background-color: transparent !important;
