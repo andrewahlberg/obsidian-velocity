@@ -174,7 +174,7 @@ body {
 
 	/* Radiuses */
 	--radius-s: 5px;
-	--radius-sm: 7px;
+	--radius-sm: 6px;
 	--radius-m: 12px;
 
 	/* Ribbon */
@@ -198,11 +198,12 @@ body {
 	/* Tabs */
 	--tab-container-background: transparent;
 	--tab-font-weight: var(--font-normal);
-	--tab-text-color: var(--color-base-60);
-	--tab-text-color-active: var(--color-base-90);
-	--tab-text-color-focused-active-current: var(--color-base-90);
-	--tab-text-color-focused-active: var(--color-base-90);
-	--tab-text-color-focused: var(--color-base-60);
+	--tab-outline-width: 0;
+	--tab-text-color: var(--color-base-58);
+	--tab-text-color-active: var(--color-base-80);
+	--tab-text-color-focused-active-current: var(--color-base-80);
+	--tab-text-color-focused-active: var(--color-base-80);
+	--tab-text-color-focused: var(--color-base-58);
 
 	/* Mobile tab switcher */
 
@@ -271,7 +272,7 @@ body {
 	--color-base-35: #bbbdc0; 
 	--color-base-40: #b2b2b2; 
 	--color-base-50: #a2a4ab; 
-	--color-base-55: #93969e; 
+	--color-base-55: #8a8c94; 
 	--color-base-58: #76787e; 
 	--color-base-60: #6d6f74;
 	--color-base-70: #0000009e; 
@@ -352,6 +353,7 @@ body {
     --shadow-workspace-2: 
 		0px 2px 12px 0 var(--faint-trans),
 		0px 0.375px 1px 0px var(--nav-trans);
+	--tab-container-shadow: inset 0 0 2.5px -0.25px var(--color-base-20);
 	--tab-background-active: var(--trans-base-10);
 }
 
@@ -691,12 +693,13 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	padding-block: 0;
 	margin: 0 -6px 0 -5px;
 	align-items: center;
+	column-gap: 2px;
 }
 .mod-sidedock .workspace-tab-header-container-inner {
 	height: 36px;
 	background-color: var(--faint-trans);
 	border-radius: var(--radius-sm);
-	box-shadow: inset 0 0 2.5px -0.25px var(--color-base-20);
+	box-shadow: var(--tab-container-shadow);
 	padding: 2px 0;
 	margin: 6px 0 0 0;
 	gap: 0;
@@ -704,17 +707,26 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /* Root Tabs */
 .workspace .mod-root .workspace-tab-header {
-	border-radius: var(--radius-s);
 	height: 35px;
-    padding: 0 var(--size-2-1) 0 var(--size-4-1);
+    padding: 0;
 }
-.mod-root .mod-top .workspace-tab-header.is-active {
-	background-color: var(--gray-trans);
-	box-shadow: none;
+.mod-root .workspace-tab-header.is-active {
+	background-color: transparent;
 }
 .mod-root .workspace-tab-header-inner {
-    padding-inline-end: 4px;
-	padding-block: 1px 0;
+    padding-inline: 6px;
+	text-indent: 3px;
+	padding-top: 1px;
+}
+.mod-root .workspace-tab-header:hover .workspace-tab-header-inner {
+	color: var(--tab-text-color-active);
+}
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
+	background-color: var(--background-modifier-hover);
+}
+.mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
+    color: var(--color-base-55);
+	--icon-stroke: 2.25px;
 }
 
 /* Sidebar Tabs */
@@ -732,7 +744,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	--icon-color-focused: var(--color-base-100);
 	--tab-text-color-focused-active-current: var(--icon-color-focused);
 	box-shadow: var(--shadow-xs);
-	transition: background-color var(--anim-duration-superfast) var(--anim-motion-swing);
+	transition: background-color var(--anim-duration-fast) var(--anim-motion-swing);
 }
 .mod-sidedock .mod-top .workspace-tab-header.is-active {
 	background-color: var(--trans-base-10);
@@ -741,7 +753,6 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 /* Tab Icons */
 .workspace-tab-header-inner .workspace-tab-header-inner-icon {
     --icon-opacity: 0.75;
-	transition: color, opacity var(--anim-duration-superfast) var(--anim-motion-swing);
 }
 /* .mod-sidedock .workspace-tab-header-container-inner:hover .workspace-tab-header-inner-icon {
 	--icon-color: var(--color-base-70);
