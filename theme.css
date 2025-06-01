@@ -316,6 +316,7 @@ body {
 
 	--color-accent-1: color-mix(in oklab, var(--color-accent), transparent 10%);
 	--color-accent-2: color-mix(in oklab, var(--color-accent) 100%, white 25%);
+	--color-accent-3: color-mix(in oklab, var(--color-accent), transparent 80%);
 
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
@@ -812,16 +813,35 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	}
 }
 .view-actions .clickable-icon.view-action[aria-label*="Current view: "] {
+	--icon-size: var(--icon-m);
+	--icon-color: var(--color-base-55);
+	--icon-color-hover: var(--color-base-60);
+	--icon-color-focused: var(--color-base-60);
 	height: 40px;
 	width: 40px;
-	background-color: var(--background-primary);
 	border-radius: 50%;
-	box-shadow: 0px 0.25px 0px 0.75px var(--border-trans),
-	0px 2px 8px -2px var(--border-trans);
-	--icon-size: var(--icon-m);
 	padding-block: 1px 0;
 	padding-inline: 0 1px;
 	order: 2;
+	opacity: 1;
+	background-color: var(--background-primary);
+	box-shadow: 
+	0px 0.25px 0px 0.75px var(--border-trans),
+	0px 2px 8px -2px var(--border-trans);
+	transition: transform var(--anim-duration-superfast) ease-out;
+	&:active {
+		transform: translateX(-8px) translateY(12px) scale(0.9375);
+	}
+}
+.view-actions .clickable-icon.view-action[aria-label*="editing"] {
+	/* background-color: var(--background-modifier-active-hover); */
+	box-shadow: 
+	0px 0.25px 0px 0.5px var(--text-selection),
+	inset 0px -0.25px 4px -1px var(--text-selection),
+	0px 1.5px 8px -1.5px var(--text-selection);
+	--icon-color: var(--color-accent-1);
+	--icon-color-hover: var(--color-accent-2);
+	--icon-color-focused: var(--color-accent-2);
 }
 .view-actions .clickable-icon.view-action.mod-bookmark {
 	order: 1;
