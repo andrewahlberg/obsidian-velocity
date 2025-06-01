@@ -39,6 +39,9 @@ body {
 	/* Animations */
 
 	/* Blockquotes */
+	--blockquote-border-color: var(--hr-color);
+	--blockquote-background-color: var(--faint-trans);
+	--blockquote-color: var(--text-muted);
 
 	/* Bold */
 
@@ -301,6 +304,8 @@ body {
 	--text-highlight-color: var(--color-orange-10);
 	--text-highlight-bg-sidebar: rgb(var(--text-highlight-bg-rgb), 0.15);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
+
+	--link-unresolved-color: color-mix(in oklab, var(--color-accent-4) 75%, var(--text-muted) 25%);
 	
 	--background-gradient: radial-gradient( at 50% 52%, 
 		var(--color-base-05) 44%, 
@@ -389,6 +394,22 @@ body {
 	text-rendering: optimizeLegibility;
 }
 
+/*--> Animations <--*/
+
+@keyframes popover {
+	0% {
+	opacity: 0;
+	scale: 0.95;
+	}
+	75% {
+	opacity: 0.75;
+	scale: 1;
+	}
+	100% {
+	opacity: 1;
+	}
+}
+
 /*
 =========================== ===========================
 			2 - Markdown
@@ -398,14 +419,13 @@ body {
 /*--> Typography variation settings <--*/
 
 .mod-sidedock,
-.setting-item-description,
 .view-header-title-container,
 .workspace-tab-header-inner { 
 	font-variation-settings: 'opsz' 16;
 }
 .menu,
 .markdown-preview-view,
-.setting-item-name,
+.setting-item,
 .vertical-tab-header-group-items {
 	font-feature-settings: 'ss01';
 	font-variation-settings: 'opsz' 18;
@@ -455,11 +475,14 @@ body {
     padding-top: 0;
 }
 
-/*--> Lists + paragraphs <--*/
-
-/* List items */
-.markdown-rendered ul > li {
-	margin-inline-start: 28px;
+/* blockquote */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-quote,
+.HyperMD-quote {
+	padding-block: 4px;
+}
+.el-blockquote blockquote {
+	padding-block: 6px 4px;
+	padding-inline: 24px 12px;
 }
 
 /*--> Formatting <--*/
@@ -477,7 +500,6 @@ body {
     color: var(--color-base-30);
 	filter: blur(0.4px);
 }
-
 .cm-s-obsidian span.cm-highlight,
 :is(.markdown-source-view, .markdown-preview-view) mark {
 	font-weight: 550;
@@ -494,7 +516,6 @@ body {
 :is(.markdown-source-view, .markdown-preview-view) mark {
 	padding-inline: 0.1875em;
 }
-
 /* shadow overlap correcting */
 .cm-s-obsidian span.cm-highlight {
 	z-index: -1;
@@ -505,7 +526,14 @@ body {
 	z-index: -2;
 }
 
-/* Tables */
+/*--> Lists + paragraphs <--*/
+
+/* List items */
+.markdown-rendered ul > li {
+	margin-inline-start: 28px;
+}
+
+/*--> Tables <--*/
 
 .markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper, 
 :is(.markdown-rendered, .markdown-source-view.is-live-preview) table {
@@ -705,7 +733,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	color: var(--color-base-100);
 	}
 }
-.search-result-file-title .tree-item-inner,
+.backlink-pane .search-result-file-title .tree-item-inner,
 .outgoing-link-pane .tree-item-inner-text {
 	color: var(--color-accent-1);
 	font-size: 14px;
@@ -718,7 +746,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 .search-result-file-title {
 	padding-top: 8px;
 	padding-bottom: 6px;
-	padding-inline: 24px 7px;
+}
+:is(.backlink-pane, .outgoing-link-pane) .search-result-file-title {
+	/* padding-inline: 24px 7px; */
 	--nav-collapse-icon-color: var(--color-accent-4);
 	--nav-item-background-hover: var(--color-accent-5);
 }
@@ -727,7 +757,8 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	padding-inline: 2px;
 	padding-bottom: 1px;
 }
-.search-result-file-match:hover .search-result-file-matched-text {
+.search-result-file-match:hover .search-result-file-matched-text,
+.tree-item-self.is-clickable:hover .search-result-file-matched-text {
 	background-color: var(--border-trans);
 }
 
@@ -747,6 +778,17 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 .outgoing-link-item:has(.tree-item-inner .tree-item-inner-subtext) .tree-item-icon {
 	top: 8px;
+}
+/* special code for uncreated outgoing links */
+.outgoing-link-item[aria-label="Not created yet"] {
+	--nav-item-background-hover: color-mix(in oklab,var(--link-unresolved-color) 25%, transparent 100%); 
+}
+.outgoing-link-item[aria-label="Not created yet"] .tree-item-inner-text,
+.outgoing-link-item[aria-label="Not created yet"]:hover .tree-item-inner-text {
+	color: var(--link-unresolved-color);
+}
+.outgoing-link-item[aria-label="Not created yet"] .tree-item-icon {
+	color: var(--link-unresolved-color);
 }
 
 /* Search View */
@@ -769,6 +811,14 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 
 /*--> Workspace Tabs <--*/
+
+.workspace-tab-header-new-tab .clickable-icon {
+	--icon-color: var(--text-muted);
+	height: 32px;
+	width: 32px;
+	margin-bottom: 2px;
+	margin-left: -1px;
+}
 
 /* Remove tab gutter curves */
 .workspace-split.mod-root .workspace-tab-header::before, 
@@ -1034,6 +1084,7 @@ body:not(.is-mobile)
 
 /*--> Modal Settings Content <--*/
 
+/* Settings Modal layout */
 .modal-container.mod-dim .vertical-tabs-container {
 	background-image: var(--background-gradient-menu);
 	--scrollbar-thumb-bg: var(--nav-trans);
@@ -1050,48 +1101,51 @@ body:not(.is-mobile)
 	padding-inline: 46px 44px;
 }
 
-.setting-item {
-	background-color: var(--temp-trans);
-	border-inline: 1px solid var(--background-modifier-border);
-	box-shadow: var(--shadow-workspace-2);
-	clip-path: inset(0 -24px 0 -24px);
-	font-weight: var(--font-normal);
-	padding: 12px 22px;
-}
-.setting-item:last-of-type,
-.setting-item:has( + .setting-item.setting-item-heading),
-.setting-item:has( + :not(.setting-item)) {
-	border-bottom: 1px solid var(--background-modifier-border);
-	border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-	clip-path: inset(0 -24px -24px -24px);
-	padding-bottom: 14px;
-}
-.setting-item.setting-item-heading + .setting-item:last-of-type,
-.setting-item:not(.setting-item-heading):only-of-type,
-.setting-item:first-child:has( + .setting-item.setting-item-heading),
-:not(.setting-item) + .setting-item:last-child,
-:not(.setting-item) + .setting-item:has( + *:not(.setting-item)),
-.setting-item:first-child:not(:has( + .setting-item)),
-.setting-item.setting-item-heading + .setting-item:not(.setting-item-heading):has( + .setting-item.setting-item-heading),
-div[class*="settings-section"] > .setting-item {
-	border: 1px solid var(--background-modifier-border);
-	border-radius: var(--radius-sm) !important; 
-	clip-path: none !important;
-	padding-block: 14px;
-}
-.setting-item:not(.setting-item-heading):first-of-type,
-.setting-item.setting-item-heading + .setting-item,
-:not(.setting-item) + .setting-item:has( + .setting-item) {
-	border-top: 1px solid var(--background-modifier-border);
-	border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-	clip-path: inset(-24px -24px 0 -24px);
-	padding-top: 14px;
-}
-.setting-item.setting-item-heading  {
-	background-color: transparent !important;
-	border: none !important;
-	box-shadow: none !important;
-	font-weight: var(--font-semibold);
+/* Setting item 'sections' */
+.modal:not(.mod-community-modal) {
+	& .setting-item {
+		background-color: var(--temp-trans);
+		border-inline: 1px solid var(--background-modifier-border);
+		box-shadow: var(--shadow-workspace-2);
+		clip-path: inset(0 -24px 0 -24px);
+		font-weight: var(--font-normal);
+		padding: 12px 22px;
+	}
+	& .setting-item:last-of-type,
+	& .setting-item:has( + .setting-item.setting-item-heading),
+	& .setting-item:has( + :not(.setting-item)) {
+		border-bottom: 1px solid var(--background-modifier-border);
+		border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+		clip-path: inset(0 -24px -24px -24px);
+		padding-bottom: 14px;
+	}
+	& .setting-item.setting-item-heading + .setting-item:last-of-type,
+	.setting-item:not(.setting-item-heading):only-of-type,
+	.setting-item:first-child:has( + .setting-item.setting-item-heading),
+	:not(.setting-item) + .setting-item:last-child,
+	:not(.setting-item) + .setting-item:has( + *:not(.setting-item)),
+	.setting-item:first-child:not(:has( + .setting-item)),
+	.setting-item.setting-item-heading + .setting-item:not(.setting-item-heading):has( + .setting-item.setting-item-heading),
+	div[class*="settings-section"] > .setting-item {
+		border: 1px solid var(--background-modifier-border);
+		border-radius: var(--radius-sm) !important; 
+		clip-path: none !important;
+		padding-block: 14px;
+	}
+	& .setting-item:not(.setting-item-heading):first-of-type,
+	.setting-item.setting-item-heading + .setting-item,
+	:not(.setting-item) + .setting-item:has( + .setting-item) {
+		border-top: 1px solid var(--background-modifier-border);
+		border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+		clip-path: inset(-24px -24px 0 -24px);
+		padding-top: 14px;
+	}
+	& .setting-item.setting-item-heading  {
+		background-color: transparent !important;
+		border: none !important;
+		box-shadow: none !important;
+		font-weight: var(--font-semibold);
+	}
 }
 
 .mobile-option-setting-item {
@@ -1104,13 +1158,24 @@ div[class*="settings-section"] > .setting-item {
     border-top: none;
 }
 
+/* Hotkeys */
+.setting-filter-container {
+	font-family: var(--font-monospace);
+    margin-top: var(--size-4-2);
+}
+
 /*--> Prompt Modal <--*/
 
 .prompt {
 	border-radius: var(--radius-m);
 }
 
-
+/* Popover */
+.popover {
+	animation: var(--anim-duration-fast) popover var(--anim-motion-swing);
+	background-color: var(--background-secondary);
+	border-radius: var(--radius-sm);
+}
 
 /*
 =========================== ===========================
@@ -1223,32 +1288,7 @@ div.dataview-error-box > p {
 	font-size: 0.8em;
 }  
 
-/* style settings */
-/* .style-settings-container {
-	padding: 4px 6px;
-	border-radius: var(--radius-m);
-	background-color: var(--background-primary-alt);
-}
-
-.style-settings-container .style-settings-heading {
-	border-bottom: 0px;
-	margin-bottom: 12px;
-}
-
-.style-settings-container
-	.setting-item-heading.style-settings-heading:not(.is-collapsed)
-	.setting-item-name {
-	color: var(--text-accent);
-}
-
-.style-settings-container .setting-item:not(.style-settings-heading) {
-	border: 1px dashed var(--background-modifier-border);
-	border-radius: var(--radius-m);
-	padding: 4px 8px;
-	margin-top: 6px;
-} */
-
-/* Tabs */
+/*--> Tabs plugin <--*/
 
 .tabs-container {
     margin: 0;
@@ -1270,3 +1310,6 @@ div.dataview-error-box > p {
     border-color: transparent;
     transition: border-bottom 0.1s cubic-bezier(0.4, 0, 0.2, 1); */
 }
+
+/*--> Style Settings <--*/
+/* TBD */
