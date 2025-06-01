@@ -475,7 +475,8 @@ body {
     padding-top: 0;
 }
 
-/* blockquote */
+/*--> Blockquotes <--*/
+
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-quote,
 .HyperMD-quote {
 	padding-block: 4px;
@@ -495,7 +496,7 @@ body {
 	font-weight: var(--font-light);
 }
 
-/* strikethrough / list crossed out */
+/* Strikethrough / list crossed out */
 .cm-strikethrough, del, del > * {
     color: var(--color-base-30);
 	filter: blur(0.4px);
@@ -516,7 +517,7 @@ body {
 :is(.markdown-source-view, .markdown-preview-view) mark {
 	padding-inline: 0.1875em;
 }
-/* shadow overlap correcting */
+/* shadow overlap correction */
 .cm-s-obsidian span.cm-highlight {
 	z-index: -1;
 	position: relative;
@@ -576,6 +577,10 @@ body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
     transition: all var(--anim-duration-fast);
 }
 
+
+.mod-sidedock .workspace-leaf-content ::-webkit-scrollbar {
+    display: none;
+}
 
 /*--> Clickable Icons <--*/
 
