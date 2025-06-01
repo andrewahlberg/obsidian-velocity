@@ -161,6 +161,7 @@ body {
 	/* Metadata */
 
 	/* Modals - e.g. settings, community themes, community plugins */
+	--modal-radius: 10px;
 
 	/* Multi-select pills */
 
@@ -175,12 +176,14 @@ body {
 	/* Radiuses */
 	--radius-s: 5px;
 	--radius-sm: 6px;
-	--radius-m: 12px;
+	--radius-m: 10px;
 
 	/* Ribbon */
 	--ribbon-background: transparent;
 
 	/* Scrollbars */
+	--scrollbar-thumb-bg: var(--color-base-20);
+	--scrollbar-active-thumb-bg: var(--trans-base-100);
 
 	/* Search */
 	--search-result-background: var(--trans-base-20);
@@ -289,14 +292,14 @@ body {
 	--gray-trans: #0000000b;
 	--temp-trans: #aaaaaa1a;
 	--border-trans: #0000001d;
+	--trans-base-100: #00000022;
 
 	--text-normal: var(--color-base-90);
 	--text-faint: var(--color-base-40);
     --text-highlight-bg: var(--color-orange-00);
 	--text-highlight-bg-rgb: var(--color-orange-rgb);
 	--text-highlight-color: var(--color-orange-10);
-	--text-highlight-bg-sidebar: rgb(var(--text-highlight-bg-rgb), 0.125);
-	--text-highlight-bg-hover: rgb(var(--text-highlight-bg-rgb), 0.3);
+	--text-highlight-bg-sidebar: rgb(var(--text-highlight-bg-rgb), 0.15);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
 	
 	--background-gradient: radial-gradient( at 50% 52%, 
@@ -304,8 +307,8 @@ body {
 		var(--color-base-50) 220%
 		);
 	--background-gradient-menu: radial-gradient( at 64% 50%, 
-		var(--color-base-05) 36%, 
-		var(--color-base-35) 234%
+		var(--color-base-00) 60%, 
+		var(--color-base-25) 180%
 		); 
 	--background-modifier-border: var(--nav-trans);
 	--background-modifier-hover: var(--gray-trans);
@@ -314,9 +317,11 @@ body {
 	--color-accent-1: hsl(calc(var(--accent-h) - 1), calc(var(--accent-s) * 1.01), calc(var(--accent-l) * 1.075));
 	--color-accent-2: hsl(calc(var(--accent-h) - 3), calc(var(--accent-s) * 1.02), calc(var(--accent-l) * 1.15)); */
 
-	--color-accent-1: color-mix(in oklab, var(--color-accent), transparent 10%);
-	--color-accent-2: color-mix(in oklab, var(--color-accent) 100%, white 25%);
-	--color-accent-3: color-mix(in oklab, var(--color-accent), transparent 80%);
+	--color-accent-1: color-mix(in oklab, var(--color-accent) 100%, transparent 10%);
+	--color-accent-2: color-mix(in oklab, var(--color-accent) 80%, transparent 40%);
+	--color-accent-3: color-mix(in oklab, var(--color-accent), transparent 5%);
+	--color-accent-4: color-mix(in oklab, var(--color-accent) 50%, transparent 75%);
+	--color-accent-5: color-mix(in oklab, var(--text-selection) 100%, transparent 75%);
 
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
@@ -343,9 +348,18 @@ body {
 		0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
 		0px 30px 90px rgba(0, 0, 0, 0.2); */
 	--shadow-xs: 
-		0px 0.125px 0px 0.0625px rgba(0, 0, 0, 0.25),
-		0px 0.75px 1px 0.75px rgba(40, 40, 40, 0.05),
-		0px 0.5px 4px rgba(0, 0, 0, 0.05);
+		0px 0.125px 0px 0.5px var(--nav-trans),
+		inset 0px -0.125px 2px 0px var(--color-base-20),
+		0px 0.75px 1px 0.75px var(--nav-trans),
+		0px 0.75px 8px -2px var(--border-trans);
+	--shadow-fab: 
+		0px 0.25px 0px 0.75px var(--color-base-20),
+		inset 0px -0.25px 2px 0px var(--faint-trans),
+		0px 2px 8px -2px var(--border-trans);
+	--shadow-fab-active: 
+		0px 0.25px 0px 0.5px var(--text-selection),
+		inset 0px -0.25px 4px -1px var(--text-selection),
+		0px 1.5px 8px -1.5px var(--text-selection);
 	--shadow-workspace: 
 		0px 0px 0px 0.8px var(--color-base-20),
 		0 0.5px 3px 0px var(--gray-trans),
@@ -656,7 +670,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 
 .tree-item.nav-folder {
-	--nav-item-background-hover: var(--temp-trans);
+	--nav-item-background-hover: var(--faint-trans);
 	font-weight: var(--nav-file-weight);
 }
 .tree-item-self.nav-folder-title {
@@ -745,7 +759,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	--icon-color-focused: var(--color-base-100);
 	--tab-text-color-focused-active-current: var(--icon-color-focused);
 	box-shadow: var(--shadow-xs);
-	transition: background-color var(--anim-duration-fast) var(--anim-motion-swing);
+	transition: 
+	background-color var(--anim-duration-fast) var(--anim-motion-swing),
+	box-shadow var(--anim-duration-fast) var(--anim-motion-swing);
 }
 .mod-sidedock .mod-top .workspace-tab-header.is-active {
 	background-color: var(--trans-base-10);
@@ -762,25 +778,72 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /*--> Workspace Sidebar leaves <--*/
 
-/* Backlinks + Outgoing links */
+/* Backlinks */
+:is(.backlink-pane, .outgoing-link-pane) 
+.tree-item-self[aria-label="Click to collapse"] {
+	--nav-item-background-hover: var(--faint-trans);
+}
+.search-result-file-title .tree-item-inner,
+.outgoing-link-pane .tree-item-inner-text {
+	color: var(--color-accent-1);
+	font-size: 14px;
+}
 .search-result-file-matches {
     box-shadow: 
 	0 0.25px 0 0.75px var(--nav-trans),
 	0 1.5px 6px -3px var(--nav-trans);
 }
 .search-result-file-title {
-	font-size: 14px;
 	padding-top: 8px;
 	padding-bottom: 6px;
 	padding-inline: 24px 7px;
-}
-.search-result-file-title .tree-item-inner,
-.outgoing-link-pane .tree-item-inner-text {
-	color: var(--color-accent-1);
+	--nav-collapse-icon-color: var(--color-accent-4);
+	--nav-item-background-hover: var(--color-accent-5);
 }
 .search-result-file-matched-text {
+	background-color: var(--text-highlight-bg-sidebar);
 	padding-inline: 2px;
 	padding-bottom: 1px;
+}
+.search-result-file-match:hover .search-result-file-matched-text {
+	background-color: var(--border-trans);
+}
+
+/* Outgoing links */
+.outgoing-link-pane .outgoing-link-item {
+	--icon-color: var(--color-accent-2);
+	--nav-item-background-hover: var(--color-accent-5);
+}
+.outgoing-link-pane .outgoing-link-item .tree-item-icon .svg-icon {
+	stroke-width: 2.5px;
+}
+.outgoing-link-pane .tree-item-inner-text {
+	padding-bottom: 2px;
+}
+.outgoing-link-pane .outgoing-link-item:hover .tree-item-inner-text {
+	color: var(--color-accent);
+}
+.outgoing-link-item:has(.tree-item-inner .tree-item-inner-subtext) .tree-item-icon {
+	top: 8px;
+}
+
+/* Search View */
+.search-row {
+    margin: 8px 12px 6px;
+    gap: 6px;
+}
+.search-params {
+	margin-inline: 12px;
+}
+.search-params .setting-item {
+	border-inline: 1px solid var(--background-modifier-hover);
+	padding-inline: 12px;
+}
+.search-results-info {
+    color: var(--text-faint);
+    border-bottom: 1px solid var(--background-modifier-border);
+    margin-inline: 12px;
+    padding: 6px 2px 8px;
 }
 
 /*--> View Header <--*/
@@ -790,61 +853,57 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 
 /* View header FAB */
-.view-actions {
+.workspace-leaf-content[data-type="markdown"] {
+	& .view-actions {
 	column-gap: 4px;
-}
-.view-actions > * {
-	transform: translateX(-8px) translateY(12px);
-}
-.view-actions .clickable-icon.view-action[aria-label="More options"] {
-	height: 32px;
-	width: 20px;
-	padding: 1px 0 0 0;
-	opacity: 0;
-	pointer-events: none;
-	transition: var(--anim-duration-fast) ease-out;
-	--icon-size: var(--icon-xl);
-}
-.view-actions:hover .clickable-icon.view-action[aria-label="More options"] {
-	opacity: 0.33;
-	pointer-events: unset;
-	&:hover {
+	}
+	& .view-actions > * {
+		transform: translateX(-8px) translateY(12px);
+	}
+	& .view-actions .clickable-icon.view-action[aria-label="More options"] {
+		height: 32px;
+		width: 20px;
+		padding: 1px 0 0 0;
+		opacity: 0;
+		pointer-events: none;
+		transition: var(--anim-duration-fast) ease-out;
+		--icon-size: var(--icon-xl);
+	}
+	& .view-actions:hover .clickable-icon.view-action[aria-label="More options"] {
+		opacity: 0.33;
+		pointer-events: unset;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	& .view-actions .clickable-icon.view-action[aria-label*="Current view: "] {
+		--icon-size: var(--icon-m);
+		--icon-color: var(--color-base-55);
+		--icon-color-hover: var(--color-base-60);
+		--icon-color-focused: var(--color-base-60);
+		height: 40px;
+		width: 40px;
+		border-radius: 50%;
+		padding-block: 1px 0;
+		padding-inline: 0 1px;
+		order: 2;
 		opacity: 1;
+		background-color: var(--background-primary);
+		box-shadow: var(--shadow-fab);
+		transition: transform var(--anim-duration-superfast) ease-out;
+		&:active {
+			transform: translateX(-8px) translateY(12px) scale(0.9375);
+		}
 	}
-}
-.view-actions .clickable-icon.view-action[aria-label*="Current view: "] {
-	--icon-size: var(--icon-m);
-	--icon-color: var(--color-base-55);
-	--icon-color-hover: var(--color-base-60);
-	--icon-color-focused: var(--color-base-60);
-	height: 40px;
-	width: 40px;
-	border-radius: 50%;
-	padding-block: 1px 0;
-	padding-inline: 0 1px;
-	order: 2;
-	opacity: 1;
-	background-color: var(--background-primary);
-	box-shadow: 
-	0px 0.25px 0px 0.75px var(--border-trans),
-	0px 2px 8px -2px var(--border-trans);
-	transition: transform var(--anim-duration-superfast) ease-out;
-	&:active {
-		transform: translateX(-8px) translateY(12px) scale(0.9375);
+	& .view-actions .clickable-icon.view-action[aria-label*="editing"] {
+		box-shadow: var(--shadow-fab-active);
+		--icon-color: var(--color-accent-3);
+		--icon-color-hover: var(--color-accent-2);
+		--icon-color-focused: var(--color-accent-2);
 	}
-}
-.view-actions .clickable-icon.view-action[aria-label*="editing"] {
-	/* background-color: var(--background-modifier-active-hover); */
-	box-shadow: 
-	0px 0.25px 0px 0.5px var(--text-selection),
-	inset 0px -0.25px 4px -1px var(--text-selection),
-	0px 1.5px 8px -1.5px var(--text-selection);
-	--icon-color: var(--color-accent-1);
-	--icon-color-hover: var(--color-accent-2);
-	--icon-color-focused: var(--color-accent-2);
-}
-.view-actions .clickable-icon.view-action.mod-bookmark {
-	order: 1;
+	& .view-actions .clickable-icon.view-action.mod-bookmark {
+		order: 1;
+	}
 }
 
 /* Vault Profile */
@@ -860,7 +919,7 @@ body:not(.is-mobile)
 .status-bar {
 	background-color: transparent;
 	border: none;
-	border-radius: 5px 0 0 5px;
+	border-radius: var(--radius-sm) 0 0 var(--radius-sm);
 	font-weight: var(--font-normal);
 	max-height: 26px;
 	margin-bottom: 9px;
@@ -967,19 +1026,24 @@ body:not(.is-mobile)
 
 /*--> Modal Settings Content <--*/
 
-.vertical-tabs-container {
+.modal-container.mod-dim .vertical-tabs-container {
 	background-image: var(--background-gradient-menu);
+	--scrollbar-thumb-bg: var(--nav-trans);
+	--scrollbar-active-thumb-bg: var(--border-trans);
 }
-.vertical-tab-header {
+.modal-container.mod-dim .vertical-tab-header {
 	background-color: transparent;
+	border-inline-end: none;
+	min-width: 180px;
+    max-width: 260px;
 }
-.vertical-tab-content {
+.modal-container.mod-dim .vertical-tab-content {
 	background-color: transparent;
 	padding-inline: 46px 44px;
 }
 
 .setting-item {
-	background-color: var(--faint-trans);
+	background-color: var(--temp-trans);
 	border-inline: 1px solid var(--background-modifier-border);
 	box-shadow: var(--shadow-workspace-2);
 	clip-path: inset(0 -24px 0 -24px);
@@ -1031,6 +1095,13 @@ div[class*="settings-section"] > .setting-item {
     padding-top: 0;
     border-top: none;
 }
+
+/*--> Prompt Modal <--*/
+
+.prompt {
+	border-radius: var(--radius-m);
+}
+
 
 
 /*
