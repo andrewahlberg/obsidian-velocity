@@ -175,6 +175,7 @@ body {
 	/* Popovers - file previews */
 
 	/* Prompts - e.g. quick switcher, command palette */
+	--prompt-input-height: 48px;
 
 	/* Radiuses */
 	--radius-s: 5px;
@@ -287,6 +288,7 @@ body {
 	--color-base-100:#000000e2;
 
 	--trans-base-00: #fffffff2;
+	--trans-base-05: #ffffffcd;
 	--trans-base-10: #ffffffbf;
 	--trans-base-20: #ffffff5c;
 	--fainter-trans: #22222205;
@@ -315,12 +317,9 @@ body {
 		var(--color-base-00) 60%, 
 		var(--color-base-25) 180%
 		); 
+	--button-gradient: linear-gradient(to top, var(--color-accent) -30%, var(--color-accent-4) 180%);
 	--background-modifier-border: var(--nav-trans);
 	--background-modifier-hover: var(--gray-trans);
-
-	/* --color-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
-	--color-accent-1: hsl(calc(var(--accent-h) - 1), calc(var(--accent-s) * 1.01), calc(var(--accent-l) * 1.075));
-	--color-accent-2: hsl(calc(var(--accent-h) - 3), calc(var(--accent-s) * 1.02), calc(var(--accent-l) * 1.15)); */
 
 	--color-accent-1: color-mix(in oklab, var(--color-accent) 100%, transparent 10%);
 	--color-accent-2: color-mix(in oklab, var(--color-accent) 80%, transparent 40%);
@@ -352,11 +351,14 @@ body {
 	--shadow-l: 0px 1.8px 7.3px rgba(0, 0, 0, 0.071),
 		0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
 		0px 30px 90px rgba(0, 0, 0, 0.2); */
+	--input-shadow: 
+		0px 0.125px 0px 0.5px var(--color-base-20),
+		inset 0px -0.125px 1px 0px var(--color-base-20),
+		0px 0.75px 2px 0.5px var(--nav-trans);
+	--input-shadow-hover: var(--input-shadow);
 	--shadow-xs: 
-		0px 0.125px 0px 0.5px var(--nav-trans),
-		inset 0px -0.125px 2px 0px var(--color-base-20),
-		0px 0.75px 1px 0.75px var(--nav-trans),
-		0px 0.75px 8px -2px var(--border-trans);
+		var(--input-shadow),
+		0px 0.75px 8px -2px var(--color-base-20);
 	--shadow-fab: 
 		0px 0.25px 0px 0.75px var(--color-base-20),
 		inset 0px -0.25px 2px 0px var(--faint-trans),
@@ -365,13 +367,15 @@ body {
 		0px 0.25px 0px 0.5px var(--text-selection),
 		inset 0px -0.25px 4px -1px var(--text-selection),
 		0px 1.5px 8px -1.5px var(--text-selection);
+	--shadow-themes: 
+		0px 6px 12px -2px var(--nav-trans);	
 	--shadow-workspace: 
 		0px 0px 0px 0.8px var(--color-base-20),
 		0 0.5px 3px 0px var(--gray-trans),
 		0px 2px 45px -9px var(--color-base-25),
 		0px 6px 8px -4px var(--color-base-20);
     --shadow-workspace-2: 
-		0px 2px 12px 0 var(--faint-trans),
+		0px 2px 12px 0 var(--gray-trans),
 		0px 0.375px 1px 0px var(--nav-trans);
 	--tab-container-shadow: inset 0 0 2.5px -0.25px var(--color-base-20);
 	--tab-background-active: var(--trans-base-10);
@@ -410,6 +414,17 @@ body {
 	}
 }
 
+/*--> Buttons <--*/
+
+button.mod-cta {
+	background: var(--button-gradient);
+	text-shadow: 0 1.125px 1px var(--color-base-20);
+}
+button.mod-cta:hover {
+    background: var(--button-gradient);
+	filter: brightness(1.0625);
+}
+
 /*
 =========================== ===========================
 			2 - Markdown
@@ -419,14 +434,15 @@ body {
 /*--> Typography variation settings <--*/
 
 .mod-sidedock,
+.vertical-tab-header-group-items,
 .view-header-title-container,
 .workspace-tab-header-inner { 
 	font-variation-settings: 'opsz' 16;
 }
 .menu,
 .markdown-preview-view,
-.setting-item,
-.vertical-tab-header-group-items {
+.prompt,
+.setting-item {
 	font-feature-settings: 'ss01';
 	font-variation-settings: 'opsz' 18;
 }
@@ -732,11 +748,8 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /* Backlinks */
 :is(.backlink-pane, .outgoing-link-pane) 
-.tree-item-self[aria-label="Click to collapse"] {
+.tree-item-self:is([aria-label="Click to collapse"], [aria-label="Click to expand"]) {
 	--nav-item-background-hover: var(--faint-trans);
-	&:hover .tree-item-inner {
-	color: var(--color-base-100);
-	}
 }
 .backlink-pane .search-result-file-title .tree-item-inner,
 .outgoing-link-pane .tree-item-inner-text {
@@ -1089,27 +1102,55 @@ body:not(.is-mobile)
 
 /*--> Modal Settings Content <--*/
 
+.modal-bg {
+    backdrop-filter: brightness(0.5);
+}
+
+.mod-settings {
+	background-color: transparent;
+}
 /* Settings Modal layout */
 .modal-container.mod-dim .vertical-tabs-container {
-	background-image: var(--background-gradient-menu);
-	--scrollbar-thumb-bg: var(--nav-trans);
-	--scrollbar-active-thumb-bg: var(--border-trans);
+	background-color: transparent;
+	--scrollbar-thumb-bg: var(--temp-trans);
+	--scrollbar-active-thumb-bg: var(--color-base-20);
 }
 .modal-container.mod-dim .vertical-tab-header {
-	background-color: transparent;
+	background-color: var(--trans-base-05);
+	backdrop-filter: blur(20px);
 	border-inline-end: none;
-	min-width: 180px;
     max-width: 260px;
+	padding-inline: 10px 8px;
 }
 .modal-container.mod-dim .vertical-tab-content {
-	background-color: transparent;
+	background-color: var(--background-primary);
 	padding-inline: 46px 44px;
 }
 
+/* Settings Sidebar */
+body:not(.is-phone) .vertical-tab-nav-item {
+	color: var(--color-base-80);
+	font-size: var(--font-ui-small);
+	font-weight: var(--font-medium);
+	padding-block: 7px;
+	padding-inline-start: 20px;
+	--background-modifier-hover: var(--faint-trans);
+}
+body:not(.is-phone) .vertical-tab-nav-item.is-active {
+    background-color: var(--nav-trans);
+    color: var(--color-base-100);
+}
+/* body:not(.is-phone) .vertical-tab-header-group {
+    padding: 12px 0 12px;
+} */
+body:not(.is-phone) .vertical-tab-header-group-title {
+    padding-inline-start: 20px;
+}
+
 /* Setting item 'sections' */
-.modal:not(.mod-community-modal) {
+.modal:not(.mod-community-modal), .mod-sidedock {
 	& .setting-item {
-		background-color: var(--temp-trans);
+		background-color: var(--color-base-10);
 		border-inline: 1px solid var(--background-modifier-border);
 		box-shadow: var(--shadow-workspace-2);
 		clip-path: inset(0 -24px 0 -24px);
@@ -1132,6 +1173,9 @@ body:not(.is-mobile)
 	.setting-item:first-child:not(:has( + .setting-item)),
 	.setting-item.setting-item-heading + .setting-item:not(.setting-item-heading):has( + .setting-item.setting-item-heading),
 	div[class*="settings-section"] > .setting-item {
+		box-shadow: 
+		0px 2px 12px 0 var(--temp-trans),
+		0px 0.375px 1px 0px var(--nav-trans);
 		border: 1px solid var(--background-modifier-border);
 		border-radius: var(--radius-sm) !important; 
 		clip-path: none !important;
@@ -1163,6 +1207,20 @@ body:not(.is-mobile)
     border-top: none;
 }
 
+/*--> Community Modal <--*/
+
+.community-item {
+	padding-top: 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--background-modifier-border);
+	box-shadow: var(--shadow-themes);
+}
+.community-item-name {
+	color: var(--text-normal);
+    font-weight: var(--font-semibold);
+    line-height: var(--line-height-normal);
+}
+
 /* Hotkeys */
 .setting-filter-container {
 	font-family: var(--font-monospace);
@@ -1173,6 +1231,57 @@ body:not(.is-mobile)
 
 .prompt {
 	border-radius: var(--radius-m);
+	background-color: transparent;
+	font-weight: var(--font-normal);
+}
+.prompt-results, .prompt-input-container, .prompt-instructions {
+	background-color: var(--trans-base-05);
+	backdrop-filter: blur(48px);
+	border: none;
+}
+
+/* Input */
+.prompt-input-container {
+    --search-clear-button-size: 16px;
+	padding: 8px 8px 4px 8px;
+}
+input.prompt-input, 
+input.prompt-input:active, 
+input.prompt-input:focus,
+input.prompt-input:hover {
+    padding: 16px;
+    background-color: var(--background-secondary);
+	box-shadow: var(--input-shadow);
+    font-size: 18px;
+    border-radius: var(--radius-sm);
+    border: none;
+}
+input.prompt-input:active, 
+input.prompt-input:focus {
+    background-color: var(--background-primary);
+
+}
+
+/* Results */
+.prompt-results {
+    padding-top: 4px;
+}
+.prompt-results .suggestion-item {
+    padding-block: 10px;
+    padding-inline-start: 14px;
+    border-radius: var(--radius-sm);
+	margin: 0;
+}
+
+/* Instructions */
+.prompt-instructions {
+    border-top: 1px solid transparent;
+	box-shadow: 0 -1px 4px 0 var(--temp-trans);
+	font-variation-settings: 'opsz' 14;
+    font-weight: var(--font-medium);
+    color: var(--text-faint);
+    padding: 10px;
+    gap: var(--size-4-4);
 }
 
 /* Popover */
