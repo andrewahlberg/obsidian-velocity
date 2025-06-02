@@ -416,6 +416,9 @@ body {
 
 /*--> Buttons <--*/
 
+button {
+	height: 28px;
+}
 button.mod-cta {
 	background: var(--button-gradient);
 	text-shadow: 0 1.125px 1px var(--color-base-20);
@@ -423,6 +426,33 @@ button.mod-cta {
 button.mod-cta:hover {
     background: var(--button-gradient);
 	filter: brightness(1.0625);
+}
+
+/*--> Dropdown <--*/
+
+select, .dropdown {
+	height: 28px;
+    /* -webkit-app-region: no-drag;
+    height: var(--input-height);
+    font-size: var(--font-ui-small);
+    font-family: inherit;
+    font-weight: var(--input-font-weight);
+    color: var(--text-normal);
+    line-height: var(--line-height-tight);
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    box-shadow: var(--input-shadow);
+    border-radius: var(--input-radius);
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--dropdown-background);
+    padding: var(--dropdown-padding);
+    background-repeat: no-repeat, repeat;
+    background-position: var(--dropdown-background-position);
+    background-size: var(--dropdown-background-size);
+    background-blend-mode: hard-light; */
 }
 
 /*
@@ -818,6 +848,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	margin-inline: 12px;
 }
 .search-params .setting-item {
+	background-color: var(--temp-trans) !important;
 	border-inline: 1px solid var(--background-modifier-hover);
 	padding-inline: 12px;
 }
@@ -1250,11 +1281,12 @@ input.prompt-input:active,
 input.prompt-input:focus,
 input.prompt-input:hover {
     padding: 16px;
-    background-color: var(--background-secondary);
+    background-color: var(--trans-base-20);
 	box-shadow: var(--input-shadow);
     font-size: 18px;
     border-radius: var(--radius-sm);
     border: none;
+	transition: background-color var(--anim-duration-fast) var(--anim-motion-swing);
 }
 input.prompt-input:active, 
 input.prompt-input:focus {
