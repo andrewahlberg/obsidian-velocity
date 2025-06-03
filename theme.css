@@ -495,7 +495,7 @@ select, .dropdown {
 .cm-s-obsidian .cm-line:is(.HyperMD-header-2, .HyperMD-header-3), 
 .markdown-rendered :is(h2,h3) {
 	font-variation-settings: 'opsz' 28;
-	text-indent: -0.03125em;
+	text-indent: -0.01875em;
 }
 .cm-s-obsidian .cm-line:is(.HyperMD-header-4, .HyperMD-header-5),
 .markdown-rendered :is(h4,h5) {
@@ -511,11 +511,11 @@ select, .dropdown {
 	border-bottom: 2px solid var(--hr-color);
 	padding-bottom: 6px;
 	font-variation-settings: 'opsz' 32;
-	text-indent: -0.0375em;
+	text-indent: -0.03125em;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-3, 
 .markdown-rendered h3 {
-	text-indent: -0.025em;
+	text-indent: -0.015em;
 }
 .cm-s-obsidian .cm-line.HyperMD-header:first-child {
     padding-top: 0;
@@ -800,8 +800,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	padding-bottom: 6px;
 }
 :is(.backlink-pane, .outgoing-link-pane) .search-result-file-title {
-	/* padding-inline: 24px 7px; */
-	--nav-collapse-icon-color: var(--color-accent-4);
+	padding-inline: 24px 7px;
 	--nav-item-background-hover: var(--color-accent-5);
 }
 .search-result-file-matched-text {
@@ -1074,6 +1073,10 @@ body:not(.is-mobile)
 =========================== ===========================
 */
 
+.modal-close-button, .search-input-clear-button {
+	display: none;
+}
+
 /*--> Right-click Menu <--*/
 
 .menu {
@@ -1152,7 +1155,7 @@ body:not(.is-mobile)
 }
 .modal-container.mod-dim .vertical-tab-header {
 	background-color: var(--trans-base-05);
-	backdrop-filter: blur(20px);
+	backdrop-filter: blur(32px);
 	border-inline-end: none;
     max-width: 260px;
 	padding-inline: 10px 8px;
@@ -1273,7 +1276,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	content: '';
 	display: block;
 	position: absolute;
-	backdrop-filter: blur(24px);
+	backdrop-filter: blur(32px);
 	width: 100%;
 	height: 100%;
 	z-index: 0;
@@ -1284,7 +1287,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	z-index: 1;
 }
 
-/* Input */
+/* Prompt Input */
 .prompt-input-container {
     --search-clear-button-size: 16px;
 	padding: 8px 8px 4px 8px;
@@ -1295,6 +1298,7 @@ input.prompt-input:focus,
 input.prompt-input:hover {
     padding: 16px;
     background-color: var(--trans-base-20);
+	backdrop-filter: blur(16px);
 	box-shadow: var(--input-shadow);
     font-size: 18px;
     border-radius: var(--radius-sm);
@@ -1304,10 +1308,8 @@ input.prompt-input:hover {
 input.prompt-input:active, 
 input.prompt-input:focus {
     background-color: var(--background-primary);
+	backdrop-filter: unset;
 
-}
-.search-input-clear-button {
-	display: none;
 }
 
 /* Results */
@@ -1345,6 +1347,27 @@ input.prompt-input:focus {
 			5 - Plugins
 =========================== ===========================
 */
+
+/*--> List Callouts <--*/
+
+.markdown-rendered .lc-list-callout {
+	--list-spacing: 0.075em;
+}
+.lc-list-callout > .list-bullet {
+	padding-top: 0.075em;
+}
+.lc-li-wrapper {
+    padding-inline-end: 0.5em;
+	padding-block: 0.075em;
+}
+/* .lc-li-wrapper::after {
+    background-color: rgba(var(--lc-callout-color), var(--lc-bg-opacity-light));
+    border-radius: 4px;
+	top: calc(-1* var(--lc-bg-top-reading) + 1px);
+    right: calc(-1* var(--lc-bg-right-reading) + 1px);
+    bottom: calc(-1* var(--lc-bg-bottom-reading) + 1px);
+    left: calc(-1* var(--lc-bg-left-reading) + 1px);
+} */
 
 /*--> Dataview Calendar <--*/
 
