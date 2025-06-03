@@ -686,6 +686,10 @@ body:not(.is-mobile) .mod-right-split .workspace-leaf-content {
 body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-tab-header-container {
     padding-left: calc(var(--size-2-3) + var(--frame-left-space));
 }
+/* empty sidedock */
+.workspace-sidedock-empty-state {
+	padding-block: 48px 8px;
+}
 
 /* Main Card margins */
 body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container {
@@ -1265,10 +1269,19 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	background-color: transparent;
 	font-weight: var(--font-normal);
 }
+.prompt::before {
+	content: '';
+	display: block;
+	position: absolute;
+	backdrop-filter: blur(24px);
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
 .prompt-results, .prompt-input-container, .prompt-instructions {
 	background-color: var(--trans-base-05);
-	backdrop-filter: blur(48px);
 	border: none;
+	z-index: 1;
 }
 
 /* Input */
@@ -1293,12 +1306,16 @@ input.prompt-input:focus {
     background-color: var(--background-primary);
 
 }
+.search-input-clear-button {
+	display: none;
+}
 
 /* Results */
 .prompt-results {
     padding-top: 4px;
 }
 .prompt-results .suggestion-item {
+	color: var(--color-base-100);
     padding-block: 10px;
     padding-inline-start: 14px;
     border-radius: var(--radius-sm);
@@ -1386,9 +1403,9 @@ div.dataview-error-box > p {
     margin: var(--size-4-1) 0;
 	margin-top: 0;
 }
-#calendar-container h3 {
+/* #calendar-container h3 {
 	text-indent: -1px;
-}
+} */
 #calendar-container .month,
 #calendar-container .year {
 	color: var(--color-base-90);
