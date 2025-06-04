@@ -59,6 +59,11 @@ body {
 	--checkbox-radius: 50%;
 
 	/* Code */
+	--code-background: var(--faint-trans);
+	--code-border-color: var(--nav-trans);
+	--code-border-width: 1px;
+	--code-normal: var(--text-muted);
+	--code-radius: 5px;
 
 	/* Collapse icons */
 
@@ -314,11 +319,12 @@ body {
 		var(--color-base-50) 220%
 		);
 	--background-gradient-menu: radial-gradient( at 64% 50%, 
-		var(--color-base-00) 60%, 
-		var(--color-base-25) 180%
+		var(--color-base-10) 40%, 
+		var(--color-base-30) 120%
 		); 
 	--button-gradient: linear-gradient(to top, var(--color-accent) -30%, var(--color-accent-4) 180%);
 	--background-modifier-border: var(--nav-trans);
+	--background-modifier-cover: color-mix(in oklab, var(--color-base-90) 75%, transparent 100%);
 	--background-modifier-hover: var(--gray-trans);
 
 	--color-accent-1: color-mix(in oklab, var(--color-accent) 100%, transparent 10%);
@@ -359,6 +365,9 @@ body {
 	--shadow-xs: 
 		var(--input-shadow),
 		0px 0.75px 8px -2px var(--color-base-20);
+		
+	--shadow-code: 
+		0px 0.125px 0px 0.5px var(--border-trans);
 	--shadow-fab: 
 		0px 0.25px 0px 0.75px var(--color-base-20),
 		inset 0px -0.25px 2px 0px var(--faint-trans),
@@ -375,8 +384,8 @@ body {
 		0px 2px 45px -9px var(--color-base-25),
 		0px 6px 8px -4px var(--color-base-20);
     --shadow-workspace-2: 
-		0px 2px 12px 0 var(--gray-trans),
-		0px 0.375px 1px 0px var(--nav-trans);
+		0px 4px 12px 0 var(--temp-trans),
+		0px 0.375px 1px 0px var(--color-base-20);
 	--tab-container-shadow: inset 0 0 2.5px -0.25px var(--color-base-20);
 	--tab-background-active: var(--trans-base-10);
 }
@@ -470,6 +479,7 @@ select, .dropdown {
 	font-variation-settings: 'opsz' 16;
 }
 .menu,
+.modal-content,
 .markdown-preview-view,
 .prompt,
 .setting-item {
@@ -532,6 +542,18 @@ select, .dropdown {
 	padding-inline: 24px 12px;
 }
 
+/*--> Code <--*/
+
+.markdown-rendered code {
+	border-width: 0;
+	box-shadow: var(--shadow-code);
+    padding-inline: 0.3125em;
+}
+pre[class*="language-"] code,
+.markdown-rendered pre code {
+	box-shadow: none;
+}
+
 /*--> Formatting <--*/
 
 /* formatting markers */
@@ -550,7 +572,7 @@ select, .dropdown {
 .cm-s-obsidian span.cm-highlight,
 :is(.markdown-source-view, .markdown-preview-view) mark {
 	font-weight: 550;
-	border-radius: 4px;
+	border-radius: var(--radius-s);
 	box-decoration-break: clone;
 	box-shadow: 0 0 5px 1.25px var(--text-highlight-bg);
 	color: var(--text-highlight-color);
@@ -815,11 +837,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /* Outgoing links */
 .outgoing-link-pane .outgoing-link-item {
-	--icon-color: var(--color-accent-2);
 	--nav-item-background-hover: var(--color-accent-5);
-}
-.outgoing-link-pane .outgoing-link-item .tree-item-icon .svg-icon {
-	stroke-width: 2.5px;
 }
 .outgoing-link-pane .tree-item-inner-text {
 	padding-bottom: 2px;
@@ -828,7 +846,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	color: var(--color-accent);
 }
 .outgoing-link-item:has(.tree-item-inner .tree-item-inner-subtext) .tree-item-icon {
-	top: 8px;
+	padding-top: 1px;
 }
 /* special code for uncreated outgoing links */
 .outgoing-link-item[aria-label="Not created yet"] {
@@ -1073,6 +1091,10 @@ body:not(.is-mobile)
 =========================== ===========================
 */
 
+.modal {
+	background-color: var(--color-base-10);
+}
+
 .modal-close-button, .search-input-clear-button {
 	display: none;
 }
@@ -1140,29 +1162,43 @@ body:not(.is-mobile)
 
 /*--> Modal Settings Content <--*/
 
-.modal-bg {
-    backdrop-filter: brightness(0.5);
+.modal {
+	background-color: var(--trans-base-05);
+	font-weight: var(--font-normal);
+}
+.modal::before {
+	content: '';
+	position: absolute;
+	backdrop-filter: blur(32px);
+	width: 100%;
+	height: 100%;
+	/* negative margin to counter padding */
+	margin: -16px;
+	z-index: -1;
 }
 
-.mod-settings {
-	background-color: transparent;
-}
 /* Settings Modal layout */
+.mod-settings, .modal-sidebar {
+	background-image: var(--background-gradient-menu);
+	&::before {
+		display: none;
+	}
+}
 .modal-container.mod-dim .vertical-tabs-container {
-	background-color: transparent;
 	--scrollbar-thumb-bg: var(--temp-trans);
 	--scrollbar-active-thumb-bg: var(--color-base-20);
 }
 .modal-container.mod-dim .vertical-tab-header {
-	background-color: var(--trans-base-05);
-	backdrop-filter: blur(32px);
-	border-inline-end: none;
+	background-color: transparent;
+	border-inline-end-color: transparent;
     max-width: 260px;
 	padding-inline: 10px 8px;
 }
 .modal-container.mod-dim .vertical-tab-content {
-	background-color: var(--background-primary);
+	background-color: transparent;
 	padding-inline: 46px 44px;
+	--scrollbar-thumb-bg: var(--nav-trans);
+	--scrollbar-active-thumb-bg: var(--border-trans);
 }
 
 /* Settings Sidebar */
@@ -1188,8 +1224,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 /* Setting item 'sections' */
 .modal:not(.mod-community-modal), .mod-sidedock {
 	& .setting-item {
-		background-color: var(--color-base-10);
-		border-inline: 1px solid var(--background-modifier-border);
+		--background-modifier-border: var(--color-base-10);
+		background-color: var(--trans-base-05);
+		border-inline: 1px solid var(--nav-trans);
 		box-shadow: var(--shadow-workspace-2);
 		clip-path: inset(0 -24px 0 -24px);
 		font-weight: var(--font-normal);
@@ -1198,7 +1235,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	& .setting-item:last-of-type,
 	& .setting-item:has( + .setting-item.setting-item-heading),
 	& .setting-item:has( + :not(.setting-item)) {
-		border-bottom: 1px solid var(--background-modifier-border);
+		border-bottom: 1px solid var(--nav-trans);
 		border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 		clip-path: inset(0 -24px -24px -24px);
 		padding-bottom: 14px;
@@ -1212,9 +1249,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	.setting-item.setting-item-heading + .setting-item:not(.setting-item-heading):has( + .setting-item.setting-item-heading),
 	div[class*="settings-section"] > .setting-item {
 		box-shadow: 
-		0px 2px 12px 0 var(--temp-trans),
+		0px 4px 6px 0 var(--temp-trans),
 		0px 0.375px 1px 0px var(--nav-trans);
-		border: 1px solid var(--background-modifier-border);
+		border: 1px solid var(--nav-trans);
 		border-radius: var(--radius-sm) !important; 
 		clip-path: none !important;
 		padding-block: 14px;
@@ -1222,7 +1259,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	& .setting-item:not(.setting-item-heading):first-of-type,
 	.setting-item.setting-item-heading + .setting-item,
 	:not(.setting-item) + .setting-item:has( + .setting-item) {
-		border-top: 1px solid var(--background-modifier-border);
+		border-top: 1px solid var(--nav-trans);
 		border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 		clip-path: inset(-24px -24px 0 -24px);
 		padding-top: 14px;
@@ -1243,6 +1280,11 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 .installed-plugins-container {
     padding-top: 0;
     border-top: none;
+}
+
+.setting-hotkey {
+    box-shadow: var(--shadow-code);
+    padding: 2.5px 4px 1.5px 8px;
 }
 
 /*--> Community Modal <--*/
@@ -1298,41 +1340,41 @@ input.prompt-input:focus,
 input.prompt-input:hover {
     padding: 16px;
     background-color: var(--trans-base-20);
-	backdrop-filter: blur(16px);
 	box-shadow: var(--input-shadow);
     font-size: 18px;
     border-radius: var(--radius-sm);
     border: none;
-	transition: background-color var(--anim-duration-fast) var(--anim-motion-swing);
+	transition: background-color var(--anim-duration-moderate) var(--anim-motion-swing);
 }
 input.prompt-input:active, 
 input.prompt-input:focus {
     background-color: var(--background-primary);
-	backdrop-filter: unset;
-
 }
 
 /* Results */
 .prompt-results {
     padding-top: 4px;
 }
-.prompt-results .suggestion-item {
+.suggestion-item {
 	color: var(--color-base-100);
     padding-block: 10px;
     padding-inline-start: 14px;
     border-radius: var(--radius-sm);
 	margin: 0;
 }
+.prompt .suggestion-item .suggestion-hotkey {
+	background-color: var(--trans-base-10);
+    box-shadow: var(--shadow-code);
+	color: var(--text-muted);
+}
 
 /* Instructions */
 .prompt-instructions {
-    border-top: 1px solid transparent;
-	box-shadow: 0 -1px 4px 0 var(--temp-trans);
+    border-top: 1px solid var(--faint-trans);
 	font-variation-settings: 'opsz' 14;
-    font-weight: var(--font-medium);
+    font-weight: var(--font-normal);
     color: var(--text-faint);
     padding: 10px;
-    gap: var(--size-4-4);
 }
 
 /* Popover */
