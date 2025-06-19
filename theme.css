@@ -69,7 +69,7 @@ body {
 	--code-background: var(--trans-faint-00);
 	--code-border-color: var(--trans-faint-20);
 	--code-border-width: 1px;
-	--code-normal: var(--text-muted);
+	--code-normal: var(--trans-faint-80);
 	--code-radius: 5px;
 
 	/* Collapse icons */
@@ -83,6 +83,8 @@ body {
 	/* Dragging */
 
 	/* Dropdowns */
+	--dropdown-background: var(--interactive-normal);
+	--dropdown-background-hover: var(--interactive-normal);
 
 	/* Embeds */
 
@@ -112,6 +114,11 @@ body {
 	/* Footnotes */
 
 	/* Graphs */
+	--graph-controls-width: 208px;
+	--graph-line: var(--color-base-40);
+	--graph-node: var(--icon-color);
+	--graph-node-unresolved: var(--color-base-50);
+	--graph-node-focused: transparent;
 
 	/* Headings */
 	--h1-size: 2.25em;
@@ -182,6 +189,7 @@ body {
 	/* Popovers - file previews */
 
 	/* Prompts - e.g. quick switcher, command palette */
+	--prompt-border-color: var(--trans-faint-40);
 	--prompt-input-height: 48px;
 
 	/* Radiuses */
@@ -225,6 +233,7 @@ body {
 	--tab-text-color-focused-active-current: var(--trans-faint-90);
 	--tab-text-color-focused-active: var(--trans-faint-90);
 	--tab-text-color-focused: var(--text-muted);
+	--tab-radius: var(--radius-s);
 
 	/* Mobile tab switcher */
 
@@ -1455,6 +1464,14 @@ body:not(.is-mobile)
 	display: none;
 }
 
+/*--> Graph & Controls <--*/
+
+.graph-controls:not(.is-close) {
+	border-color: transparent;
+	box-shadow: var(--shadow-xs), var(--shadow-themes);
+	top: 8px;
+}
+
 /*--> Right-click Menu <--*/
 
 .menu {
@@ -1742,6 +1759,16 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 
 /*--> Prompt Modal <--*/
 
+/* Suggestion Item */
+
+.mod-search-suggestion .suggestion {
+	border-color: var(--color-red);
+}
+.suggestion-item {
+	color: var(--font-normal);
+    padding-block: 6px;
+}
+
 .prompt {
 	background-color: transparent;
 	font-weight: var(--font-normal);
@@ -1790,8 +1817,7 @@ input.prompt-input:focus {
 .prompt-results {
     padding-top: 4px;
 }
-.suggestion-item {
-	color: var(--color-base-100);
+.prompt .suggestion-item {
     padding-block: 10px;
     padding-inline-start: 14px;
 }
