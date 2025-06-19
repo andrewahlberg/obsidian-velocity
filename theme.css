@@ -636,7 +636,6 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .tag {
 	font-variation-settings: 'opsz' 14;
 }
-input,
 .mod-sidedock,
 .vertical-tab-header-group-items,
 .view-header-title-container,
