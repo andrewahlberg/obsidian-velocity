@@ -367,7 +367,7 @@ body {
 		); 
 	--background-modifier-border: var(--trans-faint-20);
 	--background-modifier-border-focus: transparent;
-	--background-modifier-cover: color-mix(in oklab, var(--trans-faint-90) 45%, transparent 100%);
+	--background-modifier-cover: color-mix(in oklab, var(--trans-faint-90) 50%, transparent 100%);
 	--background-modifier-hover: var(--trans-faint-10);
 
 	--hotkey-gradient: linear-gradient(to top, var(--color-accent) -30%, var(--color-accent-4) 180%);
@@ -440,8 +440,7 @@ body {
 	}
 	& .modal {
 	--shadow-workspace-2: 
-		0px 4px 12px 0 var(--trans-strong-40),
-		0px 0.25px 1px 0px var(--trans-strong-40);
+		0px 4px 12px 0 var(--trans-strong-40);
 	}
 	& .mod-sidedock {
 	--shadow-sidebar: 
@@ -567,6 +566,11 @@ input::placeholder {
 }
 .prompt input::placeholder {
 	font-weight: var(--font-normal);
+}
+
+input[type="color"],
+input[type="color"]:focus {
+	box-shadow: initial;
 }
 
 /*--> Range Slider <--*/
@@ -1637,6 +1641,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	& .setting-item:last-of-type,
 	& .setting-item:has( + .setting-item.setting-item-heading),
 	& .setting-item:not(.setting-item-heading):has( + :not(.setting-item)) {
+		box-shadow: 
+		var(--shadow-workspace-2), 
+		0px 0.25px 0px 0.125px var(--trans-faint-20);
 		border-bottom: 1px solid var(--color-base-20);
 		border-radius: 0 0 var(--radius-m) var(--radius-m);
 		clip-path: inset(0px -24px -24px -24px);
