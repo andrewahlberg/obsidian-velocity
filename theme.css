@@ -162,7 +162,7 @@ body {
 
 	/* Lists */
 	--list-spacing: 0.15em;
-	--list-marker-color: var(--trans-faint-80);
+	--list-marker-color: var(--text-muted);
 
 	/* File navigator */
 	/* --nav-item-padding: var(--size-2-3) var(--size-4-2) var(--size-2-3) var(--size-4-6); */
@@ -454,9 +454,9 @@ body {
 /*--> Theme Default Typeface <--*/
 
 body {
-	--accent-h: 210;	
-	--accent-s: 96%;	
-	--accent-l: 48%;
+	--accent-h: 207;	
+	--accent-s: 100%;	
+	--accent-l: 49%;
 
 	--font-interface-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	--font-text-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
@@ -1249,12 +1249,9 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
  	.workspace-tab-header-inner-title {
 	text-indent: 4px;
 }
-.workspace-tab-header-inner-close-button {
-    color: var(--trans-faint-60);
-	--icon-stroke: 2.25px;
-}
+.workspace-tab-header-inner-close-button,
 .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
-    color: var(--trans-faint-60);
+    color: var(--icon-color);
 	--icon-stroke: 2.25px;
 }
 
@@ -1497,10 +1494,19 @@ body:not(.is-mobile)
 
 /*--> Bookmarks Modal <--*/
 
-.mod-bookmark .setting-item:first-child 
-.setting-item-control input:hover {
-	cursor:not-allowed;
+.mod-bookmark {
+	& .setting-item-info {
+		flex: 4 !important;
+		}
+	& .setting-item-control {
+		flex: 6 !important;
+		}
+	& .setting-item:first-child 
+	.setting-item-control input:hover {
+		cursor:not-allowed;
+		}
 }
+
 
 /*--> Rename File <--*/
 
