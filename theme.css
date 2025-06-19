@@ -74,6 +74,7 @@ body {
 	/* Cursor */
 
 	/* Dialogs - e.g. small modals, confirmations */
+	--dialog-width: 420px;
 
 	/* Dividers â€” between panes */
 
@@ -208,6 +209,7 @@ body {
 	--scrollbar-active-thumb-bg: var(--trans-faint-50);
 
 	/* Search */
+	--search-clear-button-color: var(--color-base-50);
 	--search-icon-color: var(--color-base-50);
 	--search-icon-size: 17px;
 	--search-result-background: var(--trans-strong-30);
@@ -321,7 +323,7 @@ body {
 	--color-base-60: #6d6f74;
 	--color-base-20: var(--trans-faint-30);
 	--color-base-70: var(--trans-faint-70); 
-	--color-base-100: var(--trans-faint-90); 
+	--color-base-100: #0a0a0a; 
 
 	--trans-strong-00: #fffffff2;
 	--trans-strong-10: #ffffffcd;
@@ -340,7 +342,7 @@ body {
 	--trans-faint-80: #000000bb; 
 	--trans-faint-90: #000000dc; 
 	
-	/* --text-normal: var(--color-base-100); */
+	--text-normal: var(--trans-faint-90);
 	--text-muted: var(--trans-faint-70);
 	--text-faint: var(--trans-faint-60);
     --text-highlight-bg: var(--color-orange-00);
@@ -365,7 +367,7 @@ body {
 		); 
 	--background-modifier-border: var(--trans-faint-20);
 	--background-modifier-border-focus: transparent;
-	--background-modifier-cover: color-mix(in oklab, var(--trans-faint-90) 50%, transparent 100%);
+	--background-modifier-cover: color-mix(in oklab, var(--trans-faint-90) 45%, transparent 100%);
 	--background-modifier-hover: var(--trans-faint-10);
 
 	--hotkey-gradient: linear-gradient(to top, var(--color-accent) -30%, var(--color-accent-4) 180%);
@@ -532,13 +534,11 @@ button:not(.clickable-icon):active,
 
 /*--> Inputs <--*/
 
-input {
+input,
+.rename-textarea {
 	box-shadow: var(--shadow-input);
-	transition-property: background-color, box-shadow, transform;
-	transition-duration: var(--anim-duration-superfast);
-	transition-timing-function: var(--anim-motion-smooth);
 }
-body input:focus {
+body :is(input,.rename-textarea):focus {
 	box-shadow: var(--shadow-input-active);
 }
 /* Search input */
@@ -617,6 +617,14 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .checkbox-container.is-enabled:after {
 	--shadow: var(--color-accent-4);
 	--intensity: 4px;
+}
+
+/*--> Graph & Controls <--*/
+
+.graph-controls:not(.is-close) {
+	border-color: transparent;
+	box-shadow: var(--shadow-xs), var(--shadow-themes);
+	top: 8px;
 }
 
 /*--> Typography variation settings <--*/
@@ -1208,12 +1216,6 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 	margin: 4px 0 0 0;
 	gap: 4px;
 }
-/* .mod-left-split .workspace-tab-header-container-inner {
-	box-shadow: var(--shadow-header), inset 0.25px -0.5px 0 1px var(--trans-strong-30);
-}
-.mod-sidedock .mod-top .workspace-tab-header-container-inner {
-	box-shadow: var(--shadow-header), inset -0.5px -0.5px 0 1px var(--trans-strong-30);
-} */
 
 /* Root Tabs */
 .workspace .mod-root .workspace-tab-header {
@@ -1274,7 +1276,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 }
 .mod-sidedock .workspace-tab-header.is-active,
 .mod-sidedock .workspace-tab-header.is-active:hover {
-	--icon-color-focused: var(--color-base-100);
+	--icon-color-focused: var(--text-normal);
 	background-color: var(--color-base-00);
 	box-shadow: var(--shadow-tab);
 }
@@ -1289,37 +1291,8 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 .workspace-tab-header:not(.is-active) .workspace-tab-header-inner .workspace-tab-header-inner-icon {
     --icon-opacity: 0.8;
 }
-/* .mod-sidedock .workspace-tab-header-container-inner:hover .workspace-tab-header-inner-icon {
-	--icon-color: var(--color-base-70);
-	--icon-opacity: 0.875;
-} */
 
 /*--> View Header <--*/
-
-/* .view-header {
-	padding-inline: 8px 12px;
-} */
-
-/* View header left navigation */
-/* .view-header-nav-buttons {
-	padding-top: 6px;
-	padding-left: 1.5px;
-	transition: var(--anim-duration-superfast) var(--anim-motion-smooth);
-}
-.view-header-nav-buttons .clickable-icon {
-	--icon-stroke: 2px;
-	--icon-color-hover: var(--text-muted);
-	background-color: var(--background-primary);
-	border-radius: 16px;
-}
-.view-header-nav-buttons .clickable-icon[aria-disabled="false"] {
-	&:active {
-			transform: scale(0.925);
-		}
-	&:hover {
-			box-shadow: var(--shadow-xs), var(--shadow-s);
-		}
-} */
 
 /* View header Title */
 .view-header-title-container > * {
@@ -1414,9 +1387,6 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 	gap: 4px;
 	margin: 4px 8px;
 }
-/* .markdown-source-view .document-search-container {
-	box-shadow: var(--shadow-fab-active);
-} */
 .document-search-container :is(.document-search, .document-replace) {
 	background-color: transparent;
 	padding-inline: 1px;
@@ -1477,43 +1447,65 @@ body:not(.is-mobile)
 	filter: unset;
 }
 
-/* .status-bar {
-	background-color: var(--search-trans);
-	backdrop-filter: blur(var(--blur-radius));
-	box-shadow: 
-	inset -6px 0 8px -6px var(--border-trans),
-	-0.25px 1px 1.5px 0.5px var(--border-trans);
-	border: none;
-	border-radius: 5px 0 0 5px;
-	color: var(--color-base-58);
-	font-weight: var(--font-normal);
-	max-height: 26px;
-	margin-bottom: 9px;
-	padding-inline: 12px;
-	transition: var(--anim-duration-superfast) ease-in;
-} */
-
 /*
 =========================== ===========================
 			4 - Modals
 =========================== ===========================
 */
 
+.modal-bg {
+	background-color: var(--background-modifier-cover) !important;
+}
 .modal {
-	background-color: var(--color-base-10);
+	background-color: var(--background-secondary);
+	font-weight: var(--font-normal);
+}
+.mod-confirmation .modal {
+	background-color: var(--trans-strong-10);
+	& .modal-header {
+		margin-bottom: 0.75em;
+		}
+	& .modal-header, .modal-header + * > * {
+    	padding-inline-start: 4px;
+		}
+	&::before {
+		content: '';
+		position: absolute;
+		backdrop-filter: blur(24px);
+		width: 100%;
+		height: 100%;
+		/* negative margin to counter padding */
+		margin: -16px;
+		z-index: -1;
+		}
 }
 
+.mod-settings::before,
+.modal-sidebar::before,
 .modal .modal-close-button,
 .prompt .search-input-clear-button {
 	display: none;
 }
 
-/*--> Graph & Controls <--*/
+/*--> Bookmarks Modal <--*/
 
-.graph-controls:not(.is-close) {
-	border-color: transparent;
-	box-shadow: var(--shadow-xs), var(--shadow-themes);
-	top: 8px;
+.mod-bookmark .setting-item:first-child 
+.setting-item-control input:hover {
+	cursor:not-allowed;
+}
+
+/*--> Rename File <--*/
+
+.mod-file-rename {
+	--dialog-width: 360px;
+}
+.mod-file-rename .rename-textarea {
+	font-weight: var(--font-normal);
+	font-size: var(--font-ui-medium);
+	text-align: center;
+	margin-bottom: -4px;
+	padding-block: 6px 4px;
+	padding-inline: 8px;
 }
 
 /*--> Right-click Menu <--*/
@@ -1535,7 +1527,6 @@ body:not(.is-mobile)
 	margin-block: 4px;
 	margin-inline-start: 28px;
 }
-
 /* Menu icons */
 .menu-item-icon {
 	color: var(--text-faint);
@@ -1555,7 +1546,6 @@ body:not(.is-mobile)
     color: var(--text-error);
 	filter: opacity(0.5);
 }
-
 /* Menu label (graph mode) */
 .menu-item.is-label {
     color: var(--text-normal);
@@ -1565,7 +1555,6 @@ body:not(.is-mobile)
 	text-indent: -16px;
 	text-align: center;
 }
-
 /* Menu label (graph mode) */
 .menu-item.is-label {
     color: var(--text-normal);
@@ -1578,36 +1567,6 @@ body:not(.is-mobile)
 
 /*--> Settings Modal <--*/
 
-.modal-bg {
-	background-color: var(--background-modifier-cover) !important;
-}
-.modal {
-	background-color: var(--background-secondary);
-	font-weight: var(--font-normal);
-}
-.mod-confirmation .modal {
-	background-color: var(--trans-strong-10);
-}
-.mod-confirmation .modal::before {
-	content: '';
-	position: absolute;
-	backdrop-filter: blur(24px);
-	width: 100%;
-	height: 100%;
-	/* negative margin to counter padding */
-	margin: -16px;
-	z-index: -1;
-}
-.mod-settings::before,
-.modal-sidebar::before {
-	display: none;
-}
-/* .mod-settings,
-.mod-community-modal {
-	--modal-radius: var(--radius-l);
-} */
-
-/* Settings Layout */
 .mod-settings {
 	background-image: var(--background-gradient-menu);
 }
@@ -1656,7 +1615,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 .modal:not(.mod-community-modal) .setting-item-heading {
 	text-indent: 3px;
 }
-.modal:not(.mod-community-modal) {
+.mod-settings,
+.mod-narrow,
+.mod-confirmation {
 	& .setting-item:not(.style-settings-heading) {
 		font-weight: var(--font-normal);
 		background-color: var(--color-base-05);
@@ -1804,30 +1765,6 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 
 /*--> Prompt Modal <--*/
 
-/* Suggestion Item */
-
-.mod-search-suggestion .suggestion {
-	padding-inline: 16px;
-}
-.suggestion-item {
-	color: var(--text-normal);
-	font-weight: var(--font-normal);
-    padding-block: 6px;
-}
-.search-suggest-item.mod-group {
-	color: var(--trans-faint-80);
-	padding-top: 4px;
-	text-transform: lowercase;
-}
-.search-suggest-item.mod-group:not(:first-child) {
-    margin-top: 12px;
-	padding-top: 12px;
-    padding-inline-end: unset;
-    padding-bottom: unset;
-    padding-inline-start: 8px;
-    margin-inline-end: 4px;
-}
-
 .prompt {
 	background-color: transparent;
 	font-weight: var(--font-normal);
@@ -1897,11 +1834,48 @@ input.prompt-input:focus {
     color: var(--text-faint);
 }
 
-/* Popover */
+/*--> Workspaces Modal <--*/
+.list-container.mod-manage-workspaces {
+    padding-inline-start: 8px;
+}
+
+/*--> Popovers <--*/
 .popover {
 	animation: var(--anim-duration-fast) popover var(--anim-motion-swing);
 	background-color: var(--background-secondary);
 	border-radius: var(--radius-xl);
+}
+
+/*--> Suggestion Item <--*/
+
+.modal-container.mod-dim + .suggestion-container {
+	background-color: var(--trans-strong-10);
+	backdrop-filter: blur(24px);
+	border: 1px solid var(--prompt-border-color);
+	border-radius: var(--radius-ml);
+	animation: var(--anim-duration-superfast) popover var(--anim-motion-swing);
+}
+
+.mod-search-suggestion .suggestion {
+	padding-inline: 16px;
+}
+.suggestion-item {
+	color: var(--text-normal);
+	font-weight: var(--font-normal);
+    padding-block: 6px;
+}
+.search-suggest-item.mod-group {
+	color: var(--trans-faint-80);
+	padding-top: 4px;
+	text-transform: lowercase;
+}
+.search-suggest-item.mod-group:not(:first-child) {
+    margin-top: 12px;
+	padding-top: 12px;
+    padding-inline-end: unset;
+    padding-bottom: unset;
+    padding-inline-start: 8px;
+    margin-inline-end: 4px;
 }
 
 /*
@@ -2104,127 +2078,37 @@ body:not(.is-mobile) .obsidian-vertical-tabs-container * {
 	color: var(--text-muted);
 	font-weight: var(--font-medium);
 }
-
 /* Button group */
 .btn-group {
 	border-radius: var(--radius-sm);
-	padding: 1.5px;
+	padding: 2px;
+	margin-top: 8px !important;
 }
 .btn-group:hover {
 	background-color: var(--trans-strong-40);
 }
 .btn-group .control {
 	border-radius: var(--radius-s);
-	padding: 8px;
-	padding-block: 8px 3px;
+	padding: 7.5px 8px 2.5px 8px !important;
+	padding-inline: 8px;
 	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
 }
 .btn-group .control:hover {
 	background-color: var(--nav-item-background-hover);
     opacity: 1 !important;
 }
-
 /* Page title */
 .pomodoro-tasks-wrapper {
 	border: none !important;
 	font-variation-settings: 'opsz' 20;
 }
-.pomodoro-tasks-header-title {	
-	align-items: flex-start !important;
-	flex-direction: column;
-	row-gap: 2px;
-	font-weight: var(--font-medium) !important;
+body .workspace .mod-sidedock .pomodoro-tasks-header .pomodoro-tasks-header-title {	
 	border-radius: var(--radius-sm);
-	box-shadow: var(--input-shadow);
-	padding-block: 12px 10px !important;
-	--background-modifier-active-hover: var(--trans-strong-10);
+	padding-block: 9px 8px;
+	--background-modifier-active-hover: var(--background-modifier-hover);
 }
-.pomodoro-tasks-file-name {
-	text-wrap-mode: wrap !important;
-}
-.pomodoro-tasks-file-name:hover {
-	color: var(--color-accent-1);
-}
-.pomodoro-tasks-pin {
-	display: none;
-}
-
-/* Filter */
-.pomodoro-tasks-toolbar {
-    margin-block: 2px;
-}
-.pomodoro-tasks-filters {
-    display: flex;
-	gap: 2px;
-	justify-content: center;
-}
-.pomodoro-tasks-filter {
-    border-radius: var(--radius-s) !important;
-	color: var(--text-muted) !important;
-	font-weight: var(--font-medium) !important;
-	padding: 4px 7px !important;
-}
-.pomodoro-tasks-filter:hover {
-    background-color: var(--trans-strong-40) !important;
-}
-.pomodoro-tasks-filter.filter-active {
-	background-color: var(--background-modifier-active-hover) !important;
-	color: var(--color-accent-1) !important;
-}
-
-/* Tasks */
-.pomodoro-tasks-text-filter {
-	background-color: var(--trans-strong-40);
-	border-radius: var(--radius-sm);
-    border-top: none !important;
-    padding: 0 !important;
-	margin: 8px 4px;
-	transition: 
-	background-color var(--anim-duration-fast) var(--anim-motion-swing),
-	box-shadow var(--anim-duration-fast) var(--anim-motion-swing);
-}
-.pomodoro-tasks-text-filter input[type="text"] {
-	padding: 16px 12px !important;
-}
-.pomodoro-tasks-text-filter:active,
-.pomodoro-tasks-text-filter:hover,
-.pomodoro-tasks-text-filter:focus-within {
-	background-color: var(--trans-faint-20);
-}
-.pomodoro-tasks-text-filter:focus-within {
-	background-color: var(--trans-faint-20);
-	box-shadow: 0 0 0 2px var(--trans-faint-40);
-}
-.pomodoro-tasks-list {
-	border-top: none !important;
-}
-.pomodoro-tasks-list .pomodoro-tasks-name {
-	color: var(--text-normal);
-	font-weight: var(--font-medium);
-    margin-block: 8px -16px;
-}
-.pomodoro-tasks-name svg {
-	color: var(--icon-color) !important;
-    margin-inline-end: 8px !important;
-}
-.pomodoro-tasks-checked .pomodoro-tasks-name svg {
-	color: var(--text-success) !important;
-}
-
-/*--> Status Bar Organizer <--*/
-
-div.statusbar-organizer-row {
-    background-color: var(--trans-faint-05);
-}
-span.statusbar-organizer-row-preview {
-    background-color: var(--trans-strong-40);
-	height: 28px !important;
-}
-span.statusbar-organizer-row-title {
-    padding-top: 10px !important;
-}
-span.statusbar-organizer-row-handle {
-    padding-top: 2px !important;
+body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-tasks-count {
+	margin-bottom: 2px;
 }
 
 /*--> Style Settings <--*/
@@ -2253,7 +2137,7 @@ span.statusbar-organizer-row-handle {
 	transition: color var(--anim-duration-superfast) var(--anim-motion-swing);
 }
 .style-settings-heading:not(.is-collapsed) .setting-item-name {
-    color: var(--color-base-100);
+    color: var(--text-normal);
 
 }
 
