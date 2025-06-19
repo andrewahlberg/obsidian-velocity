@@ -818,15 +818,15 @@ body .markdown-rendered table thead tr > th {
 	border: none;
 	border-bottom: 2px solid var(--table-header-border-color);
 	font-size: var(--table-header-size);
-	font-weight: 550;
+	font-weight: var(--font-medium);
 	line-height: var(--table-line-height);
 	padding: 4px 12px 6px;
 } 
 body .markdown-rendered table tr td {
 	border: none;
 	border-left: 1px solid var(--table-border-color);
-	padding-inline: 12px;
 	font-weight: var(--font-normal);
+	padding-inline: 12px;
 }
 body .markdown-rendered table tr td:first-child, 
 body .markdown-rendered table tr th:first-child {
@@ -1484,6 +1484,10 @@ body:not(.is-mobile)
 		}
 }
 
+.mod-narrow :is(.modal-header, .modal-header + * > *) {
+    padding-inline-start: 4px;
+}
+
 .mod-settings::before,
 .modal-sidebar::before,
 .modal .modal-close-button,
@@ -1804,16 +1808,11 @@ input.prompt-input:active,
 input.prompt-input:focus,
 input.prompt-input:hover {
     padding: 16px;
-    background-color: var(--trans-strong-30);
+    background-color: var(--trans-strong-20);
 	box-shadow: var(--input-shadow);
     font-size: 18px;
     border-radius: var(--radius-sm);
     border: none;
-	transition: background-color var(--anim-duration-moderate) var(--anim-motion-swing);
-}
-input.prompt-input:active, 
-input.prompt-input:focus {
-    background-color: var(--background-primary);
 }
 
 /* Results */
@@ -1934,13 +1933,13 @@ div.dataview-error-box {
 	user-select: none;
 }
 div.dataview-error-box > p {
-    color: var(--trans-faint-60);
-	font-weight: var(--font-light);
+    color: var(--text-faint);
+	font-weight: 400;
 }
 
 #calendar-container {
-    --color-dot: var(--color-accent-5);
-    --color-arrow: var(--dark-trans);
+    --color-dot: var(--color-accent-1);
+    --color-arrow: var(--icon-color);
     --color-button: var(--text-muted);
     --color-text-today: var(--color-accent);
     --color-text-weeknum: var(--text-muted);
@@ -1950,23 +1949,22 @@ div.dataview-error-box > p {
     border-bottom: 2px solid var(--trans-faint-10);
 }
 #calendar-container th {
-	color: var(--text-muted);
 	border-bottom: 0;
-	user-select: none;
-	cursor: pointer;
+	font-weight: var(--font-semibold);
 	padding: 0 0 16px 0;
+	user-select: none;
 }
 #calendar-container td {
 	border-inline: none;
     width: 12.5%;
 }
 #calendar-container table .day {
-	font-size: 13px;
-	border-radius: 3px;
+	font-size: 0.8125rem;
+	border-radius: var(--radius-s);
 	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
 }
 #calendar-container .day:hover {
-	background-color: var(--glass-trans);
+	background-color: var(--background-modifier-hover);
 }
 #calendar-container .today {
 	font-weight: var(--font-semibold);
@@ -1974,18 +1972,14 @@ div.dataview-error-box > p {
 }
 
 :is(.markdown-preview-view, .markdown-source-view) #calendar-container .nav {
-    padding: var(--size-2-3) 0;
-    margin: var(--size-4-1) 0;
-	margin-top: 0;
+    padding: 6px 1px;
+	margin-block: 0;
 }
-/* #calendar-container h3 {
-	text-indent: -1px;
-} */
 #calendar-container .month,
 #calendar-container .year {
-	color: var(--trans-faint-90);
-	font-size: 0.875em;
+	font-size: 1.25rem;
     font-weight:var(--font-medium);
+	font-variation-settings: 'opsz' 20;
 }
 #calendar-container .nav .reset-button {
 	text-transform: capitalize;
