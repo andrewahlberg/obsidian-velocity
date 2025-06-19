@@ -208,7 +208,7 @@ body {
 	--scrollbar-active-thumb-bg: var(--trans-faint-50);
 
 	/* Search */
-	--search-icon-color: var(--trans-faint-60);
+	--search-icon-color: var(--color-base-50);
 	--search-icon-size: 17px;
 	--search-result-background: var(--trans-strong-30);
 
@@ -286,7 +286,7 @@ body {
 
 	/* Text */
 	--interactive-normal: var(--color-base-00);
-    --interactive-hover: var(--color-base-10);
+    --interactive-hover: var(--background-secondary);
 
 }
 .theme-light {
@@ -386,23 +386,8 @@ body {
 	--background-secondary: var(--color-base-10);
 	/* --background-modifier-box-shadow: rgba(0, 0, 0, 0.1);
 	--background-modifier-cover: rgba(220, 220, 220, 0.4); */
-
-	/* --input-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12),
-		0 2px 3px 0 rgba(0,0,0,.05),
-		0 1px 1.5px 0 rgba(0,0,0,.03),
-		0 1px 2px 0 rgba(0,0,0,.04),
-		0 0 0 0 transparent;
-	--input-shadow-hover: inset 0 0 0 1px rgba(0, 0, 0, 0.17),
-		0 2px 3px 0 rgba(0,0,0,.1),
-		0 1px 1.5px 0 rgba(0,0,0,.03),
-		0 1px 2px 0 rgba(0,0,0,.04),
-		0 0 0 0 transparent; 
-	--shadow-s: 0px 1px 2px rgba(0, 0, 0, 0.028),
-		0px 3.4px 6.7px rgba(0, 0, 0, .042),
-		0px 15px 30px rgba(0, 0, 0, .07);
-	--shadow-l: 0px 1.8px 7.3px rgba(0, 0, 0, 0.071),
-		0px 6.3px 24.7px rgba(0, 0, 0, 0.112),
-		0px 30px 90px rgba(0, 0, 0, 0.2); */
+	
+	--tab-background-active: var(--trans-strong-20);
 	--input-shadow: 
 		0px 0.125px 0px 0.5px var(--color-base-20),
 		inset 0px -0.125px 1px 0px var(--color-base-20),
@@ -418,27 +403,13 @@ body {
 		0px 1.5px 9px 0px var(--trans-faint-10);
 	--shadow-code: 
 		0px 0.125px 0px 0.5px var(--trans-faint-40);
-	--shadow-fab: 
-		0px 0.25px 0px 0.75px var(--color-base-20),
-		inset 0px -0.25px 2px 0px var(--trans-faint-05),
-		0px 2px 8px -2px var(--trans-faint-40);
-	--shadow-fab-active: 
-		0px 0.25px 0px 0.5px var(--text-selection),
-		inset 0px -0.25px 4px -1px var(--text-selection),
-		0px 1.5px 8px -1.5px var(--text-selection);
-	--shadow-header: 
-		0px 4px 12px 0 var(--trans-strong-40),
-		0px 0.375px 1px 0px var(--color-base-20);
 	--shadow-input: 
 		0px 0px 0px 0.5px var(--trans-faint-30);
 	--shadow-input-active: 
-		0 0 0 2px var(--color-accent-4);
+		0 0 0 2.25px var(--color-accent-4);
 	--shadow-search-active:
 		0 0 0 1px var(--color-accent-4), 
-		0 0 0 3.75px var(--text-selection);
-	--shadow-sidebar: 
-		0 0.25px 0 0.75px var(--trans-faint-20),
-		0 1.5px 6px -3px var(--trans-faint-20);
+		0 0 0 3.5px var(--text-selection);
 	--shadow-themes: 
 		0px 6px 12px -2px var(--trans-faint-20);	
 	--shadow-track:
@@ -449,16 +420,34 @@ body {
 		inset 0 6px 12px 0px var(--trans-faint-05);
 	--shadow-toggle-active:
 		inset 0 1.5px 3px 0px var(--trans-faint-50);
+
+	& .mod-root {
 	--shadow-workspace: 
 		0px 0px 0px 1px var(--trans-faint-20),
 		0 0px 3px 0px var(--trans-faint-10),
 		0px 5px 40px -8px var(--color-base-25),
-		0px 6px 8px -4px var(--color-base-20);
-    --shadow-workspace-2: 
+		0px 6px 8px -4px var(--color-base-20);	
+	--shadow-fab: 
+		0px 0.25px 0px 0.75px var(--color-base-20),
+		inset 0px -0.25px 2px 0px var(--trans-faint-05),
+		0px 2px 8px -2px var(--trans-faint-40);
+	--shadow-fab-active: 
+		0px 0.25px 0px 0.5px var(--text-selection),
+		inset 0px -0.25px 4px -1px var(--text-selection),
+		0px 1.5px 8px -1.5px var(--text-selection);
+	}
+	& .modal {
+	--shadow-workspace-2: 
 		0px 4px 12px 0 var(--trans-strong-40),
 		0px 0.25px 1px 0px var(--trans-strong-40);
-	--tab-container-shadow: inset 0 0 2.5px -0.25px var(--color-base-20);
-	--tab-background-active: var(--trans-strong-20);
+	}
+	& .mod-sidedock {
+	--shadow-sidebar: 
+		0 0.25px 0 0.75px var(--trans-faint-20),
+		0 1.5px 6px -3px var(--trans-faint-20);
+	--tab-container-shadow: 
+		inset 0 0 2.5px -0.25px var(--color-base-20);
+	}
 }
 
 /*--> Theme Default Typeface <--*/
@@ -474,7 +463,6 @@ body {
 
 	/* font settings */
 	font-feature-settings: 'ss01';
-	text-rendering: optimizeLegibility;
 }
 
 /*
@@ -507,8 +495,13 @@ body {
 
 /*--> Buttons <--*/
 
-button {
-	height: 28px;
+button,
+button:active {
+	transition: opacity var(--anim-duration-superfast) var(--anim-motion-smooth);
+}
+button:active,
+button:hover:active {
+	opacity: 0.625;
 }
 button.mod-cta {
 	background: var(--hotkey-gradient);
@@ -528,38 +521,22 @@ button.mod-warning:hover {
 
 /*--> Dropdown <--*/
 
-select, .dropdown {
-	height: 28px;
-    /* -webkit-app-region: no-drag;
-    height: var(--input-height);
-    font-size: var(--font-ui-small);
-    font-family: inherit;
-    font-weight: var(--input-font-weight);
-    color: var(--text-normal);
-    line-height: var(--line-height-tight);
-    max-width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    border: 0;
-    box-shadow: var(--input-shadow);
-    border-radius: var(--input-radius);
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: var(--dropdown-background);
-    padding: var(--dropdown-padding);
-    background-repeat: no-repeat, repeat;
-    background-position: var(--dropdown-background-position);
-    background-size: var(--dropdown-background-size);
-    background-blend-mode: hard-light; */
-}
+button:not(.clickable-icon):active,
+:is(button:not(.clickable-icon), select,.dropdown):hover {
+	background-color: var(--background-primary);
+	filter: brightness(0.975);
+} 
+:is(select,.dropdown):focus-within {
+	box-shadow: var(--input-shadow);
+} 
 
 /*--> Inputs <--*/
 
 input {
 	box-shadow: var(--shadow-input);
 	transition-property: background-color, box-shadow, transform;
-	transition-duration: var(--anim-duration-fast);
-	transition-timing-function: var(--anim-motion-swing);
+	transition-duration: var(--anim-duration-superfast);
+	transition-timing-function: var(--anim-motion-smooth);
 }
 body input:focus {
 	box-shadow: var(--shadow-input-active);
@@ -577,7 +554,7 @@ body input[type='search'] {
 	}
 }
 /* Sidebar input */
-.workspace .mod-sidedock input {
+.mod-sidedock input {
 	background-color: var(--search-result-background);
 	box-shadow: var(--shadow-sidebar);
 	&:focus {
@@ -607,11 +584,14 @@ input[type='range']::-webkit-slider-thumb {
 }
 input[type='range']::-webkit-slider-thumb:hover,
 input[type='range']::-webkit-slider-thumb:active,
-body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb,
-body:not(.is-mobile) input[type='range']:focus-visible::-webkit-slider-thumb {
+body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb {
 	border-color: transparent;
 	box-shadow: inset 0 -2px 4px -2px var(--color-base-25),
 	var(--shadow-tab), var(--shadow-s), var(--shadow-l);
+}
+body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover) {
+	box-shadow: inset 0 -2px 4px -2px var(--color-base-25),
+	var(--shadow-tab), var(--shadow-s);
 }
 
 /*--> Toggle <--*/
@@ -1816,6 +1796,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 
 .community-item .flair {
 	padding-inline: 4.5px;
+	--tag-background: var(--color-accent-5);
 }
 /* .community-item .flair.mod-pop {
 	padding-inline: 5px;
