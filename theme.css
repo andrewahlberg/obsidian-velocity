@@ -1521,7 +1521,6 @@ body:not(.disable-status-fade) {
 		font-weight: var(--font-normal);
 		content: 'auto-hide is active';
 		color: var(--text-error);
-		transition: all var(--anim-duration-fast) var(--anim-motion-swing);
 		overflow: visible;
 	}
 	body:not(.disable-autohide) .status-bar::after,
