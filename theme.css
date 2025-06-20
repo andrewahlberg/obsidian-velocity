@@ -5,7 +5,7 @@ settings:
 -
 	id: disableAutoHide
 	title: Disable Auto-hide
-	description: "WIP"
+	description: "Sidebars are automatically hidden when the window is small enough."
 	type: class-toggle
 	markdown: true
 */
@@ -1459,7 +1459,6 @@ body:not(.is-mobile)
 		.mod-right-split,
 		.mod-left-split,
 		.workspace-ribbon,
-		.status-bar,
 		.sidebar-toggle-button.mod-left) {
 		display: none;
 	}
@@ -1481,11 +1480,15 @@ body:not(.is-mobile)
 	} 
 	body:not(.disableAutoHide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container {
 		margin-right: 132px;
-		& .sidebar-toggle-button:hover {
-			cursor: not-allowed;
+		& .sidebar-toggle-button:active {
+			transform: scale(0.9375) translateY(-0.25px);
 		}
 		& .sidebar-toggle-button .clickable-icon {
+			background-color: rgb(from var(--text-error) r g b / 0.1);
+			border-radius: var(--radius-sm);
+			color: var(--text-error);
 			pointer-events: none;
+			transition: all var(--anim-duration-fast) var(--anim-motion-swing);
 		}
 	}
 	body:not(.disableAutoHide) .workspace .workspace-tab-header-container-inner {
@@ -1494,24 +1497,20 @@ body:not(.is-mobile)
 	body:not(.disableAutoHide) .workspace .view-header-title-container {
 		filter: opacity(0.5);
 	}
-	body:not(.disableAutoHide) .workspace::after {
+	body:not(.disableAutoHide) .status-bar::after {
 		position: absolute;
-		padding: 0.4em var(--tag-padding-x) 0.25em;
-		bottom: 6px;
-		right: 12px;
-		content: 'Auto-hide is active.';
-		color: var(--tag-color);
-		background-image: var(--tag-background-image);
-		box-shadow: var(--tag-shadow);
-		border: var(--tag-border-width) solid var(--tag-border-color);
-		border-radius: var(--tag-radius);
-		font-weight: var(--font-medium);
-		font-size: var(--tag-size);
-		transition: filter var(--anim-duration-fast);
-		filter: opacity(0.5);
+		padding: 4px 6px;
+		left: -124px;
+		bottom: 1px;
+		border-radius: var(--radius-s);
+		font-weight: var(--font-normal);
+		content: 'auto-hide is active';
+		color: var(--text-error);
+		transition: all var(--anim-duration-fast) var(--anim-motion-swing);
+		overflow: visible;
 	}
-	body:not(.disableAutoHide):not(.is-focused) .workspace::after {
-		filter: unset;
+	body:not(.disableAutoHide):has(.status-bar:hover) .status-bar::after {
+		background-color: rgb(from var(--text-error) r g b / 0.1);
 	}
 }
 
