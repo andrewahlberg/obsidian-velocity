@@ -1,4 +1,15 @@
-@charset "UTF-8";
+/* @settings
+name: Velocity
+id: obsidian-velocity
+settings:
+-
+	id: disableAutoHide
+	title: Disable Auto-hide
+	description: "WIP"
+	type: class-toggle
+	markdown: true
+*/
+
 /* 
 	Velocity 
 	1.0.0-alpha
@@ -429,6 +440,8 @@ body {
 		0 0px 3px 0px var(--trans-faint-10),
 		0px 5px 40px -8px var(--color-base-25),
 		0px 6px 8px -4px var(--color-base-20);	
+	--shadow-workspace-multi:
+		0 0 0 1px var(--trans-faint-20);	
 	--shadow-fab: 
 		0px 0.25px 0px 0.75px var(--color-base-20),
 		inset 0px -0.25px 2px 0px var(--trans-faint-05),
@@ -527,6 +540,7 @@ button:not(.clickable-icon):active,
 	background-color: var(--background-primary);
 	filter: brightness(0.975);
 } 
+button:focus,
 :is(select,.dropdown):focus-within {
 	box-shadow: var(--input-shadow);
 } 
@@ -860,7 +874,7 @@ body:not(.is-mobile) .mod-root .workspace-tab-container {
     border-radius: var(--radius-m);
 }
 body:not(.is-mobile) .mod-root .workspace-tabs:not(:only-of-type) .workspace-tab-container {
-    box-shadow: 0 0 0 1px var(--trans-faint-20);
+    box-shadow: var(--shadow-workspace-multi);
 }
 body:not(.is-mobile) .workspace:has(.mod-root .workspace-tabs:not(:only-of-type)) {
 	background-image: var(--background-gradient-community);
@@ -975,17 +989,6 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	}
 }
 
-/* FROM: Primary */
-/* .workspace-split.mod-left-split > .workspace-leaf-resize-handle, 
-.workspace-split.mod-right-split > .workspace-leaf-resize-handle {
-    height: calc(100% - 72px);
-    bottom: 16px;	
-}
-.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
-    height: calc(100% - 64px);
-	bottom: 8.5px;	
-} */
-
 /* Remove horizontal handle lines */
 .workspace-leaf-resize-handle {
    --divider-color: transparent;
@@ -1078,15 +1081,6 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 .mod-sidedock .nav-files-container .tree-item-self.nav-folder-title {
 	margin-block: 2px;
 }
-
-/* @media (hover: hover) {
-    body:not(.is-grabbing) .tree-item.nav-file {
-		--nav-item-background-hover: var(--temp-trans);
-    }
-	body:not(.is-grabbing) .tree-item.nav-folder {
-        --nav-item-color-hover: var(--color-base-80);
-    }
-} */
 
 /*--> Workspace Sidebar leaves <--*/
 
@@ -1447,6 +1441,76 @@ body:not(.is-mobile)
 	filter: unset;
 }
 
+/* FROM: Micro Mike */
+/* Sidebar Auto-Hide */
+
+@media only screen and (max-width: 800px) {
+	body:not(.disableAutoHide) .mod-right-split {
+		display: none;
+	}
+	body:not(.disableAutoHide) .mod-left-split {
+		display: none;
+	}
+	body:not(.disableAutoHide) .workspace-ribbon {
+		display: none;
+	}
+	body:not(.disableAutoHide) .status-bar {
+		display: none;
+	}
+	body:not(.disableAutoHide) .workspace {
+		background-image: none !important;
+		--frame-right-space: 0px;
+	}
+	body:not(.disableAutoHide) .workspace-split.mod-vertical {
+		gap: 0 !important;
+		padding: 0;
+	}
+	body:not(.disableAutoHide) .workspace .mod-root {
+		--shadow-workspace: none;
+		--shadow-workspace-multi: none;
+	}
+	body:not(.disableAutoHide) .workspace .mod-root .workspace-tab-container {
+		margin: 0 !important;
+	} 
+	body:not(.disableAutoHide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container {
+		margin-right: 132px;
+		& .sidebar-toggle-button:hover {
+			cursor: not-allowed;
+		}
+		& .sidebar-toggle-button .clickable-icon {
+			pointer-events: none;
+		}
+		& .sidebar-toggle-button.mod-left {
+			display: none;
+		}
+	}
+	body:not(.disableAutoHide) .workspace .workspace-tab-header-container-inner {
+		padding-inline: 8px 12px;
+	}
+	body:not(.disableAutoHide) .workspace .view-header-title-container {
+		filter: opacity(0.5);
+	}
+	body:not(.disableAutoHide) .workspace::after {
+		position: absolute;
+		padding: 2px 6px;
+		bottom: 6px;
+		left: 6px;
+		content: 'Auto-hide is active.';
+		color: var(--tag-color);
+		background-image: var(--tag-background-image);
+		box-shadow: var(--tag-shadow);
+		border: var(--tag-border-width) solid var(--tag-border-color);
+		border-radius: var(--tag-radius);
+		font-weight: var(--font-medium);
+		font-size: var(--tag-size);
+		text-indent: 1px;
+		filter: opacity(0.5);
+	}
+	body:not(.disableAutoHide):not(.is-focused) .workspace::after {
+		filter: unset;
+	}
+}
+
 /*
 =========================== ===========================
 			4 - Modals
@@ -1697,6 +1761,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 }
 
 /* Hotkeys Settings page */
+.hotkey-list-container {
+    overflow: visible;
+}
 .setting-filter-container {
 	font-family: var(--font-monospace);
     margin-top: var(--size-4-2);
@@ -1846,11 +1913,13 @@ input.prompt-input:hover {
 }
 
 /*--> Workspaces Modal <--*/
+
 .list-container.mod-manage-workspaces {
     padding-inline-start: 8px;
 }
 
 /*--> Popovers <--*/
+
 .popover {
 	animation: var(--anim-duration-fast) popover var(--anim-motion-swing);
 	background-color: var(--background-secondary);
@@ -1859,12 +1928,14 @@ input.prompt-input:hover {
 
 /*--> Suggestion Item <--*/
 
+.suggestion-container {
+	animation: var(--anim-duration-superfast) popover var(--anim-motion-swing);
+}
 .modal-container.mod-dim + .suggestion-container {
 	background-color: var(--trans-strong-10);
 	backdrop-filter: blur(24px);
 	border: 1px solid var(--prompt-border-color);
 	border-radius: var(--radius-ml);
-	animation: var(--anim-duration-superfast) popover var(--anim-motion-swing);
 }
 
 .mod-search-suggestion .suggestion {
