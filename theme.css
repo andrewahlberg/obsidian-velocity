@@ -513,8 +513,8 @@ button,
 button:active {
 	transition: opacity var(--anim-duration-superfast) var(--anim-motion-smooth);
 }
-button:active,
-button:hover:active {
+.modal button:active,
+.modal button:hover:active {
 	opacity: 0.625;
 }
 button.mod-cta {
@@ -535,12 +535,12 @@ button.mod-warning:hover {
 
 /*--> Dropdown <--*/
 
-button:not(.clickable-icon):active,
+.modal button:not(.clickable-icon):active,
 :is(button:not(.clickable-icon), select,.dropdown):hover {
 	background-color: var(--background-primary);
 	filter: brightness(0.975);
 } 
-button:focus,
+.modal button:focus,
 :is(select,.dropdown):focus-within {
 	box-shadow: var(--input-shadow);
 } 
@@ -887,6 +887,11 @@ body:not(.is-mobile) .mod-root {
 body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
     transition: all var(--anim-duration-fast);
 }
+
+/* FROM: Cupertino */
+/* By Alexis C */
+
+/* Gap between multiple root tabs  */
 body:not(.is-mobile):not(.is-popout-window) .workspace.is-left-sidedock-open .mod-root .workspace-split.mod-vertical, 
 body:not(.is-mobile):not(.is-popout-window) .workspace.is-left-sidedock-open .mod-root.workspace-split.mod-vertical,
 body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .mod-root .workspace-split.mod-vertical, 
@@ -962,7 +967,10 @@ body:not(.is-mobile) .mod-right-split .workspace-leaf-content {
 	padding-block: 48px 8px;
 }
 
-/* Main Card margins */
+/* FROM: Cupertino */
+/* By Alexis C */
+
+/* Main tab margins */
 body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root>.workspace-tabs:last-of-type .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal:last-of-type>.workspace-tabs .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal>.workspace-split .workspace-tabs:last-of-type .workspace-tab-container {
     margin-right: 8px;
 }
@@ -1442,21 +1450,20 @@ body:not(.is-mobile)
 }
 
 /* FROM: Micro Mike */
-/* Sidebar Auto-Hide */
+/* By ThisTheThe */
+
+/*--> Sidebar Auto-Hide <--*/
 
 @media only screen and (max-width: 800px) {
-	body:not(.disableAutoHide) .mod-right-split {
+	body:not(.disableAutoHide) :is(
+		.mod-right-split,
+		.mod-left-split,
+		.workspace-ribbon,
+		.status-bar,
+		.sidebar-toggle-button.mod-left) {
 		display: none;
 	}
-	body:not(.disableAutoHide) .mod-left-split {
-		display: none;
-	}
-	body:not(.disableAutoHide) .workspace-ribbon {
-		display: none;
-	}
-	body:not(.disableAutoHide) .status-bar {
-		display: none;
-	}
+
 	body:not(.disableAutoHide) .workspace {
 		background-image: none !important;
 		--frame-right-space: 0px;
@@ -1480,9 +1487,6 @@ body:not(.is-mobile)
 		& .sidebar-toggle-button .clickable-icon {
 			pointer-events: none;
 		}
-		& .sidebar-toggle-button.mod-left {
-			display: none;
-		}
 	}
 	body:not(.disableAutoHide) .workspace .workspace-tab-header-container-inner {
 		padding-inline: 8px 12px;
@@ -1492,9 +1496,9 @@ body:not(.is-mobile)
 	}
 	body:not(.disableAutoHide) .workspace::after {
 		position: absolute;
-		padding: 2px 6px;
+		padding: 0.4em var(--tag-padding-x) 0.25em;
 		bottom: 6px;
-		left: 6px;
+		right: 12px;
 		content: 'Auto-hide is active.';
 		color: var(--tag-color);
 		background-image: var(--tag-background-image);
@@ -1503,7 +1507,7 @@ body:not(.is-mobile)
 		border-radius: var(--tag-radius);
 		font-weight: var(--font-medium);
 		font-size: var(--tag-size);
-		text-indent: 1px;
+		transition: filter var(--anim-duration-fast);
 		filter: opacity(0.5);
 	}
 	body:not(.disableAutoHide):not(.is-focused) .workspace::after {
