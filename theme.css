@@ -2,10 +2,21 @@
 name: Velocity
 id: obsidian-velocity
 settings:
+- 	
+	id: disable-features
+	title: Disable theme features
+	type: heading
+	level: 2
 -
-	id: disableAutoHide
-	title: Disable Auto-hide
+	id: disable-autohide
+	title: Disable Auto-Hide
 	description: "Sidebars are automatically hidden when the window is small enough."
+	type: class-toggle
+	markdown: true
+-	
+	id: disable-status-fade
+	title: Disable Status Bar fade
+	description: "Status Bar is discreet and blurred when not hovered."
 	type: class-toggle
 	markdown: true
 */
@@ -234,6 +245,9 @@ body {
 	--slider-thumb-y: -7px;
 
 	/* Status bar */
+	--status-bar-background: var(--trans-strong-00);
+	--status-bar-border-width: 0;
+	--status-bar-radius: var(--radius-sm) 0 0 var(--radius-sm);
 
 	/* Sync */
 
@@ -423,6 +437,9 @@ body {
 	--shadow-search-active:
 		0 0 0 1px var(--color-accent-4), 
 		0 0 0 3.5px var(--text-selection);
+	--shadow-status-bar:
+		inset -6px 0 8px -6px var(--trans-faint-40),
+		-0.25px 1px 1.5px 0.5px var(--trans-faint-40);
 	--shadow-themes: 
 		0px 6px 12px -2px var(--trans-faint-20);	
 	--shadow-track:
@@ -1420,7 +1437,8 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 	--icon-stroke: 2.25px;
 } */
 
-/* Vault Profile */
+/*--> Vault Profile <--*/
+
 body:not(.is-mobile)
 	.workspace-split.mod-left-split
 	.workspace-sidedock-vault-profile {
@@ -1429,24 +1447,22 @@ body:not(.is-mobile)
 	padding-inline: 8px 12px;
 }
 
-/* Status Bar */
+/*--> Status Bar <--*/
+
 .status-bar {
-	background-color: transparent;
-	border: none;
-	border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+	box-shadow: var(--shadow-status-bar);
 	font-weight: var(--font-normal);
 	max-height: 26px;
 	margin-bottom: 9px;
 	padding-inline: 12px;
-	filter: opacity(0.25) blur(0.375px);
-	transition: var(--anim-duration-superfast) ease-in;
+	transition: all var(--anim-duration-superfast) ease-in;
 }
-.status-bar:hover {
-	background-color: var(--trans-strong-00);
-	box-shadow: 
-	inset -6px 0 8px -6px var(--trans-faint-40),
-	-0.25px 1px 1.5px 0.5px var(--trans-faint-40);
-	filter: unset;
+body:not(.disable-status-fade) {
+	& .status-bar:not(:hover) {
+		background-color: transparent;
+		box-shadow: none;
+		filter: opacity(0.25) blur(0.375px);
+	}
 }
 
 /* FROM: Micro Mike */
@@ -1455,7 +1471,7 @@ body:not(.is-mobile)
 /*--> Sidebar Auto-Hide <--*/
 
 @media only screen and (max-width: 800px) {
-	body:not(.disableAutoHide) :is(
+	body:not(.disable-autohide) :is(
 		.mod-right-split,
 		.mod-left-split,
 		.workspace-ribbon,
@@ -1463,41 +1479,40 @@ body:not(.is-mobile)
 		display: none;
 	}
 
-	body:not(.disableAutoHide) .workspace {
+	body:not(.disable-autohide) .workspace {
 		background-image: none !important;
 		--frame-right-space: 0px;
 	}
-	body:not(.disableAutoHide) .workspace-split.mod-vertical {
+	body:not(.disable-autohide) .workspace-split.mod-vertical {
 		gap: 0 !important;
 		padding: 0;
 	}
-	body:not(.disableAutoHide) .workspace .mod-root {
+	body:not(.disable-autohide) .workspace .mod-root {
 		--shadow-workspace: none;
 		--shadow-workspace-multi: none;
 	}
-	body:not(.disableAutoHide) .workspace .mod-root .workspace-tab-container {
+	body:not(.disable-autohide) .workspace .mod-root .workspace-tab-container {
 		margin: 0 !important;
 	} 
-	body:not(.disableAutoHide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container {
+	body:not(.disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container {
 		margin-right: 132px;
-		& .sidebar-toggle-button:active {
-			transform: scale(0.9375) translateY(-0.25px);
+		& .sidebar-toggle-button {
+			pointer-events: none;
 		}
 		& .sidebar-toggle-button .clickable-icon {
 			background-color: rgb(from var(--text-error) r g b / 0.1);
 			border-radius: var(--radius-sm);
 			color: var(--text-error);
-			pointer-events: none;
 			transition: all var(--anim-duration-fast) var(--anim-motion-swing);
 		}
 	}
-	body:not(.disableAutoHide) .workspace .workspace-tab-header-container-inner {
+	body:not(.disable-autohide) .workspace .workspace-tab-header-container-inner {
 		padding-inline: 8px 12px;
 	}
-	body:not(.disableAutoHide) .workspace .view-header-title-container {
+	body:not(.disable-autohide) .workspace .view-header-title-container {
 		filter: opacity(0.5);
 	}
-	body:not(.disableAutoHide) .status-bar::after {
+	body:not(.disable-autohide) .status-bar::after {
 		position: absolute;
 		padding: 4px 6px;
 		left: -124px;
@@ -1509,8 +1524,12 @@ body:not(.is-mobile)
 		transition: all var(--anim-duration-fast) var(--anim-motion-swing);
 		overflow: visible;
 	}
-	body:not(.disableAutoHide):has(.status-bar:hover) .status-bar::after {
+	body:not(.disable-autohide) .status-bar::after,
+	body:not(.disable-autohide):not(.disable-status-fade) .status-bar:hover::after {
 		background-color: rgb(from var(--text-error) r g b / 0.1);
+	}
+	body:not(.disable-autohide):not(.disable-status-fade) .status-bar::after {
+		background-color: transparent;
 	}
 }
 
@@ -1690,10 +1709,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 /* Setting item 'sections' */
 .modal:not(.mod-community-modal) .setting-item {
 	border-top-color: var(--trans-strong-40);
-	text-indent: 2px;
 }
 .modal:not(.mod-community-modal) .setting-item-heading {
-	text-indent: 3px;
+	text-indent: 1px;
 }
 .mod-settings,
 .mod-narrow,
@@ -1704,7 +1722,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 		border-inline: 1px solid var(--color-base-20);
 		box-shadow: var(--shadow-workspace-2);
 		clip-path: inset(0px -24px 0px -24px);
-		padding: 12px 20px;
+		padding: 12px 20px 12px 22px;
 		flex-wrap: wrap;
 		row-gap: 10px;
 		& .setting-item-info {
