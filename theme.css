@@ -339,8 +339,8 @@ body {
 	--color-pink-rgb: 225, 70, 147;
 	--color-pink: rgb(225, 70, 147);
 
-	--color-orange-00: rgb(251, 242, 234);
-	--color-orange-10: rgb(255, 140, 0);
+	--color-orange-00: color-mix(in oklab, var(--color-orange), var(--color-base-00) 88%);
+	--color-orange-10: color-mix(in oklab, var(--color-orange), transparent 50%);
 
 	--color-base-00: #ffffff;
 	--color-base-05: #fbfbfc;
@@ -377,8 +377,9 @@ body {
 	--text-faint: var(--trans-faint-60);
     --text-highlight-bg: var(--color-orange-00);
 	--text-highlight-bg-rgb: var(--color-orange-rgb);
-	--text-highlight-color: var(--color-orange-10);
-	--text-highlight-bg-sidebar: rgb(var(--text-highlight-bg-rgb), 0.15);
+	--text-highlight-color: var(--color-orange);
+	--text-highlight-bg-search: rgb(var(--text-highlight-bg-rgb), 0.15);
+	--text-highlight-bg-search-active: var(--color-orange-10);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
 
 	--link-unresolved-color: color-mix(in oklab, var(--color-accent-4) 75%, var(--text-muted) 25%);
@@ -800,7 +801,7 @@ pre[class*="language-"] code,
 
 /*--> Callouts <--*/
 
-.markdown-source-view.mod-cm6 .cm-content > .cm-callout[contenteditable=false] {
+.markdown-source-view .cm-content > .cm-callout[contenteditable=false] {
 	border-radius: var(--callout-radius);
     contain: none !important;
 	transition: box-shadow var(--anim-duration-fast) var(--anim-motion-swing);
@@ -844,7 +845,7 @@ pre[class*="language-"] code,
 }
 
 .callout-fold {
-	/* margin-left: auto; */
+	margin-left: auto;
 	--icon-stroke: 2.25px;
 }
 
@@ -1200,7 +1201,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	--nav-item-background-hover: var(--color-accent-5);
 }
 .search-result-file-matched-text {
-	background-color: var(--text-highlight-bg-sidebar);
+	background-color: var(--text-highlight-bg-search);
 	padding-inline: 2px;
 	padding-bottom: 1px;
 }
@@ -1445,17 +1446,17 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 		order: 1;
 	}
 }
-
 /* For document search overlaying FAB */
 .view-header:has( + .view-content .document-search-container + .cm-editor) .view-actions .clickable-icon.view-action[aria-label*="editing"],
 .view-header:has( + .view-content .markdown-reading-view > .document-search-container) .view-actions .clickable-icon.view-action[aria-label*="reading"] {
 	box-shadow: none;
 }
 
-/* Document Search */
+/*--> Document Search <--*/
+
 .mod-root .document-search-container {
 	background-color: var(--color-base-10);
-	border-radius: 20px;
+	border-radius: var(--radius-xl);
 	box-shadow: var(--shadow-fab);
 	padding: 4px;
 	position: absolute;
@@ -1463,36 +1464,47 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 	top: 12px;
 	gap: 4px;
 	margin: 4px 8px;
+	--search-icon-color: var(--text-muted);
 }
 .document-search-container :is(.document-search, .document-replace) {
 	background-color: transparent;
 	padding-inline: 1px;
 	gap: 4px;
 }
-/* .document-search-container [aria-label="Exit search"] {
-	order: 1;
-} */
-:is(.document-search-input, .document-replace-input) input {
-    border-radius: 16px;
+:is(.document-search-input, .document-replace) input {
+    border-radius: var(--radius-l);
 }
-/* :is(.document-search-input, .document-replace-input) input:has( + [style="display: none;"]) {
-    max-width: 92px;
+:is(.document-search-input, .document-replace) input:focus {
+	box-shadow: 0 0 0 2.25px var(--text-highlight-bg-search-active);
 }
-:is(.document-search-input, .document-replace-input) input:focus {
-	max-width: initial;
-} */
-/* .document-replace-buttons, .document-search-buttons {
-	gap: 4px;
+.document-replace input {
+	text-indent: 5.5px;
 }
-:is(.document-replace-buttons, .document-search-buttons) > * {
-	background-color: var(--trans-base-00);
-	border-radius: 16px;
-	box-shadow: var(--shadow-code);
-	padding: 4px;
-	width: 20px;
-	height: 20px;
-	--icon-size: 20px;
-	--icon-stroke: 2.25px;
+.document-search-container .clickable-icon {
+	border-radius: var(--radius-m);
+}
+.mod-replace-mode .document-search-close-button {
+	margin-inline-end: 4px;
+}
+.document-replace input::placeholder {
+    text-indent: 5.5px;
+}
+.document-replace-buttons {
+    margin-inline-end: 72px;
+}
+/* Search highlights */
+.markdown-rendered .search-highlight > div,
+.markdown-rendered .search-highlight > div.is-active,
+.cm-s-obsidian span.obsidian-search-match-highlight {
+	background-color: var(--text-highlight-bg-search-active);
+	box-shadow: none;
+	opacity: 1;
+}
+.markdown-rendered .search-highlight > div {
+	background-color: var(--text-highlight-bg-search);
+}
+/* .markdown-rendered .search-highlight > div.is-active {
+	background-color: var(--trans-faint-50);
 } */
 
 /*--> Vault Profile <--*/
