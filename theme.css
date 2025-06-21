@@ -75,7 +75,13 @@ body {
 	--button-radius: var(--radius-s);
 
 	/* Callouts */
-	--callout-blend-mode: normal;
+	--callout-border-opacity: 0.15;
+	--callout-radius: var(--radius-sm);
+	--callout-padding: 16px 16px 8px 16px;
+	--callout-title-padding: 0 0 0 2px;
+
+	/* Callout colors */
+	--callout-warning: var(--color-yellow-rgb);
 
 	/* Canvas */
 
@@ -292,9 +298,8 @@ body {
 	--tag-border-color: hsla(var(--interactive-accent-hsl), 0.1);
 	--tag-border-color-hover: var(--tag-border-color);
 	--tag-border-width: 1px;
-	--tag-padding-x: 0.625em;
+	--tag-padding-x: 0.6875em;
 	--tag-padding-y: 0.3125em;
-	--tag-radius: 0.75em;
 
 	/* Window frame */
 	--titlebar-background: transparent;
@@ -317,25 +322,25 @@ body {
 
 }
 .theme-light {
-	--color-red-rgb: 232, 33, 42;
-	--color-red: #e8212a;
-	--color-orange-rgb: 240, 150, 90;
-	--color-orange: #f0965a;
-	--color-yellow-rgb: 240, 186, 26;
-	--color-yellow: #f0ba1a;
-	--color-green-rgb: 8, 186, 97;
-	--color-green: #08a65e;
-	--color-cyan-rgb: 5, 169, 169;
-	--color-cyan: #05a9a9;
-	--color-blue-rgb: 19, 128, 236;
-	--color-blue: #1380ec;
-	--color-purple-rgb: 120, 82, 238;
-	--color-purple: #7852ee;
-	--color-pink-rgb: 225, 70, 160;
-	--color-pink: #e146a0;
+	--color-red-rgb: 250, 19, 2;
+	--color-red: rgb(250, 19, 2);
+	--color-orange-rgb: 250, 142, 0;
+	--color-orange: rgb(250, 142, 0);
+	--color-yellow-rgb: 232, 182, 0;
+	--color-yellow: rgb(232, 182, 0);
+	--color-green-rgb: 9, 180, 29;
+	--color-green: rgb(9, 180, 29);
+	--color-cyan-rgb: 6, 188, 197;
+	--color-cyan: rgb(6, 188, 197);
+	--color-blue-rgb: 19, 138, 236;
+	--color-blue: rgb(19, 138, 236);
+	--color-purple-rgb: 180, 68, 241;
+	--color-purple: rgb(180, 68, 241);
+	--color-pink-rgb: 225, 70, 147;
+	--color-pink: rgb(225, 70, 147);
 
-	--color-orange-00: #fbf2ea;
-	--color-orange-10: #ff8800;
+	--color-orange-00: rgb(251, 242, 234);
+	--color-orange-10: rgb(255, 140, 0);
 
 	--color-base-00: #ffffff;
 	--color-base-05: #fbfbfc;
@@ -506,7 +511,9 @@ body {
 /* .mod-windows, .mod-linux {
     --frame-right-space: 126px;
 } */
-
+.mod-windows {
+	--callout-blend-mode: normal;
+}
 
 /*--> Animations <--*/
 
@@ -528,10 +535,10 @@ body {
 
 button,
 button:active {
-	transition: opacity var(--anim-duration-superfast) var(--anim-motion-smooth);
+	transition: var(--anim-duration-superfast) var(--anim-motion-smooth);
 }
-.modal button:active,
-.modal button:hover:active {
+button:not(.clickable-icon):active,
+button:not(.clickable-icon):hover:active {
 	opacity: 0.625;
 }
 button.mod-cta {
@@ -552,7 +559,7 @@ button.mod-warning:hover {
 
 /*--> Dropdown <--*/
 
-.modal button:not(.clickable-icon):active,
+button:not(.clickable-icon):active,
 :is(button:not(.clickable-icon), select,.dropdown):hover {
 	background-color: var(--background-primary);
 	filter: brightness(0.975);
@@ -747,7 +754,7 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 	}
 	&:has( + .HyperMD-quote) {
 	border-bottom: none;
-	border-radius: 8px 8px 0 0;	
+	border-radius: var(--radius-sm) var(--radius-sm) 0 0;	
 	padding-bottom: 0;
 	}
 	& + .HyperMD-quote:has( + .HyperMD-quote) {
@@ -757,11 +764,12 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 	}
 	& + .HyperMD-quote {
 	border-top: none;
-	border-radius: 0 0 8px 8px;
+	border-radius: 0 0 var(--radius-sm) var(--radius-sm);
 	padding-top: 0;
 	}
 }
-.el-blockquote blockquote {
+.el-blockquote blockquote,
+.callout-content blockquote {
 	border-radius: var(--radius-sm);
 	box-shadow: var(--shadow-xs);
 	padding-block: 12px;
@@ -788,6 +796,56 @@ pre[class*="language-"] code,
 	--code-radius: var(--radius-sm);
 	border: none;
     box-shadow: var(--shadow-xs);
+}
+
+/*--> Callouts <--*/
+
+.markdown-source-view.mod-cm6 .cm-content > .cm-callout[contenteditable=false] {
+	border-radius: var(--callout-radius);
+    contain: none !important;
+	transition: box-shadow var(--anim-duration-fast) var(--anim-motion-swing);
+	&:hover {
+		box-shadow: 0 0 0 2px var(--trans-faint-50);
+	}
+}
+.callout {
+	background-color: transparent;
+	background-image: radial-gradient(at 20% 20%, 
+	 rgb(var(--callout-color), 0.05),
+	 rgb(var(--callout-color), 0.125));
+	box-shadow: 
+	0 0 0 2px rgb(var(--callout-color), var(--callout-border-opacity));
+	margin-inline: 1px;
+	outline: 1px solid var(--trans-strong-10);
+	--icon-stroke: var(--icon-s-stroke-width);
+}
+.callout.is-collapsible {
+	padding-bottom: 16px;
+}
+.callout .callout {
+	margin-inline: 2px;
+	outline-color: var(--trans-strong-20);
+}
+
+.callout .callout-title:last-child {
+	padding-bottom: 8px;
+}
+.callout .callout-title-inner {
+	padding-inline-start: 2px;
+}
+.callout .callout-content {
+	padding-inline: 4px;
+	margin-bottom: -4px;
+	--blockquote-background-color: var(--trans-strong-10);
+	--code-background: var(--trans-strong-10);
+}
+.callout.is-collapsible .callout-content {
+	margin-bottom: -12px;
+}
+
+.callout-fold {
+	/* margin-left: auto; */
+	--icon-stroke: 2.25px;
 }
 
 /*--> Formatting <--*/
