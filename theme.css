@@ -1970,11 +1970,12 @@ input.prompt-input:active,
 input.prompt-input:focus,
 input.prompt-input:hover {
     padding: 16px;
-    background-color: var(--trans-strong-20);
+    background-color: var(--trans-strong-30);
 	box-shadow: var(--input-shadow);
     font-size: 18px;
     border-radius: var(--radius-sm);
     border: none;
+	backdrop-filter: brightness(1.0625);
 }
 
 /* Results */
@@ -2138,14 +2139,21 @@ div.dataview-error-box > p {
 }
 
 :is(.markdown-preview-view, .markdown-source-view) #calendar-container .nav {
-    padding: 6px 1px;
+    padding: 4px 6px 4px 8px;
 	margin-block: 0;
 }
 #calendar-container .month,
 #calendar-container .year {
+	color: var(--text-normal);
 	font-size: 1.25rem;
-    font-weight:var(--font-medium);
 	font-variation-settings: 'opsz' 20;
+}
+#calendar-container .month {
+    font-weight:var(--font-semibold);
+}
+#calendar-container .year {
+    font-weight:var(--font-normal);
+	margin-inline-start: -2px;
 }
 #calendar-container .nav .reset-button {
 	text-transform: capitalize;
