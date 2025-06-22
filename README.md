@@ -1,32 +1,80 @@
-![poster](https://github.com/user-attachments/assets/b8c1c3fe-0a0e-4df2-b305-cc28d74217a0)
+![poster](./assets/poster.png)
 
 # Velocity
+Velocity is a modern, **kinetic** theme for Obsidian. 
 
-Velocity is a **tactile** theme for Obsidian. 
+It draws heavily from contemporary MacOS design principles, but also the styles of various mid-to-late-2000s **racing games** (hence the name). 
 
-It draws heavily from the latter period of Apple's **Aqua** design language, as well as the interfaces of various 2000s **racing game** titles (hence the name). 
+The theme is still in the middle of ``alpha`` development. It is thus incomplete, lacking a proper dark mode or much customization, and even this ``README`` is subject to change. But I trust that what's there is enough to _inspire you_. After all, I believe that good UI does not merely stand out of the way - but calmly inspires your best work. 
 
-I intend for Velocity to be a <ins>fusion of the best parts of old and new UI design</ins> - a perfect _midpoint_ between the modern, minimalist flat design and the now-dated skeuomorphism of the late 2000s.
+# 1.0.0-alpha 
 
-The theme is still in the middle of ``alpha`` development. It is thus highly incomplete, lacking a dark mode or any customization, and even this ``README`` is subject to change. 
+``1.0.0-alpha`` marks a monumental shift from any previous version of Velocity. It is the product of pressure to adapt to a rapidly evolving UI landscape without abandoning the spirit of nostalgia and human-centric design present in the older iterations.
 
-But I trust that what's there is enough to _inspire you_. Because I believe that truly good UI is not one that merely stands out of the way - but rather, one which calmly inspires you to do your best work. 
+The changes made are so numerous that without the shared design lineage, ``1.0.0-alpha`` might seem like a totally new theme. Listed below are some of the most important additions:
+
+#### Interface
+
+- **Content comes first**
+  In the vein of modern user interfaces, clarity of content is prioritized over all else. The main page sits above the sidebars as a bright, elevated card. 
+- **Kinetic design**
+  Key areas of the interface react on hover or touch, giving the impression of tactility without relying on older skeuomorphic techniques. 
+- **Silent UI**
+  Areas of the interface which are less important have de-emphasized interactions, following the design principles of MacOS. This frees up cognitive load and helps you focus.
+- **Floating action button**
+  The button for switching between writing modes has been replaced with a tactile, responsive and elegant FAB, which lights up in accent color when in editing mode.
+- **Modern modals**
+  All modals, prompts and confirmation views have been thoroughly redesigned in order to look more at home with the interfaces of 2025. Content grouping, soft border edges and consistent styling makes parsing settings a pleasant experience. 
+
+#### Markdown
+
+- **Vibrant colors**
+  Callouts and tag pills have a subtle gradient and glassy feel that is stylish yet unobtrusive. 
+- **Layered design logic**
+  Blockquotes and large code blocks are subtly 'elevated' above the main page to better distinguish them.
+- **Innovative highlights**
+  Highlighted text has de-emphasized backgrounds but vibrant and bold typography, allowing highlights to be clear and modern without being harsh on the eyes.
+
+#### Typography
+
+- **Context-aware letter-spacing**
+  Body text is made tighter in Reading mode to allow for easier parsing of long text, and is loosened in Editing mode to make typing easier.
+- **Optimal contrast**
+  Body text is WCAG compliant while also not too harsh on the eyes. Thick font weights ensure readability on all screens and reduce artifacts caused by excess sharpness. 
+- **Perfectly-aligned headings**
+  Special care has been made to counteract the 'heading drift' of larger headings that is present in core Obsidian. The result is a perfect left-edge for body text.
+
+#### Extra features
+
+- **Sidebar Auto-hide**
+  Sidebars are elegantly hidden away when the window is small enough. This frees up space and prevents the main content from being squeezed and unreadable. Subtle indicators let you know when Auto-hide is active.
+- **Adaptive file margins**
+  Unlike most other themes, Velocity's x-margins respond dynamically to the width of the main panel, increasing and decreasing in size as needed. This means the main content never has too much or too little padding.
+
+#### To maintain a legacy
+
+Despite all the changes, the theme is still distinctly *Velocity*. It is still a theme rooted in the pure expression of modernity, defined by shades of cool steel and vibrant blues. 
+
+Making sure this characteristic 'modern-feeling' remains intact has been the single hardest challenge of the entire project - more daunting than any of the specificity battles, performance scares or bug-hunting sessions I've faced. 
+
+Preserving Velocity's character doesn't just honor the theme's history or the wishes of my past self, but also the expectations and trust of those who have supported the theme since its humble beginnings. Back when Velocity's only goal was to be a theme that makes people feel things.
+
+1.0.0 alpha aims once again to make its users feel. But in addition, to help them achieve focus & clarity thanks to its newly streamlined, minimal design.
 
 # Images 
 
-#### Interface
-![mod-settings-10](https://github.com/user-attachments/assets/b272f3d7-f729-407c-976f-39befc80caba)
-![cmd palette-6](https://github.com/user-attachments/assets/88790201-157b-4908-8ab0-80841fecd99c)
-![menu-3](https://github.com/user-attachments/assets/8b07fbdb-a769-460d-bc0b-db7a90e932d5)
-![mod-rename-2](https://github.com/user-attachments/assets/176f09c9-d6aa-46cf-9aeb-fa7a7c846d21)
-
 #### Editor
-![poster-sample](https://github.com/user-attachments/assets/001b373b-f0aa-4495-bad5-da324afb84e9)
-![editor - text formatting](https://github.com/user-attachments/assets/81cfa21c-ce2e-43c1-8ac3-a8416d52c680)
-![table-2](https://github.com/user-attachments/assets/e2086a83-0fd5-4c64-837d-27f6511b3331)
+![Headings](./assets/headings.png)
+![Callouts](./assets/callouts.png)
+![Multiple tabs](./assets/multiple-tabs.png)
+
+#### Interface
+![Command Palette](./assets/command-palette.png)
+![Bookmark](./assets/bookmark.png)
+![Settings](./assets/settings.png)
+![Graph Controls](./assets/graph-controls.png)
 
 # Installation
-
 Since it is not officially released on the Obsidian store, the only way to get Velocity is by setting up the files yourself and downloading directly from this repo, or by using the **BRAT** plugin in Obsidian and pasting the link to this repo in the plugin settings.
 
 # Background
@@ -35,8 +83,25 @@ Under construction
 
 # Roadmap
 
-Under construction
+Beta is estimated to be ready in **2-3 months**, by version ``1.2`` or ``1.3``. 
+Expect a full release before or during Obsidian October.
 
 # Credits
+
+Under construction
+
+### Themes:
+
+**Sanctum** - the main theme I used in the past and a major influence on Velocity's typography.
+
+**Border, Primary & Mado** - major influences and sources of code for earlier versions of Velocity. Primary in particular informs this theme's approach to never leave any detail untouched.
+
+**Cupertino & Composer** - modern themes which influenced the current iteration of Velocity. 
+
+**Willemstad** - a source of inspiration for the modified community themes page in both old and new versions of Velocity.
+
+**Micro Mike** - its "mini-mode" is the basis for Velocity's Auto-hide feature.
+
+### People:
 
 Under construction
