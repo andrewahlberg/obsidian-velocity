@@ -1,4 +1,4 @@
-![poster](./assets/thumbnail.png)
+![poster](./assets/poster.png)
 
 # Velocity
 Velocity is a modern, **kinetic** theme for Obsidian. 
@@ -63,16 +63,16 @@ Preserving Velocity's character doesn't just honor the theme's history or the wi
 
 # Images 
 
-#### Interface
-![Settings](./assets/mod-settings.png)
-![Command Palette](./assets/cmd-palette.png)
-![Menu](./assets/menu.png)
-![Rename](./assets/rename.png)
-
 #### Editor
-![Poster](./assets/poster.png)
-![Editor - text formatting](./assets/text-formatting.png)
-![Table](./assets/table.png)
+![Headings](./assets/headings.png)
+![Callouts](./assets/callouts.png)
+![Multiple tabs](./assets/multiple-tabs.png)
+
+#### Interface
+![Command Palette](./assets/command-palette.png)
+![Bookmark](./assets/bookmark.png)
+![Settings](./assets/settings.png)
+![Graph Controls](./assets/graph-controls.png)
 
 # Installation
 Since it is not officially released on the Obsidian store, the only way to get Velocity is by setting up the files yourself and downloading directly from this repo, or by using the **BRAT** plugin in Obsidian and pasting the link to this repo in the plugin settings.
