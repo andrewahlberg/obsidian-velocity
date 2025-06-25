@@ -20,7 +20,7 @@ settings:
 	type: class-toggle
 -	
 	id: disable-status-fade
-	title: Disable faded Status Bar 
+	title: Disable Status Bar reveal on hover
 	type: class-toggle
 - 	
 	id: disable-title-h1
@@ -1807,7 +1807,10 @@ body:not(.disable-status-fade) {
 	--scrollbar-active-thumb-bg: var(--trans-faint-40);
 	transform: translate3d(0px, 0px, 0px); 
 }
-
+.mod-settings .vertical-tab-content :is(h1,h2,h3,h4,h5,h6,p) {
+	padding-inline-start: 4px;
+	margin-block: 2ch 1ch;
+}
 /* Settings Sidebar */
 body:not(.is-phone) .vertical-tab-nav-item {
 	color: var(--color-base-80);
@@ -1838,6 +1841,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 .mod-settings,
 .mod-narrow,
 .mod-confirmation {
+	& .vertical-tab-content > span {
+		padding-inline-start: 4px;
+	}
 	& .setting-item:not(.style-settings-heading) {
 		font-weight: var(--font-normal);
 		background-color: var(--color-base-05);
@@ -2302,6 +2308,25 @@ div.dataview-error-box > p {
 }
 .image-convert-modal .settings-container > * {
 	border-radius: var(--radius-sm);
+}
+.image-convert-modal h2 {
+	margin-top: 0;
+}
+
+.modal-header:has( + .process-single-image-modal) {
+	margin: 2px 8px 0;
+}
+.process-single-image-modal {
+	margin-inline: 8px;
+}
+.process-single-image-modal .preview-image-container {
+	background-color: var(--background-primary);
+	border: none !important;
+	border-radius: var(--radius-sm);
+	box-shadow: var(--shadow-themes);
+}
+.process-single-image-modal-buttons .setting-item {
+	padding-bottom: 6px;
 }
 
 /*--> Tabs (plugin) <--*/
