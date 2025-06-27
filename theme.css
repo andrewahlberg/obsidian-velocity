@@ -2,12 +2,29 @@
 name: Velocity
 id: obsidian-velocity
 settings:
-- 	
+-
+	id: file-line-width
+	title: Set readable line width
+	description: Set the readable line width in relative units (rem).
+	type: variable-number-slider
+	default: 43
+	min: 40
+	max: 46
+	step: 0.25
+	format: 'rem'
+-
+	title: Additional settings
+	type: heading
+	level: 1
+	collapsed: true
+-
+	id: static-heading
 	title: Disable theme features
 	type: heading
 	level: 2
+	collapsed: false
 -
-	description: To help streamline your Obsidian experience, Velocity comes with various features **enabled by default.** If you do not need them, they can be disabled here.
+	description: Velocity comes with various features __enabled by default__. If you do not need them, they can be disabled here.
 	type: info-text
 	markdown: true
 - 	
@@ -27,6 +44,16 @@ settings:
 	title: Disable Title-style H1
 	type: class-toggle
 -
+	id: static-heading
+	title: Enable optional features
+	type: heading
+	level: 2
+	collapsed: false
+- 	
+	id: prop-headings
+	title: Enable proportional heading margins
+	description: Decreases the margin sizes of smaller headings.
+	type: class-toggle
 */
 
 /* 
@@ -352,9 +379,9 @@ body {
 	--color-base-50: #a2a4ab; 
 	--color-base-60: #6d6f74;
 	--color-base-20: var(--trans-faint-30);
-	--color-base-80: #3a3a3a; 
-	--color-base-90: #242424; 
-	--color-base-100: #121212; 
+	--color-base-80: #3c3c3c; 
+	--color-base-90: #282828; 
+	--color-base-100: #141414; 
 
 	--trans-strong-00: #fffffff2;
 	--trans-strong-10: #ffffffcd;
@@ -569,7 +596,7 @@ button.mod-warning:hover {
 	background-color: var(--background-primary);
 	filter: brightness(0.97);
 } 
-.modal button:focus,
+.modal button:not(.clickable-icon):focus,
 :is(select,.dropdown):focus-within {
 	box-shadow: var(--input-shadow);
 } 
@@ -683,6 +710,12 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .mod-dim .modal:not(.mod-settings, .prompt)::-webkit-scrollbar-track {
 	margin-block: 12px;
 }
+.modal.mod-community-modal ::-webkit-scrollbar-track {
+	margin-block: 40px 12px;
+}
+.modal-sidebar:has( + .community-modal-details) ::-webkit-scrollbar-track {
+	margin-block: 40px 0;
+}
 .prompt.theme-picker-modal > .prompt-results::-webkit-scrollbar-track {
 	margin-block: 0 8px;
 }
@@ -738,42 +771,57 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 	border-bottom: 2px solid var(--hr-color);
 	padding-bottom: 6px;
 	font-variation-settings: 'opsz' 32;
-	text-indent: -0.0375em;
+	text-indent: -0.03125em;
 }
 .cm-s-obsidian .cm-line:is(.HyperMD-header-2, .HyperMD-header-3), 
 .markdown-rendered :is(h2,h3) {
 	font-variation-settings: 'opsz' 27;
 	text-indent: -0.02em;
-	margin-block-end: 0.875rem;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-3, 
 .markdown-rendered h3 {
 	font-variation-settings: 'opsz' 25;
 	text-indent: -0.015625em;
-	margin-block-end: 0.75rem;
-	--heading-spacing: 2.375rem;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-4,
 .markdown-rendered h4 {
 	font-variation-settings: 'opsz' 21;
-	margin-block-end: 0.6875rem;
-	--heading-spacing: 2.25rem;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-5,
 .markdown-rendered h5 {
 	font-variation-settings: 'opsz' 19;
-	margin-bottom: 0.625rem;
-	--heading-spacing: 2.125rem;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-6, 
 .markdown-rendered h6 {
 	font-variation-settings: 'opsz' 18;
-	margin-block-end: 0.5625rem;
-	--heading-spacing: 2rem;
 }
 
-.markdown-preview-view :is(.el-h2,.el-h3,.el-h4,.el-h5,.el-h6) + * > :is(p,ul) {
-	margin-block-start: 0;
+/*--> Proportional heading spacing <--*/
+
+body.prop-headings {
+	& .markdown-preview-view :is(.el-h2,.el-h3,.el-h4,.el-h5,.el-h6) + * > 
+	  :is(p,ul) {
+		margin-block-start: 0;
+		}
+	& .markdown-rendered h2 {
+		margin-block-end: 0.875rem;
+		}
+	& .markdown-rendered h3 {
+		margin-block-end: 0.75rem;
+		--heading-spacing: 2.375rem;
+		}
+	& .markdown-rendered h4 {
+		margin-block-end: 0.6875rem;
+		--heading-spacing: 2.25rem;
+		}
+	& .markdown-rendered h5 {
+		margin-bottom: 0.625rem;
+		--heading-spacing: 2.125rem;
+		}
+	& .markdown-rendered h6 {
+		margin-block-end: 0.5625rem;
+		--heading-spacing: 2rem;
+		}
 }
 
 .cm-s-obsidian .cm-line.HyperMD-header:first-child {
@@ -1966,17 +2014,77 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 .modal-sidebar {
 	background-image: var(--background-gradient-community);
 	border-radius: 24px;
+	padding-top: 8px;
+}
+.community-modal-empty-state.is-loading::before {
+    top: 12px;
 }
 /* .modal-sidebar {
 	background-image: var(--background-gradient-community);
 } */
 .modal-sidebar:has( + .community-modal-details) {
 	background: none;
+	& .community-modal-controls {
+		display: inline;
+		padding: 6px;
+	}
+	& .community-modal-controls 
+	.setting-item:first-child {
+		position: initial;
+		padding-inline: 0;
+		margin-bottom: 4px;
+	}	
+	& .community-modal-controls 
+	.setting-item.mod-toggle {
+		padding-block: 4px;
+		padding-inline: 2px 8px;
+	}	
+	& .community-modal-search-results {
+		padding: 16px;
+	}
 }
 
+.community-modal-controls {
+	background-color: var(--trans-strong-10);
+	backdrop-filter: blur(24px) brightness(0.75);
+	border: none;
+	border-radius: var(--radius-m); 
+	box-shadow: var(--shadow-workspace-2);
+	padding: 6px 12px;
+	margin: 6px 14px -40px 14px;
+	min-height: 56px;
+	overflow: visible;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: row-reverse;
+	column-gap: 0;
+	z-index: 1;
+}
+.mod-community-modal .community-modal-controls .setting-item:first-child {
+	position: absolute;
+	right: 8px;
+	top: 9.5px;
+    padding: 3px;
+	margin: 0;
+}
+.mod-community-modal .community-modal-controls button.clickable-icon {
+    padding: 6px;
+}
+.community-modal-controls .setting-item.mod-toggle {
+	padding: 12px 16px 12px 0;
+	flex: 0.1625;
+}
+.community-modal-search-summary {
+	display: none;
+}
+
+.community-modal-search-results-wrapper {
+    border-top: none;
+	padding-top: 32px;
+}
 .community-modal-search-results {
     gap: 8px;
-	padding: 16px;
+	padding: 16px 24px;
 }
 .mod-community-theme .community-item {
 	display: grid;
@@ -1986,8 +2094,14 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	box-shadow: var(--shadow-themes);
 	grid-template-columns: 4fr 3fr;
 }
+body:not(.is-phone) .community-item.is-selected, 
+body:not(.is-phone) .community-item.is-selected:hover {
+	border: none;
+    box-shadow: var(--input-shadow);
+	background-color: var(--background-secondary);
+    background-image: var(--hotkey-gradient);
+}
 .mod-community-theme .community-item-name {
-	color: var(--text-normal);
     font-weight: var(--font-semibold);
     line-height: var(--line-height-normal);
 	grid-column: 1/3;
@@ -2461,6 +2575,14 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
     margin-bottom: 0;
     padding-bottom: 6px;
     border-bottom: 1px solid var(--background-modifier-border);
+}
+.style-settings-heading[data-id="static-heading"] {
+    pointer-events: none;
+	padding: 8px 8px 10px 22px;
+}
+.style-settings-heading[data-id="static-heading"] .setting-item-name > span,
+.style-settings-heading[data-id="static-heading"] .setting-item-control {
+    display: none;
 }
 .style-settings-heading:not(.is-collapsed)[data-level="0"] {
     margin-bottom: 4px;
