@@ -596,7 +596,7 @@ button.mod-warning:hover {
 	background-color: var(--background-primary);
 	filter: brightness(0.97);
 } 
-.modal button:focus,
+.modal button:not(.clickable-icon):focus,
 :is(select,.dropdown):focus-within {
 	box-shadow: var(--input-shadow);
 } 
@@ -2016,6 +2016,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	border-radius: 24px;
 	padding-top: 8px;
 }
+.community-modal-empty-state.is-loading::before {
+    top: 12px;
+}
 /* .modal-sidebar {
 	background-image: var(--background-gradient-community);
 } */
@@ -2023,6 +2026,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	background: none;
 	& .community-modal-controls {
 		display: inline;
+		padding: 6px;
 	}
 	& .community-modal-controls 
 	.setting-item:first-child {
@@ -2042,17 +2046,18 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 
 .community-modal-controls {
 	background-color: var(--trans-strong-10);
-	backdrop-filter: blur(16px);
-	border: 1px solid var(--hr-color);
-	border-radius: 14px; 
+	backdrop-filter: blur(24px) brightness(0.75);
+	border: none;
+	border-radius: var(--radius-m); 
 	box-shadow: var(--shadow-workspace-2);
-	padding: 6px 8px;
-	margin: 2px 10px -40px 10px;
+	padding: 6px 12px;
+	margin: 6px 14px -40px 14px;
+	min-height: 56px;
 	overflow: visible;
 	display: flex;
 	justify-content: flex-end;
 	flex-direction: row-reverse;
-	column-gap: 2px;
+	column-gap: 0;
 	z-index: 1;
 }
 .mod-community-modal .community-modal-controls .setting-item:first-child {
@@ -2061,6 +2066,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	top: 9.5px;
     padding: 3px;
 	margin: 0;
+}
+.mod-community-modal .community-modal-controls button.clickable-icon {
+    padding: 6px;
 }
 .community-modal-controls .setting-item.mod-toggle {
 	padding: 12px 16px 12px 0;
@@ -2088,6 +2096,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 }
 body:not(.is-phone) .community-item.is-selected, 
 body:not(.is-phone) .community-item.is-selected:hover {
+	border: none;
     box-shadow: var(--input-shadow);
 	background-color: var(--background-secondary);
     background-image: var(--hotkey-gradient);
