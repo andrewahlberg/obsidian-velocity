@@ -2046,7 +2046,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 
 .community-modal-controls {
 	background-color: var(--trans-strong-10);
-	backdrop-filter: blur(24px) brightness(0.75);
+	backdrop-filter: blur(16px) brightness(0.75);
 	border: none;
 	border-radius: var(--radius-m); 
 	box-shadow: var(--shadow-workspace-2);
