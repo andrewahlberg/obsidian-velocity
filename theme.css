@@ -223,9 +223,9 @@ body {
 	--nav-item-weight: var(--font-normal);
 	--nav-item-weight-active: var(--font-normal);
 	--nav-item-color: var(--color-base-80);
-	--nav-item-color-hover: var(--color-base-100);
-	--nav-item-color-active: var(--color-base-100);
-	--nav-item-color-selected: var(--color-base-100);
+	--nav-item-color-hover: var(--nav-text-color);
+	--nav-item-color-active: var(--nav-text-color);
+	--nav-item-color-selected: var(--nav-text-color);
 	--nav-file-weight: var(--font-semibold);	
 	--collapse-icon-color: var(--trans-faint-60);
 
@@ -290,9 +290,9 @@ body {
 	--tab-font-weight: var(--font-normal);
 	--tab-outline-width: 0;
 	--tab-text-color: var(--text-muted);
-	--tab-text-color-active: var(--color-base-100);
-	--tab-text-color-focused-active-current: var(--color-base-100);
-	--tab-text-color-focused-active: var(--color-base-100);
+	--tab-text-color-active: var(--nav-text-color);
+	--tab-text-color-focused-active-current: var(--nav-text-color);
+	--tab-text-color-focused-active: var(--nav-text-color);
 	--tab-text-color-focused: var(--text-muted);
 	--tab-radius: var(--radius-s);
 
@@ -336,6 +336,7 @@ body {
 	/* Toggles */
 
 	/* Vault profile */
+	--vault-profile-color: var(--color-base-80);
 
 	/* Backgrounds */ 
 	/* MOVE THIS TO LIGHT/DARK */
@@ -451,6 +452,7 @@ body {
 	--background-modifier-cover: rgba(220, 220, 220, 0.4); */
 	
 	--nav-header-bg: var(--trans-strong-40);
+	--nav-text-color: var(--color-base-100);
 
 	--tab-background-active: var(--trans-strong-20);
 	--tab-sidebar-bg: var(--color-base-00);
@@ -555,11 +557,11 @@ body {
 	--color-base-35: #323235;
 	--color-base-40: #38383a;
 	--color-base-50: #666668;
-	--color-base-60: #99999b;
-	--color-base-70: #a4a4a5;
-	--color-base-80: #b6b6b6;
-	--color-base-90: #dadadb;
-	--color-base-100: #fafafb;
+	--color-base-60: #98989d;
+	--color-base-70: #a4a4aa;
+	--color-base-80: #b6b6bb;
+	--color-base-90: #dbdbde;
+	--color-base-100: #fafafd;
 	/* --color-base-00: #ffffff;
 	--color-base-05: #fbfbfc;
 	--color-base-10: #f2f2f4;
@@ -581,7 +583,7 @@ body {
 
 	--trans-faint-00: #00000030;
 	--trans-faint-05: #00000020;
-	--trans-faint-10: #efefff10;
+	--trans-faint-10: #efefff09;
 	--trans-faint-20: #0000000d;
 	--trans-faint-30: #00000016;
 	--trans-faint-40: #0000001d;
@@ -619,8 +621,8 @@ body {
 	--modal-border-color: var(--color-base-35);
 	
 	--background-gradient: radial-gradient( at 50% 52%, 
-		var(--color-base-10) 36%, 
-		var(--color-base-00) 112%
+		var(--color-base-10) 48%, 
+		var(--color-base-00) 104%
 		);
 	--background-gradient-menu: radial-gradient( at 64% 50%, 
 		var(--color-base-05) 20%, 
@@ -657,12 +659,13 @@ body {
 	--background-secondary: var(--color-base-05);
 
 	--nav-header-bg: var(--background-modifier-hover);
+	--nav-text-color: var(--text-normal);
 	
 	--tab-sidebar-bg: var(--color-base-25);
 	--tab-sidebar-bg-top: var(--color-base-20);
 	--tab-sidebar-bg-top-left: var(--color-base-25);
 	--tab-sidebar-container-bg: var(--trans-faint-05);
-	--tab-sidebar-container-bg-left: var(--trans-faint-00);
+	--tab-sidebar-container-bg-left: var(--trans-faint-05);
 
 	--cta-shadow: 0 0.375px 1px var(--color-base-30);
 
@@ -670,7 +673,7 @@ body {
 	--shadow-workspace: 
 		0px 0px 0px 1px var(--color-base-35),
 		0 0px 3px 0px var(--trans-faint-00),
-		0px 5px 40px -8px var(--trans-faint-00),
+		0px 5px 28px -8px var(--trans-faint-00),
 		0px 6px 8px -4px var(--color-base-05);
 	--shadow-workspace-multi:
 		0px 0px 0px 1px var(--color-base-35);
@@ -900,7 +903,12 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 
 /*--> Typography variation settings <--*/
 
-.tag {
+.markdown-source-view,
+.markdown-preview-view {
+	font-feature-settings: 'cv11';
+}
+
+/* .tag {
 	font-variation-settings: 'opsz' 14;
 }
 .mod-sidedock,
@@ -924,7 +932,7 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 }
 .setting-item.setting-item-heading .setting-item-name {
 	font-variation-settings: 'opsz' 15;
-}
+} */
 
 /*
 =========================== ===========================
@@ -944,30 +952,15 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .inline-title {
 	border-bottom: 2px solid var(--hr-color);
 	padding-bottom: 6px;
-	font-variation-settings: 'opsz' 32;
 	text-indent: -0.03125em;
 }
-.cm-s-obsidian .cm-line:is(.HyperMD-header-2, .HyperMD-header-3), 
-.markdown-rendered :is(h2,h3) {
-	font-variation-settings: 'opsz' 27;
+.cm-s-obsidian .cm-line.HyperMD-header-2, 
+.markdown-rendered h2 {
 	text-indent: -0.02em;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-3, 
 .markdown-rendered h3 {
-	font-variation-settings: 'opsz' 25;
 	text-indent: -0.015625em;
-}
-.cm-s-obsidian .cm-line.HyperMD-header-4,
-.markdown-rendered h4 {
-	font-variation-settings: 'opsz' 21;
-}
-.cm-s-obsidian .cm-line.HyperMD-header-5,
-.markdown-rendered h5 {
-	font-variation-settings: 'opsz' 19;
-}
-.cm-s-obsidian .cm-line.HyperMD-header-6, 
-.markdown-rendered h6 {
-	font-variation-settings: 'opsz' 18;
 }
 
 /*--> Proportional heading spacing <--*/
