@@ -54,6 +54,11 @@ settings:
 	title: Enable proportional heading margins
 	description: Decreases the margin sizes of smaller headings.
 	type: class-toggle
+- 	
+	id: mod-macos
+	title: (TEMP DEV ONLY) Debug MacOS
+	description: Force MacOS class.
+	type: class-toggle
 */
 
 /* 
@@ -721,10 +726,20 @@ body {
 =========================== ===========================
 */
 
-/* OS tweaks */
-/* .mod-windows, .mod-linux {
-    --frame-right-space: 126px;
-} */
+/*--> OS Settings <--*/
+
+.mod-windows,
+.mod-linux {
+  	--frame-right-space-override: 132px;
+	--frame-left-space-override: 0;
+}
+.mod-macos {
+	--frame-right-space-override: 36px;
+	--frame-left-space-override: 80px;
+}
+.mod-macos.is-hidden-frameless:not(.is-popout-window) .workspace .workspace-tabs.mod-top-right-space .workspace-tab-header-container {
+  padding-right: 8px;
+}
 .mod-windows {
 	--callout-blend-mode: normal;
 }
@@ -1822,7 +1837,7 @@ body:not(.disable-status-fade) {
 	}
 }
 
-/* FROM: Micro Mike */
+/* ADAPTED FROM: Micro Mike */
 /* By ThisTheThe */
 
 /*--> Sidebar Auto-Hide <--*/
@@ -1839,6 +1854,7 @@ body:not(.disable-status-fade) {
 	body:not(.disable-autohide) .workspace {
 		background-image: none !important;
 		--frame-right-space: 0px;
+		--frame-left-space: 0px;
 	}
 	body:not(.disable-autohide) .workspace-split.mod-vertical {
 		gap: 0 !important;
@@ -1852,7 +1868,7 @@ body:not(.disable-status-fade) {
 		margin: 0 !important;
 	} 
 	body:not(.disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container:has(.sidebar-toggle-button.mod-right)  {
-		margin-right: 132px;
+		margin-right: var(--frame-right-space-override);
 		& .sidebar-toggle-button {
 			pointer-events: none;
 		}
@@ -1862,6 +1878,9 @@ body:not(.disable-status-fade) {
 			color: var(--text-error);
 			transition: all var(--anim-duration-fast) var(--anim-motion-swing);
 		}
+	}
+	body:not(.disable-autohide) .workspace .mod-root .workspace-tabs:first-of-type.mod-top .workspace-tab-header-container {
+		margin-inline: var(--frame-left-space-override) var(--frame-right-space);
 	}
 	body:not(.disable-autohide) .workspace .workspace-tab-header-container-inner {
 		padding-inline: 0px 6px;
