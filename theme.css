@@ -178,6 +178,7 @@ body {
 	--h4-color: var(--text-normal);
 	--h5-color: var(--text-muted);
 	--h6-color: var(--icon-color);
+	--h1-weight-alt: 525;
 	--h1-size: 2.125em;
 	--h2-size: 1.5625em;
 	--h3-size: 1.4375em;
@@ -730,15 +731,33 @@ body {
 
 .mod-windows,
 .mod-linux {
+	/* frame spacing and autohide override */
   	--frame-right-space-override: 132px;
 	--frame-left-space-override: 0;
 }
 .mod-macos {
+	--font-thin: 100;
+	--font-extralight: 200;
+	--font-light: 300;
+	--font-normal: 400;
+	--font-medium: 500;
+	--font-semibold: 600;
+	--font-bold: 700;
+	--font-extrabold: 800;
+	--h1-weight-alt: 500;
+	--h1-weight: 275;
+	--h2-weight: 475;
+	--h3-weight: 500;
+	--h4-weight: 575;
+	--h5-weight: 600;
+	--h6-weight: 600;
+	/* frame spacing and autohide override */
 	--frame-right-space-override: 36px;
 	--frame-left-space-override: 80px;
+	
 }
-.mod-macos.is-hidden-frameless:not(.is-popout-window) .workspace .workspace-tabs.mod-top-right-space .workspace-tab-header-container {
-  padding-right: 8px;
+.mod-macos.is-hidden-frameless .workspace .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container {
+  padding-right: 36px;
 }
 .mod-windows {
 	--callout-blend-mode: normal;
@@ -1023,7 +1042,7 @@ body.prop-headings {
 .disable-title-h1 .cm-line.HyperMD-header-1, 
 .disable-title-h1 .markdown-rendered h1 {
 	font-size: 1.75em;
-	font-weight: 525;
+	font-weight: var(--h1-weight-alt);
 	font-variation-settings: 'opsz' 29;
 	border-bottom: none;
 	padding-bottom: 0;
@@ -1867,6 +1886,9 @@ body:not(.disable-status-fade) {
 	body:not(.disable-autohide) .workspace .mod-root .workspace-tab-container {
 		margin: 0 !important;
 	} 
+	.mod-macos.is-hidden-frameless .workspace .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container {
+  		padding-right: 8px;
+	}
 	body:not(.disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container:has(.sidebar-toggle-button.mod-right)  {
 		margin-right: var(--frame-right-space-override);
 		& .sidebar-toggle-button {
