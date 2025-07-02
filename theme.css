@@ -1970,10 +1970,11 @@ body:not(.disable-status-fade) {
     padding-inline-start: 4px;
 }
 
-.mod-settings::before,
+body:not(.is-mobile) 
+:is(.mod-settings::before,
 .modal-sidebar::before,
 .modal .modal-close-button,
-.prompt .search-input-clear-button {
+.prompt .search-input-clear-button) {
 	display: none;
 }
 
