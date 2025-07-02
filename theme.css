@@ -735,22 +735,6 @@ body {
   	--frame-right-space-override: 132px;
 	--frame-left-space-override: 0;
 }
-body:not(.mod-windows, .mod-linux) {
-	& ::-webkit-scrollbar {
-		width: 6px;
-		height: 6px;
-	}
-	& ::-webkit-scrollbar-thumb {
-		background-color: transparent;
-		border-radius: var(--size-4-1);
-	}
-	& ::-webkit-scrollbar-thumb {
-		background-color: transparent;
-	}
-	& :hover::-webkit-scrollbar-thumb {
-		background-color: var(--background-modifier-hover);
-	}
-}
 .mod-macos,
 body:not(.mod-windows, .mod-linux) {
 	--font-thin: 100;
