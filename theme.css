@@ -735,7 +735,8 @@ body {
   	--frame-right-space-override: 132px;
 	--frame-left-space-override: 0;
 }
-.mod-macos {
+.mod-macos,
+body:not(.mod-windows, .mod-linux) {
 	--font-thin: 100;
 	--font-extralight: 200;
 	--font-light: 300;
@@ -750,7 +751,7 @@ body {
 	--h3-weight: 500;
 	--h4-weight: 575;
 	--h5-weight: 600;
-	--h6-weight: 600;
+	--h6-weight: 550;
 	/* frame spacing and autohide override */
 	--frame-right-space-override: 36px;
 	--frame-left-space-override: 80px;
@@ -758,6 +759,9 @@ body {
 }
 .mod-macos.is-hidden-frameless .workspace .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container {
   padding-right: 36px;
+}
+.mod-macos .lucide-more-vertical {
+  transform: none;
 }
 .mod-windows {
 	--callout-blend-mode: normal;
@@ -2360,7 +2364,7 @@ body:not(.is-phone) .community-item.is-selected:hover {
 /* FROM: Willemstad */
 /* By tingmelvin */
 
-.modal.mod-community-theme .community-item .suggestion-highlight {
+.modal.mod-community-modal .community-item .suggestion-highlight {
 	color: var(--text-highlight-color);
     display: contents;
 }
