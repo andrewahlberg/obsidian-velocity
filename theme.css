@@ -751,7 +751,7 @@ body:not(.mod-windows, .mod-linux) {
 	--h3-weight: 500;
 	--h4-weight: 575;
 	--h5-weight: 600;
-	--h6-weight: 600;
+	--h6-weight: 550;
 	/* frame spacing and autohide override */
 	--frame-right-space-override: 36px;
 	--frame-left-space-override: 80px;
@@ -2364,7 +2364,7 @@ body:not(.is-phone) .community-item.is-selected:hover {
 /* FROM: Willemstad */
 /* By tingmelvin */
 
-.modal.mod-community-theme .community-item .suggestion-highlight {
+.modal.mod-community-modal .community-item .suggestion-highlight {
 	color: var(--text-highlight-color);
     display: contents;
 }
