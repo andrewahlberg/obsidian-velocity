@@ -735,7 +735,8 @@ body {
   	--frame-right-space-override: 132px;
 	--frame-left-space-override: 0;
 }
-.mod-macos {
+.mod-macos,
+:not(.mod-windows, .mod-linux) {
 	--font-thin: 100;
 	--font-extralight: 200;
 	--font-light: 300;
