@@ -54,11 +54,6 @@ settings:
 	title: Enable proportional heading margins
 	description: Decreases the margin sizes of smaller headings.
 	type: class-toggle
-- 	
-	id: mod-macos
-	title: (TEMP DEV ONLY) Debug MacOS
-	description: Force MacOS class.
-	type: class-toggle
 */
 
 /* 
@@ -1405,7 +1400,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 .nav-header {
 	display: flex;
 	justify-content: center;
-	padding-bottom: 0;
+	padding-block: 4px 0;
 	transition: var(--anim-duration-fast) var(--anim-motion-swing);
 }
 .nav-header:has(.nav-buttons-container:hover, .nav-action-button.is-active) {
@@ -1490,6 +1485,10 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /*--> Workspace Sidebar leaves <--*/
 
+.mod-sidedock .workspace-leaf-content {
+	padding-block: 4px;
+}
+
 .workspace-leaf-content .tree-item-self.mod-collapsible {
 	color: var(--nav-folder-color);
 	padding-block: 8px;
@@ -1499,6 +1498,10 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	--nav-item-weight: var(--font-semibold);
 	--nav-item-weight-hover: var(--font-semibold);
 	--nav-item-weight-active: var(--font-semibold);
+}
+
+.mod-right-split .workspace-tabs:last-of-type .workspace-leaf-content {
+	padding-block-end: 40px;
 }
 
 /* Backlinks */
