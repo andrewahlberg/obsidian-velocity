@@ -698,10 +698,16 @@ body {
 		inset 0px -0.25px 4px -1px var(--text-selection),
 		0px 1.5px 8px -1.5px var(--text-selection);
 	}
-
 	& .modal {
 	--shadow-workspace-2: 
 		0px 4px 12px 0 var(--trans-strong-40);
+	}
+	& .mod-sidedock {
+	--shadow-sidebar: 
+		0 0.25px 0 0.75px var(--trans-faint-30),
+		0 1.5px 6px -3px var(--trans-faint-30);
+	--tab-container-shadow: 
+		inset 0 0 2.5px -0.25px var(--color-base-10);
 	}
 }
 
