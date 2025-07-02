@@ -5,5 +5,5 @@
 	"minAppVersion": "1.8.0",
 	"author": "Floodlight",
 	"screenshot": "./assets/thumbnail.png",
-	"modes": ["light","dark"]
+	"modes": ["light", "dark"]
 }
