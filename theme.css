@@ -7,7 +7,7 @@ settings:
 	title: Set readable line width
 	description: Set the readable line width in relative units (rem).
 	type: variable-number-slider
-	default: 43
+	default: 43.5
 	min: 40
 	max: 46
 	step: 0.25
@@ -53,6 +53,11 @@ settings:
 	id: prop-headings
 	title: Enable proportional heading margins
 	description: Decreases the margin sizes of smaller headings.
+	type: class-toggle
+- 	
+	id: mod-macos
+	title: (TEMP DEV ONLY) Debug MacOS
+	description: Force MacOS class.
 	type: class-toggle
 */
 
@@ -138,7 +143,7 @@ body {
 	/* Blocks */
 
 	/* File layout */
-	--file-line-width: 43rem;
+	--file-line-width: 43.5rem;
 	--file-margins: 28px 5%;
 	--file-header-font-weight: var(--font-normal);
 
@@ -173,13 +178,14 @@ body {
 	--h4-color: var(--text-normal);
 	--h5-color: var(--text-muted);
 	--h6-color: var(--icon-color);
+	--h1-weight-alt: 525;
 	--h1-size: 2.125em;
 	--h2-size: 1.5625em;
 	--h3-size: 1.4375em;
 	--h4-size: 1.1875em;
 	--h5-size: 1.0625em;
 	--h6-size: 1em;
-	--h1-weight: 312.5;
+	--h1-weight: 325;
 	--h2-weight: 550;
 	--h3-weight: 575;
 	--h4-weight: 650;
@@ -223,9 +229,9 @@ body {
 	--nav-item-weight: var(--font-normal);
 	--nav-item-weight-active: var(--font-normal);
 	--nav-item-color: var(--color-base-80);
-	--nav-item-color-hover: var(--color-base-100);
-	--nav-item-color-active: var(--color-base-100);
-	--nav-item-color-selected: var(--color-base-100);
+	--nav-item-color-hover: var(--nav-text-color);
+	--nav-item-color-active: var(--nav-text-color);
+	--nav-item-color-selected: var(--nav-text-color);
 	--nav-file-weight: var(--font-semibold);	
 	--collapse-icon-color: var(--trans-faint-60);
 
@@ -290,9 +296,9 @@ body {
 	--tab-font-weight: var(--font-normal);
 	--tab-outline-width: 0;
 	--tab-text-color: var(--text-muted);
-	--tab-text-color-active: var(--color-base-100);
-	--tab-text-color-focused-active-current: var(--color-base-100);
-	--tab-text-color-focused-active: var(--color-base-100);
+	--tab-text-color-active: var(--nav-text-color);
+	--tab-text-color-focused-active-current: var(--nav-text-color);
+	--tab-text-color-focused-active: var(--nav-text-color);
 	--tab-text-color-focused: var(--text-muted);
 	--tab-radius: var(--radius-s);
 
@@ -314,8 +320,6 @@ body {
 	--table-text-weight: var(--font-normal);
 
 	/* Tags */
-	--tag-background-image: 
-	linear-gradient(to top, var(--text-selection) -30%, var(--color-accent-6) 60%);
 	--tag-shadow: 
 	inset 0px -1.4px 0px 0px var(--trans-strong-30);
 	--tag-size: var(--font-smallest);
@@ -336,6 +340,7 @@ body {
 	/* Toggles */
 
 	/* Vault profile */
+	--vault-profile-color: var(--color-base-80);
 
 	/* Backgrounds */ 
 	/* MOVE THIS TO LIGHT/DARK */
@@ -379,8 +384,8 @@ body {
 	--color-base-60: #6d6f74;
 	--color-base-20: var(--trans-faint-30);
 	--color-base-80: #3c3c3c; 
-	--color-base-90: #282828; 
-	--color-base-100: #141414; 
+	--color-base-90: #323232; 
+	--color-base-100: #1c1c1c; 
 
 	--trans-strong-00: #fffffff2;
 	--trans-strong-10: #ffffffcd;
@@ -451,6 +456,8 @@ body {
 	--background-modifier-cover: rgba(220, 220, 220, 0.4); */
 	
 	--nav-header-bg: var(--trans-strong-40);
+	--nav-text-color: var(--color-base-100);
+	--nav-folder-color: var(--color-base-90);
 
 	--tab-background-active: var(--trans-strong-20);
 	--tab-sidebar-bg: var(--color-base-00);
@@ -458,6 +465,8 @@ body {
 	--tab-sidebar-bg-top-left: var(--trans-strong-20);
 	--tab-sidebar-container-bg: var(--trans-faint-05);
 	--tab-sidebar-container-bg-left: var(--trans-faint-05);
+	--tag-background-image: 
+	linear-gradient(to top, var(--text-selection) -30%, var(--color-accent-6) 60%);
 
 	--cta-shadow: 0 1.125px 1px var(--color-base-20);
 	--input-shadow: 
@@ -546,20 +555,20 @@ body {
 	--color-orange-00: color-mix(in oklch, var(--color-orange) 10%, transparent 100%);
 	--color-orange-10: color-mix(in oklch, var(--color-orange), transparent 50%);
 
-	--color-base-00: #1c1c1d;
-	--color-base-05: #212122;
-	--color-base-10: #252526;
-	--color-base-20: #262627;
-	--color-base-25: #2a2a2b;
-	--color-base-30: #2c2c2d;
-	--color-base-35: #323235;
-	--color-base-40: #38383a;
-	--color-base-50: #666668;
-	--color-base-60: #99999b;
-	--color-base-70: #a4a4a5;
-	--color-base-80: #b6b6b6;
-	--color-base-90: #dadadb;
-	--color-base-100: #fafafb;
+	 --color-base-00: oklch(19.50% 0.00375 283);
+	 --color-base-05: oklch(23.10% 0.00375 283);
+	 --color-base-10: oklch(26.50% 0.00375 283);
+	 --color-base-20: oklch(28.25% 0.00375 283);
+	 --color-base-25: oklch(29.50% 0.00375 283);
+	 --color-base-30: oklch(30.50% 0.00375 283);
+	 --color-base-35: oklch(31.50% 0.00375 283);
+	 --color-base-40: oklch(33.50% 0.00375 283);
+	 --color-base-50: oklch(42.00% 0.01000 283);
+	 --color-base-60: oklch(62.00% 0.01000 283);
+	 --color-base-70: oklch(72.00% 0.00500 283);
+	 --color-base-80: oklch(79.50% 0.00250 283);
+	 --color-base-90: oklch(86.00% 0.00250 283);
+    --color-base-100: oklch(93.00% 0.00000 283);
 	/* --color-base-00: #ffffff;
 	--color-base-05: #fbfbfc;
 	--color-base-10: #f2f2f4;
@@ -581,7 +590,7 @@ body {
 
 	--trans-faint-00: #00000030;
 	--trans-faint-05: #00000020;
-	--trans-faint-10: #efefff10;
+	--trans-faint-10: #efefff09;
 	--trans-faint-20: #0000000d;
 	--trans-faint-30: #00000016;
 	--trans-faint-40: #0000001d;
@@ -613,70 +622,81 @@ body {
 	--text-highlight-bg-search: rgb(var(--text-highlight-bg-rgb), 0.15);
 	--text-highlight-bg-search-active: var(--color-orange-10);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15); */
+	--text-highlight-bg: var(--color-orange-00);
+	--text-highlight-bg-rgb: var(--color-orange-rgb);
+	--text-highlight-color: var(--color-orange);
+	--text-highlight-bg-search: rgb(var(--text-highlight-bg-rgb), 0.15);
+	--text-highlight-bg-search-active: var(--color-orange-10);
 
 	/* --link-unresolved-color: oklch(from var(--color-accent) 76% 20% h); */
 
 	--modal-border-color: var(--color-base-35);
 	
 	--background-gradient: radial-gradient( at 50% 52%, 
-		var(--color-base-10) 36%, 
-		var(--color-base-00) 112%
+		var(--background-primary) 40%, 
+		var(--background-secondary) 100%
 		);
 	--background-gradient-menu: radial-gradient( at 64% 50%, 
-		var(--color-base-05) 20%, 
-		var(--color-base-00) 120%
+		var(--color-base-20) 0%, 
+		var(--background-secondary) 125%
 		); 
 	--background-gradient-community: radial-gradient( at 50% 50%, 
-		var(--color-base-10) 40%, 
-		var(--color-base-25) 160%
+		var(--color-base-10) 20%, 
+		var(--color-base-00) 140%
 		); 
 	--background-modifier-border: var(--trans-faint-20);
 	--background-modifier-border-focus: transparent;
-	--background-modifier-cover: color-mix(in oklch, #000000 50%, transparent 100%);
+	--background-modifier-cover: color-mix(in oklch, #000000 75%, transparent 100%);
 	--background-modifier-hover: var(--trans-faint-10);
 
 	--hotkey-gradient: linear-gradient(to top, var(--color-accent) -10%, var(--color-accent-4) 210%);
 	--toggle-gradient: linear-gradient(to bottom, var(--color-accent) -30%, var(--color-accent-4) 180%);
 	--warning-gradient: linear-gradient(to top, var(--color-red) -30%, var(--trans-strong-20) 180%);
 	
-	--color-accent-1: color-mix(in oklab, var(--color-accent) 75%, #fff 25%);
-	--color-accent-2: color-mix(in oklab, var(--color-accent) 65%, #fff 25%);
+	/* --color-accent-1: color-mix(in oklab, var(--color-accent) 75%, #fff 50%); */
+	/* --color-accent-2: color-mix(in oklab, var(--color-accent) 65%, #fff 25%); */
+	--color-accent-1: oklch(from var(--color-accent) 100% 0.2 h / 60%);
+	--color-accent-2: oklch(from var(--color-accent) 100% 0.175 h / 57.5%);
 	--color-accent-3: color-mix(in oklab, var(--color-accent), #fff 15%);
 	--color-accent-4: color-mix(in oklch, var(--color-accent) 50%, transparent 75%);
 	--color-accent-5: color-mix(in oklch, var(--text-selection) 100%, transparent 75%);
 	--color-accent-6: color-mix(in oklch, var(--text-selection) 40%, transparent 100%); 
 
-	--hr-color: var(--trans-faint-10);
+	--hr-color: var(--color-base-40);
 
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
 
 	--link-color-sidebar: var(--color-accent-2);
 
-	--background-primary: var(--color-base-10);
+	--background-primary: var(--color-base-25);
 	--background-secondary: var(--color-base-05);
 
 	--nav-header-bg: var(--background-modifier-hover);
+	--nav-text-color: var(--text-normal);
+	--nav-folder-color: var(--color-base-80);
 	
 	--tab-sidebar-bg: var(--color-base-25);
 	--tab-sidebar-bg-top: var(--color-base-20);
 	--tab-sidebar-bg-top-left: var(--color-base-25);
 	--tab-sidebar-container-bg: var(--trans-faint-05);
-	--tab-sidebar-container-bg-left: var(--trans-faint-00);
+	--tab-sidebar-container-bg-left: var(--trans-faint-05);
+	--tag-background-image: 
+	linear-gradient(to top, var(--text-selection) -50%, var(--color-accent-6) 100%);
 
 	--cta-shadow: 0 0.375px 1px var(--color-base-30);
 
 	& .mod-root {
 	--shadow-workspace: 
-		0px 0px 0px 1px var(--color-base-35),
-		0 0px 3px 0px var(--trans-faint-00),
-		0px 5px 40px -8px var(--trans-faint-00),
-		0px 6px 8px -4px var(--color-base-05);
+		0px 0px 0px 1px var(--color-base-40),
+		0 0px 3px 0px var(--trans-faint-05),
+		0px 5px 32px -8px var(--trans-faint-00),
+		0px 6px 8px -4px var(--trans-faint-05);
 	--shadow-workspace-multi:
-		0px 0px 0px 1px var(--color-base-35);
+		0px 0px 0px 1px var(--color-base-40);
 	--shadow-fab: 
 		0px 0.25px 0px 0.75px var(--color-base-35),
-		inset 0px -0.25px 1px 0px var(--color-base-30),
+		inset 0px -0.25px 1px 0px var(--color-base-40),
 		0px 2px 8px -2px var(--trans-faint-00);
 	--shadow-fab-active: 
 		0px 0.25px 0px 0.5px var(--text-selection),
@@ -707,10 +727,38 @@ body {
 =========================== ===========================
 */
 
-/* OS tweaks */
-/* .mod-windows, .mod-linux {
-    --frame-right-space: 126px;
-} */
+/*--> OS Settings <--*/
+
+.mod-windows,
+.mod-linux {
+	/* frame spacing and autohide override */
+  	--frame-right-space-override: 132px;
+	--frame-left-space-override: 0;
+}
+.mod-macos {
+	--font-thin: 100;
+	--font-extralight: 200;
+	--font-light: 300;
+	--font-normal: 400;
+	--font-medium: 500;
+	--font-semibold: 600;
+	--font-bold: 700;
+	--font-extrabold: 800;
+	--h1-weight-alt: 500;
+	--h1-weight: 275;
+	--h2-weight: 475;
+	--h3-weight: 500;
+	--h4-weight: 575;
+	--h5-weight: 600;
+	--h6-weight: 600;
+	/* frame spacing and autohide override */
+	--frame-right-space-override: 36px;
+	--frame-left-space-override: 80px;
+	
+}
+.mod-macos.is-hidden-frameless .workspace .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container {
+  padding-right: 36px;
+}
 .mod-windows {
 	--callout-blend-mode: normal;
 }
@@ -900,7 +948,12 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 
 /*--> Typography variation settings <--*/
 
-.tag {
+.markdown-source-view,
+.markdown-preview-view {
+	font-feature-settings: 'cv11';
+}
+
+/* .tag {
 	font-variation-settings: 'opsz' 14;
 }
 .mod-sidedock,
@@ -924,7 +977,7 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 }
 .setting-item.setting-item-heading .setting-item-name {
 	font-variation-settings: 'opsz' 15;
-}
+} */
 
 /*
 =========================== ===========================
@@ -944,30 +997,15 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .inline-title {
 	border-bottom: 2px solid var(--hr-color);
 	padding-bottom: 6px;
-	font-variation-settings: 'opsz' 32;
 	text-indent: -0.03125em;
 }
-.cm-s-obsidian .cm-line:is(.HyperMD-header-2, .HyperMD-header-3), 
-.markdown-rendered :is(h2,h3) {
-	font-variation-settings: 'opsz' 27;
+.cm-s-obsidian .cm-line.HyperMD-header-2, 
+.markdown-rendered h2 {
 	text-indent: -0.02em;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-3, 
 .markdown-rendered h3 {
-	font-variation-settings: 'opsz' 25;
 	text-indent: -0.015625em;
-}
-.cm-s-obsidian .cm-line.HyperMD-header-4,
-.markdown-rendered h4 {
-	font-variation-settings: 'opsz' 21;
-}
-.cm-s-obsidian .cm-line.HyperMD-header-5,
-.markdown-rendered h5 {
-	font-variation-settings: 'opsz' 19;
-}
-.cm-s-obsidian .cm-line.HyperMD-header-6, 
-.markdown-rendered h6 {
-	font-variation-settings: 'opsz' 18;
 }
 
 /*--> Proportional heading spacing <--*/
@@ -1003,8 +1041,8 @@ body.prop-headings {
 }
 .disable-title-h1 .cm-line.HyperMD-header-1, 
 .disable-title-h1 .markdown-rendered h1 {
-	font-size: 1.6875em;
-	font-weight: 550;
+	font-size: 1.75em;
+	font-weight: var(--h1-weight-alt);
 	font-variation-settings: 'opsz' 29;
 	border-bottom: none;
 	padding-bottom: 0;
@@ -1072,7 +1110,7 @@ body:not(.disable-callout-styling) .callout {
 	box-shadow: 
 	0 0 0 2px rgb(var(--callout-color), var(--callout-border-opacity));
 	margin-inline: 1px;
-	outline: 1px solid var(--trans-strong-10);
+	outline: 1px solid var(--background-primary);
 	--icon-stroke: var(--icon-s-stroke-width);
 }
 body:not(.disable-callout-styling) .callout.is-collapsible {
@@ -1231,7 +1269,7 @@ body:not(.is-mobile) .mod-root .workspace-tabs:not(:only-of-type) .workspace-tab
 }
 body:not(.is-mobile) .workspace:has(.mod-root .workspace-tabs:not(:only-of-type)) {
 	background-image: var(--background-gradient-community);
-	--file-margins: 32px;
+	--file-margins: 28px 32px;
 }
 body:not(.is-mobile) .mod-root {
 	overflow: visible;
@@ -1449,7 +1487,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 /*--> Workspace Sidebar leaves <--*/
 
 .workspace-leaf-content .tree-item-self.mod-collapsible {
-	color: var(--text-normal);
+	color: var(--nav-folder-color);
 	padding-block: 8px;
 	margin-block: 1px;
 	font-variation-settings: 'opsz' 14;
@@ -1818,7 +1856,7 @@ body:not(.disable-status-fade) {
 	}
 }
 
-/* FROM: Micro Mike */
+/* ADAPTED FROM: Micro Mike */
 /* By ThisTheThe */
 
 /*--> Sidebar Auto-Hide <--*/
@@ -1835,6 +1873,7 @@ body:not(.disable-status-fade) {
 	body:not(.disable-autohide) .workspace {
 		background-image: none !important;
 		--frame-right-space: 0px;
+		--frame-left-space: 0px;
 	}
 	body:not(.disable-autohide) .workspace-split.mod-vertical {
 		gap: 0 !important;
@@ -1847,8 +1886,11 @@ body:not(.disable-status-fade) {
 	body:not(.disable-autohide) .workspace .mod-root .workspace-tab-container {
 		margin: 0 !important;
 	} 
+	.mod-macos.is-hidden-frameless .workspace .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container {
+  		padding-right: 8px;
+	}
 	body:not(.disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container:has(.sidebar-toggle-button.mod-right)  {
-		margin-right: 132px;
+		margin-right: var(--frame-right-space-override);
 		& .sidebar-toggle-button {
 			pointer-events: none;
 		}
@@ -1858,6 +1900,9 @@ body:not(.disable-status-fade) {
 			color: var(--text-error);
 			transition: all var(--anim-duration-fast) var(--anim-motion-swing);
 		}
+	}
+	body:not(.disable-autohide) .workspace .mod-root .workspace-tabs:first-of-type.mod-top .workspace-tab-header-container {
+		margin-inline: var(--frame-left-space-override) var(--frame-right-space);
 	}
 	body:not(.disable-autohide) .workspace .workspace-tab-header-container-inner {
 		padding-inline: 0px 6px;
@@ -1925,10 +1970,11 @@ body:not(.disable-status-fade) {
     padding-inline-start: 4px;
 }
 
-.mod-settings::before,
+body:not(.is-mobile) 
+:is(.mod-settings::before,
 .modal-sidebar::before,
 .modal .modal-close-button,
-.prompt .search-input-clear-button {
+.prompt .search-input-clear-button) {
 	display: none;
 }
 
@@ -2248,7 +2294,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 }
 .community-modal-controls .setting-item.mod-toggle {
 	padding: 12px 16px 12px 0;
-	flex: 0.1625;
+	flex: 0.175;
 }
 .community-modal-search-summary {
 	display: none;
