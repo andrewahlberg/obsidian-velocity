@@ -1268,7 +1268,7 @@ pre[class*="language-"] code,
 .metadata-property input {
 	box-shadow: none;
 }
-.metadata-property-warning-icon {
+.mod-root .metadata-property-warning-icon {
 	background-color: rgba(var(--color-orange-rgb), 0.15);
 	padding: 0.3125em;
 }
@@ -1276,9 +1276,9 @@ pre[class*="language-"] code,
 	background-color: var(--background-primary);
 	box-shadow: var(--input-shadow);
 	height: 2em;
-	margin-block: 0.5em 0.3125em;
-	margin-inline-start: 0.25em;
-	padding-inline: 0.75em;
+	margin-block: 8px;
+	margin-inline-start: 4px;
+	padding-inline: 10px;
 }
 .metadata-add-button .text-button-icon {
 	display: none;
@@ -1292,6 +1292,7 @@ pre[class*="language-"] code,
 		padding: 0.5em 0.625em;
 		transform: none;
 		line-height: 1.5;
+		--background-modifier-border-focus: var(--color-accent-4);
 	}
 	& .metadata-content {
 		margin-top: 6px;
@@ -1303,6 +1304,9 @@ pre[class*="language-"] code,
 	& .metadata-container .metadata-add-button {
 		box-shadow: var(--input-shadow);
 		color: var(--text-on-accent);
+		margin-block: 0.5em 0.3125em;
+		margin-inline-start: 0.25em;
+		padding-inline: 0.75em;
 	}
 }
 /* Multi-select pill (not tags) */
@@ -1344,6 +1348,39 @@ pre[class*="language-"] code,
 }
 .metadata-property[data-property-key="tags"] .multi-select-pill-remove-button:not(:hover) {
 	color: var(--color-accent-4);
+}
+
+/*--> Metadata (sidebars) <--*/
+
+.workspace > .workspace-split:not(.mod-root) .metadata-container {
+	--metadata-input-text-color: var(--text-muted);
+    --metadata-divider-width: 0;
+    --metadata-property-radius: 0;
+	--background-modifier-border-focus: var(--color-accent-4);
+}
+.mod-sidedock .metadata-container {
+	background-color: unset;
+	box-shadow: none;
+}
+.mod-sidedock .metadata-property {
+	flex-direction: column;
+	border-bottom: 1px solid var(--trans-faint-20);
+}
+.mod-sidedock .metadata-property-key {
+	align-items: baseline;
+	width: auto;
+}
+.mod-sidedock .metadata-property-value {
+	padding-inline: 16px 0;
+}
+.mod-sidedock .metadata-property input {
+	background-color: transparent;
+	color: var(--text-normal);
+	font-weight: var(--font-medium);
+	padding: 0 6px;
+}
+.mod-sidedock .multi-select-container {
+	gap: 4px;
 }
 
 /*--> Tables <--*/
