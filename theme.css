@@ -126,6 +126,7 @@ body {
 
 	/* Dividers between panes */
  	--divider-color-hover: var(--color-accent-4);
+	--divider-width: 0;
 
 	/* Dragging */
 
@@ -947,7 +948,8 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 
 /*--> Scrollbar padding <--*/
 
-.mod-root .view-content > * > ::-webkit-scrollbar-track {
+.mod-root .view-content > * > ::-webkit-scrollbar-track,
+.markdown-source-view .cm-scroller::-webkit-scrollbar-track {
 	margin-block: 0 2px;
 }
 .mod-settings .vertical-tab-content::-webkit-scrollbar-track,
@@ -1075,29 +1077,6 @@ body.prop-headings {
 
 /*--> Blockquotes <--*/
 
-.markdown-source-view .cm-line.HyperMD-quote {
-	border: 1px solid var(--trans-faint-20);
-	border-radius: var(--radius-sm);
-	padding-block: 12px;
-	& * {
-	--link-color: var(--color-accent-1);
-	}
-	&:has( + .HyperMD-quote) {
-	border-bottom: none;
-	border-radius: var(--radius-sm) var(--radius-sm) 0 0;	
-	padding-bottom: 0;
-	}
-	& + .HyperMD-quote:has( + .HyperMD-quote) {
-	border-block: none;
-	border-radius: 0;
-	padding-block: 0;
-	}
-	& + .HyperMD-quote {
-	border-top: none;
-	border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-	padding-top: 0;
-	}
-}
 .el-blockquote blockquote,
 .callout-content blockquote {
 	border-radius: var(--radius-sm);
@@ -1425,11 +1404,6 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	}
 }
 
-/* Remove horizontal handle lines */
-.workspace-leaf-resize-handle {
-   --divider-color: transparent;
-}
-
 /*--> Nav Header <--*/
 
 .nav-header {
@@ -1519,6 +1493,14 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 
 /*--> Workspace Sidebar leaves <--*/
+
+.mod-sidedock > :not(.mod-top) .workspace-tab-header-container {
+	border-block: 1px solid transparent;
+	transition: border var(--anim-duration-moderate) ease-in-out;
+	&:hover {
+	border-top-color: var(--trans-faint-20);
+	}
+}
 
 .mod-sidedock .workspace-leaf-content {
 	padding-block: 4px;
@@ -1777,6 +1759,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 		filter: opacity(100%);
 		background-color: var(--background-primary);
 		box-shadow: var(--shadow-fab);
+		cursor: var(--cursor-link);
 		transition-property: transform, filter;
 		transition-duration: var(--anim-duration-superfast);
 		transition-timing-function: var(--anim-motion-smooth);
@@ -1810,9 +1793,9 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 	}
 }
 /* For document search overlaying FAB */
-.view-header:has( + .view-content .document-search-container + .cm-editor) .view-actions .clickable-icon.view-action[aria-label*="editing"],
-.view-header:has( + .view-content .markdown-reading-view > .document-search-container) .view-actions .clickable-icon.view-action[aria-label*="reading"] {
-	box-shadow: none;
+.view-header:has( + .view-content .document-search-container + .cm-editor),
+.view-header:has( + .view-content .markdown-reading-view > .document-search-container) {
+	--shadow-fab: 0;
 }
 
 /*--> Document Search <--*/
@@ -1824,7 +1807,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 	padding: 4px;
 	position: absolute;
 	right: 12px;
-	top: 12px;
+	top: 14px;
 	gap: 4px;
 	margin: 4px 8px;
 	--search-icon-color: var(--text-muted);
