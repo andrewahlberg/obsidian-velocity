@@ -58,7 +58,7 @@ settings:
 
 /* 
 	Velocity 
-	1.0.0-alpha
+	1.0.2-alpha
 	--------
 	by Floodlight
 
@@ -823,7 +823,6 @@ button.mod-cta,
 	text-shadow: var(--cta-shadow);
 }
 button.mod-cta:hover,
-button.mod-warning:hover,
 .mod-root .metadata-add-button:hover {
     background: var(--hotkey-gradient);
 	filter: brightness(1.05);
@@ -831,6 +830,7 @@ button.mod-warning:hover,
 
 button.mod-warning {
     background-image: var(--warning-gradient);
+	filter: brightness(1.05);
 }
 
 /*--> Dropdown <--*/
@@ -1285,8 +1285,6 @@ pre[class*="language-"] code,
 	
 }.mod-root .view-content { 
 	& .metadata-container {
-		display: flex;
-		flex-direction: column;
 		box-shadow: var(--shadow-input);
 		margin-block-end: 1.25rem;
 		padding: 0.5em 0.625em;
@@ -1309,6 +1307,7 @@ pre[class*="language-"] code,
 		padding-inline: 0.75em;
 	}
 }
+
 /* Multi-select pill (not tags) */
 .multi-select-container {
 	gap: 5px;
@@ -1381,6 +1380,10 @@ pre[class*="language-"] code,
 }
 .mod-sidedock .multi-select-container {
 	gap: 4px;
+}
+
+.hide-editor-properties .mod-root .metadata-container {
+	display: none;
 }
 
 /*--> Tables <--*/
