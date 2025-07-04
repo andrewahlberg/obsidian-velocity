@@ -452,7 +452,7 @@ body {
 	
 	--nav-header-bg: var(--trans-strong-40);
 	--nav-text-color: var(--color-base-100);
-	--nav-folder-color: var(--color-base-90);
+	--nav-folder-color: var(--color-base-80);
 
 	--tab-background-active: var(--trans-strong-20);
 	--tab-sidebar-bg: var(--color-base-00);
@@ -1455,19 +1455,20 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /* Folders */
 .nav-files-container .tree-item-self.mod-collapsible {
-	transition: 
-	background-color var(--anim-duration-fast) var(--anim-motion-swing),
-	box-shadow var(--anim-duration-fast) var(--anim-motion-swing);
+	transition: background-color var(--anim-duration-fast) var(--anim-motion-swing);
 }
 .nav-files-container .tree-item:not(.is-collapsed) .tree-item-self.mod-collapsible {
-	background-color: var(--trans-strong-20);
-	box-shadow: var(--input-shadow);
+	color: var(--color-accent);
+	background-color: var(--color-accent-5);
 	--nav-item-background-hover: var(--trans-strong-10);
 	--nav-item-background-active: var(--trans-strong-10);
 }
 .nav-files-container .tree-item-children .tree-item .tree-item-self.mod-collapsible {
-	background-color: var(--trans-faint-10);
-	box-shadow: unset;
+	background-color: var(--color-accent-5);
+	color: var(--nav-folder-color);
+}
+.nav-files-container .tree-item-children :not(.is-collapsed) .tree-item-self.mod-collapsible {
+	color: var(--color-accent);
 }
 .nav-files-container .tree-item-children .tree-item.is-collapsed .tree-item-self.mod-collapsible {
 	background-color: unset;
