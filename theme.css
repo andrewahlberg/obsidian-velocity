@@ -79,7 +79,6 @@ settings:
 /*--> Theme CSS Variables <--*/
 
 body {
-	text-rendering: optimizelegibility;
 	/* Animation timing */
 
 	/* Blockquotes */
@@ -1327,8 +1326,7 @@ body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .m
 /*--> Workspace Layout <--*/
 
 body:not(.is-mobile) .workspace {
-	background-color: var(--background-primary);
-	background-image: var(--background-gradient);
+	background: var(--background-gradient);
 	font-weight: var(--font-weight);
 }
 body:not(.is-mobile) .mod-vertical.mod-root {
@@ -1344,40 +1342,32 @@ body:not(.is-mobile) .mod-vertical.mod-root {
 
 body:not(.is-mobile) .mod-root .workspace-tabs {
 	overflow: visible;
-	contain: style layout;
 }
 
 .mod-windows .titlebar-button.mod-close:hover {
-	background: rgb(var(--color-red-rgb), 0.333);
+	background-color: oklch(from var(--color-red) l c h / 0.333);
     color: var(--color-red);
 }
 
 .workspace-split:is(.mod-left-split,.mod-right-split) > *:not(hr),
-.workspace-split.mod-vertical.mod-root,
-body.is-grabbing .workspace-tab-header-container {
+.workspace-split.mod-vertical.mod-root {
 	background-color: transparent;
 }
 
 /* Sidedock / workspace-split */
-body:not(.is-mobile) .mod-left-split .workspace-leaf-content {
-	padding-inline: 4px;
-}
-body:not(.is-mobile) .mod-right-split .workspace-leaf-content {
+body:not(.is-mobile) :is(.mod-left-split,.mod-right-split) .workspace-leaf-content {
 	padding-inline: 4px;
 }
 
 /* empty sidedock */
 .workspace-sidedock-empty-state {
-	padding-block: 48px 8px;
+	padding-block: var(--header-height);
 }
 
 /* FROM: Cupertino */
 /* By Alexis C */
 
 /* Main tab margins */
-.workspace-tab-container {
-	contain: paint;
-}
 body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root>.workspace-tabs:last-of-type .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal:last-of-type>.workspace-tabs .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal>.workspace-split .workspace-tabs:last-of-type .workspace-tab-container {
     margin-right: 8px;
 }
@@ -1408,39 +1398,49 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 .nav-header {
 	display: flex;
-	justify-content: center;
-	padding-block: 4px 0;
+	flex-direction: column;
+	align-items: center;
+	padding: 4px 4px 0;
+	margin-bottom: -8px;
 	transition: var(--anim-duration-fast) var(--anim-motion-swing);
 }
-.nav-header:has(.nav-buttons-container:hover, .nav-action-button.is-active) {
-    padding-bottom: 12px;
-	margin-bottom: unset;
+:is(.is-left-sidedock-open, .is-right-sidedock-open) .nav-header > .nav-buttons-container:hover {
+	margin-bottom: 16px;
 }
 .nav-buttons-container {
-    scale: 20%;
+	display: flex;
+	transform: scale(25%, 20%) translateY(-60px);
+	width: fit-content;
+	max-width: 100%;
+	padding: 2px;
 	border-radius: 32px;
 	background-color: var(--nav-header-bg);
 	flex-wrap: nowrap;
-	transition: var(--anim-duration-fast) var(--anim-motion-swing);
+	transition: var(--anim-duration-fast) var(--anim-motion-smooth);
 	--background-modifier-active-hover: transparent;
 	--icon-color-active: transparent;
 	--icon-color: transparent;
-	padding: 2px;
+	--text-muted: transparent;
 }
-.nav-buttons-container:hover,
-.nav-buttons-container:has(.nav-action-button.is-active) {
-	scale: 100%;
+.nav-buttons-container:hover {
+	transform: scale(100%);
+	transform: translateY(0px);
     height: initial;
 	border-radius: var(--radius-sm);
 	flex-wrap: nowrap;
 	--background-modifier-active-hover: var(--trans-faint-10);
 	--icon-color-active: var(--color-base-90);
 	--icon-color: unset;
+	--text-muted: unset;
 }
 .nav-action-button {
 	border-radius: var(--radius-s);
 	height: 26px;
 	width: 44px;
+}
+.nav-header > .search-input-container {
+	margin-block: -8px 16px;
+	width: calc(100% - 28px);
 }
 .nav-header + * {
 	padding-top: 0;
@@ -1720,6 +1720,9 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 .view-header-title-container > * {
 	padding-top: 3px;
 }
+.view-header-title {
+	color: var(--text-muted) !important;
+}
 
 /* View header FAB */
 .workspace-leaf-content[data-type="markdown"] {
@@ -1793,10 +1796,12 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 	}
 }
 /* For document search overlaying FAB */
-.view-header:has( + .view-content .document-search-container + .cm-editor),
-.view-header:has( + .view-content .markdown-reading-view > .document-search-container) {
-	--shadow-fab: 0;
-}
+.view-header:has( 
+	+ .view-content .document-search-container + .cm-editor,  
+	+ .view-content .markdown-reading-view > .document-search-container) {
+	--shadow-fab: none;
+	--shadow-fab-active: none;
+	}
 
 /*--> Document Search <--*/
 
