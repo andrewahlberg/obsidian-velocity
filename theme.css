@@ -1217,6 +1217,18 @@ pre[class*="language-"] code,
 	margin-inline-start: 28px;
 }
 
+/*--> Links <--*/
+
+/* FROM: Primary */
+/* By Cecilia May */
+.external-link {
+	background-image: linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(136, 136, 136)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'%3E%3C/line%3E%3Cpolyline points='7 7 17 7 17 17'%3E%3C/polyline%3E%3C/svg%3E");
+	background-size: calc(var(--font-text-size) + .2em), 1em;
+    background-position-x: right;
+    background-position-y: center;
+	padding-inline-end: 0.9375em;
+}
+
 /*--> Tables <--*/
 
 .markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper, 
@@ -1875,7 +1887,7 @@ body:not(.disable-status-fade) {
 /*--> Sidebar Auto-Hide <--*/
 
 @media only screen and (max-width: 800px) {
-	body:not(.disable-autohide) :is(
+	body:not(.is-mobile, .disable-autohide) :is(
 		.mod-right-split,
 		.mod-left-split,
 		.workspace-ribbon,
@@ -1883,47 +1895,47 @@ body:not(.disable-status-fade) {
 		display: none;
 	}
 
-	body:not(.disable-autohide) .workspace {
+	body:not(.is-mobile, .disable-autohide) .workspace {
 		background-image: none !important;
 		--frame-right-space: 0px;
 		--frame-left-space: 0px;
 	}
-	body:not(.disable-autohide) .workspace-split.mod-vertical {
+	body:not(.is-mobile, .disable-autohide) .workspace-split.mod-vertical {
 		gap: 0 !important;
 		padding: 0;
 	}
-	body:not(.disable-autohide) .workspace .mod-root {
+	body:not(.is-mobile, .disable-autohide) .workspace .mod-root {
 		--shadow-workspace: none;
 		--shadow-workspace-multi: none;
 	}
-	body:not(.disable-autohide) .workspace .mod-root .workspace-tab-container {
+	body:not(.is-mobile, .disable-autohide) .workspace .mod-root .workspace-tab-container {
 		margin: 0 !important;
 	} 
 	.mod-macos.is-hidden-frameless .workspace .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container {
   		padding-right: 8px;
 	}
-	body:not(.disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container:has(.sidebar-toggle-button.mod-right)  {
+	body:not(.is-mobile, .disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container:has(.sidebar-toggle-button.mod-right)  {
 		margin-right: var(--frame-right-space-override);
 		& .sidebar-toggle-button {
 			pointer-events: none;
 		}
 		& .sidebar-toggle-button .clickable-icon {
-			background-color: rgb(from var(--text-error) r g b / 0.1);
+			background-color: oklch(from var(--text-error) l c h / 0.1);
 			border-radius: var(--radius-sm);
 			color: var(--text-error);
 			transition: all var(--anim-duration-fast) var(--anim-motion-swing);
 		}
 	}
-	body:not(.disable-autohide) .workspace .mod-root .workspace-tabs:first-of-type.mod-top .workspace-tab-header-container {
+	body:not(.is-mobile, .disable-autohide) .workspace .mod-root .workspace-tabs:first-of-type.mod-top .workspace-tab-header-container {
 		margin-inline: var(--frame-left-space-override) var(--frame-right-space);
 	}
-	body:not(.disable-autohide) .workspace .workspace-tab-header-container-inner {
+	body:not(.is-mobile, .disable-autohide) .workspace .workspace-tab-header-container-inner {
 		padding-inline: 0px 6px;
 	}
-	body:not(.disable-autohide) .workspace .view-header-title-container {
+	body:not(.is-mobile, .disable-autohide) .workspace .view-header-title-container {
 		filter: opacity(0.5);
 	}
-	body:not(.disable-autohide) .status-bar::after {
+	body:not(.is-mobile, .disable-autohide) .status-bar::after {
 		position: absolute;
 		padding: 4px 6px;
 		left: -124px;
@@ -1934,11 +1946,11 @@ body:not(.disable-status-fade) {
 		color: var(--text-error);
 		overflow: visible;
 	}
-	body:not(.disable-autohide) .status-bar::after,
-	body:not(.disable-autohide):not(.disable-status-fade) .status-bar:hover::after {
-		background-color: rgb(from var(--text-error) r g b / 0.1);
+	body:not(.is-mobile, .disable-autohide) .status-bar::after,
+	body:not(.is-mobile, .disable-autohide, .disable-status-fade) .status-bar:hover::after {
+		background-color: oklch(from var(--text-error) l c h / 0.1);
 	}
-	body:not(.disable-autohide):not(.disable-status-fade) .status-bar::after {
+	body:not(.is-mobile, .disable-autohide, .disable-status-fade) .status-bar::after {
 		background-color: transparent;
 	}
 }
@@ -2492,6 +2504,12 @@ input.prompt-input:hover {
     padding-bottom: unset;
     padding-inline-start: 8px;
     margin-inline-end: 4px;
+}
+
+/* MOBILE */
+
+.is-mobile .mobile-navbar {
+	background-color: transparent;
 }
 
 /*
