@@ -823,7 +823,6 @@ button.mod-cta,
 	text-shadow: var(--cta-shadow);
 }
 button.mod-cta:hover,
-button.mod-warning:hover,
 .mod-root .metadata-add-button:hover {
     background: var(--hotkey-gradient);
 	filter: brightness(1.05);
@@ -831,6 +830,7 @@ button.mod-warning:hover,
 
 button.mod-warning {
     background-image: var(--warning-gradient);
+	filter: brightness(1.05);
 }
 
 /*--> Dropdown <--*/
