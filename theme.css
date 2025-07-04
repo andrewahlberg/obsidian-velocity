@@ -1428,7 +1428,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
     height: initial;
 	border-radius: var(--radius-sm);
 	flex-wrap: nowrap;
-	--background-modifier-active-hover: var(--trans-faint-10);
+	--background-modifier-active-hover: var(--dropdown-background);
 	--icon-color-active: var(--color-base-90);
 	--icon-color: unset;
 	--text-muted: unset;
