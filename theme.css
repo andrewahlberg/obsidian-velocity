@@ -2768,14 +2768,14 @@ div.dataview-error-box > p {
 	margin-top: 12px;
 }
 
-#calendar-container .weekend {
+.mod-root #calendar-container .weekend {
 	background-color: var(--trans-faint-05);
 }
 
 #calendar-container th {
 	background-color: var(--background-primary);
 	border-color: var(--trans-faint-40);
-	color: var(--text-normal);
+	color: var(--text-muted);
 	font-weight: 500;
 	letter-spacing: normal;
 	text-align: end;
@@ -2788,8 +2788,8 @@ div.dataview-error-box > p {
 	padding: 0;
     width: 12.5%;
 }
-#calendar-container table .day {
-	color: var(--text-normal);
+#calendar-container .day {
+	color: var(--text-muted);
 	font-weight: 500;
 	font-size: 0.75rem;
 	border-radius: 0;
@@ -2802,7 +2802,7 @@ div.dataview-error-box > p {
 	background-color: var(--table-highlight);
 }
 #calendar-container .today {
-	font-weight: var(--font-semibold);
+	font-weight: var(--font-bold);
 	color: var(--color-text-today);
 }
 #calendar-container .dot-container {
@@ -2811,13 +2811,13 @@ div.dataview-error-box > p {
 	transform: translateY(-0.9rem);
 }
 
-:is(.markdown-preview-view, .markdown-source-view) #calendar-container .nav {
+.mod-root #calendar-container .nav {
     padding: 0 4px;
 	margin-block: 4px 0;
 }
 #calendar-container .month,
 #calendar-container .year {
-	color: var(--text-normal);
+	color: var(--color-base-80);
 	font-size: 1.5rem;
 	font-variation-settings: 'opsz' 25;
 }
@@ -2837,32 +2837,42 @@ div.dataview-error-box > p {
 	scale: 0.875;
 }
 
+/* Sidedock calendar */
+.mod-sidedock #calendar-container .calendar {
+	margin-top: 8px;
+}
 .mod-sidedock #calendar-container {
-	margin-top: -4px;
+	margin-top: -8px;
+	padding-inline: 0 4px;
+}
+.mod-sidedock #calendar-container thead tr {
+	height: 28px;
 }
 .mod-sidedock #calendar-container th {
-	border-bottom: 1px solid var(--trans-strong-40);
-	color: transparent;
-	font-size: 12px;
-	font-weight: var(--font-medium);
-	padding-bottom: 12px;
-	padding-top: 0;
-	transform: translateX(20%);
-}
-.mod-sidedock #calendar-container th:first-letter {
+	background-color: transparent;
+	border-bottom: 1px solid var(--divider-color);
 	color: var(--color-base-50);
+	font-weight: var(--font-extrabold);
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	padding: 0 3.5px;
 }
-.mod-sidedock #calendar-container table .day {
-	color: var(--color-base-70);
-	font-size: 13px;
+.mod-sidedock #calendar-container td {
+	border: none;
 }
-.mod-sidedock #calendar-container table .today {
+.mod-sidedock #calendar-container .day {
+	color: var(--text-muted);
+	font-weight: var(--font-medium);
+	padding-block-end: 14px;
+}
+.mod-sidedock #calendar-container .today {
 	color: var(--color-text-today);
+	font-weight: var(--font-bold);
 }
 
 .mod-sidedock #calendar-container .nav {
-	padding-right: 0;
-	padding-left: 4px;
+	padding-inline: 3px;
+	margin: 8px 0 4px 8px;
 }  
 
 .mod-sidedock #calendar-container :is(.month, .year) {
