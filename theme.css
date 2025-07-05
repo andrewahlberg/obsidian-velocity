@@ -380,15 +380,15 @@ body {
 	--color-base-00: #ffffff;
 	--color-base-05: #fbfbfc;
 	--color-base-10: #f2f2f4;
+	--color-base-20: var(--trans-faint-30);
 	--color-base-25: #dadbdd; 
 	--color-base-30: #d0d0d1; 
 	--color-base-35: #bbbdc0; 
 	--color-base-40: #b2b2b2; 
 	--color-base-50: #a2a4ab; 
 	--color-base-60: #6d6f74;
-	--color-base-20: var(--trans-faint-30);
 	--color-base-80: #3c3c3c; 
-	--color-base-90: #323232; 
+	--color-base-90: #343434; 
 	--color-base-100: #1c1c1c; 
 
 	--trans-strong-00: #fffffff2;
