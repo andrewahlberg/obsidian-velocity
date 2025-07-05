@@ -220,7 +220,7 @@ body {
 	--list-marker-color: var(--text-muted);
 
 	/* File navigator */
-	/* --nav-item-padding: var(--size-2-3) var(--size-4-2) var(--size-2-3) var(--size-4-6); */
+	--nav-indentation-guide-color: var(--hr-color);
     --nav-item-parent-padding: 8px 8px 8px 24px; 
 	--nav-item-weight: var(--font-normal);
 	--nav-item-weight-active: var(--font-normal);
@@ -990,7 +990,7 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .markdown-preview-view {
 	font-feature-settings: 'cv11';
 }
-
+thead,
 .tag,
 .metadata-content,
 #calendar-container {
@@ -1174,9 +1174,9 @@ pre[class*="language-"] code,
 	
 }
 .markdown-rendered pre  {
-	--code-radius: var(--radius-sm);
 	border: none;
     box-shadow: var(--shadow-xs);
+	--code-radius: var(--radius-sm);
 }
 
 /*--> Formatting <--*/
@@ -1641,6 +1641,10 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 		background-color: var(--nav-item-background-hover);
 	}
 }
+.nav-files-container .tree-item-children {
+	border-left-color: transparent;
+	border-image: linear-gradient(to bottom, var(--text-selection) 16px, var(--nav-indentation-guide-color)) 1;
+}
 
 /* Files */
 .tree-item.nav-file {
@@ -1675,9 +1679,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	padding-block: 4px;
 }
 .workspace-leaf-content .tree-item-self.mod-collapsible {
-	color: var(--nav-folder-color);
 	padding-block: 8px;
 	font-variation-settings: 'opsz' 14;
+	--nav-item-color: var(--nav-folder-color);
 	--nav-item-background-selected: var(--color-accent-5);
 	--nav-item-background-hover: var(--trans-faint-05);
 	--nav-item-weight: var(--font-semibold);
