@@ -415,7 +415,7 @@ body {
 	--text-highlight-bg-search-active: var(--color-orange-10);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
 
-	--link-unresolved-color: oklch(from var(--color-accent) 76% 20% h);
+	--link-unresolved-color: oklch(from var(--color-accent) 80% 20% h);
 	
 	--modal-border-color: var(--color-base-40);
 	
@@ -1621,8 +1621,8 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 /*--> Navigation / File Tree <--*/
 
 .tree-item-self {
-	margin-bottom: 0;
-	padding-block: 6.5px 5.5px;
+	margin-block: 1px;
+	padding-block: 7px;
 }
 
 /* Folders */
@@ -1631,21 +1631,14 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 .nav-files-container .tree-item:not(.is-collapsed) .tree-item-self.mod-collapsible {
 	color: var(--color-accent);
-	background-color: var(--color-accent-5);
-	--nav-item-background-hover: var(--trans-strong-10);
-	--nav-item-background-active: var(--trans-strong-10);
-}
-.nav-files-container .tree-item-children .tree-item .tree-item-self.mod-collapsible {
-	background-color: var(--color-accent-5);
-	color: var(--nav-folder-color);
-}
-.nav-files-container .tree-item-children :not(.is-collapsed) .tree-item-self.mod-collapsible {
-	color: var(--color-accent);
+	background-color: var(--nav-item-background-selected);
 }
 .nav-files-container .tree-item-children .tree-item.is-collapsed .tree-item-self.mod-collapsible {
-	background-color: unset;
+	color: var(--nav-folder-color);
+	--nav-item-background-selected: transparent;
+	--nav-item-background-hover: var(--trans-faint-05);
 	&:hover {
-		background-color: var(--trans-faint-05);
+		background-color: var(--nav-item-background-hover);
 	}
 }
 
@@ -1653,10 +1646,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 .tree-item.nav-file {
 	font-weight: var(--nav-item-weight);
 }
-.tree-item-self.nav-file-title {
+/* .tree-item-self.nav-file-title {
 	margin-block: 1px;
-	padding-block: 7px;
-}
+} */
 .tree-item.nav-file .tree-item-self.nav-file-title.is-active {
 	box-shadow: none;
 }
@@ -1667,6 +1659,11 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /*--> Workspace Sidebar leaves <--*/
 
+/* make room for status bar */
+.mod-right-split .workspace-tabs:last-of-type .workspace-leaf-content {
+	padding-block-end: 40px;
+}
+
 .mod-sidedock > :not(.mod-top) .workspace-tab-header-container {
 	border-block: 1px solid transparent;
 	transition: border var(--anim-duration-moderate) ease-in-out;
@@ -1674,31 +1671,21 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	border-top-color: var(--trans-faint-20);
 	}
 }
-
 .mod-sidedock .workspace-leaf-content {
 	padding-block: 4px;
 }
-
 .workspace-leaf-content .tree-item-self.mod-collapsible {
 	color: var(--nav-folder-color);
 	padding-block: 8px;
-	margin-block: 1px;
 	font-variation-settings: 'opsz' 14;
+	--nav-item-background-selected: var(--color-accent-5);
 	--nav-item-background-hover: var(--trans-faint-05);
 	--nav-item-weight: var(--font-semibold);
 	--nav-item-weight-hover: var(--font-semibold);
 	--nav-item-weight-active: var(--font-semibold);
 }
 
-.mod-right-split .workspace-tabs:last-of-type .workspace-leaf-content {
-	padding-block-end: 40px;
-}
-
 /* Backlinks */
-/* :is(.backlink-pane, .outgoing-link-pane) 
-.tree-item-self:is([aria-label="Click to collapse"], [aria-label="Click to expand"]) {
-	--nav-item-background-hover: var(--faint-trans);
-} */
 .backlink-pane .search-result-file-title .tree-item-inner,
 .outgoing-link-pane .tree-item-inner-text {
 	color: var(--link-color-sidebar);
@@ -1708,8 +1695,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
     box-shadow: var(--shadow-sidebar);
 }
 .search-result-file-title {
-	padding-top: 8px;
-	padding-bottom: 6px;
+	padding-block-end: 4px;
 }
 :is(.backlink-pane, .outgoing-link-pane) .search-result-file-title {
 	padding-inline: 24px 7px;
@@ -1717,8 +1703,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 .search-result-file-matched-text {
 	background-color: var(--text-highlight-bg-search);
-	padding-inline: 2px;
-	padding-bottom: 1px;
+	padding: 0 2px 1px;
 }
 .search-result-file-match:hover .search-result-file-matched-text,
 .tree-item-self.is-clickable:hover .search-result-file-matched-text {
@@ -1730,17 +1715,17 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	--nav-item-background-hover: var(--color-accent-5);
 }
 .outgoing-link-pane .tree-item-inner-text {
-	padding-bottom: 2px;
+	padding-block-end: 2px;
 }
 .outgoing-link-pane .outgoing-link-item:hover .tree-item-inner-text {
 	color: var(--color-accent);
 }
 .outgoing-link-item:has(.tree-item-inner .tree-item-inner-subtext) .tree-item-icon {
-	padding-top: 1px;
+	padding-block-start: 1px;
 }
 /* special code for uncreated outgoing links */
 .outgoing-link-item[aria-label="Not created yet"] {
-	--nav-item-background-hover: color-mix(in oklch, var(--link-unresolved-color) 20%, transparent 100%); 
+	--nav-item-background-hover: color-mix(in oklab, var(--link-unresolved-color) 20%, transparent 100%); 
 }
 .outgoing-link-item[aria-label="Not created yet"] .tree-item-inner-text,
 .outgoing-link-item[aria-label="Not created yet"]:hover .tree-item-inner-text {
