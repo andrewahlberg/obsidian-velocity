@@ -220,7 +220,7 @@ body {
 	--list-marker-color: var(--text-muted);
 
 	/* File navigator */
-	/* --nav-item-padding: var(--size-2-3) var(--size-4-2) var(--size-2-3) var(--size-4-6); */
+	--nav-indentation-guide-color: var(--hr-color);
     --nav-item-parent-padding: 8px 8px 8px 24px; 
 	--nav-item-weight: var(--font-normal);
 	--nav-item-weight-active: var(--font-normal);
@@ -415,7 +415,7 @@ body {
 	--text-highlight-bg-search-active: var(--color-orange-10);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
 
-	--link-unresolved-color: oklch(from var(--color-accent) 76% 20% h);
+	--link-unresolved-color: oklch(from var(--color-accent) 80% 20% h);
 	
 	--modal-border-color: var(--color-base-40);
 	
@@ -990,7 +990,7 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .markdown-preview-view {
 	font-feature-settings: 'cv11';
 }
-
+thead,
 .tag,
 .metadata-content,
 #calendar-container {
@@ -1174,9 +1174,9 @@ pre[class*="language-"] code,
 	
 }
 .markdown-rendered pre  {
-	--code-radius: var(--radius-sm);
 	border: none;
     box-shadow: var(--shadow-xs);
+	--code-radius: var(--radius-sm);
 }
 
 /*--> Formatting <--*/
@@ -1273,17 +1273,15 @@ pre[class*="language-"] code,
 	padding: 0.3125em;
 }
 .metadata-container .metadata-add-button {
-	background-color: var(--background-primary);
-	box-shadow: var(--input-shadow);
+	background-color: var(--nav-item-background-active);
+	box-shadow: none;
 	height: 2em;
-	margin-block: 8px;
+	margin-block: 4px;
 	margin-inline-start: 4px;
-	padding-inline: 10px;
+	padding-inline: 6px 10px;
 }
-.metadata-add-button .text-button-icon {
-	display: none;
-	
-}.mod-root .view-content { 
+
+.mod-root .view-content { 
 	& .metadata-container {
 		box-shadow: var(--shadow-input);
 		margin-block-end: 1.25rem;
@@ -1306,12 +1304,20 @@ pre[class*="language-"] code,
 		margin-inline-start: 0.25em;
 		padding-inline: 0.75em;
 	}
+	& .metadata-add-button .text-button-icon {
+	display: none;	
+}
 }
 
 /* Multi-select pill (not tags) */
-.multi-select-container {
-	gap: 5px;
+.metadata-property .metadata-property-value .multi-select-container {
+	gap: 4px;
+	padding-inline-start: 6px;
 }
+.multi-select-input {
+    padding-inline-start: 2px;
+}
+
 .metadata-property:not([data-property-key="tags"]) {
 	--pill-color: var(--icon-color);
     --pill-padding-x: 0.625em 0.375em;
@@ -1363,7 +1369,11 @@ pre[class*="language-"] code,
 }
 .mod-sidedock .metadata-property {
 	flex-direction: column;
-	border-bottom: 1px solid var(--trans-faint-20);
+	border-top: 1px solid var(--divider-color);
+	padding-bottom: 4px;
+}
+.mod-sidedock .metadata-property:first-child {
+	border-top: none;
 }
 .mod-sidedock .metadata-property-key {
 	align-items: baseline;
@@ -1372,14 +1382,14 @@ pre[class*="language-"] code,
 .mod-sidedock .metadata-property-value {
 	padding-inline: 16px 0;
 }
-.mod-sidedock .metadata-property input {
+.mod-sidedock .metadata-property-key input {
 	background-color: transparent;
 	color: var(--text-normal);
 	font-weight: var(--font-medium);
 	padding: 0 6px;
 }
-.mod-sidedock .multi-select-container {
-	gap: 4px;
+.mod-sidedock .metadata-property-value > * {
+	padding: 0 8px;
 }
 
 .hide-editor-properties .mod-root .metadata-container {
@@ -1611,8 +1621,8 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 /*--> Navigation / File Tree <--*/
 
 .tree-item-self {
-	margin-bottom: 0;
-	padding-block: 6.5px 5.5px;
+	margin-block: 1px;
+	padding-block: 7px;
 }
 
 /* Folders */
@@ -1621,32 +1631,28 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 .nav-files-container .tree-item:not(.is-collapsed) .tree-item-self.mod-collapsible {
 	color: var(--color-accent);
-	background-color: var(--color-accent-5);
-	--nav-item-background-hover: var(--trans-strong-10);
-	--nav-item-background-active: var(--trans-strong-10);
-}
-.nav-files-container .tree-item-children .tree-item .tree-item-self.mod-collapsible {
-	background-color: var(--color-accent-5);
-	color: var(--nav-folder-color);
-}
-.nav-files-container .tree-item-children :not(.is-collapsed) .tree-item-self.mod-collapsible {
-	color: var(--color-accent);
+	background-color: var(--nav-item-background-selected);
 }
 .nav-files-container .tree-item-children .tree-item.is-collapsed .tree-item-self.mod-collapsible {
-	background-color: unset;
+	color: var(--nav-folder-color);
+	--nav-item-background-selected: transparent;
+	--nav-item-background-hover: var(--trans-faint-05);
 	&:hover {
-		background-color: var(--trans-faint-05);
+		background-color: var(--nav-item-background-hover);
 	}
+}
+.nav-files-container .tree-item-children {
+	border-left-color: transparent;
+	border-image: linear-gradient(to bottom, var(--text-selection) 16px, var(--nav-indentation-guide-color)) 1;
 }
 
 /* Files */
 .tree-item.nav-file {
 	font-weight: var(--nav-item-weight);
 }
-.tree-item-self.nav-file-title {
+/* .tree-item-self.nav-file-title {
 	margin-block: 1px;
-	padding-block: 7px;
-}
+} */
 .tree-item.nav-file .tree-item-self.nav-file-title.is-active {
 	box-shadow: none;
 }
@@ -1657,6 +1663,11 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /*--> Workspace Sidebar leaves <--*/
 
+/* make room for status bar */
+.mod-right-split .workspace-tabs:last-of-type .workspace-leaf-content {
+	padding-block-end: 40px;
+}
+
 .mod-sidedock > :not(.mod-top) .workspace-tab-header-container {
 	border-block: 1px solid transparent;
 	transition: border var(--anim-duration-moderate) ease-in-out;
@@ -1664,31 +1675,21 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	border-top-color: var(--trans-faint-20);
 	}
 }
-
 .mod-sidedock .workspace-leaf-content {
 	padding-block: 4px;
 }
-
 .workspace-leaf-content .tree-item-self.mod-collapsible {
-	color: var(--nav-folder-color);
 	padding-block: 8px;
-	margin-block: 1px;
 	font-variation-settings: 'opsz' 14;
+	--nav-item-color: var(--nav-folder-color);
+	--nav-item-background-selected: var(--color-accent-5);
 	--nav-item-background-hover: var(--trans-faint-05);
 	--nav-item-weight: var(--font-semibold);
 	--nav-item-weight-hover: var(--font-semibold);
 	--nav-item-weight-active: var(--font-semibold);
 }
 
-.mod-right-split .workspace-tabs:last-of-type .workspace-leaf-content {
-	padding-block-end: 40px;
-}
-
 /* Backlinks */
-/* :is(.backlink-pane, .outgoing-link-pane) 
-.tree-item-self:is([aria-label="Click to collapse"], [aria-label="Click to expand"]) {
-	--nav-item-background-hover: var(--faint-trans);
-} */
 .backlink-pane .search-result-file-title .tree-item-inner,
 .outgoing-link-pane .tree-item-inner-text {
 	color: var(--link-color-sidebar);
@@ -1698,8 +1699,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
     box-shadow: var(--shadow-sidebar);
 }
 .search-result-file-title {
-	padding-top: 8px;
-	padding-bottom: 6px;
+	padding-block-end: 4px;
 }
 :is(.backlink-pane, .outgoing-link-pane) .search-result-file-title {
 	padding-inline: 24px 7px;
@@ -1707,8 +1707,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 .search-result-file-matched-text {
 	background-color: var(--text-highlight-bg-search);
-	padding-inline: 2px;
-	padding-bottom: 1px;
+	padding: 0 2px 1px;
 }
 .search-result-file-match:hover .search-result-file-matched-text,
 .tree-item-self.is-clickable:hover .search-result-file-matched-text {
@@ -1720,17 +1719,17 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	--nav-item-background-hover: var(--color-accent-5);
 }
 .outgoing-link-pane .tree-item-inner-text {
-	padding-bottom: 2px;
+	padding-block-end: 2px;
 }
 .outgoing-link-pane .outgoing-link-item:hover .tree-item-inner-text {
 	color: var(--color-accent);
 }
 .outgoing-link-item:has(.tree-item-inner .tree-item-inner-subtext) .tree-item-icon {
-	padding-top: 1px;
+	padding-block-start: 1px;
 }
 /* special code for uncreated outgoing links */
 .outgoing-link-item[aria-label="Not created yet"] {
-	--nav-item-background-hover: color-mix(in oklch, var(--link-unresolved-color) 20%, transparent 100%); 
+	--nav-item-background-hover: color-mix(in oklab, var(--link-unresolved-color) 20%, transparent 100%); 
 }
 .outgoing-link-item[aria-label="Not created yet"] .tree-item-inner-text,
 .outgoing-link-item[aria-label="Not created yet"]:hover .tree-item-inner-text {
@@ -2758,14 +2757,14 @@ div.dataview-error-box > p {
 	margin-top: 12px;
 }
 
-#calendar-container .weekend {
+.mod-root #calendar-container .weekend {
 	background-color: var(--trans-faint-05);
 }
 
 #calendar-container th {
 	background-color: var(--background-primary);
 	border-color: var(--trans-faint-40);
-	color: var(--text-normal);
+	color: var(--text-muted);
 	font-weight: 500;
 	letter-spacing: normal;
 	text-align: end;
@@ -2778,8 +2777,8 @@ div.dataview-error-box > p {
 	padding: 0;
     width: 12.5%;
 }
-#calendar-container table .day {
-	color: var(--text-normal);
+#calendar-container .day {
+	color: var(--text-muted);
 	font-weight: 500;
 	font-size: 0.75rem;
 	border-radius: 0;
@@ -2792,7 +2791,7 @@ div.dataview-error-box > p {
 	background-color: var(--table-highlight);
 }
 #calendar-container .today {
-	font-weight: var(--font-semibold);
+	font-weight: var(--font-bold);
 	color: var(--color-text-today);
 }
 #calendar-container .dot-container {
@@ -2801,13 +2800,13 @@ div.dataview-error-box > p {
 	transform: translateY(-0.9rem);
 }
 
-:is(.markdown-preview-view, .markdown-source-view) #calendar-container .nav {
+.mod-root #calendar-container .nav {
     padding: 0 4px;
 	margin-block: 4px 0;
 }
 #calendar-container .month,
 #calendar-container .year {
-	color: var(--text-normal);
+	color: var(--color-base-80);
 	font-size: 1.5rem;
 	font-variation-settings: 'opsz' 25;
 }
@@ -2827,32 +2826,42 @@ div.dataview-error-box > p {
 	scale: 0.875;
 }
 
+/* Sidedock calendar */
+.mod-sidedock #calendar-container .calendar {
+	margin-top: 8px;
+}
 .mod-sidedock #calendar-container {
-	margin-top: -4px;
+	margin-top: -8px;
+	padding-inline: 0 4px;
+}
+.mod-sidedock #calendar-container thead tr {
+	height: 28px;
 }
 .mod-sidedock #calendar-container th {
-	border-bottom: 1px solid var(--trans-strong-40);
-	color: transparent;
-	font-size: 12px;
-	font-weight: var(--font-medium);
-	padding-bottom: 12px;
-	padding-top: 0;
-	transform: translateX(20%);
-}
-.mod-sidedock #calendar-container th:first-letter {
+	background-color: transparent;
+	border-bottom: 1px solid var(--divider-color);
 	color: var(--color-base-50);
+	font-weight: var(--font-extrabold);
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	padding: 0 3.5px;
 }
-.mod-sidedock #calendar-container table .day {
-	color: var(--color-base-70);
-	font-size: 13px;
+.mod-sidedock #calendar-container td {
+	border: none;
 }
-.mod-sidedock #calendar-container table .today {
+.mod-sidedock #calendar-container .day {
+	color: var(--text-muted);
+	font-weight: var(--font-medium);
+	padding-block-end: 14px;
+}
+.mod-sidedock #calendar-container .today {
 	color: var(--color-text-today);
+	font-weight: var(--font-bold);
 }
 
 .mod-sidedock #calendar-container .nav {
-	padding-right: 0;
-	padding-left: 4px;
+	padding-inline: 3px;
+	margin: 8px 0 4px 8px;
 }  
 
 .mod-sidedock #calendar-container :is(.month, .year) {
