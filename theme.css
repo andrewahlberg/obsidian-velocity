@@ -151,7 +151,7 @@ body {
 	/* UI font sizes */
 
 	/* Font weights */
-	--font-thin: 200;
+	--font-thin: 250;
 	--font-extralight: 300;
 	--font-light: 350;
 	--font-normal: 450;
@@ -1093,7 +1093,6 @@ body.prop-headings {
 .disable-title-h1 .markdown-rendered h1 {
 	font-size: 1.75em;
 	font-weight: var(--h1-weight-alt);
-	font-variation-settings: 'opsz' 29;
 	border-bottom: none;
 	padding-bottom: 0;
 }
@@ -3112,17 +3111,18 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1) {
 	font-feature-settings: 'ss07';
-	font-size: 3.75em;
+	font-size: 3em;
 	font-weight: var(--font-thin);
-	letter-spacing: -0.1625rem;
+	letter-spacing: -0.1rem;
+	text-indent: -0.0625em;
 	border-block-end: none;
 	padding-block: 0.125em 0;
-	text-indent: -0.0625em;
 	--bold-modifier: 300;
 }
 .supertitle:not(.override, .style-override, .superheading) :is(
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1):has(strong, .cm-strong) {
+	letter-spacing: -0.0875rem;
 	text-indent: -0.05em;
 }
 
