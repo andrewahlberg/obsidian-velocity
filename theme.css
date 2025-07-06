@@ -1002,7 +1002,7 @@ thead,
 .tag,
 .metadata-content,
 #calendar-container {
-	font-feature-settings: initial;
+	font-feature-settings: 'cv11' off, 'calt';
 }
 /*
 .mod-sidedock,
@@ -1038,7 +1038,7 @@ thead,
 
 .cm-s-obsidian .cm-line.HyperMD-header,
 .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
-	font-feature-settings: initial;
+	font-feature-settings: 'cv11' off, 'calt';
 }
 
 .cm-s-obsidian .cm-line.HyperMD-header-1, 
@@ -1324,14 +1324,14 @@ pre[class*="language-"] code,
 }
 
 .metadata-property:not([data-property-key="tags"]) {
-	--pill-color: var(--icon-color);
-    --pill-padding-x: 0.625em 0.375em;
-    --pill-padding-y: 0.1em;
 	--link-color: var(--color-accent-1);
 }
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill {
 	box-shadow: var(--shadow-input);
 	padding-inline: var(--pill-padding-x);
+	--pill-color: var(--icon-color);
+    --pill-padding-x: 0.625em 0.375em; 
+    --pill-padding-y: 0.1em;
 }
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill-content {
     margin-inline-end: 0.125em;
@@ -3074,9 +3074,9 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 /* (utility-override) - Overrides any UTILITY CSSclasses, excluding override classes. */
 /* (hide-override) - Overrides any HIDE CSSclasses. */
 /* (style-override) - Overrides any STYlE CSSclasses. */
-/* (override) - Overrides ALL CSSclasses in a particular file. */
 
-.override .metadata-property[data-property-key="cssclasses"] {
+/* (override) - Overrides ALL CSSclasses in a particular file. Makes all editor CSSclass pills red. */
+.override .metadata-property[data-property-key="cssclasses"] .multi-select-pill {
 	--pill-color: oklch(from var(--text-error) l c h / 0.875);
 	--pill-color-hover: oklch(from var(--text-error) l c h / 0.625);
 }
@@ -3099,7 +3099,7 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 .superheading:not(.override, .style-override) :is(
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1) {
-	font-feature-settings: 'ss07';	
+	font-feature-settings: 'ss07', 'calt';
 	font-size: 2.5em;
 	font-weight: var(--font-extralight);
 	letter-spacing: -0.075rem;
@@ -3110,7 +3110,7 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 .supertitle:not(.override, .style-override, .superheading) :is(
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1) {
-	font-feature-settings: 'ss07';
+	font-feature-settings: 'ss07', 'ss08', 'calt';
 	font-size: 3em;
 	font-weight: var(--font-thin);
 	letter-spacing: -0.1rem;
@@ -3122,8 +3122,12 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 .supertitle:not(.override, .style-override, .superheading) :is(
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1):has(strong, .cm-strong) {
-	letter-spacing: -0.0875rem;
+	letter-spacing: -0.075rem;
 	text-indent: -0.05em;
+}
+/* (style-wide) - Sets the file line width to the maximum value, equivalent to disabling readable width. */
+.style-wide:not(.override, .style-override) {
+	--file-line-width: 28px 0;
 }
 
 /*
