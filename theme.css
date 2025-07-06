@@ -67,7 +67,10 @@ settings:
 	- 2: Markdown
 	- 3: Interface
 	- 4: Modals
-	- 5: Plugins
+	- 5: Mobile
+	- 6: Plugins
+	- 7: CSSclasses
+	- 8: Fonts
 */
 
 /*
@@ -148,8 +151,8 @@ body {
 	/* UI font sizes */
 
 	/* Font weights */
-	--font-thin: 150;
-	--font-extralight: 250;
+	--font-thin: 200;
+	--font-extralight: 300;
 	--font-light: 350;
 	--font-normal: 450;
 	--font-medium: 550;
@@ -239,7 +242,7 @@ body {
 	--metadata-label-text-color: var(--icon-color);
 
 	/* Modals - e.g. settings, community themes, community plugins */
-	--modal-radius: var(--radius-xl);
+	--modal-radius: var(--radius-xxl);
 
 	/* Multi-select pills */
 	--pill-background: var(--background-primary);
@@ -262,7 +265,8 @@ body {
 	--radius-m: 10px;
 	--radius-ml: 12px;
 	--radius-l: 16px;
-	--radius-xl: 20px;
+	--radius-xl: 18px;
+	--radius-xxl: 20px;
 
 	/* Ribbon */
 	--ribbon-background: transparent;
@@ -943,7 +947,7 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 	--intensity: 4px;
 }
 
-/*--> Tooltips / Notice <--*/
+/*--> Tooltips / Notice / Drag ghost <--*/
 
 .tooltip .tooltip-arrow {
     display: none;
@@ -958,6 +962,10 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 }
 .notice {
 	font-weight: calc(calc(var(--font-normal) + var(--font-medium)) / 2);
+}
+
+.drag-ghost {
+    border-radius: var(--radius-sm);
 }
 
 /*--> Scrollbar padding <--*/
@@ -1039,6 +1047,7 @@ thead,
 	border-bottom: 2px solid var(--hr-color);
 	padding-bottom: 6px;
 	text-indent: -0.03125em;
+	--bold-modifier: 300;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-2, 
 .markdown-rendered h2 {
@@ -1095,16 +1104,13 @@ body.prop-headings {
 .callout-content blockquote {
 	border-radius: var(--radius-sm);
 	box-shadow: var(--shadow-xs);
-	padding-block: 12px;
-	padding-inline: 26px 12px;
+	padding-block: 0.75em;
+	padding-inline: 1.125em;
 	position: relative;
 	& * {
 	--link-color: var(--color-accent-1);
 	--bold-color: var(--text-normal);
 	}
-}
-blockquote:has(.callout) {
-	padding: 12px;
 }
 
 /*--> Callouts <--*/
@@ -1129,27 +1135,27 @@ body:not(.disable-callout-styling) .callout {
 	--icon-stroke: var(--icon-s-stroke-width);
 }
 body:not(.disable-callout-styling) .callout.is-collapsible {
-	padding-bottom: 16px;
+	padding-bottom: 1em;
 }
 body:not(.disable-callout-styling) .callout .callout {
-	margin-inline: 2px;
+	margin-inline: 0.125em;
 	outline-color: var(--trans-strong-20);
 }
 
 body:not(.disable-callout-styling) .callout .callout-title:last-child {
-	padding-bottom: 8px;
+	padding-bottom: 0.5em;
 }
 body:not(.disable-callout-styling) .callout .callout-title-inner {
-	padding-inline-start: 2px;
+	padding-inline-start: 0.125em;
 }
 body:not(.disable-callout-styling) .callout .callout-content {
-	padding-inline: 4px;
-	margin-bottom: -4px;
+	padding-inline: 0.125em;
+	margin-bottom: -0.25em;
 	--blockquote-background-color: var(--trans-strong-10);
 	--code-background: var(--trans-strong-10);
 }
 body:not(.disable-callout-styling) .callout.is-collapsible .callout-content {
-	margin-bottom: -12px;
+	margin-bottom: -0.75em;
 }
 
 body:not(.disable-callout-styling) .callout-fold {
@@ -1166,11 +1172,12 @@ body.disable-callout-styling {
 	font-variation-settings: 'wght' 600;
 	border-width: 0;
 	box-shadow: var(--shadow-code);
-    padding-inline: 0.3125em;
+    padding-inline: 0.375em;
 }
 pre[class*="language-"] code,
 .markdown-rendered pre code {
 	box-shadow: none;
+	padding-inline: 0.125em;
 	
 }
 .markdown-rendered pre  {
@@ -1192,19 +1199,18 @@ pre[class*="language-"] code,
 /* Strikethrough / list crossed out */
 .cm-strikethrough, del, del > * {
     color: var(--color-base-30);
-	filter: blur(0.4px);
 }
 .cm-s-obsidian span.cm-highlight,
 :is(.markdown-source-view, .markdown-preview-view) mark {
-	font-weight: 550;
-	border-radius: var(--radius-s);
+	font-weight: var(--font-medium);
+	border-radius: 0.375em;
 	box-decoration-break: clone;
 	box-shadow: 0 0 5px 1.25px var(--text-highlight-bg);
 	color: var(--text-highlight-color);
-	padding-block: 1px;
+	padding-block: 0.0625em;
 	& > * {
 		color: var(--text-highlight-color);
-		--bold-modifier: 350;
+		--bold-modifier: 300;
 	}
 }
 :is(.markdown-source-view, .markdown-preview-view) mark {
@@ -1370,7 +1376,6 @@ pre[class*="language-"] code,
 .mod-sidedock .metadata-property {
 	flex-direction: column;
 	border-top: 1px solid var(--divider-color);
-	padding-bottom: 4px;
 }
 .mod-sidedock .metadata-property:first-child {
 	border-top: none;
@@ -1389,12 +1394,9 @@ pre[class*="language-"] code,
 	padding: 0 6px;
 }
 .mod-sidedock .metadata-property-value > * {
-	padding: 0 8px;
+	padding: 4px 8px 8px;
 }
 
-.hide-editor-properties .mod-root .metadata-container {
-	display: none;
-}
 
 /*--> Tables <--*/
 
@@ -1623,17 +1625,18 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 .tree-item-self {
 	margin-block: 1px;
 	padding-block: 7px;
+	--interactive-accent: oklch(from var(--color-accent) l c h / 0.75);
 }
 
 /* Folders */
 .nav-files-container .tree-item-self.mod-collapsible {
 	transition: background-color var(--anim-duration-fast) var(--anim-motion-swing);
 }
-.nav-files-container .tree-item:not(.is-collapsed) .tree-item-self.mod-collapsible {
-	color: var(--color-accent);
+.nav-files-container .tree-item:not(.is-collapsed) .tree-item-self.mod-collapsible:not(.is-being-dragged) {
+	color: var(--link-color);
 	background-color: var(--nav-item-background-selected);
 }
-.nav-files-container .tree-item-children .tree-item.is-collapsed .tree-item-self.mod-collapsible {
+.nav-files-container .tree-item-children .tree-item.is-collapsed .tree-item-self.mod-collapsible:not(.is-being-dragged) {
 	color: var(--nav-folder-color);
 	--nav-item-background-selected: transparent;
 	--nav-item-background-hover: var(--trans-faint-05);
@@ -1885,7 +1888,9 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 .view-header-title {
 	color: var(--text-muted) !important;
 }
-
+.view-header-title-parent {
+	color: var(--color-base-50);
+}
 /* View header FAB */
 .workspace-leaf-content[data-type="markdown"] {
 	& .view-actions {
@@ -1969,7 +1974,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 
 .mod-root .document-search-container {
 	background-color: var(--color-base-10);
-	border-radius: var(--radius-xl);
+	border-radius: var(--radius-xxl);
 	box-shadow: var(--shadow-fab);
 	padding: 4px;
 	position: absolute;
@@ -2560,6 +2565,7 @@ body:not(.is-phone) .community-item.is-selected:hover {
 /*--> Prompt Modal <--*/
 
 .prompt {
+	border-radius: var(--radius-xl);
 	background-color: transparent;
 	font-weight: var(--font-normal);
 	margin-block: 15vh;
@@ -2594,7 +2600,7 @@ input.prompt-input:hover {
     background-color: var(--trans-strong-30);
 	box-shadow: var(--input-shadow);
     font-size: 18px;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-m);
     border: none;
 	backdrop-filter: brightness(1.0625);
 }
@@ -2604,6 +2610,7 @@ input.prompt-input:hover {
     padding-top: 4px;
 }
 .prompt .suggestion-item {
+	border-radius: var(--radius-sm);
 	color: var(--color-base-100);
     padding-block: 10px;
     padding-inline-start: 14px;
@@ -2638,7 +2645,7 @@ input.prompt-input:hover {
 
 .popover {
 	animation: var(--anim-duration-fast) popover var(--anim-motion-swing);
-	border-radius: var(--radius-xl);
+	border-radius: var(--radius-xxl);
 	--background-primary: var(--background-secondary);
 }
 
@@ -2676,7 +2683,11 @@ input.prompt-input:hover {
     margin-inline-end: 4px;
 }
 
-/* MOBILE */
+/*
+=========================== ===========================
+			5 - Mobile
+=========================== ===========================
+*/
 
 .is-mobile .mobile-navbar {
 	background-color: transparent;
@@ -2684,7 +2695,7 @@ input.prompt-input:hover {
 
 /*
 =========================== ===========================
-			5 - Plugins
+			6 - Plugins
 =========================== ===========================
 */
 
@@ -3055,7 +3066,69 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 
 /*
 =========================== ===========================
-			Fonts
+			7 - CSSclasses
+=========================== ===========================
+*/
+
+/*--> UTILITY Classes <--*/
+
+/* (utility-override) - Overrides any UTILITY CSSclasses, excluding override classes. */
+/* (hide-override) - Overrides any HIDE CSSclasses. */
+/* (style-override) - Overrides any STYlE CSSclasses. */
+/* (override) - Overrides ALL CSSclasses in a particular file. */
+
+.override .metadata-property[data-property-key="cssclasses"] {
+	--pill-color: oklch(from var(--text-error) l c h / 0.875);
+	--pill-color-hover: oklch(from var(--text-error) l c h / 0.625);
+}
+
+/*--> HIDE Classes <--*/
+
+/* (hide-metadata) - Hides file properties in a particular file. */
+.hide-metadata:not(.override, .hide-override) .metadata-container {
+	display: none !important;
+}
+
+/*--> STYLE Classes <--*/
+
+/* (style-justify) - Justifies all text. */
+.style-justify:not(.override, .style-override)
+:is(p, .cm-line:not(.HyperMD-header)) {
+	text-align: justify;
+}
+/* (superheading) - Turns editor H1 into a large Swiss Design heading. */
+.superheading:not(.override, .style-override) :is(
+	.markdown-source-view .HyperMD-header-1, 
+	.markdown-rendered h1) {
+	font-feature-settings: 'ss07';	
+	font-size: 2.5em;
+	font-weight: var(--font-extralight);
+	letter-spacing: -0.075rem;
+	padding-block: 0.125em;
+	--bold-modifier: 250;
+}
+/* (supertitle) - Turns editor H1 into a very large Swiss Design heading. */
+.supertitle:not(.override, .style-override, .superheading) :is(
+	.markdown-source-view .HyperMD-header-1, 
+	.markdown-rendered h1) {
+	font-feature-settings: 'ss07';
+	font-size: 3.75em;
+	font-weight: var(--font-thin);
+	letter-spacing: -0.1625rem;
+	border-block-end: none;
+	padding-block: 0.125em 0;
+	text-indent: -0.0625em;
+	--bold-modifier: 300;
+}
+.supertitle:not(.override, .style-override, .superheading) :is(
+	.markdown-source-view .HyperMD-header-1, 
+	.markdown-rendered h1):has(strong, .cm-strong) {
+	text-indent: -0.05em;
+}
+
+/*
+=========================== ===========================
+			8 - Fonts
 =========================== ===========================
 */
 
