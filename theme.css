@@ -84,6 +84,53 @@ settings:
 body {
 	/* Animation timing */
 
+	/* Bases */
+	--bases-embed-border-radius: 0;
+	--bases-table-header-color: var(--table-header-color);
+	--bases-table-header-weight: var(--font-medium);
+	--bases-table-row-border-width: 0;
+	--bases-table-text-size: var(--table-text-size);
+
+	/* --bases-header-border-width: 0 0 1px 0;
+	--bases-header-height: 40px;
+	--bases-header-padding-start: 2px;
+	--bases-header-padding-end: 2px;
+	--bases-toolbar-label-display: block;
+	--bases-toolbar-badge-display: none;
+	--bases-embed-border-width: 0px;
+	--bases-embed-border-color: var(--background-modifier-border);
+	--bases-embed-border-radius: var(--radius-s);
+	--bases-filter-menu-width: 520px;
+	--bases-table-container-border-width: 1px;
+	--bases-table-container-border-radius: var(--radius-s);
+	--bases-table-header-weight: var(--font-weight);
+	--bases-table-header-color: var(--text-muted);
+	--bases-table-header-icon-display: flex;
+	--bases-table-header-background: var(--background-primary);
+	--bases-table-header-background-hover: var(--background-modifier-hover);
+	--bases-table-border-color: var(--table-border-color);
+	--bases-table-column-border-width: 1px;
+	--bases-table-row-border-width: 1px;
+	--bases-table-row-background-hover: var(--table-row-background-hover);
+	--bases-table-row-height: 30px;
+	--bases-table-text-size: var(--font-smaller);
+	--bases-table-column-max-width: 300;
+	--bases-table-column-min-width: 40;
+	--bases-table-cell-radius-active: 2px;
+	--bases-table-cell-shadow-active: 0 0 0 2px var(--interactive-accent);
+	--bases-table-cell-background-active: var(--background-primary);
+	--bases-table-cell-background-disabled: var(--background-primary-alt);
+	--bases-cards-container-background: var(--background-primary);
+	--bases-cards-background: var(--background-primary);
+	--bases-cards-cover-background: var(--background-primary-alt);
+	--bases-cards-width: 200px;
+	--bases-cards-group-padding: var(--size-4-3);
+	--bases-cards-line-height: 24px;
+	--bases-cards-border-width: 1px;
+	--bases-cards-shadow: 0 0 0 1px var(--background-modifier-border);
+	--bases-cards-shadow-hover: 0 0 0 1px var(--background-modifier-border-hover);
+	--bases-cards-text-size: var(--font-smaller); */
+
 	/* Blockquotes */
 	--blockquote-border-color: var(--color-base-25);
 	--blockquote-border-thickness: 0;
@@ -241,6 +288,12 @@ body {
 	--metadata-label-font-size: var(--font-smallest);
 	--metadata-label-text-color: var(--icon-color);
 
+	/* Menus */
+	--menu-shadow: var(--shadow-themes);
+	--menu-radius: var(--radius-ml);
+	--menu-background: color-mix(in oklab, var(--background-primary) 40%, var(--background-secondary) 60%);
+	--menu-border-color: var(--trans-faint-40);
+  
 	/* Modals - e.g. settings, community themes, community plugins */
 	--modal-radius: var(--radius-xxl);
 
@@ -321,7 +374,7 @@ body {
 	--table-row-alt-background-hover: var(--trans-faint-05);
 	--table-column-alt-background: none;
 	--table-border-color: var(--hr-color);
-	--table-header-size: 13px;
+	--table-header-size: 0.8175em;
 	--table-header-color: var(--text-normal);
 	--table-line-height: var(--line-height-normal);
 	--table-text-size: var(--font-small);
@@ -530,7 +583,7 @@ body {
 		inset 0px -0.25px 4px -1px var(--text-selection),
 		0px 1.5px 8px -1.5px var(--text-selection);
 	}
-	& .modal {
+	& .modal, .menu {
 	--shadow-workspace-2: 
 		0px 4px 12px 0 var(--trans-strong-40);
 	}
@@ -999,10 +1052,12 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 	font-feature-settings: 'cv11';
 }
 thead,
+.bases-header,
+.bases-thead,
 .tag,
 .metadata-content,
 #calendar-container {
-	font-feature-settings: initial;
+	font-feature-settings: 'cv11' off, 'calt';
 }
 /*
 .mod-sidedock,
@@ -1038,7 +1093,7 @@ thead,
 
 .cm-s-obsidian .cm-line.HyperMD-header,
 .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
-	font-feature-settings: initial;
+	font-feature-settings: 'cv11' off, 'calt';
 }
 
 .cm-s-obsidian .cm-line.HyperMD-header-1, 
@@ -1324,14 +1379,14 @@ pre[class*="language-"] code,
 }
 
 .metadata-property:not([data-property-key="tags"]) {
-	--pill-color: var(--icon-color);
-    --pill-padding-x: 0.625em 0.375em;
-    --pill-padding-y: 0.1em;
 	--link-color: var(--color-accent-1);
 }
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill {
 	box-shadow: var(--shadow-input);
 	padding-inline: var(--pill-padding-x);
+	--pill-color: var(--icon-color);
+    --pill-padding-x: 0.625em 0.375em; 
+    --pill-padding-y: 0.1em;
 }
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill-content {
     margin-inline-end: 0.125em;
@@ -1985,7 +2040,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 }
 .document-search-container :is(.document-search, .document-replace) {
 	background-color: transparent;
-	padding-inline: 1px;
+	padding-inline: 0;
 	gap: 4px;
 }
 :is(.document-search-input, .document-replace) input {
@@ -2211,12 +2266,10 @@ body:not(.is-mobile)
 /*--> Right-click Menu <--*/
 
 .menu {
-	background-color: var(--background-secondary);
-	color: var(--text-normal);
-	font-weight: 500;
-	border-color: var(--trans-faint-40);
+	font-weight: calc(calc(var(--font-normal) + var(--font-medium)) / 2);
 }
 .menu-item {
+	border-radius: 7px;
 	padding: 6px 4px;
 }
 /* .menu-item.selected {
@@ -2244,7 +2297,7 @@ body:not(.is-mobile)
 }
 .menu-item.is-warning:not(.is-disabled) .svg-icon {
     color: var(--text-error);
-	filter: opacity(0.5);
+	filter: opacity(0.625);
 }
 /* Menu label (graph mode) */
 .menu-item.is-label {
@@ -2462,7 +2515,6 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 		padding: 16px;
 	}
 }
-
 .community-modal-controls {
 	background-color: var(--trans-strong-10);
 	backdrop-filter: blur(24px);
@@ -2650,7 +2702,8 @@ input.prompt-input:hover {
 
 /*--> Suggestion Item <--*/
 
-.suggestion-container {
+.suggestion-container,
+.query-toolbar-menu {
 	animation: var(--anim-duration-superfast) popover var(--anim-motion-swing);
 }
 .modal-container.mod-dim + .suggestion-container {
@@ -2698,6 +2751,188 @@ input.prompt-input:hover {
 =========================== ===========================
 */
 
+/* ============ CORE =========== */
+
+/*--> Obsidian Bases <--*/
+
+/* Obsidian Bases (general) */
+.bases-thead {
+	border-block-end: var(--bases-table-row-border-width) solid var(--bases-table-border-color);
+	box-shadow: none;
+	--bases-table-column-border-width: 0;
+	--bases-table-row-border-width: 2px;
+}
+.bases-table-header-label {
+	padding-inline-start: 6px;
+	text-transform: capitalize;
+}
+.bases-td {
+	padding-inline: 6px;
+}
+.bases-view .bases-thead .bases-td .bases-table-header-name {
+	font-size: var(--font-ui-small);
+}
+.bases-table-header-icon {
+	color: var(--icon-color);
+}
+.bases-table-container .bases-table-cell {
+	display: flex;
+}
+
+/* Obsidian Bases (embedded) */
+.bases-tbody .bases-tr:nth-child(odd) {
+    background-color: var(--table-row-alt-background);
+}
+.bases-view[data-view-type="table"] {
+    --bases-embed-border-width: 0;
+}
+
+/* Obsidian Bases (interface) */
+.bases-header {
+	border: none;
+	margin-block: 0.5em;
+	padding-inline: 8px 12px;
+}
+.bases-header:has( + * + .bases-view[data-view-type="table"]) .query-toolbar {
+	--view-color: var(--color-cyan);
+}
+/* .bases-header:has( + * + .bases-view[data-view-type="cards"]) .query-toolbar {
+	--view-color: var(--color-pink);
+} */
+.bases-embed .bases-header {
+	padding-inline: 0;
+}
+.markdown-source-view .bases-embed .bases-header {
+	padding-inline: 0 40px;
+}
+.markdown-source-view .internal-embed.bases-embed .edit-block-button {
+	top: 16px;
+	padding: 6px;
+}
+.query-toolbar {
+	padding: 2px 16px 2px 12px;
+	--view-color: var(--color-pink);
+}
+.bases-embed .query-toolbar {
+	background-color: var(--nav-item-background-active);
+	border-radius: var(--radius-xxl);
+	box-shadow: 
+		0 1px 0 0.5px var(--trans-strong-00),
+		inset 0 0.75px 3px 0px var(--trans-faint-30);
+	padding: 2px 6.5px;
+}
+.bases-embed .query-toolbar-item > * {
+	background-color: var(--background-primary);
+}
+.query-toolbar-item > * {
+	background-color: var(--background-secondary);
+	border-radius: var(--radius-l);
+	height: 26px;
+	margin-inline: 0 !important;
+	padding: 1px 14px 0;
+	--input-font-weight: var(--font-medium);
+	--icon-size: var(--icon-s);
+}
+.query-toolbar-item.mod-views > * {
+	background-color: oklch(from var(--view-color) l c h / 0.0625);
+	--text-normal: var(--view-color);
+}
+.query-toolbar-item.mod-views .mod-aux {
+	display: none;
+}
+.query-toolbar .bases-toolbar-result-count > * {
+	background-color: transparent;
+    color: var(--view-color);
+	padding: 2px 8px 0;
+}
+.query-toolbar-item:not(.mod-views, .bases-toolbar-result-count) > * {
+	box-shadow: var(--shadow-workspace-2);
+	margin-inline: 4px 0 !important;
+	padding: 0 10px;
+	--icon-stroke: 2.25px;
+}
+.query-toolbar-item.mod-filters > *,
+.bases-toolbar-result-count + * > * {
+	box-shadow: none !important;
+	background-color: var(--color-accent-5) !important;
+}
+
+/* Obsidian Bases (modals) */
+.bases-query-container {
+	background-color: var(--background-primary);
+	border: 1px solid var(--color-base-20);
+    margin: 0 10px 10px;
+	border-radius: var(--radius-sm);
+	box-shadow: var(--shadow-workspace-2);
+	--metadata-label-font-size: var(--font-smaller);
+	--metadata-label-text-color: var(--color-accent);
+}
+.base-toolbar-sort-item {
+	background-color: transparent;
+    gap: 6px;
+}
+.base-toolbar-sort-item .metadata-property  {
+    padding: 2px;
+}
+.bases-query-container .filter-group .filter-row .combobox-button {
+    font-weight: var(--font-medium);
+	padding-inline: 10px;
+}
+.bases-query-container .filter-group .filter-row .filter-rhs-container .metadata-input-longtext {
+	color: var(--color-accent);
+}
+.bases-query-container .filter-group .filter-row .combobox-button:hover {
+	&:hover {
+		background-color: var(--dropdown-background);
+	}
+}
+.base-toolbar-sort-item,
+.bases-query-container .filter-expression {
+	transition: box-shadow var(--anim-duration-superfast) var(--anim-motion-smooth);
+    --metadata-property-box-shadow: var(--shadow-xs);
+	--metadata-property-box-shadow-hover: var(--shadow-xs);
+	--metadata-property-box-shadow-focus: var(--shadow-input-active);
+	--metadata-label-background: var(--color-base-00);
+	--dropdown-background: var(--background-primary);
+}
+.bases-query-container .filter-expression .metadata-property-icon {
+	padding-inline: 2px 0;
+}
+.bases-query-container .filter-group .filter-row .conjunction {
+    min-width: 3.5rem;
+}
+.bases-query-container .filter-group .filter-group-header .conjunction.dropdown {
+	background-color: var(--trans-strong-40) !important;
+	&:focus {
+		background-color: var(--hr-color) !important;
+	}
+}
+.bases-query-container .filter-group .filter-group-header {
+	justify-content: flex-end;
+}
+.bases-query-container .filter-group-actions {
+	justify-content: center;
+    --icon-size: var(--icon-s);
+}
+.query-toolbar-menu {
+	background-color: var(--background-secondary);
+	border-radius: var(--radius-l);
+}
+.query-toolbar-menu .query-toolbar-section-header {
+	color: var(--text-normal);
+    gap: 6px;
+}
+.query-toolbar-menu .input-row {
+	padding-block-end: 4px;
+}
+.query-toolbar-menu + .suggestion-container {
+	border-color: var(--trans-faint-40);
+	z-index: var(--layer-menu);
+}
+
+
+/* ========= COMMUNITY ========= */
+
 /*--> Iconic <--*/
 
 .tree-item-self > .iconic-sidekick {
@@ -2728,7 +2963,7 @@ input.prompt-input:hover {
     left: calc(-1* var(--lc-bg-left-reading) + 1px);
 } */
 
-/*--> Dataview (calendar) <--*/
+/*--> Dataview <--*/
 
 .dataview.small-text {
 	color: var(--table-header-color);
@@ -2754,6 +2989,7 @@ div.dataview-error-box > p {
 	--table-row-alt-background: none;
 	--table-row-alt-background-hover: none;
 	--table-highlight: var(--text-highlight-bg);
+	--interactive-accent: transparent;
 }
 .callout #calendar-container {
 	padding-top: 8px;
@@ -2792,7 +3028,7 @@ div.dataview-error-box > p {
 	font-weight: 500;
 	font-size: 0.75rem;
 	border-radius: 0;
-	padding: 3px 4px 21px 4px;
+	padding: 3px 4px 26px 4px;
 	text-align: end;
 	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
 }
@@ -2804,10 +3040,18 @@ div.dataview-error-box > p {
 	font-weight: var(--font-bold);
 	color: var(--color-text-today);
 }
+
 #calendar-container .dot-container {
+	width: 50%;
+	position: absolute;
 	justify-content: start;
+	row-gap: 0.0625em;
 	margin-inline-start: 3px;
-	transform: translateY(-0.9rem);
+	transform: translateY(-0.8175rem);
+}
+.mod-root #calendar-container .dot-container {
+	width: 75%;
+	transform: translateY(-0.875rem);
 }
 
 .mod-root #calendar-container .nav {
@@ -2849,18 +3093,18 @@ div.dataview-error-box > p {
 }
 .mod-sidedock #calendar-container th {
 	background-color: transparent;
-	border-bottom: 1px solid var(--divider-color);
-	color: var(--color-base-50);
-	font-weight: var(--font-extrabold);
+	color: var(--text-faint);
+	font-weight: var(--font-black);
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	padding: 0 3.5px;
+	padding: 0 3px;
 }
 .mod-sidedock #calendar-container td {
 	border: none;
 }
 .mod-sidedock #calendar-container .day {
 	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
 	font-weight: var(--font-medium);
 	padding-block-end: 14px;
 }
@@ -3074,9 +3318,9 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 /* (utility-override) - Overrides any UTILITY CSSclasses, excluding override classes. */
 /* (hide-override) - Overrides any HIDE CSSclasses. */
 /* (style-override) - Overrides any STYlE CSSclasses. */
-/* (override) - Overrides ALL CSSclasses in a particular file. */
 
-.override .metadata-property[data-property-key="cssclasses"] {
+/* (override) - Overrides ALL CSSclasses in a particular file. Makes all editor CSSclass pills red. */
+.override .metadata-property[data-property-key="cssclasses"] .multi-select-pill {
 	--pill-color: oklch(from var(--text-error) l c h / 0.875);
 	--pill-color-hover: oklch(from var(--text-error) l c h / 0.625);
 }
@@ -3099,9 +3343,9 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 .superheading:not(.override, .style-override) :is(
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1) {
-	font-feature-settings: 'ss07';	
+	font-feature-settings: 'ss07', 'calt';
 	font-size: 2.5em;
-	font-weight: var(--font-extralight);
+	font-weight: var(--font-thin);
 	letter-spacing: -0.075rem;
 	padding-block: 0.125em;
 	--bold-modifier: 250;
@@ -3110,10 +3354,10 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 .supertitle:not(.override, .style-override, .superheading) :is(
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1) {
-	font-feature-settings: 'ss07';
-	font-size: 3em;
+	font-feature-settings: 'ss07', 'ss08', 'calt';
+	font-size: 2.75em;
 	font-weight: var(--font-thin);
-	letter-spacing: -0.1rem;
+	letter-spacing: -0.0875rem;
 	text-indent: -0.0625em;
 	border-block-end: none;
 	padding-block: 0.125em 0;
@@ -3122,8 +3366,12 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 .supertitle:not(.override, .style-override, .superheading) :is(
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1):has(strong, .cm-strong) {
-	letter-spacing: -0.0875rem;
+	letter-spacing: -0.075rem;
 	text-indent: -0.05em;
+}
+/* (style-wide) - Sets the file line width to the maximum value, equivalent to disabling readable width. */
+.style-wide:not(.override, .style-override) {
+	--file-line-width: 28px 0;
 }
 
 /*
