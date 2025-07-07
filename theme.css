@@ -1985,7 +1985,7 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 }
 .document-search-container :is(.document-search, .document-replace) {
 	background-color: transparent;
-	padding-inline: 1px;
+	padding-inline: 0;
 	gap: 4px;
 }
 :is(.document-search-input, .document-replace) input {
@@ -2754,6 +2754,7 @@ div.dataview-error-box > p {
 	--table-row-alt-background: none;
 	--table-row-alt-background-hover: none;
 	--table-highlight: var(--text-highlight-bg);
+	--interactive-accent: transparent;
 }
 .callout #calendar-container {
 	padding-top: 8px;
@@ -2792,7 +2793,7 @@ div.dataview-error-box > p {
 	font-weight: 500;
 	font-size: 0.75rem;
 	border-radius: 0;
-	padding: 3px 4px 21px 4px;
+	padding: 3px 4px 26px 4px;
 	text-align: end;
 	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
 }
@@ -2805,7 +2806,10 @@ div.dataview-error-box > p {
 	color: var(--color-text-today);
 }
 #calendar-container .dot-container {
+	width: 75%;
+	position: absolute;
 	justify-content: start;
+	row-gap: 0.0625em;
 	margin-inline-start: 3px;
 	transform: translateY(-0.9rem);
 }
@@ -3101,7 +3105,7 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 	.markdown-rendered h1) {
 	font-feature-settings: 'ss07', 'calt';
 	font-size: 2.5em;
-	font-weight: var(--font-extralight);
+	font-weight: var(--font-thin);
 	letter-spacing: -0.075rem;
 	padding-block: 0.125em;
 	--bold-modifier: 250;
@@ -3111,9 +3115,9 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1) {
 	font-feature-settings: 'ss07', 'ss08', 'calt';
-	font-size: 3em;
+	font-size: 2.75em;
 	font-weight: var(--font-thin);
-	letter-spacing: -0.1rem;
+	letter-spacing: -0.0875rem;
 	text-indent: -0.0625em;
 	border-block-end: none;
 	padding-block: 0.125em 0;
