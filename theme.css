@@ -3209,6 +3209,21 @@ button.kanban-plugin__new-item-button {
 	display: none;
 }
 
+/*--> Omnisearch <--*/
+
+.omnisearch-input-container {
+    padding: 8px;
+	gap: 8px;
+}
+.omnisearch-input-container__buttons {
+	display: none;
+}
+.omnisearch-input-container__buttons:has(button) {
+	display: unset;
+	margin-inline-end: 8px;
+	z-index: 1;
+}
+
 /*--> Tabs (plugin) <--*/
 
 .tabs-container {
