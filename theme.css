@@ -287,6 +287,8 @@ body {
 	--metadata-input-text-color: var(--color-base-80);
 	--metadata-label-font-size: var(--font-smallest);
 	--metadata-label-text-color: var(--icon-color);
+	--metadata-property-box-shadow-hover: 0 0 0 1.625px var(--divider-color);
+  	--metadata-property-box-shadow-focus: var(--shadow-input-active);
 
 	/* Menus */
 	--menu-shadow: var(--shadow-themes);
