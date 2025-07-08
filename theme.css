@@ -1880,9 +1880,9 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 
 /* Sidebar Tabs */
 .mod-sidedock .workspace-tab-header {
-	border-radius: 50%;
-	height: 36px;
-	width: 36px;
+	border-radius: var(--radius-xxl);
+	min-height: 36px;
+	min-width: 36px;
 	transform: translateY(-0.5px); 
 }
 .mod-sidedock .workspace-tab-header:hover {
@@ -1913,6 +1913,27 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 /* Tab Icons */
 .workspace-tab-header:not(.is-active) .workspace-tab-header-inner .workspace-tab-header-inner-icon {
     --icon-opacity: 0.8;
+}
+.mod-sidedock .workspace-tab-header-status-container {
+	color: var(--icon-color);
+	filter: opacity(var(--icon-opacity));
+	--icon-opacity: 0.75;
+}
+.mod-sidedock .workspace-tab-header.is-active .workspace-tab-header-status-container {
+	--icon-color: var(--link-color);
+	--icon-opacity: 1;
+}
+.mod-sidedock .workspace-tab-header.is-active .workspace-tab-header-status-container:hover {
+	--icon-color: var(--link-color-hover);
+}
+
+/* FROM Willemstad */
+.mod-root .workspace-tab-header-container-inner .workspace-tab-header:has(.mod-pinned) {
+	max-width: 100px;
+    order: -1;
+	& .workspace-tab-header-inner {
+		max-width: 100px;
+	}
 }
 
 /*--> View Header <--*/
@@ -3148,6 +3169,44 @@ div[class*="el-h"] + * .dataview-container .contains-task-list {
 }
 .process-single-image-modal-buttons .setting-item {
 	padding-bottom: 6px;
+}
+
+/*--> Kanban <--*/
+
+.kanban-plugin__scroll-container {
+    will-change: unset;
+}
+
+.kanban-plugin__lane {
+    border-radius: var(--radius-m);
+	box-shadow: var(--shadow-code);
+    border: none;
+	contain: content;
+}
+.kanban-plugin__lane-items {
+	margin-inline: 0;
+	padding-inline: 8px;
+    row-gap: 3px;
+}
+.kanban-plugin__item {
+    box-shadow: var(--shadow-xs);
+    border: none;
+	border-radius: var(--radius-sm);
+}
+
+.kanban-plugin__item-button-wrapper {
+	display: flex;
+	justify-content: center;
+}
+button.kanban-plugin__new-item-button {
+	width: fit-content;
+	padding-inline: 20px;
+    background-color: var(--background-primary);
+    color: var(--text-normal) !important;
+	font-size: 0.8125rem;
+}
+.kanban-plugin__item-button-plus {
+	display: none;
 }
 
 /*--> Tabs (plugin) <--*/
