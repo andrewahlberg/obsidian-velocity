@@ -891,6 +891,7 @@ button.mod-cta:hover,
 }
 
 button.mod-warning {
+	color: var(--text-color);
     background-image: var(--warning-gradient);
 	filter: brightness(1.05);
 }
@@ -1273,6 +1274,7 @@ pre[class*="language-"] code,
 
 /* FROM: Primary */
 /* By Cecilia May */
+
 .external-link {
 	background-image: linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(136, 136, 136)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'%3E%3C/line%3E%3Cpolyline points='7 7 17 7 17 17'%3E%3C/polyline%3E%3C/svg%3E");
 	background-size: calc(var(--font-text-size) + .2em), 1em;
@@ -1596,6 +1598,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
 	background-image: none !important;
+}
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root .workspace-tab-header-container-inner {
+    padding-inline-end: 6px;
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .workspace-split.mod-vertical.mod-root {
 	padding-bottom: 0;
@@ -1930,6 +1935,8 @@ body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-
 }
 
 /* FROM Willemstad */
+/* By tingmelvin */
+
 .mod-root .workspace-tab-header-container-inner .workspace-tab-header:has(.mod-pinned) {
 	max-width: 100px;
     order: -1;
@@ -2883,7 +2890,7 @@ input.prompt-input:hover {
 	border-radius: var(--radius-sm);
 	box-shadow: var(--shadow-workspace-2);
 	--metadata-label-font-size: var(--font-smaller);
-	--metadata-label-text-color: var(--color-accent);
+	--metadata-label-text-color: var(--text-normal);
 }
 .base-toolbar-sort-item {
 	background-color: transparent;
@@ -2893,11 +2900,14 @@ input.prompt-input:hover {
     padding: 2px;
 }
 .bases-query-container .filter-group .filter-row .combobox-button {
+	color: var(--text-muted);
     font-weight: var(--font-medium);
 	padding-inline: 10px;
 }
-.bases-query-container .filter-group .filter-row .filter-rhs-container .metadata-input-longtext {
-	color: var(--color-accent);
+.bases-query-container .filter-group .filter-row .filter-rhs-container 
+:is(.metadata-input-text, .metadata-input-longtext, .multi-select-pill) {
+	color: var(--link-color);
+	font-weight: var(--font-normal);
 }
 .bases-query-container .filter-group .filter-row .combobox-button:hover {
 	&:hover {
