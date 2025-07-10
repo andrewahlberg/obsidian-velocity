@@ -3,6 +3,18 @@ name: Velocity
 id: obsidian-velocity
 settings:
 -
+	id: theme-mode
+	title: (UI colors) Choose vehicle ride settings
+	type: class-select
+	default: theme-sport
+	options:
+        - label: WIP
+          value: tbd
+		- label: Sport
+		  value: theme-sport
+        - label: WIP
+          value: TBD
+-
 	id: file-line-width
 	title: Set readable line width
 	description: Set the readable line width in relative units (rem).
@@ -41,7 +53,7 @@ settings:
 	type: class-toggle
 -	
 	id: disable-hover-header
-	title: Disable compact Nav Header panels
+	title: Disable Nav Header compact panels
 	type: class-toggle
 - 	 	
 	id: disable-title-h1
