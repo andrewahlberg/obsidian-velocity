@@ -39,7 +39,11 @@ settings:
 	id: disable-status-fade
 	title: Disable Status Bar reveal on hover
 	type: class-toggle
-- 	
+-	
+	id: disable-hover-header
+	title: Disable compact Nav Header panels
+	type: class-toggle
+- 	 	
 	id: disable-title-h1
 	title: Disable Title-style H1
 	type: class-toggle
@@ -568,7 +572,7 @@ body {
 	--shadow-toggle-active:
 		inset 0 1.5px 3px 0px var(--trans-faint-50);
 
-	& .mod-root {
+	& .mod-root, .mod-sidedock {
 	--shadow-workspace: 
 		0px 0px 0px 1px var(--trans-faint-20),
 		0 0px 3px 0px var(--trans-faint-10),
@@ -589,7 +593,7 @@ body {
 	--shadow-workspace-2: 
 		0px 4px 12px 0 var(--trans-strong-40);
 	}
-	& .mod-sidedock {
+	& .mod-sidedock, .view-header {
 	--shadow-sidebar: 
 		0 0.25px 0 0.75px var(--trans-faint-20),
 		0 1.5px 6px -3px var(--trans-faint-20);
@@ -809,8 +813,8 @@ body {
 }
 .mod-macos,
 body:not(.mod-windows, .mod-linux) {
-	--font-thin: 100;
-	--font-extralight: 200;
+	--font-thin: 200;
+	--font-extralight: 250;
 	--font-light: 300;
 	--font-normal: 400;
 	--font-medium: 500;
@@ -875,17 +879,17 @@ button:not(.clickable-icon):hover:active,
 }
 button[class*="mod-"]:active,
 button[class*="mod-"]:hover:active,
-.mod-root .metadata-add-button:active,
-.mod-root .metadata-add-button:hover:active {
+:is(.mod-root, .popover) .metadata-add-button:active,
+:is(.mod-root, .popover) .metadata-add-button:hover:active {
 	filter: brightness(1.05) opacity(70%);
 }
 button.mod-cta,
-.mod-root .metadata-add-button {
+:is(.mod-root, .popover) .metadata-add-button {
 	background: var(--hotkey-gradient);
 	text-shadow: var(--cta-shadow);
 }
 button.mod-cta:hover,
-.mod-root .metadata-add-button:hover {
+:is(.mod-root, .popover) .metadata-add-button:hover {
     background: var(--hotkey-gradient);
 	filter: brightness(1.05);
 }
@@ -1202,6 +1206,9 @@ body:not(.disable-callout-styling) .callout-fold {
 body.disable-callout-styling {
 	--callout-title-padding: 0;
 }
+.callout table {
+	--table-border-color: var(--hr-color);
+}
 
 /*--> Code <--*/
 
@@ -1325,7 +1332,8 @@ pre[class*="language-"] code,
 	padding-inline: 6px 10px;
 }
 
-.mod-root .view-content { 
+.mod-root .view-content,
+.popover { 
 	& .metadata-container {
 		box-shadow: var(--shadow-input);
 		margin-block-end: 1.25rem;
@@ -1435,7 +1443,6 @@ pre[class*="language-"] code,
 	padding: 4px 8px 8px;
 }
 
-
 /*--> Tables <--*/
 
 .markdown-source-view.mod-cm6 .cm-table-widget .table-wrapper, 
@@ -1484,9 +1491,13 @@ a.tag:active {
 =========================== ===========================
 */
 
+body:not(.is-mobile) .mod-root 
+	:is(.workspace-tab-container, 
+		.workspace-leaf) {
+    border-radius: var(--radius-m);
+}
 body:not(.is-mobile) .mod-root .workspace-tab-container {
     box-shadow: var(--shadow-workspace);
-    border-radius: var(--radius-m);
 }
 body:not(.is-mobile) .mod-root .workspace-tabs:not(:only-of-type) .workspace-tab-container {
     box-shadow: var(--shadow-workspace-multi);
@@ -1495,12 +1506,9 @@ body:not(.is-mobile) .workspace:has(.mod-root .workspace-tabs:not(:only-of-type)
 	background: var(--background-gradient-community);
 	--file-margins: 28px 32px;
 }
-body:not(.is-mobile) .mod-root {
-	overflow: visible;
-}
 
 body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
-    transition: all var(--anim-duration-fast), box-shadow 0s;
+    transition: all var(--anim-duration-superfast);
 }
 
 /* FROM: Cupertino */
@@ -1513,7 +1521,6 @@ body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .m
 body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .mod-root.workspace-split.mod-vertical {
     gap: 8px;
 }
-
 
 .mod-sidedock .workspace-leaf-content ::-webkit-scrollbar {
     display: none;
@@ -1528,7 +1535,7 @@ body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .m
     padding: var(--size-4-2);
 }
 
-.mod-left-split .sidebar-toggle-button {
+.sidebar-toggle-button.mod-left {
     padding-inline: 2px;
 }
 .sidebar-toggle-button .clickable-icon {
@@ -1545,13 +1552,10 @@ body:not(.is-mobile) .mod-vertical.mod-root {
     padding-bottom: 8px;
 }
 
+.workspace-split.mod-root,
 .workspace-tabs .workspace-leaf {
 	background-color: transparent;
 }
-.workspace-tab-header-container {
-	border-block: none;
-}
-
 body:not(.is-mobile) .mod-root .workspace-tabs {
 	overflow: visible;
 }
@@ -1559,11 +1563,6 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 .mod-windows .titlebar-button.mod-close:hover {
 	background-color: oklch(from var(--color-red) l c h / 0.333);
     color: var(--color-red);
-}
-
-.workspace-split:is(.mod-left-split,.mod-right-split) > *:not(hr),
-.workspace-split.mod-vertical.mod-root {
-	background-color: transparent;
 }
 
 /* Sidedock / workspace-split */
@@ -1593,21 +1592,22 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root>.workspace
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container {
     margin: 0;
 }
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root .workspace-tab-container {
-    border-radius: 0;
-}
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
 	background-image: none !important;
 }
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root .workspace-tab-header-container-inner {
-    padding-inline-end: 6px;
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
+    padding-inline: 8px 6px;
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .workspace-split.mod-vertical.mod-root {
 	padding-bottom: 0;
+	& .workspace-tabs {
+		overflow: hidden;
+	}
 	& .workspace-tabs > .workspace-tab-container {
+		border-radius: 0;
 		box-shadow: none;
 	}
-	& .view-header-title-container {
+	& .view-header-title-container:not(.webviewer-address-container) {
 		filter: opacity(0.5);
 	}
 }
@@ -1622,7 +1622,8 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	margin-bottom: -8px;
 	transition: var(--anim-duration-fast) var(--anim-motion-swing);
 }
-:is(.is-left-sidedock-open, .is-right-sidedock-open) .nav-header > .nav-buttons-container:hover {
+.nav-header > .nav-buttons-container:hover,
+.disable-hover-header .nav-header > .nav-buttons-container {
 	margin-bottom: 16px;
 }
 .nav-buttons-container {
@@ -1640,7 +1641,8 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	--icon-color: transparent;
 	--text-muted: transparent;
 }
-.nav-buttons-container:hover {
+.nav-buttons-container:hover,
+.disable-hover-header .nav-buttons-container {
 	transform: scale(100%);
 	transform: translateY(0px);
     height: initial;
@@ -1697,9 +1699,6 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 .tree-item.nav-file {
 	font-weight: var(--nav-item-weight);
 }
-/* .tree-item-self.nav-file-title {
-	margin-block: 1px;
-} */
 .tree-item.nav-file .tree-item-self.nav-file-title.is-active {
 	box-shadow: none;
 }
@@ -1819,17 +1818,12 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
     display: none;
 }
 
-/* body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tab-header-spacer {
-    order: 1;
-}
-body:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs .workspace-tab-header-container-inner {
-    order: 2;
-} */
-
 /* Tab Containers */
+.workspace-tab-header-container {
+	overflow: hidden;
+}
 .workspace.is-left-sidedock-open .mod-root .workspace-tab-header-container-inner {
-	margin: 0 -6px 0 0;
-	padding-inline: 0px 12px;
+	padding-inline: 0px 6px;
 }
 .mod-root .workspace-tab-header-container-inner {
 	height: var(--header-height);
@@ -2182,7 +2176,7 @@ body:not(.disable-status-fade) {
 		margin-inline: var(--frame-left-space-override) var(--frame-right-space);
 	}
 	body:not(.is-mobile, .disable-autohide) .workspace .workspace-tab-header-container-inner {
-		padding-inline: 0px 6px;
+		padding-inline: 0px 6px !important;
 	}
 	body:not(.is-mobile, .disable-autohide) .workspace .view-header-title-container {
 		filter: opacity(0.5);
@@ -2958,6 +2952,41 @@ input.prompt-input:hover {
 	z-index: var(--layer-menu);
 }
 
+/*--> Web Viewer <--*/
+
+/* .view-header-always-show {
+	--background-primary: var(--color-base-00);
+} */
+.mod-root .workspace-tab-header-inner-icon {
+    padding-inline: 2px 0;
+}
+
+.webviewer-address input {
+	background-color: var(--color-base-00);
+	color: var(--text-normal);
+    box-shadow: var(--shadow-sidebar);
+	font-weight: var(--font-normal);
+	padding-inline-start: 12px;
+}
+
+.webviewer-content .document-search-container {
+	box-shadow: var(--shadow-workspace-multi), var(--shadow-s);
+	top: 44px;
+	right: 16px;
+}
+.mod-sidedock .webviewer-content .document-search-container {
+	top: 48px;
+	left: unset;
+	right: 4px;
+}
+.mod-right-split .webviewer-content .document-search-container {
+	left: 4px;
+	right: unset;
+}
+
+.webviewer-content .error-notice {
+    text-align: center;
+}
 
 /* ========= COMMUNITY ========= */
 
