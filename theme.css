@@ -74,7 +74,7 @@ settings:
 
 /* 
 	Velocity 
-	1.0.2-alpha
+	1.0.4-alpha
 	--------
 	by Floodlight
 
@@ -545,6 +545,9 @@ body {
 
 	--search-result-background: var(--trans-strong-30);
 
+	--setting-item-bg: var(--background-primary);
+	--setting-item-border-color: var(--hr-color);
+
 	--table-row-bg: var(--trans-faint-05);
 
 	--tab-background-active: var(--trans-strong-20);
@@ -611,7 +614,7 @@ body {
 		0px 1.5px 8px -1.5px var(--text-selection);
 	}
 	& .modal, .menu {
-	--shadow-workspace-2: 
+	--shadow-setting-item: 
 		0px 4px 12px 0 var(--trans-strong-40);
 	}
 	& .mod-sidedock, .view-header {
@@ -641,7 +644,7 @@ body {
 	--color-pink: rgb(225, 70, 147);
 
 	--color-orange-00: color-mix(in oklab, var(--color-orange) 12.5%, transparent 100%);
-	--color-orange-10: color-mix(in oklab, var(--color-orange), transparent 50%);
+	--color-orange-10: color-mix(in oklab, var(--color-orange), transparent 25%);
 
 	--color-base-00: oklch(23.60% 0.00160 283);
 	--color-base-05: oklch(24.60% 0.00160 283);
@@ -740,8 +743,6 @@ body {
 	--toggle-gradient: linear-gradient(to bottom, var(--color-accent) -30%, var(--color-accent-4) 180%);
 	--warning-gradient: linear-gradient(to top, var(--color-red) -30%, var(--trans-strong-20) 180%);
 	
-	/* --color-accent-1: color-mix(in oklab, var(--color-accent) 75%, #fff 50%); */
-	/* --color-accent-2: color-mix(in oklab, var(--color-accent) 65%, #fff 25%); */
 	--color-accent-1: color-mix(in oklab, var(--color-accent) 52%, #fff 36%);
 	--color-accent-2: color-mix(in oklab, var(--color-accent-1), transparent 15%);
 	--color-accent-3: color-mix(in oklab, var(--color-accent), #fff 15%);
@@ -774,6 +775,9 @@ body {
 
 	--search-result-background: var(--trans-strong-10);
 
+	--setting-item-bg: var(--color-base-05);
+	--setting-item-border-color: var(--trans-faint-25);
+
 	--table-row-bg: var(--trans-faint-00);
 	
 	--tab-sidebar-bg: var(--trans-faint-30);
@@ -787,16 +791,17 @@ body {
 	--cta-shadow: 0 0.375px 1px var(--color-base-30);
 
 	--input-shadow: 
-		0px -0.375px 0 0.375px var(--trans-faint-50),
-		0px 2px 4px 0px var(--color-base-00);
+		0 -0.5px 0 0.5px var(--trans-faint-40),
+		inset 0 0.0625px 0 0.25px var(--trans-faint-40),
+		0px 1px 2.5px 0.5px var(--trans-dark-10);
 	--input-shadow-hover: var(--input-shadow);
 	--shadow-xs: 
-		0px -0.25px 0px 1px var(--trans-faint-25),
-		0px 0.75px 7px -2px var(--trans-dark-00);
+		0 -0.25px 0px 1px var(--trans-faint-25),
+		0 0.75px 7px -2px var(--trans-dark-00);
 	--shadow-tab:
 		0 -0.125px 0 0.5px var(--trans-faint-40),
 		inset 0 1px 2px 0px var(--trans-faint-30),
-		0px 0.75px 4px -1px var(--trans-dark-00);
+		0 0.75px 4px -1px var(--trans-dark-00);
 	--shadow-code: 
 		0 -0.25px 0 0.375px var(--trans-faint-40);
 
@@ -816,11 +821,11 @@ body {
 		inset 0px -0.25px 4px -1px var(--text-selection),
 		0px 1.5px 8px -1.5px var(--text-selection);
 	}
-	& .modal {
-	--shadow-workspace-2: 
+	& .modal, .menu {
+	--shadow-setting-item: 
 		0px 4px 12px 0 var(--trans-strong-10);
 	}
-	& .mod-sidedock {
+	& .mod-sidedock, .view-header {
 	--shadow-sidebar: 
 		0 0 0px 0.625px var(--trans-faint-10);
 	--tab-container-shadow: 
@@ -2436,10 +2441,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 .mod-narrow,
 .mod-confirmation {
 	& .setting-item:not(.style-settings-heading) {
-		font-weight: var(--font-normal);
-		background-color: var(--background-primary);
-		border-inline: 1px solid var(--hr-color);
-		box-shadow: var(--shadow-workspace-2);
+		background-color: var(--setting-item-bg);
+		border-inline: 1px solid var(--setting-item-border-color);
+		box-shadow: var(--shadow-setting-item);
 		clip-path: inset(0px -24px 0px -24px);
 		padding: 12px 20px 12px 22px;
 		flex-wrap: wrap;
@@ -2456,9 +2460,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	.setting-item:has( + .setting-item.setting-item-heading),
 	.setting-item:not(.setting-item-heading):has( + :not(.setting-item)) {
 		box-shadow: 
-		var(--shadow-workspace-2), 
+		var(--shadow-setting-item), 
 		0px 0.25px 0px 0.125px var(--trans-faint-20);
-		border-bottom: 1px solid var(--hr-color);
+		border-bottom: 1px solid var(--setting-item-border-color);
 		border-radius: 0 0 var(--radius-ml) var(--radius-ml);
 		clip-path: inset(0px -24px -24px -24px);
 		padding-bottom: 14px;
@@ -2471,7 +2475,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	.setting-item:not(.setting-item-heading):first-child:not(:has( + .setting-item)),
 	.setting-item.setting-item-heading + .setting-item:not(.setting-item-heading):has( + .setting-item.setting-item-heading),
 	div[class*="settings-section"] > .setting-item {
-		border: 1px solid var(--hr-color);
+		border: 1px solid var(--setting-item-border-color);
 		border-radius: var(--radius-ml) !important; 
 		clip-path: none !important;
 		padding-block: 14px;
@@ -2479,7 +2483,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	& .setting-item:not(.setting-item-heading):first-of-type,
 	.setting-item.setting-item-heading + .setting-item,
 	:not(.setting-item) + .setting-item:has( + .setting-item) {
-		border-top: 1px solid var(--hr-color);
+		border-top: 1px solid var(--setting-item-border-color);
 		border-radius: var(--radius-ml) var(--radius-ml) 0 0;
 		clip-path: inset(-24px -24px 0px -24px);
 		padding-top: 16px;
@@ -2576,7 +2580,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	background-color: var(--trans-strong-10);
 	backdrop-filter: blur(24px);
 	border-radius: var(--radius-ml); 
-	box-shadow: inset 0 0 0 0.75px var(--hr-color), var(--shadow-workspace-2);
+	box-shadow: inset 0 0 0 0.75px var(--hr-color), var(--shadow-setting-item);
 	padding: 6px 12px;
 	margin: 6px 14px -40px 14px;
 	min-height: 56px;
@@ -2836,7 +2840,7 @@ input.prompt-input:hover {
 }
 
 /* Obsidian Bases (embedded) */
-.bases-tbody .bases-tr:nth-child(odd) {
+.bases-tbody >.bases-tr:nth-child(odd) > .bases-td {
     background-color: var(--table-row-alt-background);
 }
 .bases-view[data-view-type="table"] {
@@ -2846,8 +2850,7 @@ input.prompt-input:hover {
 /* Obsidian Bases (interface) */
 .bases-header {
 	border: none;
-	margin-block: 0.5em;
-	padding-inline: 8px 12px;
+	padding-inline: 8px 12px; 
 }
 .bases-header:has( + * + .bases-view[data-view-type="table"]) .query-toolbar {
 	--view-color: var(--color-cyan);
@@ -2856,36 +2859,24 @@ input.prompt-input:hover {
 	--view-color: var(--color-pink);
 } */
 .bases-embed .bases-header {
-	padding-inline: 0;
+	padding-inline: 0 4px;
 }
 .markdown-source-view .bases-embed .bases-header {
-	padding-inline: 0 40px;
+	padding-inline-end: 36px;
 }
 .markdown-source-view .internal-embed.bases-embed .edit-block-button {
-	top: 12px;
-	padding: 6px;
+	top: 6px;
+	padding: 5px;
 }
+/* query toolbar pills */
 .query-toolbar {
-	padding: 2px 16px 2px 12px;
 	--view-color: var(--color-pink);
-}
-.bases-embed .query-toolbar {
-	background-color: var(--nav-item-background-active);
-	border-radius: var(--radius-xxl);
-	box-shadow: 
-		0 1px 0 0.5px var(--trans-strong-00),
-		inset 0 0.75px 3px 0px var(--trans-faint-30);
-	padding: 2px 6.5px;
-}
-.bases-embed .query-toolbar-item > * {
-	background-color: var(--background-primary);
 }
 .query-toolbar-item > * {
 	background-color: var(--background-secondary);
-	border-radius: var(--radius-l);
-	height: 26px;
-	margin-inline: 0 !important;
-	padding: 1px 14px 0;
+	border-radius: var(--radius-xl);
+	height: var(--input-height);
+	padding: 1px 12px 0;
 	--input-font-weight: var(--font-medium);
 	--icon-size: var(--icon-s);
 }
@@ -2897,20 +2888,17 @@ input.prompt-input:hover {
 	display: none;
 }
 .query-toolbar .bases-toolbar-result-count > * {
-	background-color: transparent;
+	background-color: var(--background-modifier-active-hover) !important;
     color: var(--view-color);
-	padding: 2px 8px 0;
+	padding: 1px 8px 0;
+	--background-modifier-active-hover: transparent;
+	--icon-color-active: var(--view-color);
 }
-.query-toolbar-item:not(.mod-views, .bases-toolbar-result-count) > * {
-	box-shadow: var(--shadow-workspace-2);
-	margin-inline: 4px 0 !important;
-	padding: 0 10px;
-	--icon-stroke: 2.25px;
+.query-toolbar-item:not(.mod-views, .bases-toolbar-result-count) > .text-icon-button {
+	padding: 0 8px;
 }
-.query-toolbar-item.mod-filters > *,
-.bases-toolbar-result-count + * > * {
-	box-shadow: none !important;
-	background-color: var(--color-accent-5) !important;
+.query-toolbar-item:not(.mod-views, .mod-properties, .mod-add-note) > .text-icon-button {
+	background-color: var(--color-accent-5);
 }
 
 /* Obsidian Bases (modals) */
@@ -2919,7 +2907,7 @@ input.prompt-input:hover {
 	border: 1px solid var(--color-base-20);
     margin: 0 10px 10px;
 	border-radius: var(--radius-sm);
-	box-shadow: var(--shadow-workspace-2);
+	box-shadow: var(--shadow-setting-item);
 	--metadata-label-font-size: var(--font-smaller);
 	--metadata-label-text-color: var(--text-normal);
 }
@@ -3393,6 +3381,32 @@ body .workspace .mod-sidedock .pomodoro-tasks-header .pomodoro-tasks-header-titl
 body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-tasks-count {
 	margin-bottom: 2px;
 }
+
+/*--> Sidebar Highlights <--*/
+
+/* .highlights-search-container, 
+.highlights-tabs-container {
+	--background-primary: transparent;
+}
+.highlights-list > * {
+	font-weight: var(--font-medium);
+}
+.highlight-item-card {
+    background-color: var(--search-result-background) !important;
+	border-left-width: 4px;
+}
+.highlight-item-card.highlight-native-comment {
+    border-left-color: var(--text-faint) !important;
+}
+.highlight-item-card.highlight-native-comment.highlight-selected {
+    box-shadow: 0 0 0 1.5px var(--text-faint), var(--shadow-s) !important;
+}
+.highlight-item-card.highlight-color-yellow {
+    border-left-color: var(--text-highlight-color);
+}
+.highlight-item-card.highlight-color-yellow.highlight-selected {
+    box-shadow: 0 0 0 1.5px var(--text-highlight-color), var(--shadow-s);
+} */
 
 /*--> Style Settings <--*/
 
