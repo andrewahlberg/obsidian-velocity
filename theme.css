@@ -638,49 +638,52 @@ body {
 	--color-orange-00: color-mix(in oklch, var(--color-orange) 10%, transparent 100%);
 	--color-orange-10: color-mix(in oklch, var(--color-orange), transparent 50%);
 
-	--color-base-00: oklch(23.75% 0.00200 283);
+	--color-base-00: oklch(23.60% 0.00250 283);
 	--color-base-05: oklch(24.60% 0.00250 283);
 	--color-base-10: oklch(26.10% 0.00250 283);
   	--color-base-20: oklch(27.70% 0.00250 283);
 	--color-base-25: oklch(28.85% 0.00250 283);
-  	--color-base-30: oklch(31.20% 0.00250 283);
-
+  	--color-base-30: oklch(32.25% 0.00125 283);
+	--color-base-35: oklch(36.10% 0.00125 283);
+	--color-base-40: oklch(44.90% 0.00125 283);
 	--color-base-80: oklch(79.80% 0.00250 283);
-	--color-base-90: oklch(83.60% 0.00250 283);
-    --color-base-100: oklch(90.50% 0.00000 283);
-	 /* --color-base-00: oklch(19.25% 0.00500 283);
-	 --color-base-05: oklch(23.00% 0.00500 283);
-	 --color-base-10: oklch(26.25% 0.00500 283);
-	 --color-base-20: oklch(28.00% 0.00500 283);
-	 --color-base-25: oklch(28.75% 0.00500 283);
-	 --color-base-30: oklch(30.50% 0.00500 283);
-	 --color-base-35: oklch(31.50% 0.00500 283);
-	 --color-base-40: oklch(34.00% 0.00500 283);
-	 --color-base-50: oklch(37.50% 0.01000 283);
-	 --color-base-60: oklch(62.00% 0.01000 283);
-	 --color-base-70: oklch(72.00% 0.00500 283);
-	 --color-base-80: oklch(78.00% 0.00250 283); */
-
-	/* --color-base-00: #ffffff;
-	--color-base-05: #fbfbfc;
-	--color-base-10: #f2f2f4;
-	--color-base-25: #dadbdd; 
-	--color-base-30: #d0d0d1; 
-	--color-base-35: #bbbdc0; 
-	--color-base-40: #b2b2b2; 
-	--color-base-50: #a2a4ab; 
-	--color-base-60: #6d6f74;
-	--color-base-20: var(--trans-faint-30);
-	--color-base-80: #3c3c3c; 
-	--color-base-90: #282828; 
-	--color-base-100: #141414;  */
+	--color-base-90: oklch(83.40% 0.00250 283);
+    --color-base-100: oklch(90.75% 0.00000 283);
+	/* 
+	--color-base-00: oklch(19.25% 0.00500 283);
+	--color-base-05: oklch(23.00% 0.00500 283);
+	--color-base-10: oklch(26.25% 0.00500 283);
+	--color-base-20: oklch(28.00% 0.00500 283);
+	--color-base-25: oklch(28.75% 0.00500 283);
+	--color-base-30: oklch(30.50% 0.00500 283);
+	--color-base-35: oklch(31.50% 0.00500 283);
+	--color-base-40: oklch(34.00% 0.00500 283);
+	--color-base-50: oklch(37.50% 0.01000 283);
+	--color-base-60: oklch(62.00% 0.01000 283);
+	--color-base-70: oklch(72.00% 0.00500 283);
+	--color-base-80: oklch(78.00% 0.00250 283); 
+	*/
+	/* 
+	--color-base-00: #1e1e1e;
+	--color-base-05: #212121;
+	--color-base-10: #242424;
+	--color-base-20: #262626;
+	--color-base-25: #2a2a2a;
+	--color-base-30: #363636;
+	--color-base-35: #3f3f3f;
+	--color-base-40: #555555;
+	--color-base-50: #666666;
+	--color-base-60: #999999;
+	--color-base-70: #b3b3b3;
+	--color-base-100: #dadada;  
+	*/
 	
 	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.875);
 	--trans-strong-05: oklch(from var(--color-base-00) l c h / 0.5);
+	--trans-strong-10: oklch(from var(--color-base-05) l c h / 0.375);
 	--trans-strong-20: #1a1a1a88;
 	--trans-strong-30: #2d2d2e5a;
 	--trans-strong-40: #14141422;
-	--trans-strong-10: #202022cc;
 
 	--trans-faint-00: #00000030;
 	--trans-faint-05: #00000020;
@@ -692,30 +695,11 @@ body {
 	--trans-faint-50: #00000022;
 	--trans-faint-60: #cccccc99;
 	
-	/* --trans-strong-00: #fffffff2;
-	--trans-strong-10: #ffffffcd;
-	--trans-strong-20: #ffffffbf;
-	--trans-strong-30: #ffffff5c;
-	--trans-strong-40: #aaaaaa1a;
-	--trans-faint-00: #88888808;
-	--trans-faint-05: #22222206;
-	--trans-faint-10: #0000000b;
-	--trans-faint-20: #0000000d;
-	--trans-faint-30: #00000016;
-	--trans-faint-40: #0000001d;
-	--trans-faint-50: #00000022;
-	--trans-faint-60: #00000050;  */
-	
 	--text-normal: var(--color-base-90);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
-	/* --text-normal: var(--color-base-90);
+	/*
 	--text-muted: var(--color-base-70);
 	--text-faint: var(--trans-faint-60);
-    --text-highlight-bg: var(--color-orange-00);
-	--text-highlight-bg-rgb: var(--color-orange-rgb);
-	--text-highlight-color: var(--color-orange);
-	--text-highlight-bg-search: rgb(var(--text-highlight-bg-rgb), 0.15);
-	--text-highlight-bg-search-active: var(--color-orange-10);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15); */
 	--text-highlight-bg: var(--color-orange-00);
 	--text-highlight-bg-rgb: var(--color-orange-rgb);
@@ -773,7 +757,7 @@ body {
 	--scrollbar-thumb-bg: var(--color-base-30);
 	--scrollbar-active-thumb-bg: var(--color-base-35);
 
-	--search-result-background: var(--trans-strong-05);
+	--search-result-background: var(--trans-strong-10);
 	
 	--tab-sidebar-bg: var(--color-base-05);
 	--tab-sidebar-bg-top: var(--color-base-00);
@@ -787,7 +771,7 @@ body {
 
 	& .mod-root {
 	--shadow-workspace: 
-		0px 0 0px 1px var(--trans-faint-25),
+		0px 0 0px 1px var(--trans-faint-20),
 		0px 6px 36px -4px var(--color-base-05),
 		0px 5px 8px -2px var(--color-base-05);
 	--shadow-workspace-multi:
