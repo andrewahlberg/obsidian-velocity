@@ -1,7 +1,19 @@
 /* @settings
-name: Velocity
+name: Velocity - Theme Configurator
 id: obsidian-velocity
 settings:
+-
+	id: theme-mode
+	title: Choose ride settings (WIP)
+	type: class-select
+	default: theme-strada
+	options:
+        - label: Touring
+          value: theme-turismo
+		- label: Sport
+		  value: theme-strada
+        - label: Race
+          value: theme-corsa
 -
 	id: file-line-width
 	title: Set readable line width
@@ -41,7 +53,7 @@ settings:
 	type: class-toggle
 -	
 	id: disable-hover-header
-	title: Disable compact Nav Header panels
+	title: Disable Nav Header compact panels
 	type: class-toggle
 - 	 	
 	id: disable-title-h1
@@ -339,7 +351,7 @@ body {
 	--search-clear-button-color: var(--color-base-50);
 	--search-icon-color: var(--color-base-50);
 	--search-icon-size: 17px;
-	--search-result-background: var(--trans-strong-30);
+
 
 	/* Sliders */
 	--slider-track-background: var(--trans-faint-20);
@@ -510,6 +522,8 @@ body {
 	--color-accent-5: color-mix(in oklch, var(--text-selection) 100%, transparent 75%);
 	--color-accent-6: color-mix(in oklch, var(--text-selection) 40%, transparent 100%);
 
+	--fab-bg: var(--background-primary);
+
 	--hr-color: var(--color-base-20);
 
 	--icon-color: var(--color-base-60);
@@ -525,6 +539,8 @@ body {
 	--nav-header-bg: var(--trans-strong-40);
 	--nav-text-color: var(--color-base-100);
 	--nav-folder-color: var(--color-base-80);
+
+	--search-result-background: var(--trans-strong-30);
 
 	--tab-background-active: var(--trans-strong-20);
 	--tab-sidebar-bg: var(--color-base-00);
@@ -622,72 +638,68 @@ body {
 	--color-orange-00: color-mix(in oklch, var(--color-orange) 10%, transparent 100%);
 	--color-orange-10: color-mix(in oklch, var(--color-orange), transparent 50%);
 
-	 --color-base-00: oklch(19.25% 0.00500 283);
-	 --color-base-05: oklch(23.00% 0.00500 283);
-	 --color-base-10: oklch(26.25% 0.00500 283);
-	 --color-base-20: oklch(28.00% 0.00500 283);
-	 --color-base-25: oklch(28.75% 0.00500 283);
-	 --color-base-30: oklch(30.50% 0.00500 283);
-	 --color-base-35: oklch(31.50% 0.00500 283);
-	 --color-base-40: oklch(34.00% 0.00500 283);
-	 --color-base-50: oklch(37.50% 0.01000 283);
-	 --color-base-60: oklch(62.00% 0.01000 283);
-	 --color-base-70: oklch(72.00% 0.00500 283);
-	 --color-base-80: oklch(78.00% 0.00250 283);
-	 --color-base-90: oklch(86.00% 0.00250 283);
-    --color-base-100: oklch(93.00% 0.00000 283);
-	/* --color-base-00: #ffffff;
-	--color-base-05: #fbfbfc;
-	--color-base-10: #f2f2f4;
-	--color-base-25: #dadbdd; 
-	--color-base-30: #d0d0d1; 
-	--color-base-35: #bbbdc0; 
-	--color-base-40: #b2b2b2; 
-	--color-base-50: #a2a4ab; 
-	--color-base-60: #6d6f74;
-	--color-base-20: var(--trans-faint-30);
-	--color-base-80: #3c3c3c; 
-	--color-base-90: #282828; 
-	--color-base-100: #141414;  */
+	--color-base-00: oklch(23.60% 0.00250 283);
+	--color-base-05: oklch(24.60% 0.00250 283);
+	--color-base-10: oklch(26.10% 0.00250 283);
+  	--color-base-20: oklch(27.70% 0.00250 283);
+	--color-base-25: oklch(28.85% 0.00250 283);
+  	--color-base-30: oklch(32.25% 0.00125 283);
+	--color-base-35: oklch(36.10% 0.00125 283);
+	--color-base-40: oklch(44.90% 0.00125 283);
+	--color-base-80: oklch(79.80% 0.00250 283);
+	--color-base-90: oklch(83.40% 0.00250 283);
+    --color-base-100: oklch(90.75% 0.00000 283);
+	/* 
+	--color-base-00: oklch(19.25% 0.00500 283);
+	--color-base-05: oklch(23.00% 0.00500 283);
+	--color-base-10: oklch(26.25% 0.00500 283);
+	--color-base-20: oklch(28.00% 0.00500 283);
+	--color-base-25: oklch(28.75% 0.00500 283);
+	--color-base-30: oklch(30.50% 0.00500 283);
+	--color-base-35: oklch(31.50% 0.00500 283);
+	--color-base-40: oklch(34.00% 0.00500 283);
+	--color-base-50: oklch(37.50% 0.01000 283);
+	--color-base-60: oklch(62.00% 0.01000 283);
+	--color-base-70: oklch(72.00% 0.00500 283);
+	--color-base-80: oklch(78.00% 0.00250 283); 
+	*/
+	/* 
+	--color-base-00: #1e1e1e;
+	--color-base-05: #212121;
+	--color-base-10: #242424;
+	--color-base-20: #262626;
+	--color-base-25: #2a2a2a;
+	--color-base-30: #363636;
+	--color-base-35: #3f3f3f;
+	--color-base-40: #555555;
+	--color-base-50: #666666;
+	--color-base-60: #999999;
+	--color-base-70: #b3b3b3;
+	--color-base-100: #dadada;  
+	*/
 	
+	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.875);
+	--trans-strong-05: oklch(from var(--color-base-00) l c h / 0.5);
+	--trans-strong-10: oklch(from var(--color-base-05) l c h / 0.375);
 	--trans-strong-20: #1a1a1a88;
 	--trans-strong-30: #2d2d2e5a;
 	--trans-strong-40: #14141422;
-	--trans-strong-10: #202022cc;
 
 	--trans-faint-00: #00000030;
 	--trans-faint-05: #00000020;
-	--trans-faint-10: #efefff09;
-	--trans-faint-20: #0000000d;
-	--trans-faint-30: #00000016;
-	--trans-faint-40: #0000001d;
+	--trans-faint-10: oklch(100% 0.01250 283 / 0.0500);
+	--trans-faint-20: oklch(100% 0.01250 283 / 0.0625);
+	--trans-faint-25: oklch(100% 0.01250 283 / 0.0750);
+	--trans-faint-30: oklch(100% 0.01250 283 / 0.1000);
+	--trans-faint-40: oklch(100% 0.01250 283 / 0.1250);
 	--trans-faint-50: #00000022;
 	--trans-faint-60: #cccccc99;
 	
-	/* --trans-strong-00: #fffffff2;
-	--trans-strong-10: #ffffffcd;
-	--trans-strong-20: #ffffffbf;
-	--trans-strong-30: #ffffff5c;
-	--trans-strong-40: #aaaaaa1a;
-	--trans-faint-00: #88888808;
-	--trans-faint-05: #22222206;
-	--trans-faint-10: #0000000b;
-	--trans-faint-20: #0000000d;
-	--trans-faint-30: #00000016;
-	--trans-faint-40: #0000001d;
-	--trans-faint-50: #00000022;
-	--trans-faint-60: #00000050;  */
-	
 	--text-normal: var(--color-base-90);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
-	/* --text-normal: var(--color-base-90);
+	/*
 	--text-muted: var(--color-base-70);
 	--text-faint: var(--trans-faint-60);
-    --text-highlight-bg: var(--color-orange-00);
-	--text-highlight-bg-rgb: var(--color-orange-rgb);
-	--text-highlight-color: var(--color-orange);
-	--text-highlight-bg-search: rgb(var(--text-highlight-bg-rgb), 0.15);
-	--text-highlight-bg-search-active: var(--color-orange-10);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15); */
 	--text-highlight-bg: var(--color-orange-00);
 	--text-highlight-bg-rgb: var(--color-orange-rgb);
@@ -700,8 +712,8 @@ body {
 	--modal-border-color: var(--color-base-35);
 	
 	--background-gradient: radial-gradient( at 50% 52%, 
-		var(--background-primary) 40%, 
-		var(--background-secondary) 100%
+		var(--color-base-20) 60%, 
+		var(--background-primary) 132%
 		);
 	--background-gradient-menu: radial-gradient( at 64% 50%, 
 		var(--color-base-20) 0%, 
@@ -729,28 +741,29 @@ body {
 	--color-accent-5: color-mix(in oklch, var(--text-selection) 100%, transparent 75%);
 	--color-accent-6: color-mix(in oklch, var(--text-selection) 40%, transparent 100%); 
 
-	--hr-color: var(--color-base-40);
+	--fab-bg: var(--color-base-20);
+
+	--hr-color: var(--trans-faint-30);
 
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
 
 	--link-color-sidebar: var(--color-accent-2);
 
-	--background-primary: var(--color-base-25);
-	--background-secondary: var(--color-base-05);
-
 	--nav-header-bg: var(--background-modifier-hover);
 	--nav-text-color: var(--text-normal);
 	--nav-folder-color: var(--color-base-80);
 
-	--scrollbar-thumb-bg: var(--color-base-40);
-	--scrollbar-active-thumb-bg: var(--color-base-50);
+	--scrollbar-thumb-bg: var(--color-base-30);
+	--scrollbar-active-thumb-bg: var(--color-base-35);
+
+	--search-result-background: var(--trans-strong-10);
 	
-	--tab-sidebar-bg: var(--color-base-25);
-	--tab-sidebar-bg-top: var(--color-base-20);
-	--tab-sidebar-bg-top-left: var(--color-base-25);
-	--tab-sidebar-container-bg: var(--trans-faint-05);
-	--tab-sidebar-container-bg-left: var(--trans-faint-05);
+	--tab-sidebar-bg: var(--color-base-05);
+	--tab-sidebar-bg-top: var(--color-base-00);
+	--tab-sidebar-bg-top-left: var(--color-base-05);
+	--tab-sidebar-container-bg: var(--color-base-25);
+	--tab-sidebar-container-bg-left: var(--color-base-25);
 	--tag-background-image: 
 	linear-gradient(to top, var(--text-selection) -50%, var(--color-accent-6) 100%);
 
@@ -758,16 +771,15 @@ body {
 
 	& .mod-root {
 	--shadow-workspace: 
-		0px 0px 0px 1px var(--color-base-40),
-		0 0px 3px 0px var(--trans-faint-05),
-		0px 5px 32px -8px var(--trans-faint-00),
-		0px 6px 8px -4px var(--trans-faint-05);
+		0px 0 0px 1px var(--trans-faint-20),
+		0px 6px 36px -4px var(--color-base-05),
+		0px 5px 8px -2px var(--color-base-05);
 	--shadow-workspace-multi:
 		0px 0px 0px 1px var(--color-base-40);
 	--shadow-fab: 
-		0px 0.25px 0px 0.75px var(--color-base-35),
-		inset 0px -0.25px 1px 0px var(--color-base-40),
-		0px 2px 8px -2px var(--trans-faint-00);
+		0px 0.5px 0px -0.25px var(--color-base-30),
+		inset 0px 0.5px 0px 0.375px var(--color-base-30),
+		2px 0px 8px 0px var(--color-base-00);
 	--shadow-fab-active: 
 		0px 0.25px 0px 0.5px var(--text-selection),
 		inset 0px -0.25px 4px -1px var(--text-selection),
@@ -779,8 +791,7 @@ body {
 	}
 	& .mod-sidedock {
 	--shadow-sidebar: 
-		0 0.25px 0 0.75px var(--trans-faint-30),
-		0 1.5px 6px -3px var(--trans-faint-30);
+		0 0 0px 0.625px var(--trans-faint-10);
 	--tab-container-shadow: 
 		inset 0 0 2.5px -0.25px var(--color-base-10);
 	}
@@ -795,6 +806,9 @@ body {
 
 	--font-interface-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	--font-text-theme: "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+	
+	/* alt font for corsa override */
+	--font-label: var(--font-interface-theme);
 }
 
 /*
@@ -1491,9 +1505,7 @@ a.tag:active {
 =========================== ===========================
 */
 
-body:not(.is-mobile) .mod-root 
-	:is(.workspace-tab-container, 
-		.workspace-leaf) {
+body:not(.is-mobile) .mod-root :is(.workspace-tab-container, .workspace-leaf) {
     border-radius: var(--radius-m);
 }
 body:not(.is-mobile) .mod-root .workspace-tab-container {
@@ -1532,7 +1544,7 @@ body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .m
 	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
 }
 :is(.workspace-sidedock-vault-profile,.view-header) .clickable-icon {
-    padding: var(--size-4-2);
+    padding: 8px;
 }
 
 .sidebar-toggle-button.mod-left {
@@ -1590,7 +1602,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root>.workspace
 }
 /* Margin OFF when sidebars closed */
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container {
-    margin: 0;
+    margin-inline: 0;
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
 	background-image: none !important;
@@ -1718,7 +1730,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	border-block: 1px solid transparent;
 	transition: border var(--anim-duration-moderate) ease-in-out;
 	&:hover {
-	border-top-color: var(--trans-faint-20);
+		border-top-color: var(--trans-faint-20);
 	}
 }
 .mod-sidedock .workspace-leaf-content {
@@ -1805,10 +1817,10 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 /*--> Workspace Tabs <--*/
 
 .workspace-tab-header-new-tab .clickable-icon {
-	--icon-color: var(--text-muted);
 	height: 32px;
 	width: 32px;
 	margin-bottom: 2px;
+	--icon-color: var(--text-muted);
 }
 
 /* Remove tab gutter curves */
@@ -1820,6 +1832,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /* Tab Containers */
 .workspace-tab-header-container {
+	/* important: fixes top tab performance */
 	overflow: hidden;
 }
 .workspace.is-left-sidedock-open .mod-root .workspace-tab-header-container-inner {
@@ -1987,7 +2000,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 		order: 2;
 		opacity: 1;
 		filter: opacity(100%);
-		background-color: var(--background-primary);
+		background-color: var(--fab-bg);
 		box-shadow: var(--shadow-fab);
 		cursor: var(--cursor-link);
 		transition-property: transform, filter;
@@ -2095,9 +2108,6 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 .markdown-rendered .search-highlight > div {
 	background-color: var(--text-highlight-bg-search-active);
 }
-/* .markdown-rendered .search-highlight > div.is-active {
-	background-color: var(--trans-faint-50);
-} */
 
 /*--> Vault Profile <--*/
 
@@ -2357,9 +2367,9 @@ body:not(.is-mobile)
 .modal-container.mod-dim .vertical-tab-content {
 	background-color: transparent;
 	padding-inline: 2.5vw;
+	transform: translate3d(0px, 0px, 0px); 
 	--scrollbar-thumb-bg: var(--trans-faint-20);
 	--scrollbar-active-thumb-bg: var(--trans-faint-40);
-	transform: translate3d(0px, 0px, 0px); 
 }
 .mod-settings .vertical-tab-content > :is(h1,h2,h3,h4,h5,h6,p,span) {
 	padding-inline-start: 4px;
@@ -2378,9 +2388,6 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active {
     background-color: var(--trans-faint-20);
     color: var(--color-base-100);
 }
-/* body:not(.is-phone) .vertical-tab-header-group {
-    padding: 12px 0 12px;
-} */
 body:not(.is-phone) .vertical-tab-header-group-title {
     padding-inline-start: 20px;
 }
@@ -2511,9 +2518,6 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 .community-modal-empty-state.is-loading::before {
     top: 12px;
 }
-/* .modal-sidebar {
-	background-image: var(--background-gradient-community);
-} */
 .modal-sidebar:has( + .community-modal-details) {
 	background: none;
 	& .community-modal-controls {
@@ -2577,10 +2581,10 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	padding: 16px 24px;
 }
 .community-item {
-	padding: 8px;
     border-radius: var(--radius-ml);
     border: none;
 	box-shadow: var(--shadow-themes);
+	padding: 8px;
 }
 .mod-community-theme .community-item {
 	display: grid;
@@ -3455,6 +3459,7 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 .superheading:not(.override, .style-override) :is(
 	.markdown-source-view .HyperMD-header-1, 
 	.markdown-rendered h1) {
+	border-bottom: 2px solid var(--hr-color);
 	font-feature-settings: 'ss07', 'calt';
 	font-size: 2.5em;
 	font-weight: var(--font-thin);
