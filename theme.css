@@ -4,7 +4,7 @@ id: obsidian-velocity
 settings:
 -
 	id: theme-mode
-	title: Choose ride settings (WIP)
+	title: Select driving profile (WIP)
 	type: class-select
 	default: theme-strada
 	options:
@@ -522,8 +522,7 @@ body {
 	--tab-sidebar-bg-top-left: var(--trans-strong-20);
 	--tab-sidebar-container-bg: var(--trans-faint-05);
 	--tab-sidebar-container-bg-left: var(--trans-faint-05);
-	--tag-background-image: 
-	linear-gradient(to top, var(--text-selection) -30%, var(--color-accent-6) 60%);
+	--tag-background-image: linear-gradient(to top, var(--text-selection) -30%, var(--color-accent-6) 60%);
 
 	--cta-shadow: 0 1.125px 1px var(--color-base-20);
 	--input-shadow: 
@@ -751,8 +750,7 @@ body {
 	--tab-sidebar-bg-top-left: var(--trans-faint-40);
 	--tab-sidebar-container-bg: var(--trans-strong-10);
 	--tab-sidebar-container-bg-left: var(--trans-strong-05);
-	--tag-background-image: 
-	linear-gradient(to top, var(--text-selection) -50%, var(--color-accent-6) 100%);
+	--tag-background-image: linear-gradient(to top, var(--text-selection) -50%, var(--color-accent-6) 100%);
 	
 	--cta-shadow: 0 0.375px 1px var(--color-base-30);
 
@@ -1971,6 +1969,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 
 /*--> View Header <--*/
 
+.view-header {
+	z-index: var(--layer-popover);
+}
 /* View header Title */
 .view-header-title-container > * {
 	padding-top: 3px;
@@ -2054,7 +2055,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 /* For document search overlaying FAB */
 .view-header:has( 
-	+ .view-content .document-search-container + .cm-editor,  
+	+ .view-content .document-search-container ~ .cm-editor,  
 	+ .view-content .markdown-reading-view > .document-search-container) {
 	--shadow-fab: none;
 	--shadow-fab-active: none;
@@ -3215,6 +3216,90 @@ div[class*="el-h"] + * .dataview-container .contains-task-list {
 	padding-bottom: 6px;
 }
 
+/*--> Editing Toolbar <--*/
+
+#editingToolbarModalBar.top {
+	border-radius: var(--radius-sm);
+	margin-inline: 10px;
+	width: calc(100% - 84px);
+	justify-content: space-between;
+	& > * {
+		color: var(--text-normal);
+		margin: 0;
+		padding: 8px !important;
+	}
+	& ~ .cm-editor > .cm-scroller {
+		/* same padding as non-absolute positioned toolbars */
+		padding-top: 32px;
+	}
+}
+#editingToolbarModalBar.top.editingToolbarDefaultAesthetic {
+	border-color: transparent;
+	background-color: var(--background-primary);
+	width: calc(100% - 76px);
+	&:not(:hover) > * {
+		filter: opacity(0.5);
+	}
+}
+#editingToolbarModalBar.top.editingToolbarGlassAesthetic {
+	background-image: linear-gradient(to bottom, var(--background-primary) 10%, transparent);
+	width: calc(100% - 76px);
+	position: absolute;
+	& ~ .cm-editor > .cm-scroller {
+		/* same padding as non-absolute positioned toolbars */
+		padding-top: 68px;
+	}
+}
+
+.setting-item.editing-toolbar-fix-button {
+	background-color: var(--background-secondary) !important;
+	padding: 8px 16px 8px 2px !important;
+}
+.position-style-info {
+	border-radius: var(--radius-sm);
+    position: relative;
+}
+.position-style-info + * > .setting-item-control {
+	flex: 0 !important;
+}
+.command-buttons-container {
+    gap: 0 !important;
+}
+.command-lists-container {
+    border-radius: var(--radius-xl) !important;
+}
+.editing-toolbar-title {
+	--h1-size: var(--h2-size);
+	--h1-weight: var(--h2-weight);
+}
+.editing-toolbar-content {
+	--background-secondary: transparent;
+}
+.editingToolbarSettingsTabsContainer > .setting-item.editingToolbarCommandItem {
+	padding-inline-end: 40px;
+	--setting-item-bg: var(--trans-strong-30);
+}
+.setting-item.editingToolbarCommandsubItem {
+	padding-inline-end: 19px !important;
+}
+.editingToolbarSettingsTabsContainer {
+	border-block: none;
+	margin-block: 8px 0;
+}
+.editingToolbarCommandsubItem > .setting-item-info {
+	flex: 30% !important;
+}
+.editingToolbarCommandsubItem > .setting-item-control {
+	flex: 0 !important;
+	margin-inline-end: 21px;
+}
+
+button.editingToolbarSettingsButton {
+    border-radius: var(--radius-s);
+}
+button:not(.mod-cta):not(.mod-warning).editingToolbarSettingsIcon {
+	box-shadow: var(--shadow-input) !important;
+}
 /*--> Kanban <--*/
 
 .kanban-plugin__scroll-container {
