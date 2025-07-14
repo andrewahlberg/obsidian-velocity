@@ -701,7 +701,7 @@ body {
 	--blockquote-background-color: var(--trans-faint-05);
 
 	--code-background: var(--trans-faint-05);
-	--code-background-alt: var(--trans-faint-05);
+	--code-background-alt: var(--trans-strong-40);
 	--code-border-color: var(--trans-faint-20);
 
 	--fab-bg: var(--color-base-20);
@@ -795,21 +795,21 @@ body {
 		inset 0 -1px 2.5px 0px var(--trans-strong-05),
 		0 4px 12px -4px var(--trans-dark-10);
 	--shadow-fab-active: 
-		0px 0.25px 0px 0.5px var(--text-selection),
+		0 0.25px 0px 0.5px var(--text-selection),
 		inset 0px -0.25px 4px -1px var(--text-selection),
-		0px 1.5px 8px -1.5px var(--text-selection);
+		0 1.5px 8px -1.5px var(--text-selection);
 	}
 	& .modal, .menu {
 	--shadow-setting-item: 
-		0px 4px 12px 0 var(--trans-strong-10);
+		0 4px 12px 0 var(--trans-strong-10);
 	}
 	& .mod-sidedock, .view-header {
 	--shadow-sidebar: 
 		0 -1px 0 0.25px var(--trans-faint-00),
-		0px 1px 0 -0.125px var(--color-base-05);
+		0 1px 0 -0.125px var(--color-base-05);
 	--tab-container-shadow: 
-		inset 0 -0.5px 0px 0px var(--trans-faint-40),
-		inset 0 1px 5px 0px var(--trans-dark-10);
+		inset 0 -0.5px 0 0 var(--trans-faint-30),
+		inset 0 0.375px 3px 0px var(--trans-dark-10);
 	}
 }
 
@@ -1678,8 +1678,8 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
     height: initial;
 	border-radius: var(--radius-sm);
 	flex-wrap: nowrap;
-	--background-modifier-active-hover: var(--dropdown-background);
-	--icon-color-active: var(--color-base-90);
+	--background-modifier-active-hover: var(--background-primary);
+	--icon-color-active: var(--color-base-80);
 	--icon-color: unset;
 	--text-muted: unset;
 }
