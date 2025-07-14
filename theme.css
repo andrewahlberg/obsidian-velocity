@@ -115,7 +115,6 @@ body {
 
 	/* Blockquotes */
 	--blockquote-border-thickness: 0;
-	--blockquote-color: var(--color-base-80);
 
 	/* Bold */
 	--bold-color: var(--color-base-100);
@@ -384,7 +383,8 @@ body {
 	--vault-profile-color: var(--color-base-80);
 
 	/* Backgrounds */ 
-	/* MOVE THIS TO LIGHT/DARK */
+	--color-highlight: var(--color-orange);
+	--color-highlight-rgb: var(--color-orange-rgb);
 
 	/* Inputs */
 
@@ -410,9 +410,6 @@ body {
 	--color-purple: rgb(180, 68, 241);
 	--color-pink-rgb: 225, 70, 147;
 	--color-pink: rgb(225, 70, 147);
-
-	--color-orange-00: color-mix(in oklch, var(--color-orange) 10%, transparent 100%);
-	--color-orange-10: color-mix(in oklch, var(--color-orange), transparent 50%);
 
 	--color-base-00: #ffffff;
 	--color-base-05: #fbfbfc;
@@ -445,12 +442,13 @@ body {
 	--text-normal: var(--color-base-90);
 	--text-muted: var(--color-base-70);
 	--text-faint: var(--trans-faint-60);
-    --text-highlight-bg: var(--color-orange-00);
-	--text-highlight-bg-rgb: var(--color-orange-rgb);
-	--text-highlight-color: var(--color-orange);
-	--text-highlight-bg-search: rgb(var(--text-highlight-bg-rgb), 0.15);
-	--text-highlight-bg-search-active: var(--color-orange-10);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
+
+    --text-highlight-bg: color-mix(in oklch, var(--color-highlight) 10%, transparent 100%);
+	--text-highlight-bg-rgb: var(--color-highlight-rgb);
+	--text-highlight-color: var(--color-highlight);
+	--text-highlight-bg-search: rgb(var(--color-highlight-rgb), 0.15);
+	--text-highlight-bg-search-active: color-mix(in oklch, var(--color-highlight), transparent 50%);
 
 	--link-unresolved-color: oklch(from var(--color-accent) 80% 20% h);
 	
@@ -484,6 +482,7 @@ body {
 	--color-accent-5: color-mix(in oklch, var(--text-selection) 100%, transparent 75%);
 	--color-accent-6: color-mix(in oklch, var(--text-selection) 40%, transparent 100%);
 
+	--blockquote-color: var(--color-base-80);
 	--blockquote-border-color: var(--color-base-25);
 	--blockquote-background-color: var(--trans-faint-00);
 
@@ -497,6 +496,8 @@ body {
 
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
+
+	--italic-color: var(--text-muted);
 
 	--link-color-sidebar: var(--color-accent-1);
 
@@ -514,14 +515,17 @@ body {
 	--setting-item-bg: var(--background-primary);
 	--setting-item-border-color: var(--hr-color);
 
+	--status-bar-filter: opacity(0.25) blur(0.375px);
+	
+	--strikethrough-color: var(--color-base-40);
+
 	--table-row-bg: var(--trans-faint-05);
 
 	--tab-background-active: var(--trans-strong-20);
 	--tab-sidebar-bg: var(--color-base-00);
 	--tab-sidebar-bg-top: var(--trans-strong-10);
 	--tab-sidebar-bg-top-left: var(--trans-strong-20);
-	--tab-sidebar-container-bg: var(--trans-faint-05);
-	--tab-sidebar-container-bg-left: var(--trans-faint-05);
+	--tab-sidebar-container-bg: radial-gradient(at 50% 125%, var(--trans-faint-05), var(--trans-faint-05));
 	--tag-background-image: linear-gradient(to top, var(--text-selection) -30%, var(--color-accent-6) 60%);
 
 	--cta-shadow: 0 1.125px 1px var(--color-base-20);
@@ -608,54 +612,30 @@ body {
 	--color-pink-rgb: 225, 70, 147;
 	--color-pink: rgb(225, 70, 147);
 
-	--color-orange-00: color-mix(in oklab, var(--color-orange) 12.5%, transparent 100%);
-	--color-orange-10: color-mix(in oklab, var(--color-orange), transparent 25%);
-
-	--color-base-00: oklch(23.60% 0.00160 283);
-	--color-base-05: oklch(24.60% 0.00160 283);
-	--color-base-10: oklch(26.10% 0.00160 283);
-  	--color-base-20: oklch(27.70% 0.00160 283);
-	--color-base-25: oklch(28.85% 0.00160 283);
-  	--color-base-30: oklch(32.25% 0.00080 283);
-	--color-base-35: oklch(36.10% 0.00080 283);
-	--color-base-40: oklch(44.90% 0.00080 283);
-	--color-base-80: oklch(79.80% 0.00080 283);
-	--color-base-90: oklch(83.40% 0.00080 283);
-    --color-base-100: oklch(90.75% 0.00000 283);
-	/* 
-	--color-base-00: oklch(19.25% 0.00500 283);
-	--color-base-05: oklch(23.00% 0.00500 283);
-	--color-base-10: oklch(26.25% 0.00500 283);
-	--color-base-20: oklch(28.00% 0.00500 283);
-	--color-base-25: oklch(28.75% 0.00500 283);
-	--color-base-30: oklch(30.50% 0.00500 283);
-	--color-base-35: oklch(31.50% 0.00500 283);
-	--color-base-40: oklch(34.00% 0.00500 283);
-	--color-base-50: oklch(37.50% 0.01000 283);
-	--color-base-60: oklch(62.00% 0.01000 283);
-	--color-base-70: oklch(72.00% 0.00500 283);
-	--color-base-80: oklch(78.00% 0.00250 283); 
-	*/
-	/* 
-	--color-base-00: #1e1e1e;
-	--color-base-05: #212121;
-	--color-base-10: #242424;
-	--color-base-20: #262626;
-	--color-base-25: #2a2a2a;
-	--color-base-30: #363636;
-	--color-base-35: #3f3f3f;
-	--color-base-40: #555555;
-	--color-base-50: #666666;
-	--color-base-60: #999999;
-	--color-base-70: #b3b3b3;
-	--color-base-100: #dadada;  
-	*/
+	--base-hue: 283;
+	--base-hue-text: 283;
+	--base-sat-str: 0.0020;
+	--base-sat-med: 0.0010;
+	--base-sat-low: 0;
+	--color-base-00: oklch(23.60% var(--base-sat-str) var(--base-hue));
+	--color-base-05: oklch(24.60% var(--base-sat-str) var(--base-hue));
+	--color-base-10: oklch(26.10% var(--base-sat-str) var(--base-hue));
+  	--color-base-20: oklch(27.70% var(--base-sat-str) var(--base-hue));
+	--color-base-25: oklch(28.85% var(--base-sat-str) var(--base-hue));
+  	--color-base-30: oklch(32.25% var(--base-sat-med) var(--base-hue));
+	--color-base-35: oklch(36.10% var(--base-sat-med) var(--base-hue));
+	--color-base-40: oklch(44.90% var(--base-sat-med) var(--base-hue));
+	--color-base-50: oklch(49.00% var(--base-sat-med) var(--base-hue-text));
+	--color-base-60: oklch(66.70% var(--base-sat-med) var(--base-hue));
+	--color-base-70: oklch(72.75% var(--base-sat-med) var(--base-hue-text));
+	--color-base-80: oklch(80.50% var(--base-sat-low) var(--base-hue-text));
+	--color-base-90: oklch(83.00% var(--base-sat-low) var(--base-hue-text));
+   --color-base-100: oklch(90.50% var(--base-sat-low) var(--base-hue-text));
 	
 	--trans-dark-00: oklch(from black l c h / 0.375);
 	--trans-dark-10: oklch(from black l c h / 0.250);
-
-	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.875);
-	--trans-strong-05: oklch(from var(--color-base-00) l c h / 0.5);
+	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.750);
+	--trans-strong-05: oklch(from var(--color-base-00) l c h / 0.375);
 	--trans-strong-10: oklch(from var(--color-base-05) l c h / 0.375);
 	--trans-strong-20: oklch(from var(--color-base-20) l c h / 0.500);
 	--trans-strong-30: oklch(from var(--color-base-25) l c h / 0.750);
@@ -669,19 +649,16 @@ body {
 	--trans-faint-30: oklch(100% 0 283 / 0.1000);
 	--trans-faint-40: oklch(100% 0 283 / 0.1250);
 	--trans-faint-50: oklch(100% 0 283 / 0.2000);
-	--trans-faint-60: #cccccc99;
+	--trans-faint-60: oklch(100% 0 283 / 0.3250);
 	
 	--text-normal: var(--color-base-90);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
-	/*
-	--text-muted: var(--color-base-70);
-	--text-faint: var(--trans-faint-60);
-	--text-selection: hsla(var(--color-accent-hsl), 0.15); */
-	--text-highlight-bg: var(--color-orange-00);
-	--text-highlight-bg-rgb: var(--color-orange-rgb);
-	--text-highlight-color: var(--color-orange);
-	--text-highlight-bg-search: rgb(var(--text-highlight-bg-rgb), 0.15);
-	--text-highlight-bg-search-active: var(--color-orange-10);
+
+	--text-highlight-bg: color-mix(in oklab, var(--color-highlight) 10%, transparent 100%);
+	--text-highlight-bg-rgb: var(--color-highlight-rgb);
+	--text-highlight-color: color-mix(in oklab, var(--color-highlight), transparent 12.5%);
+	--text-highlight-bg-search: rgb(var(--color-highlight-rgb), 0.175);
+	--text-highlight-bg-search-active: color-mix(in oklab, var(--color-highlight), transparent 25%);
 
 	/* --link-unresolved-color: oklch(from var(--color-accent) 76% 20% h); */
 
@@ -715,6 +692,7 @@ body {
 	--color-accent-5: color-mix(in oklab, var(--text-selection) 100%, transparent 75%);
 	--color-accent-6: color-mix(in oklab, var(--text-selection) 40%, transparent 100%); 
 
+	--blockquote-color: var(--text-muted);
 	--blockquote-border-color: var(--color-base-30);
 	--blockquote-background-color: var(--trans-faint-05);
 
@@ -729,6 +707,8 @@ body {
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
 
+	--italic-color: var(--text-muted);
+
 	--link-color-sidebar: var(--color-accent-2);
 
 	--nav-header-bg: var(--background-modifier-hover);
@@ -738,18 +718,21 @@ body {
 	--scrollbar-thumb-bg: var(--color-base-30);
 	--scrollbar-active-thumb-bg: var(--color-base-40);
 
-	--search-result-background: var(--trans-strong-10);
+	--search-result-background: var(--trans-strong-05);
 
 	--setting-item-bg: var(--color-base-05);
 	--setting-item-border-color: var(--trans-faint-25);
+
+	--status-bar-filter: opacity(0.375) blur(0.25px);
+
+	--strikethrough-color: var(--text-faint);
 
 	--table-row-bg: var(--trans-faint-00);
 	
 	--tab-sidebar-bg: var(--trans-faint-30);
 	--tab-sidebar-bg-top: var(--trans-faint-30);
 	--tab-sidebar-bg-top-left: var(--trans-faint-40);
-	--tab-sidebar-container-bg: var(--trans-strong-10);
-	--tab-sidebar-container-bg-left: var(--trans-strong-05);
+	--tab-sidebar-container-bg: radial-gradient(at 50% 112.5%, var(--trans-faint-00), var(--trans-strong-10) 87.5%);
 	--tag-background-image: linear-gradient(to top, var(--text-selection) -50%, var(--color-accent-6) 100%);
 	
 	--cta-shadow: 0 0.375px 1px var(--color-base-30);
@@ -763,8 +746,8 @@ body {
 		0 -0.25px 0px 1px var(--trans-faint-25),
 		0 0.75px 7px -2px var(--trans-dark-00);
 	--shadow-tab:
-		0 -0.125px 0 0.5px var(--trans-faint-40),
-		inset 0 1px 2px 0px var(--trans-faint-30),
+		inset 0 1.5px 2.5px 0px var(--trans-faint-40),
+		inset 0 -1.25px 2.75px 0px var(--trans-strong-05),
 		0 0.75px 4px -1px var(--trans-dark-00);
 	--shadow-code: 
 		0 -0.25px 0 0.375px var(--trans-faint-40);
@@ -803,9 +786,9 @@ body {
 	}
 	& .mod-sidedock, .view-header {
 	--shadow-sidebar: 
-		0 0 0px 0.625px var(--trans-faint-10);
+		0 -1px 0 0.25px var(--trans-faint-00),
+		0px 1px 0 -0.125px var(--color-base-05);
 	--tab-container-shadow: 
-		0 0 0 1px var(--trans-faint-00),	
 		inset 0 -0.5px 0px 0px var(--trans-faint-40),
 		inset 0 1px 5px 0px var(--trans-dark-10);
 	}
@@ -1178,8 +1161,9 @@ body.prop-headings {
 	padding-inline: 1.125em;
 	position: relative;
 	& * {
+	--bold-color: var(--blockquote-color);	
+	--italic-color: var(--blockquote-color);
 	--link-color: var(--color-accent-1);
-	--bold-color: var(--text-normal);
 	}
 }
 
@@ -1271,7 +1255,7 @@ pre[class*="language-"] code,
 
 /* Strikethrough / list crossed out */
 .cm-strikethrough, del, del > * {
-    color: var(--color-base-30);
+    color: var(--strikethrough-color);
 }
 .cm-s-obsidian span.cm-highlight,
 :is(.markdown-source-view, .markdown-preview-view) mark {
@@ -1861,16 +1845,16 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 }
 .mod-sidedock .workspace-tab-header-container-inner {
 	height: 40px;
-	background-color: var(--tab-sidebar-container-bg);
+	background-image: var(--tab-sidebar-container-bg);
 	border-radius: 20px;
 	box-shadow: var(--tab-container-shadow);
 	padding: 2px;
 	margin: 4px 0 0 0;
 	contain: content;
 }
-.mod-left-split .mod-top .workspace-tab-header-container-inner {
-	background-color: var(--tab-sidebar-container-bg-left);
-}
+/* .mod-left-split .mod-top .workspace-tab-header-container-inner {
+	background-image: var(--tab-sidebar-container-bg-left);
+} */
 
 /* Root Tabs */
 .workspace .mod-root .workspace-tab-header {
@@ -2080,7 +2064,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	right: unset;
 	left: 0;
 }
-.mod-right-split .document-search-container  * {
+.mod-right-split .document-search-container * {
 	flex-direction: row-reverse;
 }
 .mod-root .document-search-container {
@@ -2151,7 +2135,7 @@ body:not(.disable-status-fade) {
 	& .status-bar:not(:hover) {
 		background-color: transparent;
 		box-shadow: none;
-		filter: opacity(0.25) blur(0.375px);
+		filter: var(--status-bar-filter);
 	}
 }
 
