@@ -67,8 +67,8 @@ settings:
 	collapsed: false
 - 	
 	id: better-font
-	title: Enable high-fidelity body text
-	description: (requires better-font snippet) Uses a hinted variant of Inter 4.1 for body text. Greatly improves readability and text flow. 
+	title: Enable high-fidelity body text (requires better-font snippet)
+	description: Uses a hinted variant of Inter for body text, improving readability and text flow.  
 	type: class-toggle
 - 	
 	id: prop-headings
