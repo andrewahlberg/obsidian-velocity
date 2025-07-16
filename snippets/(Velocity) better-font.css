@@ -12,13 +12,17 @@ concerned about the impact of file size on performance. However, it should
 be noted that in practical testing, there is really no difference or dip
 in vault smoothness. 
 
---> To enable this snippet's features, you must first activate the snippet at
-    the bottom of the Appearance tab in settings. 
---> Then, you must also turn on the "enable high-fidelity body text" option in 
-    Style Settings. 
---> This may seem inconvenient, but is designed to prevent the snippet from acting on 
-    other themes in case you forget to turn it off while switching to another
-    theme.
+--> To enable this snippet's features, you must first activate the snippet 
+    at the bottom of the Appearance tab in settings. 
+--> Then, you must also turn on the "enable high-fidelity body text" option 
+    in Style Settings. 
+--> This may seem inconvenient, but is designed to prevent the snippet from 
+    acting on other themes in case you forget to turn it off while switching 
+    to another theme.
+
+(DISCLAIMER) 
+Font appearance may be inconsistent across different zoom levels.
+It is recommended to stick to 100%, or adjust font size instead.
 */
 
 /* Inter 4.1 (OpenType font) */
@@ -58,10 +62,6 @@ in vault smoothness.
 
 body.better-font {
     --font-text-theme: "Inter OTF", "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-}
-button,
-.dropdown {
-    font-family: var(--font-text-theme);
 }
 em,
 .cm-s-obsidian .cm-line.HyperMD-header,
