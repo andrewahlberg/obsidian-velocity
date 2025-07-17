@@ -63,8 +63,9 @@ It is recommended to stick to 100%, or adjust font size instead.
 body.better-font {
     --font-text-theme: "Inter OTF", "Inter Variable", "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
-em,
-.cm-s-obsidian .cm-line.HyperMD-header,
-.markdown-rendered :is(h1, h2,h3,h4,h5,h6) {
-    font-family: var(--font-interface-theme);
+.better-font 
+    :is(em,
+    .cm-s-obsidian .cm-line.HyperMD-header,
+    .markdown-rendered :is(h1, h2,h3,h4,h5,h6)) {
+        font-family: var(--font-interface-theme);
 }
