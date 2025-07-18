@@ -402,20 +402,20 @@ body {
 	--accent-s: 100%;	
 	--accent-l: 49%;
 	
-	--color-red-rgb: 250, 19, 2;
-	--color-red: rgb(250, 19, 2);
-	--color-orange-rgb: 250, 142, 0;
-	--color-orange: rgb(250, 142, 0);
-	--color-yellow-rgb: 232, 182, 0;
-	--color-yellow: rgb(232, 182, 0);
+	--color-red-rgb: 250, 30, 14;
+	--color-red: rgb(250, 30, 14);
+	--color-orange-rgb: 250, 144, 0;
+	--color-orange: rgb(250, 144, 0);
+	--color-yellow-rgb: 233, 175, 0;
+	--color-yellow: rgb(233, 175, 0);
 	--color-green-rgb: 9, 180, 29;
 	--color-green: rgb(9, 180, 29);
 	--color-cyan-rgb: 6, 188, 197;
 	--color-cyan: rgb(6, 188, 197);
-	--color-blue-rgb: 19, 138, 236;
-	--color-blue: rgb(19, 138, 236);
+	--color-blue-rgb: 0, 132, 255;
+	--color-blue: rgb(0, 132, 255);
 	--color-purple-rgb: 180, 68, 241;
-	--color-purple: rgb(180, 68, 241);
+	--color-purple: rgb(178, 74, 236);
 	--color-pink-rgb: 225, 70, 147;
 	--color-pink: rgb(225, 70, 147);
 
@@ -429,7 +429,7 @@ body {
 	--color-base-40: #b2b2b2; 
 	--color-base-50: #a2a4ab; 
 	--color-base-60: #6d6f74;
-	--color-base-80: #3c3c3c; 
+	--color-base-80: #3f3f3f; 
 	--color-base-90: #343434; 
 	--color-base-100: #1c1c1c; 
 
@@ -452,11 +452,11 @@ body {
 	--text-faint: var(--trans-faint-60);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
 
-    --text-highlight-bg: color-mix(in oklch, var(--color-highlight) 10%, transparent 100%);
+    --text-highlight-bg: color-mix(in oklab, var(--color-highlight) 7.5%, transparent);
 	--text-highlight-bg-rgb: var(--color-highlight-rgb);
 	--text-highlight-color: var(--color-highlight);
-	--text-highlight-bg-search: rgb(var(--color-highlight-rgb), 0.15);
-	--text-highlight-bg-search-active: color-mix(in oklch, var(--color-highlight), transparent 50%);
+	--text-highlight-bg-search: color-mix(in oklab, var(--color-highlight), transparent 87.5%);
+	--text-highlight-bg-search-active: color-mix(in oklab, var(--color-highlight), transparent 37.5%);
 
 	--link-unresolved-color: oklch(from var(--color-accent) 80% 20% h);
 	
@@ -505,7 +505,7 @@ body {
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
 
-	--italic-color: var(--text-muted);
+	--italic-color: var(--color-base-60);
 
 	--link-color-sidebar: var(--color-accent-1);
 
@@ -611,7 +611,7 @@ body {
 .theme-dark {
 	
 	--accent-h: 205;	
-	--accent-s: 95%;	
+	--accent-s: 100%;	
 	--accent-l: 48%;
 
 	--color-red-rgb: 255, 65, 51;
@@ -645,10 +645,10 @@ body {
 	--color-base-35: oklch(36.10% var(--base-sat-med) var(--base-hue));
 	--color-base-40: oklch(44.90% var(--base-sat-med) var(--base-hue));
 	--color-base-50: oklch(50.25% var(--base-sat-str) var(--base-hue-text));
-	--color-base-60: oklch(67.25% var(--base-sat-str) var(--base-hue));
-	--color-base-70: oklch(72.50% var(--base-sat-str) var(--base-hue-text));
-	--color-base-80: oklch(79.00% var(--base-sat-med) var(--base-hue-text));
-	--color-base-90: oklch(84.75% var(--base-sat-med) var(--base-hue-text));
+	--color-base-60: oklch(65.50% var(--base-sat-str) var(--base-hue));
+	--color-base-70: oklch(69.75% var(--base-sat-str) var(--base-hue-text));
+	--color-base-80: oklch(75.50% var(--base-sat-med) var(--base-hue-text));
+	--color-base-90: oklch(84.50% var(--base-sat-med) var(--base-hue-text));
    --color-base-100: oklch(91.00% var(--base-sat-low) var(--base-hue-text));
 
     --trans-dark-00: oklch(from black l c h / 0.375);
@@ -704,8 +704,8 @@ body {
 	--toggle-gradient: linear-gradient(to bottom, var(--color-accent) -30%, var(--color-accent-4) 180%);
 	--warning-gradient: linear-gradient(to top, var(--color-red) -30%, var(--trans-strong-20) 180%);
 	
-	--color-accent-1: color-mix(in oklab, var(--color-accent) 56%, #fff 36%);
-	--color-accent-2: color-mix(in oklab, var(--color-accent-1), transparent 8%);
+	--color-accent-1: color-mix(in oklab, var(--color-accent) 52%, #fff 35%);
+	--color-accent-2: color-mix(in oklab, var(--color-accent-1), transparent 7%);
 	--color-accent-3: color-mix(in oklab, var(--color-accent), #fff 20%);
 	--color-accent-4: color-mix(in oklab, var(--color-accent) 50%, transparent 75%);
 	--color-accent-5: color-mix(in oklab, var(--text-selection) 100%, transparent 75%);
@@ -730,6 +730,9 @@ body {
 
 	--link-color-sidebar: var(--color-accent-2);
 
+	--list-marker-color: var(--color-base-80);
+
+	--nav-heading-color: var(--color-base-80);
 	--nav-header-bg: var(--background-modifier-hover);
 	--nav-text-color: var(--text-normal);
 	--nav-folder-color: var(--color-base-80);
@@ -1253,6 +1256,10 @@ body.disable-callout-styling {
 	--table-border-color: var(--hr-color);
 }
 
+:is(.callout[data-callout="quote"], .callout[data-callout="cite"]) .callout-content {
+	color: var(--blockquote-color);
+}
+
 /*--> Code <--*/
 
 .markdown-rendered code {
@@ -1292,7 +1299,7 @@ pre[class*="language-"] code,
 	font-weight: var(--font-medium);
 	border-radius: 0.375em;
 	box-decoration-break: clone;
-	box-shadow: 0 0 5px 1.25px var(--text-highlight-bg);
+	box-shadow: 0 0 2px 1.625px var(--text-highlight-bg);
 	color: var(--text-highlight-color);
 	padding-block: 0.0625em;
 	& > * {
@@ -2910,6 +2917,9 @@ input.prompt-input:hover {
 }
 .base-toolbar-sort-item .metadata-property  {
     padding: 2px;
+}
+.filter-lhs-container .combobox-button-chevron {
+	display: none;
 }
 .bases-query-container .filter-group .filter-row .combobox-button {
 	color: var(--text-muted);
