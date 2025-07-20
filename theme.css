@@ -1619,7 +1619,7 @@ body:not(.is-mobile) :is(.mod-left-split,.mod-right-split) .workspace-leaf-conte
 	padding-inline: 4px;
 }
 .mod-sidedock .view-header {
-	--background-primary: transparent;
+	background-color: transparent;
 }
 
 /* empty sidedock */
@@ -2183,7 +2183,7 @@ body:not(.disable-status-fade) {
 /*--> Sidebar Auto-Hide <--*/
 
 @media only screen and (max-width: 800px) {
-	body:not(.is-mobile, .disable-autohide) :is(
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) :is(
 		.mod-right-split,
 		.mod-left-split,
 		.workspace-ribbon,
@@ -2191,26 +2191,26 @@ body:not(.disable-status-fade) {
 		display: none;
 	}
 
-	body:not(.is-mobile, .disable-autohide) .workspace {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace {
 		background-image: none !important;
 		--frame-right-space: 0px;
 		--frame-left-space: 0px;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace-split.mod-vertical {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace-split.mod-vertical {
 		gap: 0 !important;
 		padding: 0;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .mod-root {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .mod-root {
 		--shadow-workspace: none;
 		--shadow-workspace-multi: none;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .mod-root .workspace-tab-container {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .mod-root .workspace-tab-container {
 		margin: 0 !important;
 	} 
 	.mod-macos.is-hidden-frameless .workspace .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container {
   		padding-right: 8px;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container:has(.sidebar-toggle-button.mod-right)  {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container:has(.sidebar-toggle-button.mod-right)  {
 		margin-right: var(--frame-right-space-override);
 		& .sidebar-toggle-button {
 			pointer-events: none;
@@ -2222,16 +2222,16 @@ body:not(.disable-status-fade) {
 			transition: all var(--anim-duration-fast) var(--anim-motion-swing);
 		}
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .mod-root .workspace-tabs:first-of-type.mod-top .workspace-tab-header-container {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .mod-root .workspace-tabs:first-of-type.mod-top .workspace-tab-header-container {
 		margin-inline: var(--frame-left-space-override) var(--frame-right-space);
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .workspace-tab-header-container-inner {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .workspace-tab-header-container-inner {
 		padding-inline: 0px 6px !important;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .view-header-title-container {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .view-header-title-container {
 		filter: opacity(0.5);
 	}
-	body:not(.is-mobile, .disable-autohide) .status-bar::after {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .status-bar::after {
 		position: absolute;
 		padding: 4px 6px;
 		left: -124px;
@@ -2242,11 +2242,11 @@ body:not(.disable-status-fade) {
 		color: var(--text-error);
 		overflow: visible;
 	}
-	body:not(.is-mobile, .disable-autohide) .status-bar::after,
-	body:not(.is-mobile, .disable-autohide, .disable-status-fade) .status-bar:hover::after {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .status-bar::after,
+	body:not(.is-mobile, .is-popout-window, .disable-autohide, .disable-status-fade) .status-bar:hover::after {
 		background-color: oklch(from var(--text-error) l c h / 0.1);
 	}
-	body:not(.is-mobile, .disable-autohide, .disable-status-fade) .status-bar::after {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide, .disable-status-fade) .status-bar::after {
 		background-color: transparent;
 	}
 }
