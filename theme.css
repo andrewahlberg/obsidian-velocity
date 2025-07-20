@@ -419,33 +419,41 @@ body {
 	--color-pink-rgb: 225, 70, 147;
 	--color-pink: rgb(225, 70, 147);
 
-	--color-base-00: #ffffff;
-	--color-base-05: #fbfbfc;
-	--color-base-10: #f2f2f4;
-	--color-base-20: var(--trans-faint-30);
-	--color-base-25: #dadbdd; 
-	--color-base-30: #d0d0d1; 
-	--color-base-35: #bbbdc0; 
-	--color-base-40: #b2b2b2; 
-	--color-base-50: #a2a4ab; 
-	--color-base-60: #6d6f74;
-	--color-base-80: #3f3f3f; 
-	--color-base-90: #343434; 
-	--color-base-100: #1c1c1c; 
+	--base-hue: 281;
+	--base-sat-xtr: 0.01050;
+	--base-sat-str: 0.00250;
+	--base-sat-med: 0.00150;
+	--base-sat-low: 0.00050;
 
-	--trans-strong-00: #fffffff2;
-	--trans-strong-10: #ffffffcd;
-	--trans-strong-20: #ffffffbf;
-	--trans-strong-30: #ffffff5c;
-	--trans-strong-40: #aaaaaa1a;
-	--trans-faint-00: #88888808;
-	--trans-faint-05: #22222206;
-	--trans-faint-10: #0000000b;
-	--trans-faint-20: #0000000d;
-	--trans-faint-30: #00000016;
-	--trans-faint-40: #0000001d;
-	--trans-faint-50: #00000022;
-	--trans-faint-60: #00000050; 
+	--color-base-00: oklch(100.0% var(--base-sat-low) var(--base-hue));
+	--color-base-05: oklch(98.80% var(--base-sat-med) var(--base-hue));
+	--color-base-10: oklch(96.20% var(--base-sat-str) var(--base-hue));
+	--color-base-20: oklch(92.00% var(--base-sat-str) var(--base-hue));
+	--color-base-25: oklch(89.10% var(--base-sat-str) var(--base-hue)); 
+	--color-base-30: oklch(85.79% var(--base-sat-med) var(--base-hue)); 
+	--color-base-35: oklch(79.75% var(--base-sat-str) var(--base-hue)); 
+	--color-base-40: oklch(76.35% var(--base-sat-med) var(--base-hue)); 
+	--color-base-50: oklch(72.75% var(--base-sat-xtr) var(--base-hue)); 
+	--color-base-60: oklch(54.15% var(--base-sat-xtr) var(--base-hue));
+	--color-base-70: oklch(48.90% var(--base-sat-xtr) var(--base-hue));
+	--color-base-80: oklch(41.65% var(--base-sat-low) var(--base-hue)); 
+	--color-base-90: oklch(32.50% var(--base-sat-low) var(--base-hue)); 
+   --color-base-100: oklch(22.65% var(--base-sat-low) var(--base-hue)); 
+
+	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.950);
+	--trans-strong-10: oklch(from var(--color-base-00) l c h / 0.800);
+	--trans-strong-20: oklch(from var(--color-base-00) l c h / 0.750);
+	--trans-strong-30: oklch(from var(--color-base-00) l c h / 0.360);
+	--trans-strong-40: oklch(from var(--color-base-50) l c h / 0.100);
+	
+	--trans-faint-00: oklch(62.65% 0 0 / 0.030);
+	--trans-faint-05: oklch(25.20% 0 0 / 0.025);
+	--trans-faint-10: oklch(0.000% 0 0 / 0.043);
+	--trans-faint-20: oklch(0.000% 0 0 / 0.051);
+	--trans-faint-30: oklch(0.000% 0 0 / 0.086);
+	--trans-faint-40: oklch(0.000% 0 0 / 0.114);
+	--trans-faint-50: oklch(0.000% 0 0 / 0.133);
+	--trans-faint-60: oklch(0.000% 0 0 / 0.314); 
 	
 	--text-normal: var(--color-base-90);
 	--text-muted: var(--color-base-70);
@@ -500,7 +508,7 @@ body {
 
 	--fab-bg: var(--background-primary);
 
-	--hr-color: var(--color-base-20);
+	--hr-color: var(--trans-faint-30);
 
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
@@ -541,10 +549,10 @@ body {
 
 	--vault-profile-color: var(--color-base-80);
 
-	--cta-shadow: 0 1.125px 1px var(--color-base-20);
+	--cta-shadow: 0 1.125px 1px var(--trans-faint-30);
 	--input-shadow: 
-		0px 0.125px 0px 0.5px var(--color-base-20),
-		inset 0px -0.125px 1px 0px var(--color-base-20),
+		0px 0.125px 0px 0.5px var(--trans-faint-30),
+		inset 0px -0.125px 1px 0px var(--trans-faint-30),
 		0px 0.75px 2px 0.5px var(--trans-faint-20);
 	--input-shadow-hover: var(--input-shadow);
 	--shadow-xs: 
@@ -571,10 +579,10 @@ body {
 		0px 8px 16px 0px var(--trans-faint-20);	
 	--shadow-track:
 		0 1px 0px 0.75px var(--color-base-00),
-		inset 0 0.5px 1px 0px var(--color-base-20),
+		inset 0 0.5px 1px 0px var(--trans-faint-30),
 		inset 0 4px 20px -4px var(--trans-faint-30);
 	--shadow-toggle:
-		inset 0 1px 2px 1px var(--color-base-20),
+		inset 0 1px 2px 1px var(--trans-faint-30),
 		inset 0 6px 12px 0px var(--trans-faint-05);
 	--shadow-toggle-active:
 		inset 0 1.5px 3px 0px var(--trans-faint-50);
@@ -584,11 +592,11 @@ body {
 		0px 0px 0px 1px var(--trans-faint-20),
 		0 0px 3px 0px var(--trans-faint-10),
 		0px 5px 40px -8px var(--color-base-25),
-		0px 6px 8px -4px var(--color-base-20);	
+		0px 6px 8px -4px var(--trans-faint-30);	
 	--shadow-workspace-multi:
 		0 0 0 1px var(--trans-faint-20);	
 	--shadow-fab: 
-		0px 0.25px 0px 0.75px var(--color-base-20),
+		0px 0.25px 0px 0.75px var(--trans-faint-30),
 		inset 0px -0.25px 2px 0px var(--trans-faint-05),
 		0px 2px 8px -2px var(--trans-faint-40);
 	--shadow-fab-active: 
@@ -605,7 +613,7 @@ body {
 		0 0.25px 0 0.75px var(--trans-faint-20),
 		0 1.5px 6px -3px var(--trans-faint-20);
 	--tab-container-shadow: 
-		inset 0 0 2.5px -0.25px var(--color-base-20);
+		inset 0 0 2.5px -0.25px var(--trans-faint-30);
 	}
 }
 .theme-dark {
@@ -1618,7 +1626,7 @@ body:not(.is-mobile) :is(.mod-left-split,.mod-right-split) .workspace-leaf-conte
 	padding-inline: 4px;
 }
 .mod-sidedock .view-header {
-	--background-primary: transparent;
+	background-color: transparent;
 }
 
 /* empty sidedock */
@@ -2182,7 +2190,7 @@ body:not(.disable-status-fade) {
 /*--> Sidebar Auto-Hide <--*/
 
 @media only screen and (max-width: 800px) {
-	body:not(.is-mobile, .disable-autohide) :is(
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) :is(
 		.mod-right-split,
 		.mod-left-split,
 		.workspace-ribbon,
@@ -2190,26 +2198,26 @@ body:not(.disable-status-fade) {
 		display: none;
 	}
 
-	body:not(.is-mobile, .disable-autohide) .workspace {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace {
 		background-image: none !important;
 		--frame-right-space: 0px;
 		--frame-left-space: 0px;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace-split.mod-vertical {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace-split.mod-vertical {
 		gap: 0 !important;
 		padding: 0;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .mod-root {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .mod-root {
 		--shadow-workspace: none;
 		--shadow-workspace-multi: none;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .mod-root .workspace-tab-container {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .mod-root .workspace-tab-container {
 		margin: 0 !important;
 	} 
 	.mod-macos.is-hidden-frameless .workspace .workspace-tabs.mod-top.mod-top-right-space .workspace-tab-header-container {
   		padding-right: 8px;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container:has(.sidebar-toggle-button.mod-right)  {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .mod-root .workspace-tabs.mod-top .workspace-tab-header-container:has(.sidebar-toggle-button.mod-right)  {
 		margin-right: var(--frame-right-space-override);
 		& .sidebar-toggle-button {
 			pointer-events: none;
@@ -2221,16 +2229,16 @@ body:not(.disable-status-fade) {
 			transition: all var(--anim-duration-fast) var(--anim-motion-swing);
 		}
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .mod-root .workspace-tabs:first-of-type.mod-top .workspace-tab-header-container {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .mod-root .workspace-tabs:first-of-type.mod-top .workspace-tab-header-container {
 		margin-inline: var(--frame-left-space-override) var(--frame-right-space);
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .workspace-tab-header-container-inner {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .workspace-tab-header-container-inner {
 		padding-inline: 0px 6px !important;
 	}
-	body:not(.is-mobile, .disable-autohide) .workspace .view-header-title-container {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .view-header-title-container {
 		filter: opacity(0.5);
 	}
-	body:not(.is-mobile, .disable-autohide) .status-bar::after {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .status-bar::after {
 		position: absolute;
 		padding: 4px 6px;
 		left: -124px;
@@ -2241,11 +2249,11 @@ body:not(.disable-status-fade) {
 		color: var(--text-error);
 		overflow: visible;
 	}
-	body:not(.is-mobile, .disable-autohide) .status-bar::after,
-	body:not(.is-mobile, .disable-autohide, .disable-status-fade) .status-bar:hover::after {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide) .status-bar::after,
+	body:not(.is-mobile, .is-popout-window, .disable-autohide, .disable-status-fade) .status-bar:hover::after {
 		background-color: oklch(from var(--text-error) l c h / 0.1);
 	}
-	body:not(.is-mobile, .disable-autohide, .disable-status-fade) .status-bar::after {
+	body:not(.is-mobile, .is-popout-window, .disable-autohide, .disable-status-fade) .status-bar::after {
 		background-color: transparent;
 	}
 }
@@ -2395,7 +2403,7 @@ body:not(.is-mobile)
 }
 .modal-container.mod-dim .vertical-tabs-container {
 	--scrollbar-thumb-bg: var(--trans-strong-40);
-	--scrollbar-active-thumb-bg: var(--color-base-20);
+	--scrollbar-active-thumb-bg: var(--trans-faint-30);
 }
 .modal-container.mod-dim .vertical-tab-header {
 	background-color: transparent;
@@ -2904,7 +2912,7 @@ input.prompt-input:hover {
 /* Obsidian Bases (modals) */
 .bases-query-container {
 	background-color: var(--background-primary);
-	border: 1px solid var(--color-base-20);
+	border: 1px solid var(--trans-faint-30);
     margin: 0 10px 10px;
 	border-radius: var(--radius-sm);
 	box-shadow: var(--shadow-setting-item);
