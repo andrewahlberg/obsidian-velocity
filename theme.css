@@ -419,34 +419,41 @@ body {
 	--color-pink-rgb: 225, 70, 147;
 	--color-pink: rgb(225, 70, 147);
 
-	--color-base-00: #ffffff;
-	--color-base-05: #fbfbfc;
-	--color-base-10: #f2f2f4;
-	--color-base-20: var(--trans-faint-30);
-	--color-base-25: #dadbdd; 
-	--color-base-30: #d0d0d1; 
-	--color-base-35: #bbbdc0; 
-	--color-base-40: #b2b2b2; 
-	--color-base-50: #a2a4ab; 
-	--color-base-60: #6d6f74;
-	--color-base-70: #606060;
-	--color-base-80: #4c4c4c; 
-	--color-base-90: #343434; 
-	--color-base-100: #1c1c1c; 
+	--base-hue: 281;
+	--base-sat-xtr: 0.01050;
+	--base-sat-str: 0.00250;
+	--base-sat-med: 0.00150;
+	--base-sat-low: 0.00050;
 
-	--trans-strong-00: #fffffff2;
-	--trans-strong-10: #ffffffcd;
-	--trans-strong-20: #ffffffbf;
-	--trans-strong-30: #ffffff5c;
-	--trans-strong-40: #aaaaaa1a;
-	--trans-faint-00: #88888808;
-	--trans-faint-05: #22222206;
-	--trans-faint-10: #0000000b;
-	--trans-faint-20: #0000000d;
-	--trans-faint-30: #00000016;
-	--trans-faint-40: #0000001d;
-	--trans-faint-50: #00000022;
-	--trans-faint-60: #00000050; 
+	--color-base-00: oklch(100.0% var(--base-sat-low) var(--base-hue));
+	--color-base-05: oklch(98.80% var(--base-sat-med) var(--base-hue));
+	--color-base-10: oklch(96.20% var(--base-sat-str) var(--base-hue));
+	--color-base-20: oklch(92.00% var(--base-sat-str) var(--base-hue));
+	--color-base-25: oklch(89.10% var(--base-sat-str) var(--base-hue)); 
+	--color-base-30: oklch(85.79% var(--base-sat-med) var(--base-hue)); 
+	--color-base-35: oklch(79.75% var(--base-sat-str) var(--base-hue)); 
+	--color-base-40: oklch(76.35% var(--base-sat-med) var(--base-hue)); 
+	--color-base-50: oklch(72.75% var(--base-sat-xtr) var(--base-hue)); 
+	--color-base-60: oklch(54.15% var(--base-sat-xtr) var(--base-hue));
+	--color-base-70: oklch(48.90% var(--base-sat-xtr) var(--base-hue));
+	--color-base-80: oklch(41.65% var(--base-sat-low) var(--base-hue)); 
+	--color-base-90: oklch(32.50% var(--base-sat-low) var(--base-hue)); 
+   --color-base-100: oklch(22.65% var(--base-sat-low) var(--base-hue)); 
+
+	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.950);
+	--trans-strong-10: oklch(from var(--color-base-00) l c h / 0.800);
+	--trans-strong-20: oklch(from var(--color-base-00) l c h / 0.750);
+	--trans-strong-30: oklch(from var(--color-base-00) l c h / 0.360);
+	--trans-strong-40: oklch(from var(--color-base-50) l c h / 0.100);
+	
+	--trans-faint-00: oklch(62.65% 0 0 / 0.030);
+	--trans-faint-05: oklch(25.20% 0 0 / 0.025);
+	--trans-faint-10: oklch(0.000% 0 0 / 0.043);
+	--trans-faint-20: oklch(0.000% 0 0 / 0.051);
+	--trans-faint-30: oklch(0.000% 0 0 / 0.086);
+	--trans-faint-40: oklch(0.000% 0 0 / 0.114);
+	--trans-faint-50: oklch(0.000% 0 0 / 0.133);
+	--trans-faint-60: oklch(0.000% 0 0 / 0.314); 
 	
 	--text-normal: var(--color-base-90);
 	--text-muted: var(--color-base-70);
@@ -501,7 +508,7 @@ body {
 
 	--fab-bg: var(--background-primary);
 
-	--hr-color: var(--color-base-20);
+	--hr-color: var(--trans-faint-30);
 
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
@@ -542,10 +549,10 @@ body {
 
 	--vault-profile-color: var(--color-base-80);
 
-	--cta-shadow: 0 1.125px 1px var(--color-base-20);
+	--cta-shadow: 0 1.125px 1px var(--trans-faint-30);
 	--input-shadow: 
-		0px 0.125px 0px 0.5px var(--color-base-20),
-		inset 0px -0.125px 1px 0px var(--color-base-20),
+		0px 0.125px 0px 0.5px var(--trans-faint-30),
+		inset 0px -0.125px 1px 0px var(--trans-faint-30),
 		0px 0.75px 2px 0.5px var(--trans-faint-20);
 	--input-shadow-hover: var(--input-shadow);
 	--shadow-xs: 
@@ -572,10 +579,10 @@ body {
 		0px 8px 16px 0px var(--trans-faint-20);	
 	--shadow-track:
 		0 1px 0px 0.75px var(--color-base-00),
-		inset 0 0.5px 1px 0px var(--color-base-20),
+		inset 0 0.5px 1px 0px var(--trans-faint-30),
 		inset 0 4px 20px -4px var(--trans-faint-30);
 	--shadow-toggle:
-		inset 0 1px 2px 1px var(--color-base-20),
+		inset 0 1px 2px 1px var(--trans-faint-30),
 		inset 0 6px 12px 0px var(--trans-faint-05);
 	--shadow-toggle-active:
 		inset 0 1.5px 3px 0px var(--trans-faint-50);
@@ -585,11 +592,11 @@ body {
 		0px 0px 0px 1px var(--trans-faint-20),
 		0 0px 3px 0px var(--trans-faint-10),
 		0px 5px 40px -8px var(--color-base-25),
-		0px 6px 8px -4px var(--color-base-20);	
+		0px 6px 8px -4px var(--trans-faint-30);	
 	--shadow-workspace-multi:
 		0 0 0 1px var(--trans-faint-20);	
 	--shadow-fab: 
-		0px 0.25px 0px 0.75px var(--color-base-20),
+		0px 0.25px 0px 0.75px var(--trans-faint-30),
 		inset 0px -0.25px 2px 0px var(--trans-faint-05),
 		0px 2px 8px -2px var(--trans-faint-40);
 	--shadow-fab-active: 
@@ -606,7 +613,7 @@ body {
 		0 0.25px 0 0.75px var(--trans-faint-20),
 		0 1.5px 6px -3px var(--trans-faint-20);
 	--tab-container-shadow: 
-		inset 0 0 2.5px -0.25px var(--color-base-20);
+		inset 0 0 2.5px -0.25px var(--trans-faint-30);
 	}
 }
 .theme-dark {
@@ -2396,7 +2403,7 @@ body:not(.is-mobile)
 }
 .modal-container.mod-dim .vertical-tabs-container {
 	--scrollbar-thumb-bg: var(--trans-strong-40);
-	--scrollbar-active-thumb-bg: var(--color-base-20);
+	--scrollbar-active-thumb-bg: var(--trans-faint-30);
 }
 .modal-container.mod-dim .vertical-tab-header {
 	background-color: transparent;
@@ -2905,7 +2912,7 @@ input.prompt-input:hover {
 /* Obsidian Bases (modals) */
 .bases-query-container {
 	background-color: var(--background-primary);
-	border: 1px solid var(--color-base-20);
+	border: 1px solid var(--trans-faint-30);
     margin: 0 10px 10px;
 	border-radius: var(--radius-sm);
 	box-shadow: var(--shadow-setting-item);
