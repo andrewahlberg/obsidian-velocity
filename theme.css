@@ -310,7 +310,7 @@ body {
 	--ribbon-background-collapsed: transparent;
 
 	/* Scrollbars */
-	--scrollbar-thumb-bg: var(--color-base-20);
+	--scrollbar-thumb-bg: var(--trans-faint-30);
 	--scrollbar-active-thumb-bg: var(--trans-faint-50);
 
 	/* Search */
@@ -1829,14 +1829,14 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	padding-block-start: 1px;
 }
 /* special code for uncreated outgoing links */
-.outgoing-link-item[aria-label="Not created yet"] {
+.outgoing-link-item:not([draggable="true"]) {
 	--nav-item-background-hover: color-mix(in oklab, var(--link-unresolved-color) 20%, transparent 100%); 
 }
-.outgoing-link-item[aria-label="Not created yet"] .tree-item-inner-text,
-.outgoing-link-item[aria-label="Not created yet"]:hover .tree-item-inner-text {
+.outgoing-link-item:not([draggable="true"]) .tree-item-inner-text,
+.outgoing-link-item:not([draggable="true"]):hover .tree-item-inner-text {
 	color: var(--link-unresolved-color);
 }
-.outgoing-link-item[aria-label="Not created yet"] .tree-item-icon {
+.outgoing-link-item:not([draggable="true"]) .tree-item-icon {
 	filter: opacity(60%);
 }
 
@@ -2019,7 +2019,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	.view-actions {
 		transform: translateX(-8px) translateY(14px);
 	}
-	& .view-actions .clickable-icon.view-action[aria-label="More options"] {
+	& .view-actions .clickable-icon.view-action:last-child {
 		height: 32px;
 		width: 20px;
 		padding: 1px 0 0 0;
@@ -2028,14 +2028,14 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 		transition: var(--anim-duration-fast) ease-out;
 		--icon-size: var(--icon-xl);
 	}
-	& .view-actions:hover .clickable-icon.view-action[aria-label="More options"] {
+	& .view-actions:hover .clickable-icon.view-action:last-child {
 		filter: opacity(33%);
 		pointer-events: unset;
 		&:hover {
 			filter: opacity(100%);
 		}
 	}
-	& .view-actions .clickable-icon.view-action[aria-label*="Current view: "] {
+	& .view-actions .clickable-icon.view-action:not(:last-child,:first-child) {
 		--icon-size: var(--icon-m);
 		--icon-color-hover: var(--color-base-60);
 		--icon-color-focused: var(--color-base-60);
@@ -2065,7 +2065,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 			filter: opacity(100%);
 		}
 	}
-	& .view-actions .clickable-icon.view-action[aria-label*="editing"] {
+	&[data-mode="source"] .view-actions .clickable-icon.view-action:not(:last-child,:first-child) {
 		box-shadow: var(--shadow-fab-active);
 		--icon-color: var(--color-accent-3);
 		--icon-color-hover: var(--color-accent-3);
