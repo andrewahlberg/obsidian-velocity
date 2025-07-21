@@ -310,7 +310,7 @@ body {
 	--ribbon-background-collapsed: transparent;
 
 	/* Scrollbars */
-	--scrollbar-thumb-bg: var(--color-base-20);
+	--scrollbar-thumb-bg: var(--trans-faint-30);
 	--scrollbar-active-thumb-bg: var(--trans-faint-50);
 
 	/* Search */
@@ -1829,14 +1829,14 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	padding-block-start: 1px;
 }
 /* special code for uncreated outgoing links */
-.outgoing-link-item[aria-label="Not created yet"] {
+.outgoing-link-item:not([draggable="true"]) {
 	--nav-item-background-hover: color-mix(in oklab, var(--link-unresolved-color) 20%, transparent 100%); 
 }
-.outgoing-link-item[aria-label="Not created yet"] .tree-item-inner-text,
-.outgoing-link-item[aria-label="Not created yet"]:hover .tree-item-inner-text {
+.outgoing-link-item:not([draggable="true"]) .tree-item-inner-text,
+.outgoing-link-item:not([draggable="true"]):hover .tree-item-inner-text {
 	color: var(--link-unresolved-color);
 }
-.outgoing-link-item[aria-label="Not created yet"] .tree-item-icon {
+.outgoing-link-item:not([draggable="true"]) .tree-item-icon {
 	filter: opacity(60%);
 }
 
