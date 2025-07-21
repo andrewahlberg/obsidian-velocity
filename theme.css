@@ -973,16 +973,27 @@ button.mod-warning {
 /*--> Inputs <--*/
 
 input,
-.rename-textarea {
+textarea,
+.rename-textarea,
+.vertical-tab-header input {
 	box-shadow: var(--shadow-input);
 }
-body :is(input,.rename-textarea):focus {
+:is(input,
+	  textarea,
+	 .rename-textarea,
+	 .vertical-tab-header input):focus {
 	box-shadow: var(--shadow-input-active);
 }
+.mod-sidedock,
+.vertical-tab-header {
+	--background-modifier-form-field: var(--search-result-background);
+}
+
 /* Search input */
 body input[type='search'] {
 	--shadow-input-active: var(--shadow-search-active);
 }
+
 /* Setting input */
 .setting-item input {
 	background-color: transparent;
@@ -991,14 +1002,18 @@ body input[type='search'] {
 	box-shadow: var(--shadow-input-active);
 	}
 }
+
 /* Sidebar input */
-.mod-sidedock input {
-	background-color: var(--search-result-background);
+.mod-sidedock :is(input, textarea) {
 	box-shadow: var(--shadow-sidebar);
 	&:focus {
 	box-shadow: var(--shadow-input-active);
 	}
 }
+.mod-sidedock textarea {
+	text-indent: 2px;
+}
+
 /* Placeholder text */
 input::placeholder {
 	font-weight: 500;
@@ -1697,10 +1712,6 @@ body:not(.is-mobile) {
 		margin-bottom: -8px;
 		transition: var(--anim-duration-fast) var(--anim-motion-swing);
 	}
-	.nav-header > .nav-buttons-container:hover,
-	.disable-hover-header .nav-header > .nav-buttons-container {
-		margin-bottom: 16px;
-	}
 	.nav-buttons-container {
 		display: flex;
 		transform: scale(25%, 20%) translateY(-60px);
@@ -1716,18 +1727,6 @@ body:not(.is-mobile) {
 		--icon-color: transparent;
 		--text-muted: transparent;
 	}
-	.nav-buttons-container:hover,
-	.disable-hover-header .nav-buttons-container {
-		transform: scale(100%);
-		transform: translateY(0px);
-		height: initial;
-		border-radius: var(--radius-sm);
-		flex-wrap: nowrap;
-		--background-modifier-active-hover: var(--background-primary);
-		--icon-color-active: var(--color-base-80);
-		--icon-color: unset;
-		--text-muted: unset;
-	}
 	.nav-action-button {
 		border-radius: var(--radius-s);
 		height: 26px;
@@ -1740,6 +1739,20 @@ body:not(.is-mobile) {
 	.nav-header + * {
 		padding-top: 0;
 	}
+}
+body:not(.is-mobile) .nav-buttons-container:hover,
+body:not(.is-mobile).disable-hover-header .nav-buttons-container,
+body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header > .nav-buttons-container {
+	transform: scale(100%);
+	transform: translateY(0px);
+	height: initial;
+	border-radius: var(--radius-sm);
+	flex-wrap: nowrap;
+	margin-bottom: 16px;
+	--background-modifier-active-hover: var(--background-primary);
+	--icon-color-active: var(--color-base-80);
+	--icon-color: unset;
+	--text-muted: unset;
 }
 
 /*--> Navigation / File Tree <--*/
@@ -2522,6 +2535,9 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 		border: none !important;
 		box-shadow: none !important;
 		font-weight: var(--font-semibold);
+	}
+	& .setting-item-name {
+		overflow: visible;
 	}
 }
 .mobile-option-setting-item {
