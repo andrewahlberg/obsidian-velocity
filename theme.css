@@ -1740,6 +1740,19 @@ body:not(.is-mobile) {
 		padding-top: 0;
 	}
 }
+body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header {
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-inline: 8px;
+}
+body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header:has( > :only-of-type) {
+	justify-content: center;
+	margin-inline: 0;
+	& > .nav-buttons-container {
+		flex-wrap: wrap;
+	}
+}
 body:not(.is-mobile) .nav-buttons-container:hover,
 body:not(.is-mobile).disable-hover-header .nav-buttons-container,
 body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header > .nav-buttons-container {
