@@ -1292,16 +1292,19 @@ pre[class*="language-"] code,
 
 /* formatting markers */
 .cm-formatting {
-	color: var(--color-base-35);
+	color: var(--text-faint);
 }
 .cm-formatting-strong {
-	font-weight: var(--font-light);
+	font-weight: var(--font-normal);
 }
 
 /* Strikethrough / list crossed out */
 .cm-strikethrough, del, del > * {
     color: var(--strikethrough-color);
 }
+
+/*--> Highlights <--*/
+
 .cm-s-obsidian span.cm-highlight,
 :is(.markdown-source-view, .markdown-preview-view) mark {
 	font-weight: var(--font-medium);
@@ -1374,7 +1377,7 @@ pre[class*="language-"] code,
 	transform: scale3d(1.125 1.125 0);
 }
 /* Properties content */
-.metadata-property input {
+.metadata-container .metadata-property .metadata-property-key-input {
 	box-shadow: none;
 }
 .mod-root .metadata-property-warning-icon {
@@ -1416,7 +1419,7 @@ pre[class*="language-"] code,
 	}
 	& .metadata-add-button .text-button-icon {
 	display: none;	
-}
+	}
 }
 
 /* Multi-select pill (not tags) */
