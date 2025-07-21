@@ -3067,14 +3067,79 @@ input.prompt-input:hover {
 	padding-block: 0.075em;
 	z-index: 0;
 }
-/* .lc-li-wrapper::after {
-    background-color: rgba(var(--lc-callout-color), var(--lc-bg-opacity-light));
-    border-radius: 4px;
-	top: calc(-1* var(--lc-bg-top-reading) + 1px);
-    right: calc(-1* var(--lc-bg-right-reading) + 1px);
-    bottom: calc(-1* var(--lc-bg-bottom-reading) + 1px);
-    left: calc(-1* var(--lc-bg-left-reading) + 1px);
-} */
+.lc-li-wrapper::after {
+	border-radius: var(--radius-s);
+}
+.lc-list-callout :is(strong,.cm-strong) {
+	color: rgb(var(--lc-callout-color), 0.8);
+}
+/* List Callout Default colors */
+.lc-list-callout[data-callout="!"] {
+	--lc-callout-color: var(--color-red-rgb) !important;
+}
+.lc-list-callout[data-callout="~"] {
+	--lc-callout-color: var(--color-purple-rgb) !important;
+}
+.lc-list-callout[data-callout="@"] {
+	--lc-callout-color: var(--color-cyan-rgb) !important;
+}
+.lc-list-callout[data-callout="$"] {
+	--lc-callout-color: var(--color-green-rgb) !important;
+}
+/* List Callouts Settings */
+.vertical-tab-content {
+	.lc-setting {
+		display: flex;
+		flex-direction: column;
+		border-block: none;
+		border-inline: 1px solid transparent;
+		padding: 14px 18px;
+	}
+	.lc-setting:last-child {
+		background-color: var(--setting-item-bg);
+		border: 1px solid var(--setting-item-border-color);
+		border-radius: var(--radius-ml);
+		box-shadow: var(--shadow-setting-item);
+		margin-block: 12px;
+	}
+	.lc-callout-container {
+		display: flex;
+		flex-direction: column;
+		background-color: var(--trans-strong-30);
+		border-radius: var(--radius-m);
+		box-shadow: var(--shadow-input);
+		padding: 6px 16px 6px;
+		margin: 6px 4px 8px;
+	}
+	.lc-input-container {
+		margin-inline: 12px 16px;
+	}
+	.lc-setting .cm-line {
+		width: 100%;
+	}
+	.lc-setting .cm-line .lc-list-bg {
+		padding-block: 0;
+	}
+	.lc-setting .cm-line .lc-list-bg::after {
+		border-radius: var(--radius-s);
+	}
+	.lc-setting:nth-child(4) .cm-line {
+		--lc-callout-color: var(--color-red-rgb) !important;
+	}
+	.lc-setting:nth-child(5) .cm-line {
+		--lc-callout-color: var(--color-purple-rgb) !important;
+	}
+	.lc-setting:nth-child(6) .cm-line {
+		--lc-callout-color: var(--color-cyan-rgb) !important;
+	}
+	.lc-setting:nth-child(7) .cm-line {
+		--lc-callout-color: var(--color-green-rgb) !important;
+	}
+	.lc-setting:last-child .lc-input-right-align button {
+		background-image: var(--hotkey-gradient);
+		color: var(--text-on-accent);
+	}
+}
 
 /*--> Dataview <--*/
 
