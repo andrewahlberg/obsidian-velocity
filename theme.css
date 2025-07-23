@@ -1371,10 +1371,21 @@ pre[class*="language-"] code,
 	margin-inline-start: 28px;
 }
 
+/* FROM: Underwater */
+/* By Seniblue */
+/* MIT License */
+
+:is(ul:not(li > ul) > li > ul > li) > .list-bullet::after, 
+:is(.HyperMD-list-line-2) .cm-formatting-list-ul > .list-bullet::after {
+    border: 1px solid var(--list-marker-color);
+    background-color: transparent;
+}
+
 /*--> Links <--*/
 
 /* FROM: Primary */
 /* By Cecilia May */
+/* GPL-3.0 License */
 
 .external-link {
 	background-image: linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(136, 136, 136)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'%3E%3C/line%3E%3Cpolyline points='7 7 17 7 17 17'%3E%3C/polyline%3E%3C/svg%3E");
@@ -1605,6 +1616,7 @@ body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
 
 /* FROM: Cupertino */
 /* By Alexis C */
+/* MIT License */
 
 /* Gap between multiple root tabs  */
 body:not(.is-mobile):not(.is-popout-window) .workspace.is-left-sidedock-open .mod-root .workspace-split.mod-vertical, 
@@ -1668,6 +1680,7 @@ body:not(.is-mobile) :is(.mod-left-split,.mod-right-split) .workspace-leaf-conte
 
 /* FROM: Cupertino */
 /* By Alexis C */
+/* MIT License */
 
 /* Main tab margins */
 body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root>.workspace-tabs:last-of-type .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal:last-of-type>.workspace-tabs .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal>.workspace-split .workspace-tabs:last-of-type .workspace-tab-container {
@@ -1686,10 +1699,12 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
     padding-inline: 8px 6px;
 }
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .workspace-split.mod-vertical.mod-root {
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) 
+.workspace-split.mod-vertical.mod-root {
 	padding-bottom: 0;
 	& .workspace-tabs {
 		overflow: hidden;
+		--divider-width: 1px;
 	}
 	& .workspace-tabs > .workspace-tab-container {
 		border-radius: 0;
@@ -1701,6 +1716,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	}
 	& .view-header-title-container:not(.webviewer-address-container) {
 		filter: opacity(0.5);
+	}
+	.mod-horizontal:not(.last-child) {
+		border-right: 1px solid var(--divider-color);
 	}
 }
 
@@ -2230,6 +2248,7 @@ body:not(.disable-status-fade) {
 
 /* ADAPTED FROM: Micro Mike */
 /* By ThisTheThe */
+/* MIT License */
 
 /*--> Sidebar Auto-Hide <--*/
 
@@ -2341,6 +2360,10 @@ body:not(.is-mobile) .mod-root .workspace-tabs.mod-stacked {
 	.workspace-leaf-content .view-header {
 		padding-inline: 0 12px; 
 	}
+}
+body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked 
+.workspace-tab-header-container-inner {
+    padding: 0 0 0 4px;
 }
 
 /*
@@ -2765,6 +2788,7 @@ body:not(.is-phone) .community-item.is-selected:hover {
 
 /* FROM: Willemstad */
 /* By tingmelvin */
+/* GPL-3.0 License */
 
 .modal.mod-community-modal .community-item .suggestion-highlight {
 	color: var(--text-highlight-color);
