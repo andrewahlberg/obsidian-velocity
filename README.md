@@ -23,7 +23,7 @@ Alternatively, you can opt to download the files manually. You will need the ``t
 
 ## Images [^](#Table-of-Contents) 
 
-#### Editor [^](#Table-of-Contents)
+#### Editor 
 ![Headings](./assets/headings.png)
 ![Callouts](./assets/callouts.png)
 ![Multiple tabs](./assets/multiple-tabs.png)
@@ -42,12 +42,15 @@ Alternatively, you can opt to download the files manually. You will need the ``t
   - Velocity is not designed for absolute minimalists. It is not designed for absolute maximalists, either. It is probably not ideal for power users seeking terminal UI aesthetics, nor is it suitable for those who want something fuzzy and warm. It is not designed for people who wish to have absolute, total control over customization. Lastly, it is not a theme for those afraid to try something bold, innovative and new.
 - **How can I customize the theme?**
   - Download the Style Settings plugin from within the Obsidian app's plugin store. The plugin is free as are most plugins, and the settings for Velocity should appear automatically so long as you have the theme enabled.
+- **Where can I find the documentation?**
+  - Docs are WIP and not a priority at the moment. This FAQ shall stand in for the official documentation for the time being. 
 - **How long have you been working on this?**
   - Velocity has been in ``alpha`` for approximately 8 months as of July 2025; development started in late November last year as a pure passion project. 8 months worth of scope creep and constant improvement has led the project to where it is now, but I can assure you that it won't be in ``alpha`` for much longer.
 - **Why should I choose Velocity? What makes it different from other themes?**
   - If there is ONE reason to at least _try_ Velocity, it is because nearly no other theme is crafted with as much attention to detail in the user interface department. Countless hours have been spent making sure interactions, spacing, color balance and texture feel _just right_. In simple terms, Velocity is designed to make you feel as if you were using a premium, paid app - to make you forget even for a moment that you're in Obsidian.
   - Markdown has received much love, too, even if it is not always the main focus. Velocity offers typographic alignment tweaks and features that might please some typography enthusiasts. It is the _only_ theme which accounts for heading indent misalignment with larger headings. It is also perhaps best-in-class when it comes to callout manipulation - you can put just about anything inside of them, such as headings, code, Dataview queries and more, and it _will look good_. 
   - And if all of this fails to convince you, maybe just the novelty of a theme designed over the course of nearly a whole year, with an inspiration as idiosyncratic as _racing game user interfaces_, might convince you.
+    - _and if even this fails to convince you... know that I at least wrote every single word in this README **without AI**. same goes for the theme itself._
 - **Will you add feature X/Y/Z to Velocity?**
   - It depends. Certain features you may be looking for might already be present in the theme. Others which are missing may be added or rejected based on whether the feature is aligned with Velocity's overall philosophy, or whether the feature is better off as some snippet due to complexity/feature creep. In any case, please make requests for features in the **Issues** page or in the Obsidian **Discord** thread for Velocity.
 - **Will this theme work with plugin X/Y/Z?**
@@ -55,14 +58,14 @@ Alternatively, you can opt to download the files manually. You will need the ``t
 - **Why does it look so much like theme X/Y/Z?**
   - Velocity has been created with multiple inspirations in mind, including various themes I used for my own vaults before deciding to make my own. The most obvious parallels are to the wonderful **[Cupertino](https://github.com/aaaaalexis/obsidian-cupertino)** theme, which is a result of that theme's innovations and approaches inspiring an entire generation of new themers. However, Velocity differs from Cupertino in many ways once you look past the surface level. At their core, the two themes are fundamentally different in approach and philosophy.
   - The keen-eyed user or fellow theme developer may notice some paralles with the beautifully tactile **[Primary](https://github.com/primary-theme/obsidian)** by Cecilia May. This is because I have taken much inspiration from her exacting attention to detail and focus on tactile responsiveness in UI interactions. 
-  - I have detailed the full list of works I have drawn inspiration or borrowed code from in the Credits section of the README. **Any other resemblances are thus purely coincidental.** In any case, I do not intend to merely copy or imitate the work of a fellow theme dev. 
+  - I have detailed the full list of works I have drawn inspiration or borrowed code from in the Credits section of the README. **Any other resemblances are thus purely coincidental.** In any case, I do not intend to merely copy or imitate the work of a fellow theme dev. The whole project has been an outlet for me to _say something_ about design and about Obsidian theming, and so it has been very personal and intentional from the outset. 
 - **Why does the theme look different from before?**
   - If you have been around since the earlier alphas (up until the ``0.6.x`` versions) then you may notice the theme is no longer retro or skeuomorphic. This is because I quickly realized that the theme would never appeal to a larger audience and my specific design ideas and obsessions would forever remain obscure and niche. 
   - While the ``1.0.0`` revamp to a more modern, minimalist style was informed by outside pressures, this does not mean that Velocity has lost its character or 'soul'. I have made sure that key design elements and quirks are carried over from the older versions. Several users have testified that they enjoy the current versions _even more_ than the old ones.
   
 ## Background [^](#Table-of-Contents)
 
-Under construction
+The story I want to reflect on, about working on this theme and how it has changed me, is still ongoing. Therefore I cannot yet finish this section. Perhaps I will have a lengthy recollection ready by the time of release.
 
 ## Roadmap [^](#Table-of-Contents)
 
