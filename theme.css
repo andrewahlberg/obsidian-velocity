@@ -2314,6 +2314,7 @@ body:not(.disable-status-fade) {
 .workspace-tabs.mod-stacked .workspace-tab-header {
 	--nav-text-color: var(--text-normal);
 	--tab-text-color: var(--icon-color);
+	--tab-text-color-focused: var(--icon-color);
 }
 .workspace-tabs.mod-stacked .workspace-tab-container::-webkit-scrollbar-track {
 	margin-inline: 2px;
@@ -2341,6 +2342,7 @@ body:not(.is-mobile) .mod-root .workspace-tabs.mod-stacked {
 		padding-inline: 0 12px; 
 	}
 }
+
 /*
 =========================== ===========================
 			4 - Modals
