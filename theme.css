@@ -2319,6 +2319,9 @@ body:not(.disable-status-fade) {
 	margin-inline: 2px;
 }
 body:not(.is-mobile) .mod-root .workspace-tabs.mod-stacked {
+	.workspace-leaf, .workspace-tab-header-inner {
+		border-bottom: 1px solid var(--divider-color);
+	}
 	.workspace-tab-header .workspace-tab-header-inner {
     	padding: 9px 8px 8px;
 	}
@@ -2332,6 +2335,10 @@ body:not(.is-mobile) .mod-root .workspace-tabs.mod-stacked {
 		font-weight: var(--font-medium);
 		letter-spacing: 0.125px;
 		padding-inline: 6px 0;
+		padding-right: 1px;
+	}
+	.workspace-leaf-content .view-header {
+		padding-inline: 0 12px; 
 	}
 }
 /*
