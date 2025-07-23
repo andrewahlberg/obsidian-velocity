@@ -16,14 +16,14 @@ Velocity is close to the end of its ``alpha`` development and is fast approachin
 - [Background](#Background)
 - [Credits](#Credits)
 
-## Installation
+## Installation [^](#Table-of-Contents)
 Velocity is not officially released on the Obsidian store. Currently, the easiest method to install the theme is by using the **BRAT** plugin in Obsidian. Simply paste the link of the main branch of the repository in the BRAT plugin's settings. BRAT automatically handles changes made upstream by checking for any new changes in the repo upon launching Obsidian, ensuring that you always have the most up-to-date version of Velocity.
 
-Alternatively, you can opt to download the files manually. You will need the ``theme.css`` and ''manifest.json`` files. Create a folder named "Velocity" inside the Obsidian themes folder, located at ``your-vault/.obsidian/themes``, and place the files inside. The theme should show up in the Appearance tab the next time you open the vault.
+Alternatively, you can opt to download the files manually. You will need the ``theme.css`` and ``manifest.json`` files. Create a folder named "Velocity" inside the Obsidian themes folder, located at ``your-vault/.obsidian/themes``, and place the files inside. The theme should show up in the Appearance tab the next time you open the vault.
 
-## Images 
+## Images [^](#Table-of-Contents) 
 
-#### Editor
+#### Editor [^](#Table-of-Contents)
 ![Headings](./assets/headings.png)
 ![Callouts](./assets/callouts.png)
 ![Multiple tabs](./assets/multiple-tabs.png)
@@ -34,7 +34,7 @@ Alternatively, you can opt to download the files manually. You will need the ``t
 ![Settings](./assets/settings.png)
 ![Graph Controls](./assets/graph-controls.png)
 
-## FAQ
+## FAQ [^](#Table-of-Contents)
 - **Do I have to buy Velocity?**
   - No. The theme is free, as it should be.
 - **What kind of user is this theme designed for?**
@@ -60,16 +60,16 @@ Alternatively, you can opt to download the files manually. You will need the ``t
   - If you have been around since the earlier alphas (up until the ``0.6.x`` versions) then you may notice the theme is no longer retro or skeuomorphic. This is because I quickly realized that the theme would never appeal to a larger audience and my specific design ideas and obsessions would forever remain obscure and niche. 
   - While the ``1.0.0`` revamp to a more modern, minimalist style was informed by outside pressures, this does not mean that Velocity has lost its character or 'soul'. I have made sure that key design elements and quirks are carried over from the older versions. Several users have testified that they enjoy the current versions _even more_ than the old ones.
   
-## Background
+## Background [^](#Table-of-Contents)
 
 Under construction
 
-## Roadmap
+## Roadmap [^](#Table-of-Contents)
 
 Beta is estimated to be ready in **2-3 months**, by version ``1.2`` or ``1.3``. 
 Expect a full release before or during Obsidian October.
 
-## Credits
+## Credits [^](#Table-of-Contents)
 
 #### Themes:
 
