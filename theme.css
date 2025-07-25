@@ -3224,6 +3224,9 @@ input.prompt-input:hover {
 .lc-list-callout :is(strong,.cm-strong) {
 	color: rgb(var(--lc-callout-color), 0.8);
 }
+body:not(.disable-list-styling) .lc-list-callout > .list-bullet::after {
+	content: ">";
+}
 /* List Callout Default colors */
 .lc-list-callout[data-callout="!"] {
 	--lc-callout-color: var(--color-red-rgb) !important;
