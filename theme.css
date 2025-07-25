@@ -55,6 +55,10 @@ settings:
 	id: disable-hover-header
 	title: Disable Nav Header compact panels
 	type: class-toggle
+- 	 
+	id: disable-list-styling
+	title: Disable dashed list styling
+	type: class-toggle
 - 	 	
 	id: disable-title-h1
 	title: Disable Title-style H1
@@ -65,6 +69,11 @@ settings:
 	type: heading
 	level: 2
 	collapsed: false
+- 	
+	id: active-line-highlight
+	title: Enable active line highlighting
+	description: Highlights the active line with slight backdrop for easier text navigation.  
+	type: class-toggle
 - 	
 	id: better-font
 	title: Enable high-fidelity body text (requires better-font snippet)
@@ -1366,15 +1375,64 @@ pre[class*="language-"] code,
 
 /*--> Lists + paragraphs <--*/
 
-/* List items */
 .markdown-rendered ul > li {
-	margin-inline-start: 28px;
+	margin-inline-start: 1.75em;
+}
+/* Lists: special styling */
+body:not(.disable-list-styling) {
+	.list-bullet::after,
+	.modal-content li::marker {
+		content: "— ";
+		color: var(--color-base-50);
+		background-color: transparent;
+		height: fit-content;
+		width: fit-content;
+		font-family: var(--font-text-theme);
+	}
 }
 
+/* Paragraph: active line highlighting feature */
+.active-line-highlight {
+	.cm-active::after {
+		content: '';
+		z-index: -1;
+		width: calc(100% + 0.5em);
+		top: 0;
+		bottom: 0;
+		right: -0.25em;
+		position: absolute;
+		pointer-events: none;
+		background-color: var(--trans-faint-10);
+		border-radius: 0.25rem;
+	}
+	.cm-active.HyperMD-header:not(.HyperMD-header-1)::after {
+		top: var(--p-spacing);
+	}
+	.cm-active.HyperMD-header.HyperMD-header-1::after {
+		top: -8px;
+	}
+	.cm-active.HyperMD-list-line::after {
+		width: 100%;
+		right: 0;
+	}
+	.cm-active
+	:is(.HyperMD-hr,
+		.HyperMD-codeblock,
+		.HyperMD-quote)
+		::after {
+		width: 100%;
+		right: 0;
+		border-radius: 0;
+	}
+	.table-editor .cm-active::after {
+		display: none;
+	}
+}
 /*--> Links <--*/
 
 /* FROM: Primary */
 /* By Cecilia May */
+/* GPL-3.0 License */
 
 .external-link {
 	background-image: linear-gradient(transparent,transparent),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(136, 136, 136)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'%3E%3C/line%3E%3Cpolyline points='7 7 17 7 17 17'%3E%3C/polyline%3E%3C/svg%3E");
@@ -1605,6 +1663,7 @@ body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
 
 /* FROM: Cupertino */
 /* By Alexis C */
+/* MIT License */
 
 /* Gap between multiple root tabs  */
 body:not(.is-mobile):not(.is-popout-window) .workspace.is-left-sidedock-open .mod-root .workspace-split.mod-vertical, 
@@ -1668,6 +1727,7 @@ body:not(.is-mobile) :is(.mod-left-split,.mod-right-split) .workspace-leaf-conte
 
 /* FROM: Cupertino */
 /* By Alexis C */
+/* MIT License */
 
 /* Main tab margins */
 body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root>.workspace-tabs:last-of-type .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal:last-of-type>.workspace-tabs .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal>.workspace-split .workspace-tabs:last-of-type .workspace-tab-container {
@@ -1686,10 +1746,12 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
     padding-inline: 8px 6px;
 }
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .workspace-split.mod-vertical.mod-root {
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) 
+.workspace-split.mod-vertical.mod-root {
 	padding-bottom: 0;
 	& .workspace-tabs {
 		overflow: hidden;
+		--divider-width: 1px;
 	}
 	& .workspace-tabs > .workspace-tab-container {
 		border-radius: 0;
@@ -1701,6 +1763,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	}
 	& .view-header-title-container:not(.webviewer-address-container) {
 		filter: opacity(0.5);
+	}
+	.mod-horizontal:not(.last-child) {
+		border-right: 1px solid var(--divider-color);
 	}
 }
 
@@ -2230,6 +2295,7 @@ body:not(.disable-status-fade) {
 
 /* ADAPTED FROM: Micro Mike */
 /* By ThisTheThe */
+/* MIT License */
 
 /*--> Sidebar Auto-Hide <--*/
 
@@ -2341,6 +2407,10 @@ body:not(.is-mobile) .mod-root .workspace-tabs.mod-stacked {
 	.workspace-leaf-content .view-header {
 		padding-inline: 0 12px; 
 	}
+}
+body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked 
+.workspace-tab-header-container-inner {
+    padding: 0 0 0 4px;
 }
 
 /*
@@ -2765,6 +2835,7 @@ body:not(.is-phone) .community-item.is-selected:hover {
 
 /* FROM: Willemstad */
 /* By tingmelvin */
+/* GPL-3.0 License */
 
 .modal.mod-community-modal .community-item .suggestion-highlight {
 	color: var(--text-highlight-color);
