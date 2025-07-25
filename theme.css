@@ -336,9 +336,8 @@ body {
 	--slider-thumb-y: -7px;
 
 	/* Status bar */
-	--status-bar-background: var(--trans-strong-00);
 	--status-bar-border-width: 0;
-	--status-bar-radius: var(--radius-sm) 0 0 var(--radius-sm);
+	--status-bar-radius: var(--radius-l) 0 0 var(--radius-l);
 
 	/* Sync */
 
@@ -543,6 +542,7 @@ body {
 	--slider-track-background: var(--trans-faint-20);
 	--toggle-track-bg: var(--trans-faint-50);
 
+	--status-bar-background: var(--trans-strong-00);
 	--status-bar-filter: opacity(0.25) blur(0.375px);
 	
 	--strikethrough-color: var(--color-base-40);
@@ -765,6 +765,7 @@ body {
 	--slider-track-background: var(--trans-faint-30);
 	--toggle-track-bg: var(--color-base-40);
 
+	--status-bar-background: color-mix(in oklab, var(--background-primary), #000 10%);
 	--status-bar-filter: opacity(0.375) blur(0.25px);
 
 	--strikethrough-color: var(--text-faint);
@@ -2359,10 +2360,10 @@ body:not(.disable-status-fade) {
 	}
 	body:not(.is-mobile, .is-popout-window, .disable-autohide) .status-bar::after {
 		position: absolute;
-		padding: 4px 6px;
-		left: -124px;
+		padding: 4px 8px;
+		left: -128px;
 		bottom: 1px;
-		border-radius: var(--radius-s);
+		border-radius: var(--radius-l);
 		font-weight: var(--font-normal);
 		content: 'auto-hide is active';
 		color: var(--text-error);
