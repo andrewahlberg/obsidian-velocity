@@ -65,6 +65,7 @@ body.better-font {
 }
 .better-font 
     :is(em,
+    .inline-title,
     .cm-s-obsidian .cm-line.HyperMD-header,
     .markdown-rendered :is(h1, h2,h3,h4,h5,h6)) {
         font-family: var(--font-interface-theme);

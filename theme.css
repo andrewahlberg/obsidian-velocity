@@ -70,6 +70,11 @@ settings:
 	level: 2
 	collapsed: false
 - 	
+	id: active-line-highlight
+	title: Enable active line highlighting
+	description: Highlights the active line with slight backdrop for easier text navigation.  
+	type: class-toggle
+- 	
 	id: better-font
 	title: Enable high-fidelity body text (requires better-font snippet)
 	description: Uses a hinted variant of Inter for body text, improving readability and text flow.  
@@ -1373,11 +1378,8 @@ pre[class*="language-"] code,
 .markdown-rendered ul > li {
 	margin-inline-start: 1.75em;
 }
-
+/* Lists: special styling */
 body:not(.disable-list-styling) {
-	.markdown-rendered ul > li {
-		margin-inline-start: 1.5em;
-	}
 	.list-bullet::after,
 	.modal-content li::marker {
 		content: "— ";
@@ -1389,6 +1391,43 @@ body:not(.disable-list-styling) {
 	}
 }
 
+/* Paragraph: active line highlighting feature */
+.active-line-highlight {
+	.cm-active::after {
+		content: '';
+		z-index: -1;
+		width: calc(100% + 0.5em);
+		top: 0;
+		bottom: 0;
+		right: -0.25em;
+		position: absolute;
+		pointer-events: none;
+		background-color: var(--trans-faint-10);
+		border-radius: 0.25rem;
+	}
+	.cm-active.HyperMD-header:not(.HyperMD-header-1)::after {
+		top: var(--p-spacing);
+	}
+	.cm-active.HyperMD-header.HyperMD-header-1::after {
+		top: -8px;
+	}
+	.cm-active.HyperMD-list-line::after {
+		width: 100%;
+		right: 0;
+	}
+	.cm-active
+	:is(.HyperMD-hr,
+		.HyperMD-codeblock,
+		.HyperMD-quote)
+		::after {
+		width: 100%;
+		right: 0;
+		border-radius: 0;
+	}
+	.table-editor .cm-active::after {
+		display: none;
+	}
+}
 /*--> Links <--*/
 
 /* FROM: Primary */
