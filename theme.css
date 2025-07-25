@@ -55,6 +55,10 @@ settings:
 	id: disable-hover-header
 	title: Disable Nav Header compact panels
 	type: class-toggle
+- 	 
+	id: disable-list-styling
+	title: Disable dashed list styling
+	type: class-toggle
 - 	 	
 	id: disable-title-h1
 	title: Disable Title-style H1
@@ -1366,19 +1370,23 @@ pre[class*="language-"] code,
 
 /*--> Lists + paragraphs <--*/
 
-/* List items */
 .markdown-rendered ul > li {
-	margin-inline-start: 28px;
+	margin-inline-start: 1.75em;
 }
 
-/* FROM: Underwater */
-/* By Seniblue */
-/* MIT License */
-
-:is(ul:not(li > ul) > li > ul > li) > .list-bullet::after, 
-:is(.HyperMD-list-line-2) .cm-formatting-list-ul > .list-bullet::after {
-    border: 1px solid var(--list-marker-color);
-    background-color: transparent;
+body:not(.disable-list-styling) {
+	.markdown-rendered ul > li {
+		margin-inline-start: 1.5em;
+	}
+	.list-bullet::after,
+	.modal-content li::marker {
+		content: "— ";
+		color: var(--color-base-50);
+		background-color: transparent;
+		height: fit-content;
+		width: fit-content;
+		font-family: var(--font-text-theme);
+	}
 }
 
 /*--> Links <--*/
