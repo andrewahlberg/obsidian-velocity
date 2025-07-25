@@ -258,7 +258,7 @@ body {
 
 	/* Lists */
 	--list-spacing: 0.15em;
-	--list-marker-color: var(--text-muted);
+	--list-marker-color: var(--color-base-50);
 
 	/* File navigator */
 	--nav-indentation-guide-color: var(--hr-color);
@@ -525,6 +525,8 @@ body {
 
 	--link-color-sidebar: var(--color-accent-1);
 
+	--list-bullet-color: var(--text-muted);
+
 	--background-primary: var(--color-base-05);
 	--background-secondary: var(--color-base-10);
 	/* --background-modifier-box-shadow: rgba(0, 0, 0, 0.1);
@@ -747,7 +749,7 @@ body {
 
 	--link-color-sidebar: var(--color-accent-2);
 
-	--list-marker-color: var(--color-base-80);
+	--list-bullet-color: var(--color-base-80);
 
 	--nav-heading-color: var(--color-base-80);
 	--nav-header-bg: var(--background-modifier-hover);
@@ -1376,8 +1378,12 @@ pre[class*="language-"] code,
 
 /*--> Lists + paragraphs <--*/
 
-.markdown-rendered ul > li {
+.markdown-rendered :is(ol, ul) > li {
 	margin-inline-start: 1.75em;
+	--list-marker-color: var(--color-base-50);
+}
+.markdown-rendered ul > li  {
+	--list-marker-color: var(--list-bullet-color);
 }
 /* Lists: special styling */
 body:not(.disable-list-styling) {
