@@ -1428,6 +1428,7 @@ body:not(.disable-list-styling) {
 		display: none;
 	}
 }
+
 /*--> Links <--*/
 
 /* FROM: Primary */
@@ -1875,6 +1876,10 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 
 .mod-sidedock .nav-files-container .tree-item-self.nav-folder-title {
 	margin-block: 2px;
+}
+.mod-sidedock .nav-file-tag {
+	border-radius: 4px;
+	font-weight: var(--font-bold);
 }
 
 /*--> Workspace Sidebar leaves <--*/
