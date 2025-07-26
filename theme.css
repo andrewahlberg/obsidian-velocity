@@ -506,6 +506,7 @@ body {
 	--success-gradient: linear-gradient(to top, var(--text-success-bg) -20%, #FFF 220%);
 	--toggle-gradient: linear-gradient(to bottom, var(--color-accent) -30%, var(--color-accent-4) 180%);
 	--warning-gradient: linear-gradient(to top, var(--color-red) -30%, var(--trans-strong-20) 180%);
+	--notice-gradient: linear-gradient(to top, var(--color-orange) -30%, var(--trans-strong-20) 180%);
 
 	--color-accent-1: color-mix(in oklch, var(--color-accent) 100%, transparent 10%);
 	--color-accent-2: color-mix(in oklch, var(--color-accent) 80%, transparent 40%);
@@ -754,8 +755,6 @@ body {
 	--blockquote-color: var(--color-base-80);
 	--blockquote-border-color: var(--color-base-30);
 	--blockquote-background-color: var(--trans-faint-05);
-
-	--checkbox-bg-color: var(--color-base-10);
 
 	--code-background: var(--trans-faint-05);
 	--code-background-alt: var(--trans-strong-40);
@@ -1432,7 +1431,6 @@ body:not(.disable-list-styling) {
 
 /* Checkbox */
 input[type=checkbox] {
-	background-color: var(--checkbox-bg-color);
 	box-shadow: var(--shadow-checkbox);
 	border: none;
 }
@@ -1456,6 +1454,20 @@ input[type=checkbox]:checked:focus {
 }
 input[type=checkbox]:checked:hover {
 	box-shadow: var(--shadow-checkbox-active-hover) !important;
+}
+
+/* Alternative Checkboxes */
+input[type=checkbox][data-task="/"]:checked,
+.task-list-item.is-checked[data-task="/"] input[type=checkbox]:checked {
+	background-color: var(--color-yellow);
+	background-image: 
+		linear-gradient(270deg, 
+		var(--background-primary) 46%, transparent 54%);
+	box-shadow: 0 0 0 0.5px var(--color-yellow);
+	--checkbox-marker-color: transparent;	
+	&:hover {
+		box-shadow: 0 0 0 2.25px color-mix(in oklab, var(--color-yellow), transparent 37.5%) !important;
+	}
 }
 
 
