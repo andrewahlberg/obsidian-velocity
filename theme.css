@@ -1231,7 +1231,8 @@ body.prop-headings {
 		}
 }
 
-.cm-s-obsidian .cm-line.HyperMD-header:first-child {
+.cm-line.HyperMD-header:first-child,
+.metadata-container + * > .cm-content > :first-child + .cm-line.HyperMD-header {
     padding-top: 0;
 }
 .disable-title-h1 .cm-line.HyperMD-header-1, 
@@ -3908,7 +3909,7 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 	font-size: 2.5em;
 	font-weight: var(--font-extralight);
 	letter-spacing: -0.05rem;
-	padding-block: 0.125em;
+	padding-block: 0.125em !important;
 	--bold-modifier: 250;
 }
 /* (supertitle) - Turns editor H1 into a very large Swiss Design heading. */
@@ -3921,7 +3922,7 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 	letter-spacing: -0.0625rem;
 	text-indent: -0.0625em;
 	border-block-end: none;
-	padding-block: 0.125em 0;
+	padding-block: 0.125em 0 !important;
 	--bold-modifier: 300;
 }
 .supertitle:not(.override, .style-override, .superheading) :is(
@@ -3935,10 +3936,10 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 	--file-line-width: 28px 0;
 }
 /* (style-top-margin) - Adds additional padding to the top of the file. */
-.style-top-margin:not(.override, .style-override).markdown-source-view {
+.style-margin-top:not(.override, .style-override).markdown-source-view {
 	padding-top: 28px;
 }
-.style-top-margin:not(.override, .style-override).markdown-preview-view {
+.style-margin-top:not(.override, .style-override).markdown-preview-view {
 	padding-top: 56px;
 }
 
