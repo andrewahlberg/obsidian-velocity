@@ -518,6 +518,9 @@ body {
 	--blockquote-border-color: var(--color-base-25);
 	--blockquote-background-color: var(--trans-faint-00);
 
+	--checkbox-border-color: var(--color-base-35);
+	--checkbox-border-color-hover: var(--color-base-50);
+
 	--code-background: var(--trans-faint-00);
 	--code-background-alt: var(--trans-strong-10);
 	--code-border-color: var(--trans-faint-20);
@@ -583,10 +586,9 @@ body {
 		inset 0 -2px 2px 0px var(--trans-faint-20),
 		0px 2px 9px 0px var(--trans-faint-20);
 	--shadow-checkbox:
-		0 0 0 0.25px var(--trans-faint-60),
-		inset 0 1px 2px 0.75px var(--hr-color);
+		inset 0 1px 2px 0.75px var(--trans-faint-20);
 	--shadow-checkbox-active:
-		0 0 0 0.25px var(--trans-faint-60);
+		0 0 0 0.375px var(--trans-faint-60);
 	--shadow-code: 
 		0 0.125px 0px 0.375px var(--trans-faint-50);
 	--shadow-input: 
@@ -749,6 +751,9 @@ body {
 	--blockquote-color: var(--color-base-80);
 	--blockquote-border-color: var(--color-base-30);
 	--blockquote-background-color: var(--trans-faint-05);
+
+	--checkbox-border-color: var(--color-base-35);
+	--checkbox-border-color-hover: var(--color-base-40);
 
 	--code-background: var(--trans-faint-05);
 	--code-background-alt: var(--trans-strong-40);
@@ -1422,11 +1427,11 @@ body:not(.disable-list-styling) {
 /* Checkbox */
 input[type=checkbox] {
 	box-shadow: var(--shadow-checkbox);
-	border: none;
 }
 input[type=checkbox]:checked {
     background-image: var(--success-gradient);
-	box-shadow: var(--shadow-checkbox-active);
+	box-shadow: none !important;
+	border: none;
 }
 input[type=checkbox]:checked::after {
     top: -0.03125em;
@@ -1435,18 +1440,14 @@ input[type=checkbox]:checked::after {
 input[type=checkbox]:is(:focus,:hover) {
 	box-shadow: var(--shadow-checkbox); 
 }
-input[type=checkbox]:checked:is(:focus,:hover) {
-	box-shadow: var(--shadow-checkbox-active); 
-}
 
 /* Alternative Checkboxes */
 input[type=checkbox][data-task="/"]:checked,
 .task-list-item.is-checked[data-task="/"] input[type=checkbox]:checked {
-	background-color: var(--color-yellow);
 	background-image: 
-		linear-gradient(270deg, 
-		var(--background-primary) 46%, transparent 54%);
-	box-shadow: 0 0 0 0.5px var(--color-yellow);
+	linear-gradient(270deg, transparent 48.75%, var(--color-yellow) 48.75%);
+	border: 1px solid var(--color-yellow);
+	box-shadow: none;
 	--checkbox-marker-color: transparent;	
 }
 
