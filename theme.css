@@ -1437,6 +1437,12 @@ body:not(.disable-list-styling) {
 input[type=checkbox] {
 	box-shadow: var(--shadow-checkbox);
 }
+.HyperMD-task-line[data-task="x"],
+.HyperMD-task-line[data-task="f"],
+.task-list-item.is-checked {
+	--bold-color: var(--strikethrough-color);
+	--italic-color: var(--strikethrough-color);
+}
 input[type=checkbox]:checked {
     background-image: var(--success-gradient);
 	box-shadow: none !important;
