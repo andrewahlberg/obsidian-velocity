@@ -3934,6 +3934,13 @@ body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-ta
 .style-wide:not(.override, .style-override) {
 	--file-line-width: 28px 0;
 }
+/* (style-top-margin) - Adds additional padding to the top of the file. */
+.style-top-margin:not(.override, .style-override).markdown-source-view {
+	padding-top: 28px;
+}
+.style-top-margin:not(.override, .style-override).markdown-preview-view {
+	padding-top: 56px;
+}
 
 /*
 =========================== ===========================
