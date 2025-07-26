@@ -244,6 +244,7 @@ body {
 	/* Icons */ 
 
 	/* Indent size */
+	--indent-unit: .375em;
 
 	/* Indentation guide */
 
@@ -1455,6 +1456,9 @@ input[type=checkbox]:checked::after {
 }
 input[type=checkbox]:is(:focus,:hover) {
 	box-shadow: var(--shadow-checkbox); 
+}
+.task-list-item ul::before {
+	--indentation-guide-reading-indent: -1.03125em;
 }
 
 /* Alternative Checkboxes */
