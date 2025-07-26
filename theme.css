@@ -3745,9 +3745,8 @@ body:not(.is-mobile) .obsidian-vertical-tabs-container * {
 /*--> Pomodoro Timer <--*/
 
 /* Timer */
-.timer .status {
-	color: var(--text-muted);
-	font-weight: var(--font-medium);
+body:not(.is-mobile) .view-content .timer-text {
+	font-variant-numeric: tabular-nums;
 }
 /* Button group */
 .btn-group {
@@ -3758,9 +3757,9 @@ body:not(.is-mobile) .obsidian-vertical-tabs-container * {
 .btn-group:hover {
 	background-color: var(--trans-strong-40);
 }
-.btn-group .control {
+body:not(.is-mobile) .workspace-leaf-content .view-content .btn-group .control {
 	border-radius: var(--radius-s);
-	padding: 7.5px 8px 2.5px 8px !important;
+	padding: 7.5px 8px 2.5px 8px;
 	padding-inline: 8px;
 	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
 }
@@ -3769,16 +3768,20 @@ body:not(.is-mobile) .obsidian-vertical-tabs-container * {
     filter: opacity(100%) !important;
 }
 /* Page title */
-.pomodoro-tasks-wrapper {
-	border: none !important;
+body:not(.is-mobile) .workspace-leaf-content .view-content .pomodoro-tasks-wrapper {
+	border: none;
 }
-body .workspace .mod-sidedock .pomodoro-tasks-header .pomodoro-tasks-header-title {	
-	border-radius: var(--radius-sm);
+body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-tasks-header-title {	
+	border: 1px solid var(--trans-faint-10);
+	border-radius: var(--radius-s);
 	padding-block: 9px 8px;
-	--background-modifier-active-hover: var(--background-modifier-hover);
+	font-weight: var(--font-semibold);
 }
-body .workspace .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-tasks-count {
+body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-tasks-header-title .pomodoro-tasks-count {
 	margin-bottom: 2px;
+}
+body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-tasks-pin {
+    padding-right: 6px;
 }
 
 /*--> Sidebar Highlights <--*/
