@@ -1412,6 +1412,7 @@ pre[class*="language-"] code,
 	margin-inline-start: 1.75em;
 	--list-marker-color: var(--color-base-50);
 }
+.list-bullet,
 .markdown-rendered ul > li  {
 	--list-marker-color: var(--list-bullet-color);
 }
