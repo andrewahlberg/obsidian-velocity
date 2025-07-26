@@ -587,11 +587,6 @@ body {
 		inset 0 1px 2px 0.75px var(--hr-color);
 	--shadow-checkbox-active:
 		0 0 0 0.25px var(--trans-faint-60);
-	--shadow-checkbox-hover:
-		0 0 0 2.25px var(--text-success-faint),
-		inset 0 0.75px 1.75px 0.5px var(--trans-faint-30);
-	--shadow-checkbox-active-hover:
-		0 0 0 2.25px var(--text-success-faint);
 	--shadow-code: 
 		0 0.125px 0px 0.375px var(--trans-faint-50);
 	--shadow-input: 
@@ -821,11 +816,6 @@ body {
 		0 0 0 0.375px var(--trans-faint-60);
 	--shadow-checkbox-active:
 		none;
-	--shadow-checkbox-hover:
-		0 0 0 2px var(--text-success-faint),
-		inset 0 0 2px 0 var(--text-success-faint);
-	--shadow-checkbox-active-hover:
-		0 0 0 2.375px var(--text-success-faint);
 	--shadow-code: 
 		0 -0.25px 0 0.375px var(--trans-faint-40),
 		0 0.375px 2px 0px var(--trans-dark-00);
@@ -1441,18 +1431,11 @@ input[type=checkbox]:checked::after {
     top: -0.03125em;
     inset-inline-start: -0.03125em;
 }
-input[type=checkbox]:focus {
-	box-shadow: var(--shadow-checkbox) !important; 
+input[type=checkbox]:is(:focus,:hover) {
+	box-shadow: var(--shadow-checkbox); 
 }
-input[type=checkbox]:hover {
-	box-shadow: var(--shadow-checkbox-hover) !important;
-	transition: box-shadow var(--anim-duration-superfast) ease-out;
-}
-input[type=checkbox]:checked:focus {
-	box-shadow: none !important;
-}
-input[type=checkbox]:checked:hover {
-	box-shadow: var(--shadow-checkbox-active-hover) !important;
+input[type=checkbox]:checked:is(:focus,:hover) {
+	box-shadow: var(--shadow-checkbox-active); 
 }
 
 /* Alternative Checkboxes */
@@ -1464,23 +1447,8 @@ input[type=checkbox][data-task="/"]:checked,
 		var(--background-primary) 46%, transparent 54%);
 	box-shadow: 0 0 0 0.5px var(--color-yellow);
 	--checkbox-marker-color: transparent;	
-	&:hover {
-		box-shadow: 0 0 0 2.25px color-mix(in oklab, var(--color-yellow), transparent 37.5%) !important;
-	}
 }
-input[type=checkbox][data-task="X"]:checked,
-.task-list-item.is-checked[data-task="X"] input[type=checkbox]:checked {
-	background-image: var(--warning-gradient);
-	&:hover {
-		box-shadow: 0 0 0 2.25px color-mix(in oklab, var(--color-red), transparent 50%) !important;
-	}
-	&::after {
-	-webkit-mask-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --%3E%3Csvg width='800px' height='800px' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' fill='none' width='20' height='20'/%3E%3Cg%3E%3Cpath d='M14.95 6.46L11.41 10l3.54 3.54-1.41 1.41L10 11.42l-3.53 3.53-1.42-1.42L8.58 10 5.05 6.47l1.42-1.42L10 8.58l3.54-3.53z'/%3E%3C/g%3E%3C/svg%3E");
-    -webkit-mask-size: 105% 105%;
-	left: 0;
-	transform: translate3d(-0.025em, 0.0375em, 0);
-	}
-}
+
 /* Alternative Checkboxes (unique shapes) */
 input[type=checkbox][data-task="<"]:checked,
 .task-list-item.is-checked[data-task="<"] input[type=checkbox]:checked {
