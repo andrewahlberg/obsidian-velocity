@@ -547,6 +547,7 @@ body {
 	--link-color-sidebar: var(--color-accent-1);
 
 	--list-bullet-color: var(--text-muted);
+	--list-dash-color: var(--color-base-50);
 
 	--background-primary: var(--color-base-05);
 	--background-secondary: var(--color-base-10);
@@ -781,6 +782,7 @@ body {
 	--link-color-sidebar: var(--color-accent-2);
 
 	--list-bullet-color: var(--color-base-80);
+	--list-dash-color: var(--trans-faint-60);
 
 	--nav-heading-color: var(--color-base-80);
 	--nav-header-bg: var(--background-modifier-hover);
@@ -1415,7 +1417,7 @@ pre[class*="language-"] code,
 
 .markdown-rendered :is(ol, ul) > li {
 	margin-inline-start: 1.75em;
-	--list-marker-color: var(--color-base-50);
+	--list-marker-color: var(--list-dash-color);
 }
 .list-bullet,
 .markdown-rendered ul > li  {
@@ -1426,7 +1428,7 @@ body:not(.disable-list-styling) {
 	.list-bullet::after,
 	.modal-content li::marker {
 		content: "— ";
-		color: var(--color-base-50);
+		color: var(--list-dash-color);
 		background-color: transparent !important;
 		box-shadow: none !important;
 		height: fit-content;
@@ -1913,6 +1915,7 @@ body:not(.disable-custom-icons) :where(
 		display: none;
 	}
 }
+/* used Ionicons */
 .callout-icon .lucide-alert-triangle {
 	-webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpb25pY29uIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZD0iTTQ0MC4wOCAzNDEuMzFjLTEuNjYtMi0zLjI5LTQtNC44OS01LjkzLTIyLTI2LjYxLTM1LjMxLTQyLjY3LTM1LjMxLTExOCAwLTM5LTkuMzMtNzEtMjcuNzItOTUtMTMuNTYtMTcuNzMtMzEuODktMzEuMTgtNTYuMDUtNDEuMTJhMyAzIDAgMDEtLjgyLS42N0MzMDYuNiA1MS40OSAyODIuODIgMzIgMjU2IDMycy01MC41OSAxOS40OS01OS4yOCA0OC41NmEzLjEzIDMuMTMgMCAwMS0uODEuNjVjLTU2LjM4IDIzLjIxLTgzLjc4IDY3Ljc0LTgzLjc4IDEzNi4xNCAwIDc1LjM2LTEzLjI5IDkxLjQyLTM1LjMxIDExOC0xLjYgMS45My0zLjIzIDMuODktNC44OSA1LjkzYTM1LjE2IDM1LjE2IDAgMDAtNC42NSAzNy42MmM2LjE3IDEzIDE5LjMyIDIxLjA3IDM0LjMzIDIxLjA3SDQxMC41YzE0Ljk0IDAgMjgtOC4wNiAzNC4xOS0yMWEzNS4xNyAzNS4xNyAwIDAwLTQuNjEtMzcuNjZ6TTI1NiA0ODBhODAuMDYgODAuMDYgMCAwMDcwLjQ0LTQyLjEzIDQgNCAwIDAwLTMuNTQtNS44N0gxODkuMTJhNCA0IDAgMDAtMy41NSA1Ljg3QTgwLjA2IDgwLjA2IDAgMDAyNTYgNDgweiIvPjwvc3ZnPg==");
 }
