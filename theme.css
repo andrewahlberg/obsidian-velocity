@@ -962,6 +962,11 @@ body:not(.mod-windows, .mod-linux) {
 	--h6-weight: 625;
 }
 
+/* Windows */
+.mod-windows .mod-sidedock .workspace-tab-header {
+	transform: translateY(-0.5px); 
+}
+
 /*--> Animations <--*/
 
 @keyframes popover {
@@ -2378,7 +2383,6 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	border-radius: var(--radius-xxl);
 	min-height: 36px;
 	min-width: 36px;
-	transform: translateY(-0.5px); 
 }
 .mod-sidedock .workspace-tab-header:hover {
 	--background-modifier-hover: transparent;
