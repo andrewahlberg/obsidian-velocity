@@ -423,7 +423,7 @@ body {
 
 	--accent-h: 207;	
 	--accent-s: 100%;	
-	--accent-l: 49%;
+	--accent-l: 48%;
 	
 	--color-red-rgb: 250, 30, 14;
 	--color-red: rgb(250, 30, 14);
@@ -452,31 +452,31 @@ body {
 	--color-base-05: oklch(98.80% var(--base-sat-med) var(--base-hue));
 	--color-base-10: oklch(96.20% var(--base-sat-str) var(--base-hue));
 	--color-base-20: oklch(92.00% var(--base-sat-str) var(--base-hue));
-	--color-base-25: oklch(89.10% var(--base-sat-str) var(--base-hue)); 
+	--color-base-25: oklch(88.25% var(--base-sat-str) var(--base-hue)); 
 	--color-base-30: oklch(85.79% var(--base-sat-med) var(--base-hue)); 
-	--color-base-35: oklch(79.75% var(--base-sat-str) var(--base-hue)); 
-	--color-base-40: oklch(76.35% var(--base-sat-med) var(--base-hue)); 
-	--color-base-50: oklch(73.75% var(--base-sat-xtr) var(--base-hue)); 
-	--color-base-60: oklch(57.80% var(--base-sat-xtr) var(--base-hue));
-	--color-base-70: oklch(50.75% var(--base-sat-xtr) var(--base-hue));
-	--color-base-80: oklch(44.25% var(--base-sat-low) var(--base-hue)); 
-	--color-base-90: oklch(32.50% var(--base-sat-low) var(--base-hue)); 
-   --color-base-100: oklch(22.65% var(--base-sat-low) var(--base-hue)); 
+	--color-base-35: oklch(78.75% var(--base-sat-str) var(--base-hue)); 
+	--color-base-40: oklch(75.25% var(--base-sat-med) var(--base-hue)); 
+	--color-base-50: oklch(71.50% var(--base-sat-xtr) var(--base-hue)); 
+	--color-base-60: oklch(53.00% var(--base-sat-xtr) var(--base-hue));
+	--color-base-70: oklch(48.00% var(--base-sat-xtr) var(--base-hue));
+	--color-base-80: oklch(40.75% var(--base-sat-low) var(--base-hue)); 
+	--color-base-90: oklch(29.50% var(--base-sat-low) var(--base-hue)); 
+   --color-base-100: oklch(17.75% var(--base-sat-low) var(--base-hue)); 
 
 	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.950);
 	--trans-strong-10: oklch(from var(--color-base-00) l c h / 0.800);
 	--trans-strong-20: oklch(from var(--color-base-00) l c h / 0.750);
-	--trans-strong-30: oklch(from var(--color-base-00) l c h / 0.360);
+	--trans-strong-30: oklch(from var(--color-base-00) l c h / 0.400);
 	--trans-strong-40: oklch(from var(--color-base-50) l c h / 0.100);
 	
 	--trans-faint-00: oklch(62.65% 0 0 / 0.030);
 	--trans-faint-05: oklch(25.20% 0 0 / 0.025);
-	--trans-faint-10: oklch(0.000% 0 0 / 0.043);
-	--trans-faint-20: oklch(0.000% 0 0 / 0.051);
-	--trans-faint-30: oklch(0.000% 0 0 / 0.086);
+	--trans-faint-10: oklch(0.000% 0 0 / 0.045);
+	--trans-faint-20: oklch(0.000% 0 0 / 0.060);
+	--trans-faint-30: oklch(0.000% 0 0 / 0.096);
 	--trans-faint-40: oklch(0.000% 0 0 / 0.114);
-	--trans-faint-50: oklch(0.000% 0 0 / 0.133);
-	--trans-faint-60: oklch(0.000% 0 0 / 0.288); 
+	--trans-faint-50: oklch(0.000% 0 0 / 0.145);
+	--trans-faint-60: oklch(0.000% 0 0 / 0.320); 
 	
 	--text-normal: var(--color-base-90);
 	--text-muted: var(--color-base-70);
@@ -496,8 +496,8 @@ body {
 	--modal-border-color: var(--color-base-40);
 	
 	--background-gradient: radial-gradient( at 50% 52%, 
-		var(--color-base-05) 44%, 
-		var(--color-base-50) 220%
+		var(--color-base-05) 42%, 
+		var(--color-base-50) 210%
 		);
 	--background-gradient-menu: radial-gradient( at 64% 50%, 
 		var(--color-base-10) 35%, 
@@ -582,7 +582,6 @@ body {
 
 	--vault-profile-color: var(--color-base-80);
 
-	--cta-shadow: 0 1.125px 1px var(--trans-faint-30);
 	--input-shadow: 
 		0 0.125px 0 0.5px var(--trans-faint-30),
 		inset 0 -0.125px 1px 0px var(--trans-faint-30),
@@ -813,8 +812,6 @@ body {
 	--tab-sidebar-container-bg: radial-gradient(at 50% 112.5%, var(--trans-faint-00), var(--trans-strong-10) 87.5%);
 	--tag-background-image: linear-gradient(to top, var(--text-selection) -50%, var(--color-accent-6) 100%);
 	
-	--cta-shadow: 0 0.375px 1px var(--color-base-30);
-
 	--vault-profile-color: var(--text-muted);
 
 	--input-shadow: 
@@ -906,14 +903,19 @@ body {
 
 /*--> OS Settings <--*/
 
+/* Windows & Linux */
 .mod-windows,
 .mod-linux {
 	/* frame spacing and autohide override */
   	--frame-right-space-override: 132px;
 	--frame-left-space-override: 0;
+	--callout-blend-mode: normal;
 }
+
+/* macOS */
 .mod-macos,
 body:not(.mod-windows, .mod-linux) {
+	/* -50 Windows weight */
 	--font-thin: 225;
 	--font-extralight: 250;
 	--font-light: 300;
@@ -939,8 +941,25 @@ body:not(.mod-windows, .mod-linux) {
 .mod-macos .lucide-more-vertical {
   transform: none;
 }
-.mod-windows {
-	--callout-blend-mode: normal;
+
+/* Linux */
+.mod-linux {
+	/* -25 Windows weight */
+	--font-thin: 225;
+	--font-extralight: 250;
+	--font-light: 325;
+	--font-normal: 425;
+	--font-medium: 525;
+	--font-semibold: 625;
+	--font-bold: 725;
+	--font-extrabold: 825;
+	--font-black: 900;
+	--h1-weight: 300;
+	--h2-weight: 525;
+	--h3-weight: 550;
+	--h4-weight: 625;
+	--h5-weight: 650;
+	--h6-weight: 625;
 }
 
 /*--> Animations <--*/
@@ -986,7 +1005,6 @@ button[class*="mod-"]:hover:active,
 button.mod-cta,
 :is(.mod-root, .popover) .metadata-add-button {
 	background: var(--hotkey-gradient);
-	text-shadow: var(--cta-shadow);
 }
 button.mod-cta:hover,
 :is(.mod-root, .popover) .metadata-add-button:hover {
