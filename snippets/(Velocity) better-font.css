@@ -65,8 +65,10 @@ body.better-font {
 }
 .better-font 
     :is(em,
+    .cm-em,
     .inline-title,
     .cm-s-obsidian .cm-line.HyperMD-header,
-    .markdown-rendered :is(h1, h2,h3,h4,h5,h6)) {
+    .markdown-rendered :is(h1, h2,h3,h4,h5,h6)),
+    #calendar-container {
         font-family: var(--font-interface-theme);
 }
