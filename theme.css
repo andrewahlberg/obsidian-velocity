@@ -421,7 +421,7 @@ body {
 }
 .theme-light {
 
-	--accent-h: 207;	
+	--accent-h: 212;	
 	--accent-s: 100%;	
 	--accent-l: 48%;
 	
@@ -459,9 +459,9 @@ body {
 	--color-base-50: oklch(71.50% var(--base-sat-xtr) var(--base-hue)); 
 	--color-base-60: oklch(53.00% var(--base-sat-xtr) var(--base-hue));
 	--color-base-70: oklch(48.00% var(--base-sat-xtr) var(--base-hue));
-	--color-base-80: oklch(40.75% var(--base-sat-low) var(--base-hue)); 
+	--color-base-80: oklch(40.25% var(--base-sat-low) var(--base-hue)); 
 	--color-base-90: oklch(29.50% var(--base-sat-low) var(--base-hue)); 
-   --color-base-100: oklch(17.75% var(--base-sat-low) var(--base-hue)); 
+   --color-base-100: oklch(18.00% var(--base-sat-low) var(--base-hue)); 
 
 	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.950);
 	--trans-strong-10: oklch(from var(--color-base-00) l c h / 0.800);
@@ -471,8 +471,9 @@ body {
 	
 	--trans-faint-00: oklch(62.65% 0 0 / 0.030);
 	--trans-faint-05: oklch(25.20% 0 0 / 0.025);
-	--trans-faint-10: oklch(0.000% 0 0 / 0.045);
+	--trans-faint-10: oklch(0.000% 0 0 / 0.050);
 	--trans-faint-20: oklch(0.000% 0 0 / 0.060);
+	--trans-faint-25: oklch(0.000% 0 0 / 0.070);
 	--trans-faint-30: oklch(0.000% 0 0 / 0.096);
 	--trans-faint-40: oklch(0.000% 0 0 / 0.114);
 	--trans-faint-50: oklch(0.000% 0 0 / 0.145);
@@ -496,15 +497,15 @@ body {
 	--modal-border-color: var(--color-base-40);
 	
 	--background-gradient: radial-gradient( at 50% 52%, 
-		var(--color-base-05) 42%, 
-		var(--color-base-50) 210%
+		var(--color-base-05) 40%, 
+		var(--color-base-50) 225%
 		);
 	--background-gradient-menu: radial-gradient( at 64% 50%, 
-		var(--color-base-10) 35%, 
-		var(--color-base-30) 140%
+		var(--color-base-10) 30%, 
+		var(--color-base-30) 150%
 		); 
 	--background-gradient-community: radial-gradient( at 50% 50%, 
-		var(--color-base-10) 40%, 
+		var(--color-base-10) 30%, 
 		var(--color-base-25) 160%
 		); 
 	--background-modifier-border: var(--trans-faint-20);
@@ -625,10 +626,9 @@ body {
 
 	& .mod-root, .mod-sidedock {
 	--shadow-workspace: 
-		0px 0px 0px 1px var(--trans-faint-20),
-		0 0px 3px 0px var(--trans-faint-10),
-		0px 5px 40px -8px var(--color-base-25),
-		0px 6px 8px -4px var(--trans-faint-30);	
+		0 0 0 1px var(--trans-faint-25),
+		0 3px 6px 0px var(--trans-faint-10),
+		0px 15px 30px var(--trans-faint-25);	
 	--shadow-workspace-multi:
 		0 0 0 1px var(--trans-faint-20);	
 	--shadow-fab: 
@@ -654,7 +654,7 @@ body {
 }
 .theme-dark {
 	
-	--accent-h: 205;	
+	--accent-h: 206;	
 	--accent-s: 100%;	
 	--accent-l: 48%;
 
