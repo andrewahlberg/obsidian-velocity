@@ -2514,7 +2514,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 			filter: opacity(100%);
 		}
 	}
-	&[data-mode="source"] .view-actions .clickable-icon.view-action:not(:last-child,:first-child) {
+	&[data-mode="source"] .view-actions .clickable-icon.view-action:not(:last-child, .mod-bookmark) {
 		box-shadow: var(--shadow-fab-active);
 		--icon-color: var(--color-accent-3);
 		--icon-color-hover: var(--color-accent-3);
