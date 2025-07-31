@@ -83,11 +83,6 @@ settings:
 	description: Highlights the active line with slight backdrop for easier text navigation.  
 	type: class-toggle
 - 	
-	id: better-font
-	title: Enable high-fidelity body text (requires better-font snippet)
-	description: Uses a hinted variant of Inter for body text, improving readability and text flow.  
-	type: class-toggle
-- 	
 	id: prop-headings
 	title: Enable proportional heading margins
 	description: Decreases the margin sizes of smaller headings.
@@ -960,6 +955,10 @@ body:not(.mod-windows, .mod-linux) {
 	--h4-weight: 625;
 	--h5-weight: 650;
 	--h6-weight: 625;
+}
+/* Linux font weight tweak (WIP test if needed on macOS) */
+.mod-linux button[class*="mod-"] {
+	font-weight: 575;
 }
 
 /* Windows */
