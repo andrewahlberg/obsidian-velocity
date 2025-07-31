@@ -618,7 +618,7 @@ body {
 		0px 15px 30px var(--trans-faint-25);	
 	--shadow-workspace-multi:
 		0 0 0 1px var(--trans-faint-20),
-		0px 5px 20px var(--trans-faint-10);	
+		0px 2.5px 10px var(--trans-faint-10);	
 	--shadow-fab: 
 		0px 0.25px 0px 0.75px var(--trans-faint-30),
 		inset 0px -0.25px 2px 0px var(--trans-faint-05),
@@ -2046,7 +2046,8 @@ body:is(.disable-custom-icons, .disable-callout-styling) .callout-icon svg {
 
 /*--> Workspace Layout <--*/
 
-body:not(.is-mobile) .mod-root :is(.workspace-tab-container, .workspace-tabs:not(.mod-stacked) .workspace-leaf) {
+body:not(.is-mobile) .mod-root > .mod-horizontal > .workspace-tabs > :is(.workspace-tab-container, .workspace-tabs:not(.mod-stacked) .workspace-leaf),
+body:not(.is-mobile) .mod-root .workspace-tabs > :is(.workspace-tab-container, .workspace-tabs:not(.mod-stacked) .workspace-leaf) {
     border-radius: var(--radius-m);
 }
 body:not(.is-mobile) .mod-root .workspace-tab-container {
@@ -2076,14 +2077,13 @@ body:not(
     gap: 8px;
 }
 body:not(.is-mobile) .workspace {
-	background: var(--background-gradient);
+	background-image: var(--background-gradient);
 	font-weight: var(--font-weight);
 }
-body:not(.is-mobile) .mod-vertical.mod-root {
+body:not(.is-mobile) .mod-root {
     padding-bottom: 8px;
 	--collapse-icon-color: var(--color-base-50);
 }
-
 .workspace-split.mod-root,
 .workspace-tabs .workspace-leaf,
 .mod-sidedock .view-header {
@@ -2120,28 +2120,28 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root>.workspace
     margin-left: 8px;
 }
 /* Margin OFF when sidebars closed */
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container {
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container,
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-split.mod-horizontal .workspace-tabs .workspace-tab-container {
     margin-inline: 0;
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
 	background-image: none !important;
 }
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
+/* body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
     padding-inline: 8px 6px;
-}
+} */
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) 
 .workspace-split.mod-vertical.mod-root {
-	padding-bottom: 0;
+	padding-bottom: unset;
 	& .workspace-tabs {
-		overflow: hidden;
 		--divider-width: 1px;
 	}
 	& .workspace-tabs > .workspace-tab-container {
-		border-radius: 0;
+		border-radius: unset;
 		box-shadow: none;
 	}
 	& .workspace-tabs.mod-stacked > .workspace-tab-container {
-		border-radius: 0;
+		border-radius: unset;
 		box-shadow: var(--shadow-input);
 	}
 	& .view-header-title-container:not(.webviewer-address-container) {
@@ -2221,10 +2221,9 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 
 /*--> Navigation / File Tree <--*/
 
-.tree-item-self {
+.workspace-leaf-content .tree-item-self {
 	margin-block: 1px;
 	padding-block: 7px;
-	--interactive-accent: oklch(from var(--color-accent) l c h / 0.75);
 }
 
 /* Folders */
@@ -2494,7 +2493,15 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 /*--> View Header <--*/
 
 .view-header {
+	padding-inline: 8px;
 	z-index: var(--layer-popover);
+}
+.view-header-left {
+	padding-inline-start: 4px;
+}
+.view-actions {
+	padding-inline-end: 4px;
+	contain: content;
 }
 /* View header Title */
 .view-header-title-container > * {
@@ -2512,6 +2519,8 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	column-gap: 4px;
 	}
 	.view-actions {
+		padding-block-end: 8px;
+		margin-block-end: -8px;
 		transform: translateX(-8px) translateY(14px);
 	}
 	& .view-actions .clickable-icon.view-action:last-child {
