@@ -2483,7 +2483,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 			filter: opacity(100%);
 		}
 	}
-	& .view-actions .clickable-icon.view-action:not(:last-child,:first-child) {
+	& .view-actions .clickable-icon.view-action:not(:last-child, .mod-bookmark) {
 		--icon-size: var(--icon-m);
 		--icon-color: var(--text-muted);
 		--icon-color-hover: var(--text-muted);
