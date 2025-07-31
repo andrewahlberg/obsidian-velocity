@@ -143,16 +143,6 @@ body {
 	/* Buttons */
 	--button-radius: var(--radius-s);
 
-	/* Callouts */
-	--callout-border-opacity: 0.15;
-	--callout-radius: var(--radius-sm);
-	--callout-padding: 16px 16px 8px 16px;
-	--callout-title-padding: 0 0 0 2px;
-
-	/* Callout colors */
-	--callout-bug: var(--color-pink-rgb);
-	--callout-warning: var(--color-yellow-rgb);
-
 	/* Canvas */
 
 	/* Caret (text entry cursor) */
@@ -627,7 +617,8 @@ body {
 		0 3px 6px 0px var(--trans-faint-10),
 		0px 15px 30px var(--trans-faint-25);	
 	--shadow-workspace-multi:
-		0 0 0 1px var(--trans-faint-20);	
+		0 0 0 1px var(--trans-faint-20),
+		0px 5px 20px var(--trans-faint-10);	
 	--shadow-fab: 
 		0px 0.25px 0px 0.75px var(--trans-faint-30),
 		inset 0px -0.25px 2px 0px var(--trans-faint-05),
@@ -959,7 +950,7 @@ body:not(.mod-windows, .mod-linux) {
 	--h6-weight: 625;
 }
 /* Linux font weight tweak (WIP test if needed on macOS) */
-.mod-linux button[class*="mod-"] {
+.mod-linux button[class*="mod-"]:not([class="mod-cancel"]) {
 	font-weight: 575;
 }
 
@@ -1300,7 +1291,20 @@ body.prop-headings {
 }
 
 /*--> Callouts <--*/
+.callout .callout-content {
+	--blockquote-background-color: var(--code-background-alt);
+	--code-background: var(--code-background-alt);
+}
 body:not(.disable-callout-styling) {
+	/* Callout variables */
+	--callout-border-opacity: 0.15;
+	--callout-radius: var(--radius-sm);
+	--callout-padding: 16px 16px 8px 16px;
+	--callout-title-padding: 0 0 0 2px;
+	/* Callout colors */
+	--callout-bug: var(--color-pink-rgb);
+	--callout-warning: var(--color-yellow-rgb);
+	/* Styling */
 	.markdown-source-view .cm-content > .cm-callout[contenteditable=false] {
 		border-radius: var(--callout-radius);
 		contain: none !important;
@@ -1343,8 +1347,6 @@ body:not(.disable-callout-styling) {
 	.callout .callout-content {
 		padding-inline: 0.125em;
 		margin-bottom: -0.25em;
-		--blockquote-background-color: var(--code-background-alt);
-		--code-background: var(--code-background-alt);
 	}
 	.callout.is-collapsible .callout-content {
 		margin-bottom: -0.75em;
@@ -1469,6 +1471,12 @@ body:not(.disable-naked-embeds) {
 .cm-s-obsidian span.cm-formatting-highlight {
 	color: rgb(var(--text-highlight-bg-rgb), 0.5);
 	z-index: -2;
+}
+
+/*--> Images <--*/
+
+.markdown-preview-view img, .markdown-rendered img {
+    border-radius: var(--radius-sm);
 }
 
 /*--> Lists + paragraphs <--*/
@@ -1959,7 +1967,7 @@ svg.uppercase-lowercase-a {
 
 /*--> Custom Icons (callouts) <--*/
 
-body:not(.disable-custom-icons) :where(
+body:not(.disable-custom-icons, .disable-callout-styling) :where(
 	.callout-icon .lucide-bug,
 	.callout-icon .lucide-alert-triangle,
 	.callout-icon .lucide-check,
@@ -1980,6 +1988,13 @@ body:not(.disable-custom-icons) :where(
 		display: none;
 	}
 }
+body:is(.disable-custom-icons, .disable-callout-styling) .callout-icon svg { 
+	-webkit-mask-image: unset;
+	-webkit-mask-position: unset;	
+	-webkit-mask-size: unset;
+	padding: initial; 
+}
+
 /* used Ionicons */
 .callout-icon .lucide-alert-triangle {
 	-webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpb25pY29uIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZD0iTTQ0MC4wOCAzNDEuMzFjLTEuNjYtMi0zLjI5LTQtNC44OS01LjkzLTIyLTI2LjYxLTM1LjMxLTQyLjY3LTM1LjMxLTExOCAwLTM5LTkuMzMtNzEtMjcuNzItOTUtMTMuNTYtMTcuNzMtMzEuODktMzEuMTgtNTYuMDUtNDEuMTJhMyAzIDAgMDEtLjgyLS42N0MzMDYuNiA1MS40OSAyODIuODIgMzIgMjU2IDMycy01MC41OSAxOS40OS01OS4yOCA0OC41NmEzLjEzIDMuMTMgMCAwMS0uODEuNjVjLTU2LjM4IDIzLjIxLTgzLjc4IDY3Ljc0LTgzLjc4IDEzNi4xNCAwIDc1LjM2LTEzLjI5IDkxLjQyLTM1LjMxIDExOC0xLjYgMS45My0zLjIzIDMuODktNC44OSA1LjkzYTM1LjE2IDM1LjE2IDAgMDAtNC42NSAzNy42MmM2LjE3IDEzIDE5LjMyIDIxLjA3IDM0LjMzIDIxLjA3SDQxMC41YzE0Ljk0IDAgMjgtOC4wNiAzNC4xOS0yMWEzNS4xNyAzNS4xNyAwIDAwLTQuNjEtMzcuNjZ6TTI1NiA0ODBhODAuMDYgODAuMDYgMCAwMDcwLjQ0LTQyLjEzIDQgNCAwIDAwLTMuNTQtNS44N0gxODkuMTJhNCA0IDAgMDAtMy41NSA1Ljg3QTgwLjA2IDgwLjA2IDAgMDAyNTYgNDgweiIvPjwvc3ZnPg==");
@@ -2039,12 +2054,8 @@ body:not(.is-mobile) .mod-root .workspace-tab-container {
 }
 body:not(.is-mobile) .mod-root .workspace-tabs:not(:only-of-type) .workspace-tab-container {
     box-shadow: var(--shadow-workspace-multi);
-}
-body:not(.is-mobile) .workspace:has(.mod-root .workspace-tabs:not(:only-of-type)) {
-	background: var(--background-gradient-community);
 	--file-margins: 28px 32px;
 }
-
 body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
     transition: all var(--anim-duration-superfast);
 }
@@ -2054,13 +2065,16 @@ body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
 /* MIT License */
 
 /* Gap between multiple root tabs  */
-body:not(.is-mobile):not(.is-popout-window) .workspace.is-left-sidedock-open .mod-root .workspace-split.mod-vertical, 
-body:not(.is-mobile):not(.is-popout-window) .workspace.is-left-sidedock-open .mod-root.workspace-split.mod-vertical,
-body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .mod-root .workspace-split.mod-vertical, 
-body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .mod-root.workspace-split.mod-vertical {
+body:not(
+	.is-mobile, 
+	.is-popout-window) 
+	:is(
+		.workspace.is-left-sidedock-open .mod-root .mod-vertical, 
+		.workspace.is-left-sidedock-open .mod-root.mod-vertical, 
+		.workspace.is-right-sidedock-open .mod-root .mod-vertical, 
+		.workspace.is-right-sidedock-open .mod-root.mod-vertical) {
     gap: 8px;
 }
-
 body:not(.is-mobile) .workspace {
 	background: var(--background-gradient);
 	font-weight: var(--font-weight);
@@ -2071,7 +2085,8 @@ body:not(.is-mobile) .mod-vertical.mod-root {
 }
 
 .workspace-split.mod-root,
-.workspace-tabs .workspace-leaf {
+.workspace-tabs .workspace-leaf,
+.mod-sidedock .view-header {
 	background-color: transparent;
 }
 body:not(.is-mobile) .mod-root .workspace-tabs {
@@ -2086,9 +2101,6 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 /* Sidedock / workspace-split */
 body:not(.is-mobile) :is(.mod-left-split,.mod-right-split) .workspace-leaf-content {
 	padding-inline: 4px;
-}
-.mod-sidedock .view-header {
-	background-color: transparent;
 }
 
 /* empty sidedock */
