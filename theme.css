@@ -44,32 +44,36 @@ settings:
 	type: info-text
 	markdown: true
 - 	
-	id: disable-callout-styling
-	title: Disable Callout styling
+	id: disable-hover-header
+	title: Disable Compact Panels in the sidebar   
 	type: class-toggle
--
+- 	 
 	id: disable-custom-icons
 	title: Disable Custom Icons
 	type: class-toggle
 -
+	id: disable-naked-embeds
+	title: Disable Naked Embed styling
+	type: class-toggle
+- 	
 	id: disable-autohide
-	title: Disable Sidebar Auto-Hide
+	title: Disable Sidebar Auto-Hide™ feature
 	type: class-toggle
--	
+-	 	
 	id: disable-status-fade
-	title: Disable Status Bar reveal on hover
+	title: Disable Status Bar fade until hover
 	type: class-toggle
 -	
-	id: disable-hover-header
-	title: Disable Nav Header compact panels
-	type: class-toggle
-- 	 
-	id: disable-list-styling
-	title: Disable dashed list styling
-	type: class-toggle
-- 	 	
 	id: disable-title-h1
-	title: Disable Title-style H1
+	title: Disable title style for H1 Headings
+	type: class-toggle
+-
+	id: disable-list-styling
+	title: Restore bullet-style List Markers
+	type: class-toggle
+- 	
+	id: disable-callout-styling
+	title: Restore default Callout styling
 	type: class-toggle
 -
 	id: static-heading
@@ -182,8 +186,6 @@ body {
 	/* Dropdowns */
 	--dropdown-background: var(--interactive-normal);
 	--dropdown-background-hover: var(--interactive-normal);
-
-	/* Embeds */
 
 	/* Blocks */
 
@@ -1392,6 +1394,40 @@ pre[class*="language-"] code,
 	--code-radius: var(--radius-sm);
 }
 
+/*--> Embeds <--*/
+
+body:not(.disable-naked-embeds) {
+	--embed-border-start: none;
+	--embed-padding: 0 1.25em 0 0;
+}
+.markdown-embed-link {
+	color: var(--text-faint);
+}
+
+.markdown-embed:has(.el-h5:is(:only-of-type,:last-child)) {
+	background-color: var(--background-primary-alt);
+	border-radius: var(--radius-sm);
+	border: none;
+	padding: 8px;
+}
+.markdown-embed .el-h5:is(:only-of-type,:last-child) {
+	text-align: center;
+	h5 {
+		color: var(--color-base-50);
+		font-size: 0.875em;
+		font-weight: var(--font-medium);
+		padding-top: 0.125rem;
+	}
+}
+.file-embed.mod-generic {
+	border-radius: var(--radius-sm);
+	font-weight: var(--font-medium);
+	--text-muted: var(--color-base-50);
+	--text-normal: var(--icon-color);
+}
+.file-embed-title {
+	padding-top: 0.125rem;
+}
 /*--> Formatting <--*/
 
 /* formatting markers */
