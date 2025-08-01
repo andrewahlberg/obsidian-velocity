@@ -3022,7 +3022,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	.setting-item:not(.setting-item-heading):has( + :not(.setting-item)) {
 		box-shadow: 
 		var(--shadow-setting-item), 
-		0px 0.25px 0px 0.125px var(--trans-faint-20);
+		0px 0.25px 0px 0.125px var(--trans-faint-25);
 		border-bottom: 1px solid var(--setting-item-border-color);
 		border-radius: 0 0 var(--radius-ml) var(--radius-ml);
 		clip-path: inset(0px -24px -24px -24px);
@@ -3057,9 +3057,6 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	}
 	& .setting-item-description {
     	font-size: 11px;
-		font-weight: calc(var(--font-medium) - 50);
-		color: var(--icon-color);
-		line-height: 1.4;
 		--bold-color: var(--color-base-80);
 	}
 	& .setting-item-name {
