@@ -194,7 +194,8 @@ body {
 
 	/* File layout */
 	--file-line-width: 43.5rem;
-	--file-margins: 28px 5%;
+	--file-margin-y: 28px;
+	--file-margins: var(--file-margin-y) 5%;
 	--file-header-font-weight: var(--font-normal);
 
 	/* Relative font sizes */
@@ -1309,7 +1310,6 @@ body.prop-headings {
 	--code-background: var(--code-background-alt);
 }
 body:not(.disable-callout-styling) {
-	/* Callout variables */
 	--callout-border-opacity: 0.15;
 	--callout-radius: var(--radius-sm);
 	--callout-padding: 16px 16px 8px 16px;
@@ -1317,6 +1317,7 @@ body:not(.disable-callout-styling) {
 	/* Callout colors */
 	--callout-bug: var(--color-pink-rgb);
 	--callout-warning: var(--color-yellow-rgb);
+
 	/* Styling */
 	.markdown-source-view .cm-content > .cm-callout[contenteditable=false] {
 		border-radius: var(--callout-radius);
@@ -1327,6 +1328,7 @@ body:not(.disable-callout-styling) {
 		}
 	}
 	.callout {
+		color: color-mix(in oklab, var(--blockquote-color), var(--text-normal));
 		background-color: transparent;
 		background-image: radial-gradient(at 20% 20%, 
 		rgb(var(--callout-color), 0.05),
@@ -1335,6 +1337,7 @@ body:not(.disable-callout-styling) {
 		0 0 0 2px rgb(var(--callout-color), var(--callout-border-opacity));
 		margin-inline: 1px;
 		outline: 1px solid var(--background-primary);
+		--bold-color: var(--text-normal);
 		--icon-stroke: var(--icon-s-stroke-width);
 	}
 	.callout.is-collapsible {
@@ -1347,6 +1350,10 @@ body:not(.disable-callout-styling) {
 
 	.callout-title {
 		align-items: center;
+	}
+	.callout-title-inner {
+		--bold-color: var(--callout-title-color);
+		--italic-color: var(--callout-title-color);
 	}
 	.callout .callout-title:last-child {
 		padding-bottom: 0.5em;
@@ -1378,8 +1385,7 @@ body:not(.disable-callout-styling) {
 		padding-block: 0 !important;
 		padding-inline-start: 0.25em;
 		border: none !important;
-		color: rgb(var(--callout-color));
-		--bold-color:  rgb(var(--callout-color));
+		color: var(--callout-title-color);
 	}
 	:is(.callout[data-callout="quote"], .callout[data-callout="cite"]) .callout-content {
 		color: var(--blockquote-color);
@@ -2067,10 +2073,14 @@ body:not(.is-mobile) .mod-root .workspace-tab-container {
 }
 body:not(.is-mobile) .mod-root .workspace-tabs:not(:only-of-type) .workspace-tab-container {
     box-shadow: var(--shadow-workspace-multi);
-	--file-margins: 28px 32px;
+	--file-margins: var(--file-margin-y) 32px;
 }
 body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
     transition: all var(--anim-duration-superfast);
+}
+/* margin adjustment when there is no view header */
+body:not(.is-mobile):not(.show-view-header) {
+    --file-margin-y: 56px;
 }
 
 /* FROM: Cupertino */
