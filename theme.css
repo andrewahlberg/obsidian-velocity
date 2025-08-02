@@ -15,9 +15,18 @@ settings:
         - label: Race
           value: theme-corsa
 - 	
-	id: switch-edit-icons
-	title: Invert editing toggle icons
-	type: class-toggle
+	id: line-height-normal
+	title: Set editor line height and spacing
+	description: Set the readable line width in relative units (rem).
+	type: variable-select
+	default: Relaxed
+	options:
+	- 
+		label: Compact
+		value: 1.5
+	- 
+		label: Relaxed
+		value: 1.6
 -
 	id: file-line-width
 	title: Set readable line width
@@ -28,6 +37,10 @@ settings:
 	max: 46
 	step: 0.25
 	format: 'rem'
+-
+	id: switch-edit-icons
+	title: Invert editing toggle icons
+	type: class-toggle
 -
 	title: Additional settings
 	type: heading
@@ -3056,7 +3069,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 		font-weight: var(--font-semibold);
 	}
 	& .setting-item-description {
-    	font-size: 11px;
+    	font-size: 11.5px;
 		--bold-color: var(--color-base-80);
 	}
 	& .setting-item-name {
