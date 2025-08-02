@@ -230,7 +230,8 @@ body {
 	--h4-color: var(--text-normal);
 	--h5-color: var(--text-muted);
 	--h6-color: var(--icon-color);
-	--h1-weight-alt: 525;
+	--h1-weight-alt: 600;
+	--h1-size-alt: 1.75em;
 	--h1-size: 2.125em;
 	--h2-size: 1.5625em;
 	--h3-size: 1.4375em;
@@ -462,7 +463,7 @@ body {
 	--color-base-70: oklch(48.00% var(--base-sat-xtr) var(--base-hue));
 	--color-base-80: oklch(40.25% var(--base-sat-low) var(--base-hue)); 
 	--color-base-90: oklch(29.50% var(--base-sat-low) var(--base-hue)); 
-   --color-base-100: oklch(18.00% var(--base-sat-low) var(--base-hue)); 
+   --color-base-100: oklch(16.00% var(--base-sat-low) var(--base-hue)); 
 
 	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.950);
 	--trans-strong-10: oklch(from var(--color-base-00) l c h / 0.800);
@@ -926,7 +927,7 @@ body:not(.mod-windows, .mod-linux) {
 	--font-semibold: 600;
 	--font-bold: 700;
 	--font-extrabold: 800;
-	--h1-weight-alt: 500;
+	--h1-weight-alt: 550;
 	--h1-weight: 275;
 	--h2-weight: 475;
 	--h3-weight: 500;
@@ -955,7 +956,7 @@ body:not(.mod-windows, .mod-linux) {
 	--font-semibold: 625;
 	--font-bold: 725;
 	--font-extrabold: 825;
-	--font-black: 900;
+	--h1-weight-alt: 550;
 	--h1-weight: 300;
 	--h2-weight: 525;
 	--h3-weight: 550;
@@ -1282,7 +1283,7 @@ body.prop-headings {
 }
 .disable-title-h1 .cm-line.HyperMD-header-1, 
 .disable-title-h1 .markdown-rendered h1 {
-	font-size: 1.75em;
+	font-size: var(--h1-size-alt);
 	font-weight: var(--h1-weight-alt);
 	border-bottom: none;
 	padding-bottom: 0;
@@ -4243,7 +4244,8 @@ body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-ta
 /*--> UTILITY Classes <--*/
 
 /* (utility-override) - Overrides any UTILITY CSSclasses, excluding override classes. */
-/* (hide-override) - Overrides any HIDE & SHOW CSSclasses. */
+/* (hide-override) - Overrides any HIDE CSSclasses. */
+/* (show-override) - Overrides any SHOW CSSclasses. */
 /* (style-override) - Overrides any STYlE CSSclasses. */
 
 /* (override) - Overrides ALL CSSclasses in a particular file. Makes all editor CSSclass pills red. */
@@ -4263,7 +4265,7 @@ body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-ta
     display: none;
 }
 /* (show-title) - Shows the inline title in a particular page. */
-.show-title:not(.override, .hide-override) .inline-title:not([data-level]) {
+:not(.node-insert-event) > .show-title:not(.override, .show-override) .inline-title:not([data-level]) {
     display: block;
 }
 
@@ -4286,6 +4288,14 @@ body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-ta
 	padding-block: 0.125em !important;
 	--bold-modifier: 250;
 }
+/* (simple-title) - Gives inline title the standard heading style. */
+.simple-title:not(.override, .style-override, .superheading) .inline-title:not([data-level]) {
+	font-size: var(--h1-size-alt);
+	font-weight: var(--h1-weight-alt);
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
 /* (supertitle) - Turns editor H1 into a very large Swiss Design heading. */
 .supertitle:not(.override, .style-override, .superheading) :is(
 	.markdown-source-view .HyperMD-header-1, 
