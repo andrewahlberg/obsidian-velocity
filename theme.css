@@ -16,7 +16,7 @@ settings:
           value: theme-corsa
 - 	
 	id: line-height-normal
-	title: Set editor line height and spacing
+	title: Set line height and spacing
 	description: Set the readable line width in relative units (rem).
 	type: variable-select
 	default: Relaxed
@@ -1431,7 +1431,6 @@ body:not(.disable-naked-embeds) {
 		color: var(--color-base-50);
 		font-size: 0.875em;
 		font-weight: var(--font-medium);
-		padding-top: 0.125rem;
 	}
 }
 .file-embed.mod-generic {
@@ -1488,7 +1487,7 @@ body:not(.disable-naked-embeds) {
 
 /*--> Images <--*/
 
-.markdown-preview-view img, .markdown-rendered img {
+.image-embed img, .markdown-rendered img {
     border-radius: var(--radius-sm);
 }
 
