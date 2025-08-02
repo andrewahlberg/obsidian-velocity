@@ -15,9 +15,18 @@ settings:
         - label: Race
           value: theme-corsa
 - 	
-	id: switch-edit-icons
-	title: Invert editing toggle icons
-	type: class-toggle
+	id: line-height-normal
+	title: Set line height and spacing
+	description: Set the readable line width in relative units (rem).
+	type: variable-select
+	default: Relaxed
+	options:
+	- 
+		label: Compact
+		value: 1.5
+	- 
+		label: Relaxed
+		value: 1.6
 -
 	id: file-line-width
 	title: Set readable line width
@@ -28,6 +37,10 @@ settings:
 	max: 46
 	step: 0.25
 	format: 'rem'
+-
+	id: switch-edit-icons
+	title: Invert editing toggle icons
+	type: class-toggle
 -
 	title: Additional settings
 	type: heading
@@ -44,32 +57,36 @@ settings:
 	type: info-text
 	markdown: true
 - 	
-	id: disable-callout-styling
-	title: Disable Callout styling
+	id: disable-hover-header
+	title: Disable Compact Panels in the sidebar   
 	type: class-toggle
--
+- 	 
 	id: disable-custom-icons
 	title: Disable Custom Icons
 	type: class-toggle
 -
+	id: disable-naked-embeds
+	title: Disable Naked Embed styling
+	type: class-toggle
+- 	
 	id: disable-autohide
-	title: Disable Sidebar Auto-Hide
+	title: Disable Sidebar Auto-Hide™ feature
 	type: class-toggle
--	
+-	 	
 	id: disable-status-fade
-	title: Disable Status Bar reveal on hover
+	title: Disable Status Bar fade until hover
 	type: class-toggle
 -	
-	id: disable-hover-header
-	title: Disable Nav Header compact panels
-	type: class-toggle
-- 	 
-	id: disable-list-styling
-	title: Disable dashed list styling
-	type: class-toggle
-- 	 	
 	id: disable-title-h1
-	title: Disable Title-style H1
+	title: Disable title style for H1 Headings
+	type: class-toggle
+-
+	id: disable-list-styling
+	title: Restore bullet-style List Markers
+	type: class-toggle
+- 	
+	id: disable-callout-styling
+	title: Restore default Callout styling
 	type: class-toggle
 -
 	id: static-heading
@@ -139,16 +156,6 @@ body {
 	/* Buttons */
 	--button-radius: var(--radius-s);
 
-	/* Callouts */
-	--callout-border-opacity: 0.15;
-	--callout-radius: var(--radius-sm);
-	--callout-padding: 16px 16px 8px 16px;
-	--callout-title-padding: 0 0 0 2px;
-
-	/* Callout colors */
-	--callout-bug: var(--color-pink-rgb);
-	--callout-warning: var(--color-yellow-rgb);
-
 	/* Canvas */
 
 	/* Caret (text entry cursor) */
@@ -183,13 +190,12 @@ body {
 	--dropdown-background: var(--interactive-normal);
 	--dropdown-background-hover: var(--interactive-normal);
 
-	/* Embeds */
-
 	/* Blocks */
 
 	/* File layout */
 	--file-line-width: 43.5rem;
-	--file-margins: 28px 5%;
+	--file-margin-y: 28px;
+	--file-margins: var(--file-margin-y) 5%;
 	--file-header-font-weight: var(--font-normal);
 
 	/* Relative font sizes */
@@ -625,7 +631,8 @@ body {
 		0 3px 6px 0px var(--trans-faint-10),
 		0px 15px 30px var(--trans-faint-25);	
 	--shadow-workspace-multi:
-		0 0 0 1px var(--trans-faint-20);	
+		0 0 0 1px var(--trans-faint-20),
+		0px 2.5px 10px var(--trans-faint-10);	
 	--shadow-fab: 
 		0px 0.25px 0px 0.75px var(--trans-faint-30),
 		inset 0px -0.25px 2px 0px var(--trans-faint-05),
@@ -957,7 +964,7 @@ body:not(.mod-windows, .mod-linux) {
 	--h6-weight: 625;
 }
 /* Linux font weight tweak (WIP test if needed on macOS) */
-.mod-linux button[class*="mod-"] {
+.mod-linux button[class*="mod-"]:not([class="mod-cancel"]) {
 	font-weight: 575;
 }
 
@@ -1298,7 +1305,20 @@ body.prop-headings {
 }
 
 /*--> Callouts <--*/
+.callout .callout-content {
+	--blockquote-background-color: var(--code-background-alt);
+	--code-background: var(--code-background-alt);
+}
 body:not(.disable-callout-styling) {
+	--callout-border-opacity: 0.15;
+	--callout-radius: var(--radius-sm);
+	--callout-padding: 16px 16px 8px 16px;
+	--callout-title-padding: 0 0 0 2px;
+	/* Callout colors */
+	--callout-bug: var(--color-pink-rgb);
+	--callout-warning: var(--color-yellow-rgb);
+
+	/* Styling */
 	.markdown-source-view .cm-content > .cm-callout[contenteditable=false] {
 		border-radius: var(--callout-radius);
 		contain: none !important;
@@ -1308,6 +1328,7 @@ body:not(.disable-callout-styling) {
 		}
 	}
 	.callout {
+		color: color-mix(in oklab, var(--blockquote-color), var(--text-normal));
 		background-color: transparent;
 		background-image: radial-gradient(at 20% 20%, 
 		rgb(var(--callout-color), 0.05),
@@ -1316,6 +1337,7 @@ body:not(.disable-callout-styling) {
 		0 0 0 2px rgb(var(--callout-color), var(--callout-border-opacity));
 		margin-inline: 1px;
 		outline: 1px solid var(--background-primary);
+		--bold-color: var(--text-normal);
 		--icon-stroke: var(--icon-s-stroke-width);
 	}
 	.callout.is-collapsible {
@@ -1329,6 +1351,10 @@ body:not(.disable-callout-styling) {
 	.callout-title {
 		align-items: center;
 	}
+	.callout-title-inner {
+		--bold-color: var(--callout-title-color);
+		--italic-color: var(--callout-title-color);
+	}
 	.callout .callout-title:last-child {
 		padding-bottom: 0.5em;
 	}
@@ -1341,8 +1367,6 @@ body:not(.disable-callout-styling) {
 	.callout .callout-content {
 		padding-inline: 0.125em;
 		margin-bottom: -0.25em;
-		--blockquote-background-color: var(--code-background-alt);
-		--code-background: var(--code-background-alt);
 	}
 	.callout.is-collapsible .callout-content {
 		margin-bottom: -0.75em;
@@ -1361,8 +1385,7 @@ body:not(.disable-callout-styling) {
 		padding-block: 0 !important;
 		padding-inline-start: 0.25em;
 		border: none !important;
-		color: rgb(var(--callout-color));
-		--bold-color:  rgb(var(--callout-color));
+		color: var(--callout-title-color);
 	}
 	:is(.callout[data-callout="quote"], .callout[data-callout="cite"]) .callout-content {
 		color: var(--blockquote-color);
@@ -1392,6 +1415,39 @@ pre[class*="language-"] code,
 	--code-radius: var(--radius-sm);
 }
 
+/*--> Embeds <--*/
+
+body:not(.disable-naked-embeds) {
+	--embed-border-start: none;
+	--embed-padding: 0 1.25em 0 0;
+}
+.markdown-embed-link {
+	color: var(--text-faint);
+}
+
+.markdown-embed:has(.el-h5:is(:only-of-type,:last-child)) {
+	background-color: var(--background-primary-alt);
+	border-radius: var(--radius-sm);
+	border: none;
+	padding: 8px;
+}
+.markdown-embed .el-h5:is(:only-of-type,:last-child) {
+	text-align: center;
+	h5 {
+		color: var(--color-base-50);
+		font-size: 0.875em;
+		font-weight: var(--font-medium);
+	}
+}
+.file-embed.mod-generic {
+	border-radius: var(--radius-sm);
+	font-weight: var(--font-medium);
+	--text-muted: var(--color-base-50);
+	--text-normal: var(--icon-color);
+}
+.file-embed-title {
+	padding-top: 0.125rem;
+}
 /*--> Formatting <--*/
 
 /* formatting markers */
@@ -1433,6 +1489,12 @@ pre[class*="language-"] code,
 .cm-s-obsidian span.cm-formatting-highlight {
 	color: rgb(var(--text-highlight-bg-rgb), 0.5);
 	z-index: -2;
+}
+
+/*--> Images <--*/
+
+.image-embed img, .markdown-rendered img {
+    border-radius: var(--radius-sm);
 }
 
 /*--> Lists + paragraphs <--*/
@@ -1923,7 +1985,7 @@ svg.uppercase-lowercase-a {
 
 /*--> Custom Icons (callouts) <--*/
 
-body:not(.disable-custom-icons) :where(
+body:not(.disable-custom-icons, .disable-callout-styling) :where(
 	.callout-icon .lucide-bug,
 	.callout-icon .lucide-alert-triangle,
 	.callout-icon .lucide-check,
@@ -1944,6 +2006,13 @@ body:not(.disable-custom-icons) :where(
 		display: none;
 	}
 }
+body:is(.disable-custom-icons, .disable-callout-styling) .callout-icon svg { 
+	-webkit-mask-image: unset;
+	-webkit-mask-position: unset;	
+	-webkit-mask-size: unset;
+	padding: initial; 
+}
+
 /* used Ionicons */
 .callout-icon .lucide-alert-triangle {
 	-webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpb25pY29uIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZD0iTTQ0MC4wOCAzNDEuMzFjLTEuNjYtMi0zLjI5LTQtNC44OS01LjkzLTIyLTI2LjYxLTM1LjMxLTQyLjY3LTM1LjMxLTExOCAwLTM5LTkuMzMtNzEtMjcuNzItOTUtMTMuNTYtMTcuNzMtMzEuODktMzEuMTgtNTYuMDUtNDEuMTJhMyAzIDAgMDEtLjgyLS42N0MzMDYuNiA1MS40OSAyODIuODIgMzIgMjU2IDMycy01MC41OSAxOS40OS01OS4yOCA0OC41NmEzLjEzIDMuMTMgMCAwMS0uODEuNjVjLTU2LjM4IDIzLjIxLTgzLjc4IDY3Ljc0LTgzLjc4IDEzNi4xNCAwIDc1LjM2LTEzLjI5IDkxLjQyLTM1LjMxIDExOC0xLjYgMS45My0zLjIzIDMuODktNC44OSA1LjkzYTM1LjE2IDM1LjE2IDAgMDAtNC42NSAzNy42MmM2LjE3IDEzIDE5LjMyIDIxLjA3IDM0LjMzIDIxLjA3SDQxMC41YzE0Ljk0IDAgMjgtOC4wNiAzNC4xOS0yMWEzNS4xNyAzNS4xNyAwIDAwLTQuNjEtMzcuNjZ6TTI1NiA0ODBhODAuMDYgODAuMDYgMCAwMDcwLjQ0LTQyLjEzIDQgNCAwIDAwLTMuNTQtNS44N0gxODkuMTJhNCA0IDAgMDAtMy41NSA1Ljg3QTgwLjA2IDgwLjA2IDAgMDAyNTYgNDgweiIvPjwvc3ZnPg==");
@@ -1995,7 +2064,8 @@ body:not(.disable-custom-icons) :where(
 
 /*--> Workspace Layout <--*/
 
-body:not(.is-mobile) .mod-root :is(.workspace-tab-container, .workspace-tabs:not(.mod-stacked) .workspace-leaf) {
+body:not(.is-mobile) .mod-root > .mod-horizontal > .workspace-tabs > :is(.workspace-tab-container, .workspace-tabs:not(.mod-stacked) .workspace-leaf),
+body:not(.is-mobile) .mod-root .workspace-tabs > :is(.workspace-tab-container, .workspace-tabs:not(.mod-stacked) .workspace-leaf) {
     border-radius: var(--radius-m);
 }
 body:not(.is-mobile) .mod-root .workspace-tab-container {
@@ -2003,14 +2073,14 @@ body:not(.is-mobile) .mod-root .workspace-tab-container {
 }
 body:not(.is-mobile) .mod-root .workspace-tabs:not(:only-of-type) .workspace-tab-container {
     box-shadow: var(--shadow-workspace-multi);
+	--file-margins: var(--file-margin-y) 32px;
 }
-body:not(.is-mobile) .workspace:has(.mod-root .workspace-tabs:not(:only-of-type)) {
-	background: var(--background-gradient-community);
-	--file-margins: 28px 32px;
-}
-
 body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
     transition: all var(--anim-duration-superfast);
+}
+/* margin adjustment when there is no view header */
+body:not(.is-mobile):not(.show-view-header) {
+    --file-margin-y: 56px;
 }
 
 /* FROM: Cupertino */
@@ -2018,24 +2088,27 @@ body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
 /* MIT License */
 
 /* Gap between multiple root tabs  */
-body:not(.is-mobile):not(.is-popout-window) .workspace.is-left-sidedock-open .mod-root .workspace-split.mod-vertical, 
-body:not(.is-mobile):not(.is-popout-window) .workspace.is-left-sidedock-open .mod-root.workspace-split.mod-vertical,
-body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .mod-root .workspace-split.mod-vertical, 
-body:not(.is-mobile):not(.is-popout-window) .workspace.is-right-sidedock-open .mod-root.workspace-split.mod-vertical {
+body:not(
+	.is-mobile, 
+	.is-popout-window) 
+	:is(
+		.workspace.is-left-sidedock-open .mod-root .mod-vertical, 
+		.workspace.is-left-sidedock-open .mod-root.mod-vertical, 
+		.workspace.is-right-sidedock-open .mod-root .mod-vertical, 
+		.workspace.is-right-sidedock-open .mod-root.mod-vertical) {
     gap: 8px;
 }
-
 body:not(.is-mobile) .workspace {
-	background: var(--background-gradient);
+	background-image: var(--background-gradient);
 	font-weight: var(--font-weight);
 }
-body:not(.is-mobile) .mod-vertical.mod-root {
+body:not(.is-mobile) .mod-root {
     padding-bottom: 8px;
 	--collapse-icon-color: var(--color-base-50);
 }
-
 .workspace-split.mod-root,
-.workspace-tabs .workspace-leaf {
+.workspace-tabs .workspace-leaf,
+.mod-sidedock .view-header {
 	background-color: transparent;
 }
 body:not(.is-mobile) .mod-root .workspace-tabs {
@@ -2050,9 +2123,6 @@ body:not(.is-mobile) .mod-root .workspace-tabs {
 /* Sidedock / workspace-split */
 body:not(.is-mobile) :is(.mod-left-split,.mod-right-split) .workspace-leaf-content {
 	padding-inline: 4px;
-}
-.mod-sidedock .view-header {
-	background-color: transparent;
 }
 
 /* empty sidedock */
@@ -2072,28 +2142,28 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root>.workspace
     margin-left: 8px;
 }
 /* Margin OFF when sidebars closed */
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container {
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container,
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-split.mod-horizontal .workspace-tabs .workspace-tab-container {
     margin-inline: 0;
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
 	background-image: none !important;
 }
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
+/* body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
     padding-inline: 8px 6px;
-}
+} */
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) 
 .workspace-split.mod-vertical.mod-root {
-	padding-bottom: 0;
+	padding-bottom: unset;
 	& .workspace-tabs {
-		overflow: hidden;
 		--divider-width: 1px;
 	}
 	& .workspace-tabs > .workspace-tab-container {
-		border-radius: 0;
+		border-radius: unset;
 		box-shadow: none;
 	}
 	& .workspace-tabs.mod-stacked > .workspace-tab-container {
-		border-radius: 0;
+		border-radius: unset;
 		box-shadow: var(--shadow-input);
 	}
 	& .view-header-title-container:not(.webviewer-address-container) {
@@ -2173,10 +2243,9 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 
 /*--> Navigation / File Tree <--*/
 
-.tree-item-self {
+.workspace-leaf-content .tree-item-self {
 	margin-block: 1px;
 	padding-block: 7px;
-	--interactive-accent: oklch(from var(--color-accent) l c h / 0.75);
 }
 
 /* Folders */
@@ -2446,7 +2515,15 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 /*--> View Header <--*/
 
 .view-header {
+	padding-inline: 8px;
 	z-index: var(--layer-popover);
+}
+.view-header-left {
+	padding-inline-start: 4px;
+}
+.view-actions {
+	padding-inline-end: 4px;
+	contain: content;
 }
 /* View header Title */
 .view-header-title-container > * {
@@ -2464,6 +2541,8 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	column-gap: 4px;
 	}
 	.view-actions {
+		padding-block-end: 8px;
+		margin-block-end: -8px;
 		transform: translateX(-8px) translateY(14px);
 	}
 	& .view-actions .clickable-icon.view-action:last-child {
@@ -2965,7 +3044,7 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 	.setting-item:not(.setting-item-heading):has( + :not(.setting-item)) {
 		box-shadow: 
 		var(--shadow-setting-item), 
-		0px 0.25px 0px 0.125px var(--trans-faint-20);
+		0px 0.25px 0px 0.125px var(--trans-faint-25);
 		border-bottom: 1px solid var(--setting-item-border-color);
 		border-radius: 0 0 var(--radius-ml) var(--radius-ml);
 		clip-path: inset(0px -24px -24px -24px);
@@ -2997,6 +3076,10 @@ body:not(.is-phone) .vertical-tab-header-group-title {
 		border: none !important;
 		box-shadow: none !important;
 		font-weight: var(--font-semibold);
+	}
+	& .setting-item-description {
+    	font-size: 11.5px;
+		--bold-color: var(--color-base-80);
 	}
 	& .setting-item-name {
 		overflow: visible;
