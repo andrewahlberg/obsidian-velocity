@@ -463,7 +463,7 @@ body {
 	--color-base-70: oklch(48.00% var(--base-sat-xtr) var(--base-hue));
 	--color-base-80: oklch(40.25% var(--base-sat-low) var(--base-hue)); 
 	--color-base-90: oklch(29.50% var(--base-sat-low) var(--base-hue)); 
-   --color-base-100: oklch(17.50% var(--base-sat-low) var(--base-hue)); 
+   --color-base-100: oklch(17.75% var(--base-sat-low) var(--base-hue)); 
 
 	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.950);
 	--trans-strong-10: oklch(from var(--color-base-00) l c h / 0.800);
@@ -657,9 +657,9 @@ body {
 }
 .theme-dark {
 	
-	--accent-h: 206;	
+	--accent-h: 208;	
 	--accent-s: 100%;	
-	--accent-l: 48%;
+	--accent-l: 49%;
 
 	--color-red-rgb: 255, 65, 51;
 	--color-red: rgb(255, 65, 51);
