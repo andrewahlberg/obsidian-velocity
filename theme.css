@@ -267,9 +267,7 @@ body {
 	/* Z-index */
 
 	/* Line heights */
-	--line-height-normal: var(--line-height-relaxed);
-	--line-height-compact: 1.5;
-	--line-height-relaxed: 1.6;
+	--line-height-normal: 1.6;
 
 	/* Links */
 	--link-decoration: none;
