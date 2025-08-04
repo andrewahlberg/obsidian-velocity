@@ -19,15 +19,15 @@ settings:
 	title: Set line height and spacing
 	description: Set the readable line width in relative units (rem).
 	type: variable-select
-	default: var(--line-height-relaxed)
+	default: '1.6'
 	allowEmpty: false
 	options:
 	- 
 		label: Compact
-		value: var(--line-height-compact)
+		value: '1.5'
 	- 
 		label: Relaxed
-		value: var(--line-height-relaxed)
+		value: '1.6'
 -
 	id: file-line-width
 	title: Set readable line width
