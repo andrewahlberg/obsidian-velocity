@@ -19,14 +19,15 @@ settings:
 	title: Set line height and spacing
 	description: Set the readable line width in relative units (rem).
 	type: variable-select
-	default: Relaxed
+	default: var(--line-height-relaxed)
+	allowEmpty: false
 	options:
 	- 
 		label: Compact
-		value: 1.5
+		value: var(--line-height-compact)
 	- 
 		label: Relaxed
-		value: 1.6
+		value: var(--line-height-relaxed)
 -
 	id: file-line-width
 	title: Set readable line width
@@ -266,7 +267,9 @@ body {
 	/* Z-index */
 
 	/* Line heights */
-	--line-height-normal: 1.6;
+	--line-height-normal: var(--line-height-relaxed);
+	--line-height-compact: 1.5;
+	--line-height-relaxed: 1.6;
 
 	/* Links */
 	--link-decoration: none;
