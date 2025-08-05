@@ -228,9 +228,9 @@ body {
 	--h1-color: var(--color-base-100);
 	--h2-color: var(--color-base-100);
 	--h3-color: var(--color-base-100);
-	--h4-color: var(--text-normal);
-	--h5-color: var(--text-muted);
-	--h6-color: var(--icon-color);
+	--h4-color: var(--color-base-100);
+	--h5-color: var(--text-normal);
+	--h6-color: var(--text-muted);
 	--h1-weight-alt: 600;
 	--h1-size-alt: 1.75em;
 	--h1-size: 2.125em;
@@ -240,11 +240,11 @@ body {
 	--h5-size: 1.0625em;
 	--h6-size: 1em;
 	--h1-weight: 325;
-	--h2-weight: 550;
+	--h2-weight: 575;
 	--h3-weight: 575;
-	--h4-weight: 650;
-	--h5-weight: 675;
-	--h6-weight: 650;
+	--h4-weight: 675;
+	--h5-weight: 725;
+	--h6-weight: 725;
 	
 	--header-height: 48px;
 	
@@ -461,9 +461,9 @@ body {
 	--color-base-40: oklch(75.25% var(--base-sat-med) var(--base-hue)); 
 	--color-base-50: oklch(71.50% var(--base-sat-xtr) var(--base-hue)); 
 	--color-base-60: oklch(53.00% var(--base-sat-xtr) var(--base-hue));
-	--color-base-70: oklch(48.00% var(--base-sat-xtr) var(--base-hue));
-	--color-base-80: oklch(40.25% var(--base-sat-low) var(--base-hue)); 
-	--color-base-90: oklch(29.50% var(--base-sat-low) var(--base-hue)); 
+	--color-base-70: oklch(46.00% var(--base-sat-xtr) var(--base-hue));
+	--color-base-80: oklch(39.25% var(--base-sat-low) var(--base-hue)); 
+	--color-base-90: oklch(27.00% var(--base-sat-low) var(--base-hue)); 
    --color-base-100: oklch(17.75% var(--base-sat-low) var(--base-hue)); 
 
 	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.950);
@@ -930,11 +930,11 @@ body:not(.mod-windows, .mod-linux) {
 	--font-extrabold: 800;
 	--h1-weight-alt: 550;
 	--h1-weight: 275;
-	--h2-weight: 475;
-	--h3-weight: 500;
-	--h4-weight: 575;
-	--h5-weight: 600;
-	--h6-weight: 550;
+	--h2-weight: 525;
+	--h3-weight: 525;
+	--h4-weight: 625;
+	--h5-weight: 675;
+	--h6-weight: 675;
 	/* frame spacing and autohide override */
 	--frame-right-space-override: 36px;
 	--frame-left-space-override: 80px;
@@ -959,11 +959,11 @@ body:not(.mod-windows, .mod-linux) {
 	--font-extrabold: 825;
 	--h1-weight-alt: 550;
 	--h1-weight: 300;
-	--h2-weight: 525;
+	--h2-weight: 550;
 	--h3-weight: 550;
-	--h4-weight: 625;
-	--h5-weight: 650;
-	--h6-weight: 625;
+	--h4-weight: 650;
+	--h5-weight: 700;
+	--h6-weight: 700;
 }
 /* Linux font weight tweak (WIP test if needed on macOS) */
 .mod-linux button[class*="mod-"]:not([class="mod-cancel"]) {
@@ -1239,7 +1239,6 @@ thead,
 	border-bottom: 2px solid var(--hr-color);
 	padding-bottom: 6px;
 	text-indent: -0.03125em;
-	--bold-modifier: 300;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-2, 
 .markdown-rendered h2 {
