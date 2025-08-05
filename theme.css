@@ -167,11 +167,11 @@ body {
 	--checkbox-color: transparent;
 	--checkbox-color-hover: transparent;
 	--checklist-done-decoration: none;
-	--checklist-done-color: var(--strikethrough-color);
+	--checklist-done-color: color-mix(in oklab, var(--color-base-50), var(--color-base-60));
 
 	/* Code */
 	--code-border-width: 1px;
-	--code-normal: var(--color-base-80);
+	--code-normal: color-mix(in oklab, var(--color-base-80), var(--text-normal));
 	--code-radius: 5px;
 
 	/* Collapse icons */
@@ -495,7 +495,7 @@ body {
 	--text-highlight-bg-search: color-mix(in oklab, var(--color-highlight), transparent 87.5%);
 	--text-highlight-bg-search-active: color-mix(in oklab, var(--color-highlight), transparent 37.5%);
 
-	--link-unresolved-color: oklch(from var(--color-accent) 80% 20% h);
+	--link-unresolved-color: oklch(from var(--color-accent) 75% 30% h);
 	
 	--modal-border-color: var(--color-base-40);
 	
@@ -528,7 +528,7 @@ body {
 	--color-accent-5: color-mix(in oklch, var(--text-selection) 100%, transparent 75%);
 	--color-accent-6: color-mix(in oklch, var(--text-selection) 40%, transparent 100%);
 
-	--blockquote-color: var(--color-base-80);
+	--blockquote-color: var(--code-normal);
 	--blockquote-border-color: var(--color-base-25);
 	--blockquote-background-color: var(--trans-faint-00);
 
@@ -573,7 +573,7 @@ body {
 	--status-bar-background: var(--trans-strong-00);
 	--status-bar-filter: opacity(0.25) blur(0.375px);
 	
-	--strikethrough-color: var(--color-base-40);
+	--strikethrough-color: var(--color-base-50);
 
 	--table-row-bg: var(--trans-faint-05);
 
