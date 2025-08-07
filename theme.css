@@ -337,7 +337,7 @@ body {
 	/* Ribbon */
 	--ribbon-background: transparent;
 	--ribbon-background-collapsed: transparent;
-	--ribbon-padding: 8px 4px 12px 8px;
+	--ribbon-padding: 6px 4px 12px 8px;
 
 	/* Scrollbars */
 	--scrollbar-thumb-bg: var(--trans-faint-30);
@@ -1701,6 +1701,10 @@ input[type=checkbox][data-task="<"]:checked,
 	}
 }
 
+.metadata-input.mod-date {
+	letter-spacing: -0.25px;
+}
+
 /* Multi-select pill (not tags) */
 .metadata-property .metadata-property-value .multi-select-container {
 	gap: 4px;
@@ -1849,6 +1853,7 @@ a.tag:active {
 }
 .sidebar-toggle-button .clickable-icon {
     width: 32px;
+	--icon-color: var(--text-muted);
 }
 .menu-item-icon svg {
 	padding: 0;
@@ -2177,7 +2182,7 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	}
 	& .workspace-tabs.mod-stacked > .workspace-tab-container {
 		border-radius: unset;
-		box-shadow: var(--shadow-input);
+		box-shadow: 0 -0.5px 0 0px var(--trans-faint-40);
 	}
 	& .view-header-title-container:not(.webviewer-address-container) {
 		filter: opacity(0.5);
@@ -2187,13 +2192,14 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	}
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon {
-	--icon-color: var(--color-base-50);
+	opacity: 0.625;
+	transition: var(--anim-duration-fast) ease-in-out;
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon:hover {
-	--icon-color: var(--color-base-60);
+	opacity: 1;
 }
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon:has(~ * > .mod-stacked) {
-	box-shadow: 0 -1px 0 0 var(--divider-color);
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon:has(~ * .mod-stacked:first-of-type) {
+	box-shadow: 0 -0.5px 0 0px var(--trans-faint-40);
 }
 
 /*--> Nav Header <--*/
@@ -2712,18 +2718,19 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 
 /*--> Ribbon <--*/
 
+.workspace-ribbon > .side-dock-actions {
+	gap: 4px;
+}
 .workspace-ribbon > .sidebar-toggle-button {
 	padding-inline-start: 8px;
 }
 .clickable-icon.side-dock-ribbon-action {
 	padding: 8px;
+	--icon-color: var(--text-muted);
+	--icon-color-hover: var(--color-base-100);
 }
 .clickable-icon.side-dock-ribbon-action:active {
 	transform: scale(0.875);
-}
-body:not(.is-mobile) .side-dock-ribbon > .side-dock-actions {
-	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
-	--icon-color-hover: var(--color-base-100);
 }
 
 /*--> Status Bar <--*/
@@ -3470,13 +3477,16 @@ input.prompt-input:hover {
 	color: var(--icon-color);
 }
 
+.metadata-input.mod-date,
 .bases-td .metadata-input {
 	font-weight: var(--font-normal);
-	letter-spacing: -0.75px;
+	letter-spacing: -0.5px;
 	--background-modifier-form-field-hover: transparent;
 	--shadow-input: none;
 }
-
+.bases-embed .bases-td .metadata-input {
+	letter-spacing: -0.75px;
+}
 /* Pills/Tags in Bases */
 
 .bases-td .multi-select-container {
