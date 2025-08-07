@@ -1701,6 +1701,10 @@ input[type=checkbox][data-task="<"]:checked,
 	}
 }
 
+.metadata-input.mod-date {
+	letter-spacing: -0.25px;
+}
+
 /* Multi-select pill (not tags) */
 .metadata-property .metadata-property-value .multi-select-container {
 	gap: 4px;
@@ -3470,13 +3474,16 @@ input.prompt-input:hover {
 	color: var(--icon-color);
 }
 
+.metadata-input.mod-date,
 .bases-td .metadata-input {
 	font-weight: var(--font-normal);
-	letter-spacing: -0.75px;
+	letter-spacing: -0.5px;
 	--background-modifier-form-field-hover: transparent;
 	--shadow-input: none;
 }
-
+.bases-embed .bases-td .metadata-input {
+	letter-spacing: -0.75px;
+}
 /* Pills/Tags in Bases */
 
 .bases-td .multi-select-container {
