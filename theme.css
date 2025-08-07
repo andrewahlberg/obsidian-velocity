@@ -335,6 +335,7 @@ body {
 	/* Ribbon */
 	--ribbon-background: transparent;
 	--ribbon-background-collapsed: transparent;
+	--ribbon-padding: 8px 4px 12px 8px;
 
 	/* Scrollbars */
 	--scrollbar-thumb-bg: var(--trans-faint-30);
@@ -1187,8 +1188,7 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 	margin-block: 0 2px;
 }
 .mod-settings .vertical-tab-content::-webkit-scrollbar-track,
-.mod-dim .modal:not(.mod-settings, .prompt)::-webkit-scrollbar-track,
-.popover ::-webkit-scrollbar-track {
+.mod-dim .modal:not(.mod-settings, .prompt)::-webkit-scrollbar-track {
 	margin-block: 12px;
 }
 .modal.mod-community-modal ::-webkit-scrollbar-track {
@@ -1200,7 +1200,8 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .prompt.theme-picker-modal > .prompt-results::-webkit-scrollbar-track {
 	margin-block: 0 8px;
 }
-.suggestion-container > ::-webkit-scrollbar-track {
+.suggestion-container > ::-webkit-scrollbar-track,
+.popover ::-webkit-scrollbar-track {
 	margin-block: 4px;
 }
 
@@ -2080,7 +2081,9 @@ body:not(.is-mobile) .mod-root .workspace-tabs:not(:only-of-type) .workspace-tab
 	--file-margins: var(--file-margin-y) 32px;
 }
 body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
-    transition: all var(--anim-duration-superfast);
+    transition: 
+	all var(--anim-duration-superfast),
+	padding 0ms;
 }
 /* margin adjustment when there is no view header */
 body:not(.is-mobile):not(.show-view-header) {
@@ -2177,6 +2180,15 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 		border-right: 1px solid var(--divider-color);
 	}
 }
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon {
+	--icon-color: var(--color-base-50);
+}
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon:hover {
+	--icon-color: var(--color-base-60);
+}
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon:has(~ * > .mod-stacked) {
+	box-shadow: 0 -1px 0 0 var(--divider-color);
+}
 
 /*--> Nav Header <--*/
 
@@ -2265,6 +2277,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	--nav-item-background-selected: transparent;
 	--nav-item-background-hover: var(--trans-faint-05);
 	&:hover {
+		color: var(--nav-item-color-hover);
 		background-color: var(--nav-item-background-hover);
 	}
 }
@@ -2589,7 +2602,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 			transition: inherit;
 		}
 		&:active {
-			transform: translateY(-1%) scale(0.925);
+			transform: translateY(-1%) scale(0.9);
 			filter: opacity(75%);
 		}
 		&:hover .svg-icon {
@@ -2687,14 +2700,20 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	background-color: var(--text-highlight-bg-search-active);
 }
 
-/*--> Vault Profile <--*/
+/*--> Ribbon <--*/
 
-body:not(.is-mobile)
-	.workspace-split.mod-left-split
-	.workspace-sidedock-vault-profile {
-	border: none;
-	background-color: transparent;
-	padding: 8px 8px 4px;
+.workspace-ribbon > .sidebar-toggle-button {
+	padding-inline-start: 8px;
+}
+.clickable-icon.side-dock-ribbon-action {
+	padding: 8px;
+}
+.clickable-icon.side-dock-ribbon-action:active {
+	transform: scale(0.875);
+}
+body:not(.is-mobile) .side-dock-ribbon > .side-dock-actions {
+	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
+	--icon-color-hover: var(--color-base-100);
 }
 
 /*--> Status Bar <--*/
@@ -2713,6 +2732,16 @@ body:not(.disable-status-fade) {
 		box-shadow: none;
 		filter: var(--status-bar-filter);
 	}
+}
+
+/*--> Vault Profile <--*/
+
+body:not(.is-mobile)
+	.workspace-split.mod-left-split
+	.workspace-sidedock-vault-profile {
+	border: none;
+	background-color: transparent;
+	padding: 8px 8px 4px;
 }
 
 /* ADAPTED FROM: Micro Mike */
@@ -3351,7 +3380,7 @@ input.prompt-input:hover {
 
 .popover {
 	animation: var(--anim-duration-fast) popover var(--anim-motion-swing);
-	border-radius: var(--radius-xxl);
+	border-radius: var(--radius-ml);
 	--background-primary: var(--background-secondary);
 }
 
