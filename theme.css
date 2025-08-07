@@ -19,20 +19,21 @@ settings:
 	title: Set line height and spacing
 	description: Set the readable line width in relative units (rem).
 	type: variable-select
-	default: Relaxed
+	default: '1.6'
+	allowEmpty: false
 	options:
 	- 
 		label: Compact
-		value: 1.5
+		value: '1.5'
 	- 
 		label: Relaxed
-		value: 1.6
+		value: '1.6'
 -
 	id: file-line-width
 	title: Set readable line width
 	description: Set the readable line width in relative units (rem).
 	type: variable-number-slider
-	default: 43.5
+	default: 43
 	min: 40
 	max: 46
 	step: 0.25
@@ -137,6 +138,8 @@ body {
 	/* Bases */
 	--bases-embed-border-radius: 0;
 	--bases-header-border-width: 0;
+	--bases-table-cell-background-active: transparent;
+	--bases-table-cell-shadow-active: var(--shadow-input-active);
 	--bases-table-header-color: var(--table-header-color);
 	--bases-table-header-weight: var(--font-medium);
 	--bases-table-row-border-width: 0;
@@ -166,11 +169,11 @@ body {
 	--checkbox-color: transparent;
 	--checkbox-color-hover: transparent;
 	--checklist-done-decoration: none;
-	--checklist-done-color: var(--strikethrough-color);
+	--checklist-done-color: color-mix(in oklab, var(--color-base-50), var(--color-base-60));
 
 	/* Code */
 	--code-border-width: 1px;
-	--code-normal: var(--color-base-80);
+	--code-normal: color-mix(in oklab, var(--color-base-80), var(--text-normal));
 	--code-radius: 5px;
 
 	/* Collapse icons */
@@ -193,7 +196,7 @@ body {
 	/* Blocks */
 
 	/* File layout */
-	--file-line-width: 43.5rem;
+	--file-line-width: 43rem;
 	--file-margin-y: 28px;
 	--file-margins: var(--file-margin-y) 5%;
 	--file-header-font-weight: var(--font-normal);
@@ -227,9 +230,9 @@ body {
 	--h1-color: var(--color-base-100);
 	--h2-color: var(--color-base-100);
 	--h3-color: var(--color-base-100);
-	--h4-color: var(--text-normal);
-	--h5-color: var(--text-muted);
-	--h6-color: var(--icon-color);
+	--h4-color: var(--color-base-100);
+	--h5-color: var(--text-normal);
+	--h6-color: var(--text-muted);
 	--h1-weight-alt: 600;
 	--h1-size-alt: 1.75em;
 	--h1-size: 2.125em;
@@ -239,11 +242,11 @@ body {
 	--h5-size: 1.0625em;
 	--h6-size: 1em;
 	--h1-weight: 325;
-	--h2-weight: 550;
+	--h2-weight: 575;
 	--h3-weight: 575;
-	--h4-weight: 650;
-	--h5-weight: 675;
-	--h6-weight: 650;
+	--h4-weight: 675;
+	--h5-weight: 725;
+	--h6-weight: 725;
 	
 	--header-height: 48px;
 	
@@ -334,6 +337,7 @@ body {
 	/* Ribbon */
 	--ribbon-background: transparent;
 	--ribbon-background-collapsed: transparent;
+	--ribbon-padding: 8px 4px 12px 8px;
 
 	/* Scrollbars */
 	--scrollbar-thumb-bg: var(--trans-faint-30);
@@ -460,10 +464,10 @@ body {
 	--color-base-40: oklch(75.25% var(--base-sat-med) var(--base-hue)); 
 	--color-base-50: oklch(71.50% var(--base-sat-xtr) var(--base-hue)); 
 	--color-base-60: oklch(53.00% var(--base-sat-xtr) var(--base-hue));
-	--color-base-70: oklch(48.00% var(--base-sat-xtr) var(--base-hue));
-	--color-base-80: oklch(40.25% var(--base-sat-low) var(--base-hue)); 
-	--color-base-90: oklch(29.50% var(--base-sat-low) var(--base-hue)); 
-   --color-base-100: oklch(17.75% var(--base-sat-low) var(--base-hue)); 
+	--color-base-70: oklch(46.00% var(--base-sat-xtr) var(--base-hue));
+	--color-base-80: oklch(39.25% var(--base-sat-low) var(--base-hue)); 
+	--color-base-90: oklch(27.25% var(--base-sat-low) var(--base-hue)); 
+   --color-base-100: oklch(17.50% var(--base-sat-low) var(--base-hue)); 
 
 	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.950);
 	--trans-strong-10: oklch(from var(--color-base-00) l c h / 0.800);
@@ -494,7 +498,7 @@ body {
 	--text-highlight-bg-search: color-mix(in oklab, var(--color-highlight), transparent 87.5%);
 	--text-highlight-bg-search-active: color-mix(in oklab, var(--color-highlight), transparent 37.5%);
 
-	--link-unresolved-color: oklch(from var(--color-accent) 80% 20% h);
+	--link-unresolved-color: oklch(from var(--color-accent) 72% 36% h);
 	
 	--modal-border-color: var(--color-base-40);
 	
@@ -527,7 +531,7 @@ body {
 	--color-accent-5: color-mix(in oklch, var(--text-selection) 100%, transparent 75%);
 	--color-accent-6: color-mix(in oklch, var(--text-selection) 40%, transparent 100%);
 
-	--blockquote-color: var(--color-base-80);
+	--blockquote-color: var(--code-normal);
 	--blockquote-border-color: var(--color-base-25);
 	--blockquote-background-color: var(--trans-faint-00);
 
@@ -572,7 +576,7 @@ body {
 	--status-bar-background: var(--trans-strong-00);
 	--status-bar-filter: opacity(0.25) blur(0.375px);
 	
-	--strikethrough-color: var(--color-base-40);
+	--strikethrough-color: var(--color-base-50);
 
 	--table-row-bg: var(--trans-faint-05);
 
@@ -929,11 +933,11 @@ body:not(.mod-windows, .mod-linux) {
 	--font-extrabold: 800;
 	--h1-weight-alt: 550;
 	--h1-weight: 275;
-	--h2-weight: 475;
-	--h3-weight: 500;
-	--h4-weight: 575;
-	--h5-weight: 600;
-	--h6-weight: 550;
+	--h2-weight: 525;
+	--h3-weight: 525;
+	--h4-weight: 625;
+	--h5-weight: 675;
+	--h6-weight: 675;
 	/* frame spacing and autohide override */
 	--frame-right-space-override: 36px;
 	--frame-left-space-override: 80px;
@@ -958,11 +962,11 @@ body:not(.mod-windows, .mod-linux) {
 	--font-extrabold: 825;
 	--h1-weight-alt: 550;
 	--h1-weight: 300;
-	--h2-weight: 525;
+	--h2-weight: 550;
 	--h3-weight: 550;
-	--h4-weight: 625;
-	--h5-weight: 650;
-	--h6-weight: 625;
+	--h4-weight: 650;
+	--h5-weight: 700;
+	--h6-weight: 700;
 }
 /* Linux font weight tweak (WIP test if needed on macOS) */
 .mod-linux button[class*="mod-"]:not([class="mod-cancel"]) {
@@ -1186,8 +1190,7 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 	margin-block: 0 2px;
 }
 .mod-settings .vertical-tab-content::-webkit-scrollbar-track,
-.mod-dim .modal:not(.mod-settings, .prompt)::-webkit-scrollbar-track,
-.popover ::-webkit-scrollbar-track {
+.mod-dim .modal:not(.mod-settings, .prompt)::-webkit-scrollbar-track {
 	margin-block: 12px;
 }
 .modal.mod-community-modal ::-webkit-scrollbar-track {
@@ -1199,7 +1202,8 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .prompt.theme-picker-modal > .prompt-results::-webkit-scrollbar-track {
 	margin-block: 0 8px;
 }
-.suggestion-container > ::-webkit-scrollbar-track {
+.suggestion-container > ::-webkit-scrollbar-track,
+.popover ::-webkit-scrollbar-track {
 	margin-block: 4px;
 }
 
@@ -1238,7 +1242,6 @@ thead,
 	border-bottom: 2px solid var(--hr-color);
 	padding-bottom: 6px;
 	text-indent: -0.03125em;
-	--bold-modifier: 300;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-2, 
 .markdown-rendered h2 {
@@ -1710,16 +1713,18 @@ input[type=checkbox][data-task="<"]:checked,
 .metadata-property:not([data-property-key="tags"]) {
 	--link-color: var(--color-accent-1);
 }
+.bases-td:not([data-property="note.tags"]) .multi-select-pill,
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill {
 	box-shadow: var(--shadow-input);
 	padding-inline: var(--pill-padding-x);
 	--pill-color: var(--icon-color);
-    --pill-padding-x: 0.625em 0.375em; 
+    --pill-padding-x: 0.625em 0.3125em; 
     --pill-padding-y: 0.1em;
 }
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill-content {
-    margin-inline-end: 0.125em;
+    margin-inline-end: 0.0875em;
 }
+.bases-td:not([data-property="note.tags"]) .multi-select-pill-remove-button:hover,
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill-remove-button:hover {
 	background: var(--warning-gradient);
 }
@@ -1733,6 +1738,7 @@ input[type=checkbox][data-task="<"]:checked,
 	background: var(--hotkey-gradient);
 	color: var(--text-on-accent);
 }
+.bases-td[data-property="note.tags"] .multi-select-pill,
 .metadata-property[data-property-key="tags"] .multi-select-pill {
 	background: var(--tag-background-image);
 	box-shadow: var(--tag-shadow);
@@ -1740,6 +1746,7 @@ input[type=checkbox][data-task="<"]:checked,
 	font-weight: var(--font-medium);
 	line-height: 1.0625;
 }
+.bases-td[data-property="note.tags"] .multi-select-pill-remove-button:not(:hover),
 .metadata-property[data-property-key="tags"] .multi-select-pill-remove-button:not(:hover) {
 	color: var(--color-accent-4);
 }
@@ -2080,7 +2087,9 @@ body:not(.is-mobile) .mod-root .workspace-tabs:not(:only-of-type) .workspace-tab
 	--file-margins: var(--file-margin-y) 32px;
 }
 body:not(.is-mobile) .workspace, .workspace-tab-container, .mod-root {
-    transition: all var(--anim-duration-superfast);
+    transition: 
+	all var(--anim-duration-superfast),
+	padding 0ms;
 }
 /* margin adjustment when there is no view header */
 body:not(.is-mobile):not(.show-view-header) {
@@ -2177,6 +2186,15 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 		border-right: 1px solid var(--divider-color);
 	}
 }
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon {
+	--icon-color: var(--color-base-50);
+}
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon:hover {
+	--icon-color: var(--color-base-60);
+}
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon:has(~ * > .mod-stacked) {
+	box-shadow: 0 -1px 0 0 var(--divider-color);
+}
 
 /*--> Nav Header <--*/
 
@@ -2265,6 +2283,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	--nav-item-background-selected: transparent;
 	--nav-item-background-hover: var(--trans-faint-05);
 	&:hover {
+		color: var(--nav-item-color-hover);
 		background-color: var(--nav-item-background-hover);
 	}
 }
@@ -2320,10 +2339,11 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 .backlink-pane .search-result-file-title .tree-item-inner,
 .outgoing-link-pane .tree-item-inner-text {
 	color: var(--link-color-sidebar);
-	font-size: 14px;
+	font-weight: calc(var(--font-normal) + 50);
 }
 .search-result-file-matches {
     box-shadow: var(--shadow-sidebar);
+	margin-block-start: 0;
 }
 .search-result-file-title {
 	padding-block-end: 4px;
@@ -2346,13 +2366,16 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	--nav-item-background-hover: var(--color-accent-5);
 }
 .outgoing-link-pane .tree-item-inner-text {
-	padding-block-end: 2px;
+	line-height: var(--line-height-normal);
 }
 .outgoing-link-pane .outgoing-link-item:hover .tree-item-inner-text {
 	color: var(--color-accent);
 }
-.outgoing-link-item:has(.tree-item-inner .tree-item-inner-subtext) .tree-item-icon {
-	padding-block-start: 1px;
+.outgoing-link-item .tree-item-icon {
+	padding-block-start: 2px;
+}
+.outgoing-link-item .tree-item-icon:has( + .tree-item-inner > .tree-item-inner-subtext) {
+	padding-block-start: 4px;
 }
 /* special code for uncreated outgoing links */
 .outgoing-link-item:not([draggable="true"]) {
@@ -2589,7 +2612,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 			transition: inherit;
 		}
 		&:active {
-			transform: translateY(-1%) scale(0.925);
+			transform: translateY(-1%) scale(0.9);
 			filter: opacity(75%);
 		}
 		&:hover .svg-icon {
@@ -2687,14 +2710,20 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	background-color: var(--text-highlight-bg-search-active);
 }
 
-/*--> Vault Profile <--*/
+/*--> Ribbon <--*/
 
-body:not(.is-mobile)
-	.workspace-split.mod-left-split
-	.workspace-sidedock-vault-profile {
-	border: none;
-	background-color: transparent;
-	padding: 8px 8px 4px;
+.workspace-ribbon > .sidebar-toggle-button {
+	padding-inline-start: 8px;
+}
+.clickable-icon.side-dock-ribbon-action {
+	padding: 8px;
+}
+.clickable-icon.side-dock-ribbon-action:active {
+	transform: scale(0.875);
+}
+body:not(.is-mobile) .side-dock-ribbon > .side-dock-actions {
+	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
+	--icon-color-hover: var(--color-base-100);
 }
 
 /*--> Status Bar <--*/
@@ -2713,6 +2742,16 @@ body:not(.disable-status-fade) {
 		box-shadow: none;
 		filter: var(--status-bar-filter);
 	}
+}
+
+/*--> Vault Profile <--*/
+
+body:not(.is-mobile)
+	.workspace-split.mod-left-split
+	.workspace-sidedock-vault-profile {
+	border: none;
+	background-color: transparent;
+	padding: 8px 8px 4px;
 }
 
 /* ADAPTED FROM: Micro Mike */
@@ -3351,7 +3390,7 @@ input.prompt-input:hover {
 
 .popover {
 	animation: var(--anim-duration-fast) popover var(--anim-motion-swing);
-	border-radius: var(--radius-xxl);
+	border-radius: var(--radius-ml);
 	--background-primary: var(--background-secondary);
 }
 
@@ -3430,8 +3469,33 @@ input.prompt-input:hover {
 .bases-table-header-icon {
 	color: var(--icon-color);
 }
-.bases-table-container .bases-table-cell {
-	display: flex;
+
+.bases-td .metadata-input {
+	font-weight: var(--font-normal);
+	letter-spacing: -0.75px;
+	--background-modifier-form-field-hover: transparent;
+	--shadow-input: none;
+}
+
+/* Pills/Tags in Bases */
+
+.bases-td .multi-select-container {
+	gap: 4px;
+	padding: 4px 2px;
+}
+
+.bases-table-container.mod-multiline .bases-td:focus-within {
+	height: var(--bases-table-row-height);
+}
+.bases-table-container.mod-multiline  .bases-table-cell {
+    align-items: center;
+}
+.bases-td[data-property="note.tags"] .multi-select-pill {
+	color: var(--tag-color);
+	border: 1px solid var(--tag-border-color);
+	border-radius: var(--radius-xl);
+	padding: var(--tag-padding-y) var(--tag-padding-x);
+	padding-inline-end: var(--tag-padding-y);
 }
 
 /* Obsidian Bases (embedded) */
@@ -3446,12 +3510,10 @@ input.prompt-input:hover {
 .bases-header {
 	padding-inline: 8px 12px; 
 }
-.bases-header:has( + * + .bases-view[data-view-type="table"]) .query-toolbar {
+.bases-header .query-toolbar {
 	--view-color: var(--color-cyan);
 }
-/* .bases-header:has( + * + .bases-view[data-view-type="cards"]) .query-toolbar {
-	--view-color: var(--color-pink);
-} */
+
 .bases-embed .bases-header {
 	padding-inline: 0 4px;
 }
