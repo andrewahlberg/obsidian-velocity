@@ -101,6 +101,11 @@ settings:
 	description: Highlights the active line with slight backdrop for easier text navigation.  
 	type: class-toggle
 - 	
+	id: enable-dim-img
+	title: Enable image dimming in Dark mode
+	description: Reduces the brightness of images in Dark mode except when hovered.
+	type: class-toggle
+- 	
 	id: prop-headings
 	title: Enable proportional heading margins
 	description: Decreases the margin sizes of smaller headings.
@@ -109,7 +114,7 @@ settings:
 
 /* 
 	Velocity 
-	1.1.0-alpha
+	1.2.0-alpha
 	--------
 	by Floodlight
 
@@ -1502,6 +1507,13 @@ body:not(.disable-naked-embeds) {
 
 .image-embed img, .markdown-rendered img {
     border-radius: var(--radius-sm);
+}
+body.enable-dim-img.theme-dark :is(.image-embed img, .markdown-rendered img) {
+	filter: opacity(0.75);
+	transition: filter var(--anim-duration-fast) var(--anim-motion-smooth);
+}
+body.enable-dim-img.theme-dark :is(.image-embed img, .markdown-rendered img):hover {
+	filter: unset;
 }
 
 /*--> Lists + paragraphs <--*/
