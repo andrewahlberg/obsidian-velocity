@@ -138,6 +138,8 @@ body {
 	/* Bases */
 	--bases-embed-border-radius: 0;
 	--bases-header-border-width: 0;
+	--bases-table-cell-background-active: transparent;
+	--bases-table-cell-shadow-active: var(--shadow-input-active);
 	--bases-table-header-color: var(--table-header-color);
 	--bases-table-header-weight: var(--font-medium);
 	--bases-table-row-border-width: 0;
@@ -3467,14 +3469,23 @@ input.prompt-input:hover {
 .bases-table-header-icon {
 	color: var(--icon-color);
 }
-.bases-table-container .bases-table-cell {
-	display: flex;
+
+.bases-td .metadata-input {
+	font-weight: var(--font-normal);
+	letter-spacing: -0.75px;
+	--background-modifier-form-field-hover: transparent;
+	--shadow-input: none;
 }
 
 /* Pills/Tags in Bases */
+
 .bases-td .multi-select-container {
 	gap: 4px;
 	padding: 4px 2px;
+}
+
+.bases-table-container.mod-multiline .bases-td:focus-within {
+	height: var(--bases-table-row-height);
 }
 .bases-table-container.mod-multiline  .bases-table-cell {
     align-items: center;
