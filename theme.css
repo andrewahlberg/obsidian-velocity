@@ -553,7 +553,7 @@ body {
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
 
-	--italic-color: var(--color-base-60);
+	--italic-color: var(--text-muted);
 
 	--link-color-sidebar: var(--color-accent-1);
 
@@ -1245,7 +1245,7 @@ thead,
 .inline-title {
 	border-bottom: 2px solid var(--hr-color);
 	padding-bottom: 6px;
-	text-indent: -0.03125em;
+	text-indent: -0.025em;
 }
 .cm-s-obsidian .cm-line.HyperMD-header-2, 
 .markdown-rendered h2 {
@@ -4374,6 +4374,7 @@ body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-ta
 	font-size: 2.5em;
 	font-weight: var(--font-extralight);
 	letter-spacing: -0.05rem;
+	text-indent: -0.015625em;
 	padding-block: 0.125em !important;
 	--bold-modifier: 250;
 }
@@ -4393,7 +4394,7 @@ body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-ta
 	font-size: 2.75em;
 	font-weight: var(--font-thin);
 	letter-spacing: -0.0625rem;
-	text-indent: -0.0625em;
+	text-indent: -0.03125em;
 	border-block-end: none;
 	padding-block: 0.125em 0 !important;
 	--bold-modifier: 300;
