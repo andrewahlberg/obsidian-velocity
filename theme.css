@@ -1410,11 +1410,11 @@ body:not(.disable-callout-styling) .callout[data-callout*="math"] {
 	box-shadow: 0 0 0 1.5px rgb(var(--callout-color), 0.375);
 	outline: none;
 	font-family: MJXZERO, MJXTEX;
-	--callout-radius: var(--radius-s);
 	--callout-color: var(--color-cyan-rgb);
 
 	& .callout-title-inner {
 		font-size: 1.125em;
+		letter-spacing: 0.01em;
 		padding-inline-start: 0;
 		transform: translateY(0.4375em);
 	}
