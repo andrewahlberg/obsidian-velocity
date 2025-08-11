@@ -3835,14 +3835,14 @@ div[class*="el-h"] + * .dataview-container .contains-task-list {
 
 #calendar-container {
 	padding-inline: 0;
-    --color-dot: var(--text-normal);
+    --color-dot: var(--color-red);
     --color-arrow: var(--color-base-50);
     --color-button: var(--text-muted);
-    --color-text-today: var(--text-normal);
+    --color-text-today: var(--color-red);
     --color-text-weeknum: var(--text-muted);
 	--table-row-alt-background: none;
 	--table-row-alt-background-hover: none;
-	--table-highlight: var(--text-highlight-bg);
+	--table-highlight: oklch(from var(--color-red) l 0.4 h / 0.075);
 	--interactive-accent: transparent;
 }
 .callout #calendar-container {
