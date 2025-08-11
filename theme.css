@@ -1403,6 +1403,43 @@ body.disable-callout-styling {
 	--callout-title-padding: 0;
 }
 
+/* Math Callouts */
+body:not(.disable-callout-styling) .callout[data-callout*="math"] {
+	color: var(--color-base-100);
+	background-image: none;
+	box-shadow: 0 0 0 1.5px rgb(var(--callout-color), 0.375);
+	outline: none;
+	font-family: MJXZERO, MJXTEX;
+	--callout-radius: var(--radius-s);
+	--callout-color: var(--color-cyan-rgb);
+
+	& .callout-title-inner {
+		font-size: 1.125em;
+		padding-inline-start: 0;
+		transform: translateY(0.4375em);
+	}
+	& .callout-icon {
+		display: none;
+	}
+	& .callout-content mjx-math {
+		padding-block: 0;
+	}
+}
+/* other colors */
+body:not(.disable-callout-styling) .callout[data-callout="math-red"] {
+	--callout-color: var(--color-red-rgb);
+}
+body:not(.disable-callout-styling) .callout[data-callout="math-green"] {
+	--callout-color: var(--color-green-rgb);
+}
+body:not(.disable-callout-styling) .callout[data-callout="math-blue"] {
+	--callout-color: var(--color-blue-rgb);
+}
+body:not(.disable-callout-styling) .callout[data-callout="math-gray"] {
+	box-shadow: 0 0 0 1.5px rgb(var(--callout-color), 0.5);
+	--callout-color: 100, 100, 100;
+}
+
 /*--> Code <--*/
 
 .markdown-rendered code {
@@ -1634,6 +1671,11 @@ input[type=checkbox][data-task="<"]:checked,
     background-position-x: right;
     background-position-y: center;
 	padding-inline-end: 0.9375em;
+}
+/* MathJax */
+
+mjx-math {
+	color: var(--color-base-100);
 }
 
 /*--> Metadata <--*/
