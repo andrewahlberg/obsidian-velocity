@@ -1429,13 +1429,26 @@ body:not(.disable-callout-styling) .callout[data-callout*="math"] {
 body:not(.disable-callout-styling) .callout[data-callout="math-red"] {
 	--callout-color: var(--color-red-rgb);
 }
+body:not(.disable-callout-styling) .callout[data-callout="math-orange"] {
+	--callout-color: var(--color-orange-rgb);
+}
+body:not(.disable-callout-styling) .callout[data-callout="math-yellow"] {
+	--callout-color: var(--color-yellow-rgb);
+}
 body:not(.disable-callout-styling) .callout[data-callout="math-green"] {
 	--callout-color: var(--color-green-rgb);
 }
 body:not(.disable-callout-styling) .callout[data-callout="math-blue"] {
 	--callout-color: var(--color-blue-rgb);
 }
-body:not(.disable-callout-styling) .callout[data-callout="math-gray"] {
+body:not(.disable-callout-styling) .callout[data-callout="math-purple"] {
+	--callout-color: var(--color-purple-rgb);
+}
+body:not(.disable-callout-styling) .callout[data-callout="math-pink"] {
+	--callout-color: var(--color-pink-rgb);
+}
+body:not(.disable-callout-styling) 
+	.callout:is([data-callout="math-gray"], [data-callout="math-grey"]) {
 	box-shadow: 0 0 0 1.5px rgb(var(--callout-color), 0.5);
 	--callout-color: 100, 100, 100;
 }
