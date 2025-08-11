@@ -1410,7 +1410,7 @@ body:not(.disable-callout-styling) .callout[data-callout*="math"] {
 	box-shadow: 0 0 0 1.5px rgb(var(--callout-color), 0.375);
 	outline: none;
 	font-family: MJXZERO, MJXTEX;
-	--callout-color: var(--color-cyan-rgb);
+	--callout-color: var(--color-blue-rgb);
 
 	& .callout-title-inner {
 		font-size: 1.125em;
@@ -1438,8 +1438,8 @@ body:not(.disable-callout-styling) .callout[data-callout="math-yellow"] {
 body:not(.disable-callout-styling) .callout[data-callout="math-green"] {
 	--callout-color: var(--color-green-rgb);
 }
-body:not(.disable-callout-styling) .callout[data-callout="math-blue"] {
-	--callout-color: var(--color-blue-rgb);
+body:not(.disable-callout-styling) .callout[data-callout="math-cyan"] {
+	--callout-color: var(--color-cyan-rgb);
 }
 body:not(.disable-callout-styling) .callout[data-callout="math-purple"] {
 	--callout-color: var(--color-purple-rgb);
