@@ -420,6 +420,9 @@ body {
 	/* Vault profile */
 
 	/* Backgrounds */ 
+	--background-modifier-form-field: transparent;
+	--background-modifier-form-field-hover: transparent;
+
 	--color-highlight: var(--color-yellow);
 	--color-highlight-rgb: var(--color-yellow-rgb);
 
@@ -1071,8 +1074,9 @@ textarea,
 	box-shadow: var(--shadow-input-active);
 }
 .mod-sidedock,
-.vertical-tab-header {
-	--background-modifier-form-field: var(--search-result-background);
+.vertical-tab-header,
+.setting-item textarea {
+	--background-modifier-form-field: var(--search-result-background);--background-modifier-form-field-hover: var(--search-result-background);
 }
 
 /* Search input */
@@ -1762,7 +1766,7 @@ mjx-math {
 	}
 }
 
-.metadata-input.mod-date {
+.metadata-property .metadata-input.mod-date {
 	letter-spacing: -0.25px;
 }
 
@@ -3544,10 +3548,9 @@ input.prompt-input:hover {
 
 .metadata-input.mod-date,
 .bases-td .metadata-input {
+	box-shadow: none !important;
 	font-weight: var(--font-normal);
 	letter-spacing: -0.5px;
-	--background-modifier-form-field-hover: transparent;
-	--shadow-input: none;
 }
 .bases-embed .bases-td .metadata-input {
 	letter-spacing: -0.75px;
