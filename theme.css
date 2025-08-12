@@ -2925,12 +2925,16 @@ body:not(.is-mobile) .mod-root .workspace-tabs.mod-stacked {
 	.workspace-tab-header .workspace-tab-header-inner {
     	padding: 9px 8px 8px;
 	}
-	.workspace-tab-container .workspace-tab-header-inner-close-button {
-    	padding: 6px;
-	}
 	.workspace-tab-header .workspace-tab-header-inner-icon {
     	display: none;
 	} 
+	:is(.workspace-tab-header-inner-close-button, 
+		.workspace-tab-header-status-icon) {
+    	padding: 6px;
+	}
+	.workspace-tab-header-inner-close-button {
+		order: -1;
+	}
 	.workspace-tab-header .workspace-tab-header-inner-title {
 		font-weight: var(--font-medium);
 		letter-spacing: 0.125px;
