@@ -2969,6 +2969,8 @@ body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked
 .modal {
 	background-color: var(--background-secondary);
 	font-weight: var(--font-normal);
+	--background-modifier-form-field: var(--background-primary);
+	--background-modifier-form-field-hover: var(--background-primary);
 }
 .mod-confirmation .modal {
 	background-color: var(--trans-strong-10);
@@ -3043,6 +3045,8 @@ body:not(.is-mobile)
 
 .menu {
 	font-weight: calc(calc(var(--font-normal) + var(--font-medium)) / 2);
+	--background-modifier-form-field: var(--background-primary);
+	--background-modifier-form-field-hover: var(--background-primary);
 }
 .menu-item {
 	border-radius: 7px;
@@ -3754,9 +3758,26 @@ input.prompt-input:hover {
 .query-toolbar-menu .input-row {
 	padding-block-end: 4px;
 }
-.query-toolbar-menu + .suggestion-container {
+.query-toolbar-menu + .suggestion-container,
+.formula-editor .cm-tooltip.cm-tooltip-autocomplete {
 	border-color: var(--trans-faint-40);
-	z-index: var(--layer-menu);
+}
+/* Formula editor */
+.query-toolbar-menu .suggestion-container {
+	animation: none;
+}
+.bases-toolbar-menu-form .formula-editor-container {
+	box-shadow: var(--shadow-input);
+}
+.bases-toolbar-menu-form .input-row .input-row-label {
+	padding-inline-start: 8px;
+}
+.bases-toolbar-menu-form .input-row .input-row-status {
+	margin-block: 8px -6px;
+	padding-inline-start: 4px;
+}
+.formula-editor .cm-placeholder {
+	padding-inline-start: 2px;
 }
 
 /*--> Web Viewer <--*/
