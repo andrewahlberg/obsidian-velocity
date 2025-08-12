@@ -733,11 +733,11 @@ body {
 	--text-success-bg: oklch(from var(--color-green) 0.53125 0.4 h);
 	--text-success-faint: color-mix(in oklab, var(--color-green), transparent 37.5%);
 
-	--text-highlight-bg: oklch(from var(--color-highlight) 0.75 c h / 0.2);
+	--text-highlight-bg: oklch(from var(--color-highlight) 0.75 c h / 0.25);
 	--text-highlight-bg-rgb: var(--color-highlight-rgb);
 	--text-highlight-ul-color: oklch(from var(--color-highlight) 0.75 c h);
 	--text-highlight-bg-search: var(--text-highlight-bg);
-	--text-highlight-bg-search-active: color-mix(in oklab, var(--color-highlight), transparent 30%);
+	--text-highlight-bg-search-active: oklch(from var(--color-highlight) 0.875 c h / 0.55);
 
 	/* --link-unresolved-color: oklch(from var(--color-accent) 76% 20% h); */
 
@@ -881,9 +881,11 @@ body {
 		inset 0 -1px 2.5px 0px var(--trans-strong-05),
 		0 4px 12px -4px var(--trans-dark-10);
 	--shadow-fab-active: 
-		0 0.25px 0px 0.5px var(--text-selection),
-		inset 0px -0.25px 4px -1px var(--text-selection),
-		0 1.5px 8px -1.5px var(--text-selection);
+		inset 0 1px 1.5px 0px var(--color-accent-5),
+		inset 0 1.25px 2px 0px var(--trans-faint-20),
+		inset 0 -1px 2.5px 0px var(--trans-strong-05),
+		0 5px 15px -1.5px var(--color-accent-5),
+		0 5px 15px -3px var(--trans-dark-00);
 	}
 	& .modal, .menu {
 	--shadow-setting-item: 
@@ -2711,6 +2713,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 .view-header:has( 
 	+ .view-content .document-search-container ~ .cm-editor,  
 	+ .view-content .markdown-reading-view > .document-search-container) {
+	--fab-bg: var(--background-primary);
 	--shadow-fab: none;
 	--shadow-fab-active: none;
 	}
@@ -2750,6 +2753,8 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 }
 :is(.document-search-input, .document-replace) input {
     border-radius: var(--radius-l);
+	--background-modifier-form-field: var(--search-result-background);
+	--background-modifier-form-field-hover: var(--search-result-background);
 }
 :is(.document-search-input, .document-replace) input:focus {
 	box-shadow: 0 0 0 2.25px var(--text-highlight-bg-search-active);
