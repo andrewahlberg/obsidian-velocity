@@ -145,8 +145,10 @@ body {
 	--bases-header-border-width: 0;
 	--bases-table-cell-background-active: transparent;
 	--bases-table-cell-shadow-active: var(--shadow-input-active);
-	--bases-table-header-color: var(--table-header-color);
-	--bases-table-header-weight: var(--font-medium);
+	--bases-table-header-color: var(--text-muted);
+	--bases-table-header-color-hover: var(--color-base-80);
+	--bases-table-header-weight: var(--font-normal);
+	--bases-table-header-background-hover: transparent;
 	--bases-table-row-border-width: 0;
 	--bases-table-text-size: var(--table-text-size);
 	--bases-table-row-height: 32px;
@@ -719,7 +721,7 @@ body {
 	--trans-strong-40: oklch(from var(--color-base-30) l c h / 0.500);
 
 	--trans-faint-00: oklch(100% 0 283 / 0.0125);
-	--trans-faint-05: oklch(100% 0 283 / 0.0300);
+	--trans-faint-05: oklch(100% 0 283 / 0.0250);
 	--trans-faint-10: oklch(100% 0 283 / 0.0500);
 	--trans-faint-20: oklch(100% 0 283 / 0.0625);
 	--trans-faint-25: oklch(100% 0 283 / 0.0750);
@@ -3473,6 +3475,7 @@ input.prompt-input:hover {
 	animation: var(--anim-duration-fast) popover var(--anim-motion-swing);
 	border-radius: var(--radius-ml);
 	--background-primary: var(--background-secondary);
+	--bases-table-header-background: var(--background-secondary);
 }
 
 /*--> Suggestion Item <--*/
@@ -3532,6 +3535,7 @@ input.prompt-input:hover {
 
 /* Obsidian Bases (general) */
 .bases-table-container {
+	--interactive-accent: var(--color-base-40);
 	--metadata-input-text-color: var(--text-normal);
 }
 
@@ -3547,6 +3551,7 @@ input.prompt-input:hover {
 }
 .bases-td {
 	padding-inline: 6px;
+	--divider-color-hover: var(--color-base-30);
 }
 .bases-view .bases-thead .bases-td .bases-table-header-name {
 	font-size: var(--font-ui-small);
@@ -3610,8 +3615,9 @@ input.prompt-input:hover {
 .bases-header {
 	padding-inline: 8px 12px; 
 }
-.bases-header .query-toolbar {
-	--view-color: var(--color-cyan);
+.bases-table-header:hover {
+	--bases-table-header-color: var(--bases-table-header-color-hover); 
+	--icon-color: var(--bases-table-header-color-hover); 
 }
 
 .bases-embed .bases-header {
@@ -3633,8 +3639,9 @@ input.prompt-input:hover {
 }
 
 /* query toolbar pills */
-.query-toolbar {
-	--view-color: var(--color-pink);
+.bases-header .query-toolbar {
+	--query-button-color: oklch(from var(--color-cyan) l c h / 0.75);
+	--query-button-color: var(--color-cyan);
 }
 .query-toolbar-item > * {
 	background-color: var(--background-secondary);
@@ -3645,24 +3652,32 @@ input.prompt-input:hover {
 	--icon-size: var(--icon-s);
 }
 .query-toolbar-item.mod-views > * {
-	background-color: oklch(from var(--view-color) l c h / 0.0625);
-	--text-normal: var(--view-color);
+	background-color: oklch(from var(--query-button-color) l c h / 0.0625);
+	--text-normal: var(--query-button-color);
+	&:hover {
+		background-color: oklch(from var(--query-button-color) l c h / 0.125);
+	}
 }
 .query-toolbar-item.mod-views .mod-aux {
 	display: none;
 }
 .query-toolbar .bases-toolbar-result-count > * {
-	background-color: var(--background-modifier-active-hover) !important;
-    color: var(--view-color);
-	padding: 1px 8px 0;
+	color: var(--query-button-color);
+	background-color: var(--background-modifier-active-hover);
+	padding: 2px 6px 0;
 	--background-modifier-active-hover: transparent;
-	--icon-color-active: var(--view-color);
+	--icon-color-active: var(--query-button-color);
 }
 .query-toolbar-item:not(.mod-views, .bases-toolbar-result-count) > .text-icon-button {
 	padding: 0 8px;
 }
-.query-toolbar-item:not(.mod-views, .mod-properties, .mod-add-note) > .text-icon-button {
+.query-toolbar-item:not(.mod-views, .mod-properties, .mod-add-note,.bases-toolbar-result-count) > .text-icon-button.is-active {
+	color: var(--color-accent-1);
 	background-color: var(--color-accent-5);
+	--icon-color-hover: var(--color-accent);
+	&:hover {
+		background-color: var(--text-selection);
+	}
 }
 
 /* Obsidian Bases (modals) */
