@@ -603,7 +603,7 @@ body {
 	--tab-sidebar-container-bg: radial-gradient(at 50% 125%, var(--trans-faint-05), var(--trans-faint-05));
 	--tag-background-image: linear-gradient(to top, var(--text-selection) -30%, var(--color-accent-6) 60%);
 
-	--vault-profile-color: var(--color-base-80);
+	--vault-profile-color: var(--text-normal);
 
 	--input-shadow: 
 		0 0.125px 0 0.5px var(--trans-faint-30),
@@ -835,7 +835,7 @@ body {
 	--tab-sidebar-container-bg: radial-gradient(at 50% 112.5%, var(--trans-faint-00), var(--trans-strong-10) 87.5%);
 	--tag-background-image: linear-gradient(to top, var(--text-selection) -50%, var(--color-accent-6) 100%);
 	
-	--vault-profile-color: var(--text-muted);
+	--vault-profile-color: var(--text-normal);
 
 	--input-shadow: 
 		0 -0.5px 0 0.5px var(--trans-faint-40),
@@ -1936,6 +1936,17 @@ a.tag:active {
 .menu-item-icon svg {
 	padding: 0;
 }
+/* Wider workspace icons */
+body:not(.is-mobile) 
+	.workspace-split.mod-left-split 
+	.workspace-sidedock-vault-profile 
+	.workspace-drawer-vault-actions > .clickable-icon,
+body:not(.is-mobile) 
+	.view-header-left > .view-header-nav-buttons > .clickable-icon,
+body:not(.is-mobile) 
+	.view-actions > .view-action:last-child {
+	padding-inline: 10px;
+}
 
 /*--> Custom Icons <--*/
 
@@ -1968,7 +1979,7 @@ body:not(.disable-custom-icons) :where(
 	-webkit-mask-repeat: no-repeat;
 	background-color: currentColor;
 	& > * {
-	display: none;
+		display: none;
 	}
 }
 body.disable-custom-icons svg.svg-icon { 
@@ -2471,17 +2482,21 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 }
 
 /* Search View */
-.search-row {
+.mod-sidedock .search-row {
     margin: 8px 12px 6px;
     gap: 6px;
 }
-.search-params {
+.mod-sidedock .search-info-container {
+    color: var(--icon-color);
+    padding: 8px 20px 4px;
+}
+.mod-sidedock .search-params {
 	margin-inline: 12px;
 }
-.search-params .setting-item {
+.mod-sidedock .search-params .setting-item {
 	padding-inline: 8px 2px;
 }
-.search-results-info {
+.mod-sidedock .search-results-info {
     color: var(--text-faint);
     border-bottom: 1px solid var(--background-modifier-border);
     margin-inline: 12px;
@@ -2626,13 +2641,12 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	padding-inline: 8px;
 	z-index: var(--layer-popover);
 }
-.view-header-left {
-	padding-inline-start: 4px;
-}
-.view-actions {
+
+.workspace-leaf-content[data-type="markdown"] .view-actions {
 	padding-inline-end: 4px;
 	contain: content;
 }
+
 /* View header Title */
 .view-header-title-container > * {
 	padding-top: 3px;
@@ -2836,8 +2850,17 @@ body:not(.is-mobile)
 	.workspace-sidedock-vault-profile {
 	border: none;
 	background-color: transparent;
-	padding: 8px 8px 4px;
+	--icon-color: var(--text-muted);
+	--icon-color-hover: var(--text-muted);
+	--icon-color-active: var(--text-muted);
+	--icon-color-focused: var(--text-muted);
 }
+body:not(.is-mobile) 
+	.workspace-split.mod-left-split 
+	.workspace-sidedock-vault-profile 
+	.workspace-drawer-vault-switcher {
+		padding-block: 8px;
+	} 
 
 /* ADAPTED FROM: Micro Mike */
 /* By ThisTheThe */
