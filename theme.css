@@ -228,6 +228,7 @@ body {
 	--font-bold: 750;
 	--font-extrabold: 850;
 	--font-black: 900;
+	--cta-font-weight: var(--font-normal);
 
 	/* Footnotes */
 
@@ -984,10 +985,12 @@ body:not(.mod-windows, .mod-linux) {
 	--h4-weight: 650;
 	--h5-weight: 700;
 	--h6-weight: 700;
+	--cta-font-weight: 575;
 }
 /* Linux font weight tweak (WIP test if needed on macOS) */
-.mod-linux button[class*="mod-"]:not([class="mod-cancel"]) {
-	font-weight: 575;
+.mod-linux button[class*="mod-"]:not([class="mod-cancel"]),
+:is(.mod-root, .popover) .metadata-add-button {
+	font-weight: var(--cta-font-weight);
 }
 
 /* Windows */
@@ -2419,7 +2422,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	color: var(--link-color-sidebar);
 	font-weight: calc(var(--font-normal) + 50);
 }
-.search-result-file-matches {
+.mod-sidedock .search-result-file-matches:has( > .search-result-file-match) {
     box-shadow: var(--shadow-sidebar);
 	margin-block-start: 0;
 }
