@@ -2160,7 +2160,7 @@ body:is(.disable-custom-icons, .disable-callout-styling) .callout-icon svg {
 
 body:not(.is-mobile) .mod-root > .mod-horizontal > .workspace-tabs > :is(.workspace-tab-container, .workspace-tabs:not(.mod-stacked) .workspace-leaf),
 body:not(.is-mobile) .mod-root .workspace-tabs > :is(.workspace-tab-container, .workspace-tabs:not(.mod-stacked) .workspace-leaf) {
-    border-radius: var(--radius-m);
+    border-radius: var(--radius-ml);
 }
 body:not(.is-mobile) .mod-root .workspace-tab-container {
     box-shadow: var(--shadow-workspace);
