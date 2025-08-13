@@ -481,9 +481,9 @@ body {
 	--color-base-50: oklch(71.50% var(--base-sat-xtr) var(--base-hue)); 
 	--color-base-60: oklch(53.00% var(--base-sat-xtr) var(--base-hue));
 	--color-base-70: oklch(46.00% var(--base-sat-xtr) var(--base-hue));
-	--color-base-80: oklch(39.25% var(--base-sat-low) var(--base-hue)); 
-	--color-base-90: oklch(27.25% var(--base-sat-low) var(--base-hue)); 
-   --color-base-100: oklch(17.75% var(--base-sat-low) var(--base-hue)); 
+	--color-base-80: oklch(39.50% var(--base-sat-low) var(--base-hue)); 
+	--color-base-90: oklch(28.00% var(--base-sat-low) var(--base-hue)); 
+   --color-base-100: oklch(18.00% var(--base-sat-low) var(--base-hue)); 
 
 	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.950);
 	--trans-strong-10: oklch(from var(--color-base-00) l c h / 0.800);
