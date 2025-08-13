@@ -2259,9 +2259,6 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 		border-radius: unset;
 		box-shadow: 0 -0.5px 0 0px var(--trans-faint-40);
 	}
-	& .view-header-title-container:not(.webviewer-address-container) {
-		filter: opacity(0.5);
-	}
 	.mod-horizontal:not(.last-child) {
 		border-right: 1px solid var(--divider-color);
 	}
@@ -2894,9 +2891,6 @@ body:not(.is-mobile)
 	}
 	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .workspace-tab-header-container-inner {
 		padding-inline: 0px 6px !important;
-	}
-	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .view-header-title-container {
-		filter: opacity(0.5);
 	}
 	body:not(.is-mobile, .is-popout-window, .disable-autohide) .status-bar::after {
 		position: absolute;
