@@ -2648,11 +2648,14 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 }
 
 /* View header Title */
+.view-header-title-container {
+	padding-inline-end: 4px;
+}
 .view-header-title-container > * {
 	padding-top: 3px;
 }
 .view-header-title {
-	color: var(--text-muted) !important;
+	color: var(--color-base-80) !important;
 }
 .view-header-title-parent {
 	color: var(--color-base-50);
