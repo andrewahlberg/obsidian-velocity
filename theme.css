@@ -110,6 +110,11 @@ settings:
 	title: Enable proportional heading margins
 	description: Decreases the margin sizes of smaller headings.
 	type: class-toggle
+-
+	description: (WIP) Enable snippets
+	type: info-text
+	markdown: true
+- 	
 */
 
 /* 
@@ -288,7 +293,8 @@ body {
 	--list-marker-color: var(--color-base-50);
 
 	/* File navigator */
-	--nav-indentation-guide-color: var(--hr-color);
+	--nav-indentation-guide-color: var(--trans-faint-10);
+	--nav-indentation-guide-width: 2px;
     --nav-item-parent-padding: 8px 8px 8px 24px; 
 	--nav-item-weight: var(--font-normal);
 	--nav-item-weight-active: var(--font-normal);
@@ -2364,7 +2370,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 }
 .nav-files-container .tree-item-children {
 	border-left-color: transparent;
-	border-image: linear-gradient(to bottom, var(--text-selection) 16px, var(--nav-indentation-guide-color)) 1;
+	border-image: linear-gradient(to bottom, var(--background-modifier-active-hover), var(--trans-faint-05)) 1;
 }
 
 /* Files */
