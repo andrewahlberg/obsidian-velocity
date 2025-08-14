@@ -3761,6 +3761,42 @@ input.prompt-input:hover {
 	padding: 4px 14px 4px 10px;
 }
 
+/* Bases menu search input */
+.bases-toolbar-menu-container .search-input-container {
+	background-color: var(--background-modifier-form-field);
+	box-shadow: var(--shadow-xs);
+    border-radius: var(--radius-m);
+	border: none;
+	margin: 2px 2px 8px;
+	padding-block: 0;
+	transition: box-shadow var(--anim-duration-superfast);
+	&:focus-within {
+		box-shadow: var(--shadow-search-active);
+	}
+}
+.bases-toolbar-menu-container .search-input-container input[type=search],
+.bases-toolbar-menu-container .search-input-container::before {
+	margin-block-start: 2px;
+	padding-block-start: 2px;
+}
+
+/* Views menu */
+.mod-views .bases-toolbar-items .suggestion-group {
+	& > * {
+		padding: 6px 8px;
+	}
+	& .bases-toolbar-menu-item > .clickable-icon {
+		background-color: var(--background-modifier-hover);
+		padding-inline: 12px;
+	}
+	& .bases-toolbar-menu-item:not(.mod-active) > .clickable-icon {
+		--background-modifier-hover: var(--trans-faint-00);
+	}
+	& .bases-toolbar-menu-item > .clickable-icon:hover {
+		--background-modifier-hover: var(--hr-color);
+	}
+}
+
 /* Results limit menu */
 .query-toolbar-menu .input-row > .input-row-content {
 	margin: 2px;
@@ -3836,26 +3872,24 @@ input.prompt-input:hover {
 	flex-direction: column-reverse;
 }
 .mod-properties .bases-toolbar-items .suggestion-group[data-group="actions"] {
-	flex-direction: row;
-	justify-content: space-evenly;
-	background-color: var(--trans-faint-05);
-	border-radius: var(--radius-sm);
 	border-top: none;
-	padding: 2px;
-	margin-inline: 2px;
+	border-bottom: 1px solid var(--divider-color);
+	padding: 0 0 2px;
 	& > * {
-		color: var(--color-base-80);
-		border-radius: var(--radius-s);
 		font-weight: var(--font-medium);
-		padding: 4px 16px;
-		--background-modifier-hover: var(--background-primary);
+		padding-inline: 8px;
+		width: 124px;
 	}
 }
+
 .mod-properties .bases-toolbar-items .suggestion-group[data-group="properties"] {
 	padding-block: 8px 0;
 	& > * {
 		border-radius: var(--radius-xl);
 		padding: 6px 8px;
+	}
+	& .bases-toolbar-menu-item .bases-toolbar-menu-item-info {
+		order: -1;
 	}
 	& .bases-toolbar-menu-item > .clickable-icon {
 		background-color: var(--background-modifier-hover);
