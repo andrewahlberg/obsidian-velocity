@@ -3766,7 +3766,7 @@ input.prompt-input:hover {
 .bases-toolbar-menu-container .search-input-container {
 	background-color: var(--background-modifier-form-field);
 	box-shadow: var(--shadow-xs);
-    border-radius: var(--radius-m);
+    border-radius: var(--radius-sm);
 	border: none;
 	margin: 2px 2px 8px;
 	padding-block: 0;
@@ -4097,14 +4097,14 @@ div[class*="el-h"] + * .dataview-container .contains-task-list {
 
 #calendar-container {
 	padding-inline: 0;
-    --color-dot: var(--color-red);
+    --color-dot: var(--color-orange);
     --color-arrow: var(--color-base-50);
     --color-button: var(--text-muted);
-    --color-text-today: var(--color-red);
+    --color-text-today: var(--color-orange);
     --color-text-weeknum: var(--text-muted);
 	--table-row-alt-background: none;
 	--table-row-alt-background-hover: none;
-	--table-highlight: oklch(from var(--color-red) l 0.4 h / 0.075);
+	--table-highlight: oklch(from var(--color-orange) l 0.25 h / 0.075);
 	--interactive-accent: transparent;
 }
 .callout #calendar-container {
