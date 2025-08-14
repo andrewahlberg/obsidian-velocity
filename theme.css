@@ -1956,7 +1956,6 @@ body:not(.disable-custom-icons) :where(
 	svg.lucide-arrow-left,
 	svg.lucide-arrow-right,
 	svg.lucide-archive,
-	svg.lucide-calendar,
 	svg.lucide-calendar-check,
 	svg.lucide-download-cloud,
 	svg.lucide-files,
@@ -2019,7 +2018,6 @@ svg.lucide-arrow-right {
 svg.lucide-archive {
 	-webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpYnJhcnktYmlnLWljb24gbHVjaWRlLWxpYnJhcnktYmlnIj48cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iMyIgcng9IjEiLz48cGF0aCBkPSJNNyAzdjE4Ii8+PHBhdGggZD0iTTIwLjQgMTguOWMuMi41LS4xIDEuMS0uNiAxLjNsLTEuOS43Yy0uNS4yLTEuMS0uMS0xLjMtLjZMMTEuMSA1LjFjLS4yLS41LjEtMS4xLjYtMS4zbDEuOS0uN2MuNS0uMiAxLjEuMSAxLjMuNloiLz48L3N2Zz4=");
 }
-svg.lucide-calendar,
 svg.lucide-calendar-check {
     -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNoZWV0LWljb24gbHVjaWRlLXNoZWV0Ij48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIiByeT0iMiIvPjxsaW5lIHgxPSIzIiB4Mj0iMjEiIHkxPSI5IiB5Mj0iOSIvPjxsaW5lIHgxPSIzIiB4Mj0iMjEiIHkxPSIxNSIgeTI9IjE1Ii8+PGxpbmUgeDE9IjkiIHgyPSI5IiB5MT0iOSIgeTI9IjIxIi8+PGxpbmUgeDE9IjE1IiB4Mj0iMTUiIHkxPSI5IiB5Mj0iMjEiLz48L3N2Zz4=");
 }
@@ -3645,7 +3643,7 @@ input.prompt-input:hover {
 
 /* Obsidian Bases (interface) */
 .bases-header {
-	padding-inline: 8px 12px; 
+	padding-inline: 8px; 
 }
 .bases-table-header:hover {
 	--bases-table-header-color: var(--bases-table-header-color-hover); 
@@ -3664,7 +3662,7 @@ input.prompt-input:hover {
 }
 
 .popover .bases-header {
-	padding-inline: 6px; 
+	padding-inline: 7px; 
 }
 .popover .query-toolbar-item > * {
 	border-radius: var(--radius-sm);
@@ -3713,6 +3711,63 @@ input.prompt-input:hover {
 }
 
 /* Obsidian Bases (modals) */
+.query-toolbar-menu {
+	background-color: var(--background-secondary);
+	border-radius: var(--radius-l);
+}
+.query-toolbar-menu .query-toolbar-section-header {
+	color: var(--text-normal);
+    gap: 6px;
+}
+.query-toolbar-menu .input-row {
+	padding-block-end: 4px;
+}
+.query-toolbar-menu + .suggestion-container,
+.formula-editor .cm-tooltip.cm-tooltip-autocomplete {
+	border-color: var(--trans-faint-40);
+}
+.bases-toolbar-menu-form .input-row .input-row-label {
+	font-weight: var(--font-medium);
+	padding-block: 4px 8px;
+	padding-inline-start: 8px;
+}
+.query-toolbar-menu .bases-toolbar-menu-container-header {
+	padding-inline: 2px;
+	& > * {
+		margin-block: 2px; 
+		padding: 6px;
+	}
+	& > .back-button {
+		color: var(--text-faint);
+		padding-inline-start: 8px;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+	}
+	& [class*="icon"] {
+		color: var(--color-base-80);
+		--icon-stroke: 2.25px;
+	}
+}
+:is(.bases-toolbar-menu-container, .query-toolbar-menu) .bases-toolbar-menu-item,
+.bases-sort-container .text-icon-button  {
+	border-radius: var(--radius-sm);
+	margin: 2px; 
+	padding-block: 6px;
+	width: auto;
+}
+.bases-sort-container .text-icon-button {
+	border-radius: var(--radius-s);
+	margin: 1px 20px;
+	padding: 4px 14px 4px 10px;
+}
+
+/* Results limit menu */
+.query-toolbar-menu .input-row > .input-row-content {
+	margin: 2px;
+	width: auto;
+}
+
+/* Filter menu */
 .bases-query-container {
 	background-color: var(--background-primary);
 	border: 1px solid var(--trans-faint-30);
@@ -3775,35 +3830,59 @@ input.prompt-input:hover {
 	justify-content: center;
     --icon-size: var(--icon-s);
 }
-.query-toolbar-menu {
-	background-color: var(--background-secondary);
-	border-radius: var(--radius-l);
+
+/* Properties menu */
+.mod-properties .bases-toolbar-items {
+	flex-direction: column-reverse;
 }
-.query-toolbar-menu .query-toolbar-section-header {
-	color: var(--text-normal);
-    gap: 6px;
+.mod-properties .bases-toolbar-items .suggestion-group[data-group="actions"] {
+	flex-direction: row;
+	justify-content: space-evenly;
+	background-color: var(--trans-faint-05);
+	border-radius: var(--radius-sm);
+	border-top: none;
+	padding: 2px;
+	margin-inline: 2px;
+	& > * {
+		color: var(--color-base-80);
+		border-radius: var(--radius-s);
+		font-weight: var(--font-medium);
+		padding: 4px 16px;
+		--background-modifier-hover: var(--background-primary);
+	}
 }
-.query-toolbar-menu .input-row {
-	padding-block-end: 4px;
-}
-.query-toolbar-menu + .suggestion-container,
-.formula-editor .cm-tooltip.cm-tooltip-autocomplete {
-	border-color: var(--trans-faint-40);
+.mod-properties .bases-toolbar-items .suggestion-group[data-group="properties"] {
+	padding-block: 8px 0;
+	& > * {
+		border-radius: var(--radius-xl);
+		padding: 6px 8px;
+	}
+	& .bases-toolbar-menu-item > .clickable-icon {
+		background-color: var(--background-modifier-hover);
+		border-radius: var(--radius-xl);
+		padding-inline: 12px;
+	}
+	& .bases-toolbar-menu-item.mod-implicit > .clickable-icon:hover {
+		--background-modifier-hover: var(--hr-color);
+	}
+	& .bases-toolbar-menu-item.mod-hidden > .clickable-icon {
+		--background-modifier-hover: var(--trans-faint-00);
+	}
 }
 /* Formula editor */
 .query-toolbar-menu .suggestion-container {
 	animation: none;
 }
-.bases-toolbar-menu-form .formula-editor-container {
+.mod-properties .bases-toolbar-menu-form .input-row .input-row-label {
+	font-weight: inherit;
+}
+.mod-properties .bases-toolbar-menu-form .formula-editor-container {
 	box-shadow: var(--shadow-input);
 	&:focus-within {
 		box-shadow: var(--shadow-input-active);
 	}
 }
-.bases-toolbar-menu-form .input-row .input-row-label {
-	padding-inline-start: 8px;
-}
-.bases-toolbar-menu-form .input-row .input-row-status {
+.mod-properties .bases-toolbar-menu-form .input-row .input-row-status {
 	margin-block: 8px -6px;
 	padding-inline-start: 4px;
 }
