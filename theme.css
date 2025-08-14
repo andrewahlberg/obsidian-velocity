@@ -1361,6 +1361,7 @@ body:not(.disable-callout-styling) {
 		box-shadow: 
 		0 0 0 2px rgb(var(--callout-color), var(--callout-border-opacity));
 		margin-inline: 1px;
+		margin-block: 0.75rem 1.25rem;
 		outline: 1px solid var(--background-primary);
 		--bold-color: var(--text-normal);
 		--icon-stroke: var(--icon-s-stroke-width);
@@ -1391,10 +1392,10 @@ body:not(.disable-callout-styling) {
 	}
 	.callout .callout-content {
 		padding-inline: 0.125em;
-		margin-bottom: -0.25em;
+		margin-block: -0.25rem -0.5rem;
 	}
 	.callout.is-collapsible .callout-content {
-		margin-bottom: -0.75em;
+		margin-bottom: -1rem;
 	}
 	.callout-fold {
 		margin-left: auto;
@@ -3771,7 +3772,7 @@ input.prompt-input:hover {
 	padding-block: 0;
 	transition: box-shadow var(--anim-duration-superfast);
 	&:focus-within {
-		box-shadow: var(--shadow-search-active);
+		box-shadow: var(--shadow-input-active);
 	}
 }
 .bases-toolbar-menu-container .search-input-container input[type=search],
@@ -4107,7 +4108,7 @@ div[class*="el-h"] + * .dataview-container .contains-task-list {
 	--interactive-accent: transparent;
 }
 .callout #calendar-container {
-	padding-top: 8px;
+	padding-top: 1rem;
 	--background-primary: transparent;
 	--color-arrow: var(--icon-color);
     --color-dot: rgb(var(--callout-color));
