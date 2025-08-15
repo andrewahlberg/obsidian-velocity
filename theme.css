@@ -2258,9 +2258,6 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
 	background-image: none !important;
 }
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
-    padding-inline: 8px 6px;
-}
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) 
 .workspace-split.mod-vertical.mod-root {
 	padding-bottom: unset;
@@ -2526,8 +2523,11 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	/* important: fixes top tab performance */
 	overflow: hidden;
 }
+.workspace .mod-root .workspace-tab-header-container-inner {
+    padding-inline: 8px;
+}
 .workspace.is-left-sidedock-open .mod-root .workspace-tab-header-container-inner {
-	padding-inline: 0px 6px;
+	padding-inline-start: 0;
 }
 .mod-root .workspace-tab-header-container-inner {
 	height: var(--header-height);
