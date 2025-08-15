@@ -498,7 +498,7 @@ body {
 	--trans-faint-10: oklch(0.000% 0 0 / 0.0500);
 	--trans-faint-20: oklch(0.000% 0 0 / 0.0600);
 	--trans-faint-25: oklch(0.000% 0 0 / 0.0700);
-	--trans-faint-30: oklch(0.000% 0 0 / 0.0960);
+	--trans-faint-30: oklch(0.000% 0 0 / 0.0920);
 	--trans-faint-40: oklch(0.000% 0 0 / 0.1140);
 	--trans-faint-50: oklch(0.000% 0 0 / 0.1450);
 	--trans-faint-60: oklch(0.000% 0 0 / 0.3200); 
@@ -649,8 +649,8 @@ body {
 
 	& .mod-root, .mod-sidedock {
 	--shadow-workspace: 
-		0 0 0 1px var(--trans-faint-25),
-		0 3px 6px 0px var(--trans-faint-10),
+		0 0 0 0.875px var(--trans-faint-25),
+		0 2.5px 4px 0px var(--trans-faint-10),
 		0px 15px 30px var(--trans-faint-25);	
 	--shadow-workspace-multi:
 		0 0 0 1px var(--trans-faint-20),
@@ -2643,17 +2643,19 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	padding-inline: 8px;
 	z-index: var(--layer-popover);
 }
-.view-header-left,
-.view-actions {
+.view-header > 
+:is(.view-header-left, .view-actions) {
 	padding-block-start: 2px;
+	& .clickable-icon {
+		padding-block: 9px;
+	}
 }
-
 /* View header Title */
 .view-header-title-container {
 	padding-inline-end: 4px;
 }
 .view-header-title-container > * {
-	padding-block-start: 3px;
+	padding-block-start: 2px;
 }
 .view-header-title {
 	color: var(--color-base-80) !important;
