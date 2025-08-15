@@ -1796,18 +1796,18 @@ mjx-math {
 .metadata-property:not([data-property-key="tags"]) {
 	--link-color: var(--color-accent-1);
 }
-.bases-td:not([data-property="note.tags"]) .multi-select-pill,
+.bases-td .multi-select-pill,
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill {
 	box-shadow: var(--shadow-input);
 	padding-inline: var(--pill-padding-x);
 	--pill-color: var(--icon-color);
     --pill-padding-x: 0.625em 0.3125em; 
-    --pill-padding-y: 0.1em;
+    --pill-padding-y: 0.125em;
 }
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill-content {
     margin-inline-end: 0.0875em;
 }
-.bases-td:not([data-property="note.tags"]) .multi-select-pill-remove-button:hover,
+.bases-td .multi-select-pill-remove-button:hover,
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill-remove-button:hover {
 	background: var(--warning-gradient);
 }
@@ -1821,7 +1821,6 @@ mjx-math {
 	background: var(--hotkey-gradient);
 	color: var(--text-on-accent);
 }
-.bases-td[data-property="note.tags"] .multi-select-pill,
 .metadata-property[data-property-key="tags"] .multi-select-pill {
 	background: var(--tag-background-image);
 	box-shadow: var(--tag-shadow);
@@ -1829,7 +1828,6 @@ mjx-math {
 	font-weight: var(--font-medium);
 	line-height: 1.0625;
 }
-.bases-td[data-property="note.tags"] .multi-select-pill-remove-button:not(:hover),
 .metadata-property[data-property-key="tags"] .multi-select-pill-remove-button:not(:hover) {
 	color: var(--color-accent-4);
 }
@@ -3568,6 +3566,9 @@ input.prompt-input:hover {
 .bases-table-container {
 	--interactive-accent: var(--color-base-40);
 	--metadata-input-text-color: var(--text-normal);
+	--tag-padding-x: 0.625rem;
+	--tag-size: 0.8rem;
+	--tag-weight: var(--font-medium);
 }
 
 .bases-thead {
@@ -3602,6 +3603,11 @@ input.prompt-input:hover {
 }
 
 /* Pills/Tags in Bases */
+.bases-td .value-list-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1px 2px;
+}
 .bases-td .multi-select-container {
 	gap: 4px;
 	padding: 4px 2px;
@@ -3612,13 +3618,7 @@ input.prompt-input:hover {
 .bases-table-container.mod-multiline  .bases-table-cell {
     align-items: center;
 }
-.bases-td[data-property="note.tags"] .multi-select-pill {
-	color: var(--tag-color);
-	border: 1px solid var(--tag-border-color);
-	border-radius: var(--radius-xl);
-	padding: var(--tag-padding-y) var(--tag-padding-x);
-	padding-inline-end: var(--tag-padding-y);
-}
+
 .bases-tbody {
     background-image: 
 		repeating-linear-gradient(180deg, 
