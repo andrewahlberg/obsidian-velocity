@@ -167,6 +167,7 @@ body {
 
 	/* Bold */
 	--bold-color: var(--color-base-100);
+	--bold-modifier: 225;
 
 	/* Buttons */
 	--button-radius: var(--radius-s);
@@ -1925,11 +1926,15 @@ a.tag:active {
     padding: 8px;
 }
 /* sidebar toggle alignment */
+.sidebar-toggle-button {
+    padding-block: 8px;
+	margin-top: 1px;
+}
 .sidebar-toggle-button.mod-left {
     padding-inline: 2px;
 }
 .sidebar-toggle-button .clickable-icon {
-    width: 32px;
+    width: 34px;
 	--icon-color: var(--text-muted);
 }
 .menu-item-icon svg {
@@ -2253,9 +2258,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
 	background-image: none !important;
 }
-/* body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .workspace-tab-header-container-inner {
     padding-inline: 8px 6px;
-} */
+}
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) 
 .workspace-split.mod-vertical.mod-root {
 	padding-bottom: unset;
@@ -2528,7 +2533,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	height: var(--header-height);
 	padding-block: 0;
 	align-items: center;
-	column-gap: 2px;
+	column-gap: 4px;
 }
 .mod-sidedock .workspace-tab-header-container-inner {
 	height: 40px;
