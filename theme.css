@@ -3680,10 +3680,6 @@ input.prompt-input:hover {
 }
 
 /* query toolbar pills */
-.bases-header .query-toolbar {
-	--query-button-color: oklch(from var(--color-cyan) l c h / 0.75);
-	--query-button-color: var(--color-cyan);
-}
 .query-toolbar-item > * {
 	background-color: var(--background-secondary);
 	border-radius: var(--radius-xl);
@@ -3692,30 +3688,25 @@ input.prompt-input:hover {
 	--input-font-weight: var(--font-medium);
 	--icon-size: var(--icon-s);
 }
-.query-toolbar-item.mod-views > * {
-	background-color: oklch(from var(--query-button-color) l c h / 0.0625);
-	--text-normal: var(--query-button-color);
-	&:hover {
-		background-color: oklch(from var(--query-button-color) l c h / 0.125);
-	}
-}
+
 .query-toolbar-item.mod-views .mod-aux {
 	display: none;
 }
 .query-toolbar .bases-toolbar-result-count > * {
-	color: var(--query-button-color);
 	background-color: var(--background-modifier-active-hover);
 	padding: 2px 6px 0;
 	--background-modifier-active-hover: transparent;
-	--icon-color-active: var(--query-button-color);
 }
 .query-toolbar-item:not(.mod-views, .bases-toolbar-result-count) > .text-icon-button {
 	padding: 0 8px;
 }
-.query-toolbar-item:not(.mod-views, .mod-properties, .mod-add-note,.bases-toolbar-result-count) > .text-icon-button.is-active {
-	color: var(--color-accent-1);
+.query-toolbar-item.mod-views > .text-icon-button,
+.query-toolbar-item:not(.mod-properties, .mod-add-note, .bases-toolbar-result-count) > 
+.text-icon-button.is-active {
+	color: var(--text-normal);
 	background-color: var(--color-accent-5);
 	--icon-color-hover: var(--color-accent);
+	--text-normal: var(--color-accent-1);
 	&:hover {
 		background-color: var(--text-selection);
 	}
