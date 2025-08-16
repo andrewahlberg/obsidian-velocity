@@ -3655,12 +3655,6 @@ input.prompt-input:hover {
 .bases-embed .bases-header {
 	padding-inline: 0 4px;
 }
-.bases-embed .bases-tbody {
-	background-image: none;
-}
-.bases-embed .bases-tbody > .bases-tr:nth-child(odd) > .bases-td {
-    background-color: var(--table-row-alt-background);
-}
 .bases-view[data-view-type="table"] {
     --bases-embed-border-width: 0;
 }
@@ -3800,10 +3794,6 @@ input.prompt-input:hover {
 	border: none;
 	margin: 2px 2px 8px;
 	padding-block: 0;
-	transition: box-shadow var(--anim-duration-superfast);
-	&:focus-within {
-		box-shadow: var(--shadow-input-active);
-	}
 }
 .bases-toolbar-menu-container .search-input-container input[type=search],
 .bases-toolbar-menu-container .search-input-container::before {
@@ -3888,8 +3878,9 @@ input.prompt-input:hover {
 	}
 }
 .bases-sort-container .text-icon-button {
+	border-radius: var(--radius-sm);
 	padding-inline-start: 6px;
-	margin-inline: 2px;
+	margin: -2px 2px 0;
 	width: calc(100% - 4px);
 }
 .bases-sort-container .text-icon-button > .text-button-label {
