@@ -157,10 +157,10 @@ body {
 	--bases-table-row-border-width: 0;
 	--bases-table-text-size: var(--table-text-size);
 	--bases-table-row-height: 32px;
-	--bases-cards-background: var(--trans-faint-00);
-	--bases-cards-border-width: 0;
-	--bases-cards-shadow: var(--shadow-code);
-	--bases-cards-shadow-hover: var(--shadow-code), var(--shadow-themes);
+	--bases-cards-label-size: 0.75rem;
+	--bases-cards-label-color: 
+		color-mix(in oklab, var(--color-base-50), var(--color-base-60));
+	--bases-cards-text-size: var(--font-small);
 
 	/* Blockquotes */
 	--blockquote-border-thickness: 0;
@@ -549,6 +549,7 @@ body {
 	--color-accent-5: color-mix(in oklch, var(--text-selection) 100%, transparent 75%);
 	--color-accent-6: color-mix(in oklch, var(--text-selection) 40%, transparent 100%);
 
+	--bases-cards-background: oklch(from var(--trans-faint-05) l 0.075 var(--base-hue));
 	--blockquote-color: var(--code-normal);
 	--blockquote-border-color: var(--color-base-25);
 	--blockquote-background-color: var(--trans-faint-00);
@@ -639,7 +640,7 @@ body {
 	--shadow-themes: 
 		0px 8px 16px 0px var(--trans-faint-20);	
 	--shadow-track:
-		0 1px 0px 0.75px var(--background-primary),
+		0 1px 0px 0.75px var(--trans-strong-30),
 		inset 0 0.5px 1px 0px var(--trans-faint-30),
 		inset 0 4px 20px -4px var(--trans-faint-30);
 	--shadow-toggle:
@@ -649,6 +650,10 @@ body {
 		inset 0 1.5px 3px 0px var(--trans-faint-50);
 
 	& .mod-root, .mod-sidedock {
+	--bases-cards-shadow: 
+		var(--shadow-code);
+	--bases-cards-shadow-hover: 
+		0 0.125px 0px 0.375px var(--trans-faint-60);
 	--shadow-workspace: 
 		0 0 0 0.875px var(--trans-faint-25),
 		0 2.5px 4px 0px var(--trans-faint-10),
@@ -789,6 +794,7 @@ body {
 	--color-accent-5: color-mix(in oklab, var(--text-selection) 100%, transparent 75%);
 	--color-accent-6: color-mix(in oklab, var(--text-selection) 40%, transparent 100%); 
 
+	--bases-cards-background: var(--trans-faint-05);
 	--blockquote-color: var(--color-base-80);
 	--blockquote-border-color: var(--color-base-30);
 	--blockquote-background-color: var(--trans-faint-05);
@@ -886,7 +892,11 @@ body {
 	--shadow-toggle-active:
 		inset 0 1.5px 3px 0px var(--trans-dark-00);
 
-	& .mod-root {
+	& .mod-root, .mod-sidedock {
+	--bases-cards-shadow: 
+		var(--shadow-code);
+	--bases-cards-shadow-hover: 
+		0 0 0 0.375px var(--trans-faint-60);
 	--shadow-workspace: 
 		0px 0 0px 1px var(--trans-faint-20),
 		0px 6px 36px -4px var(--color-base-05),
@@ -1239,13 +1249,15 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 /*--> Typography variation settings <--*/
 
 .markdown-source-view,
-.markdown-preview-view {
+.markdown-preview-view,
+.bases-table-cell,
+.bases-cards-property {
 	font-feature-settings: 'cv11';
 }
 thead,
-.bases-cards-item,
 .bases-header,
 .bases-thead,
+.bases-cards-property.mod-title,
 .tag,
 .metadata-content,
 #calendar-container {
@@ -3603,7 +3615,8 @@ input.prompt-input:hover {
 }
 
 .metadata-input.mod-date,
-.bases-td .metadata-input {
+.bases-td .metadata-input,
+.bases-cards-line .metadata-input.mod-datetime {
 	box-shadow: none !important;
 	font-weight: var(--font-normal);
 	letter-spacing: -0.5px;
@@ -3642,6 +3655,9 @@ input.prompt-input:hover {
 }
 
 /* Obsidian Bases (embedded) */
+.bases-embed .bases-header {
+	padding-inline: 0 4px;
+}
 .bases-embed .bases-tbody {
 	background-image: none;
 }
@@ -3650,6 +3666,9 @@ input.prompt-input:hover {
 }
 .bases-view[data-view-type="table"] {
     --bases-embed-border-width: 0;
+}
+.bases-embed .bases-cards-item{
+	font-size: var(--bases-cards-text-size);
 }
 
 /* Obsidian Bases (interface) */
@@ -3661,9 +3680,6 @@ input.prompt-input:hover {
 	--icon-color: var(--bases-table-header-color-hover); 
 }
 
-.bases-embed .bases-header {
-	padding-inline: 0 4px;
-}
 .markdown-source-view .bases-embed .bases-header {
 	padding-inline-end: 36px;
 }
@@ -3709,6 +3725,32 @@ input.prompt-input:hover {
 	--text-normal: var(--color-accent-1);
 	&:hover {
 		background-color: var(--text-selection);
+	}
+}
+
+/* Obsidian Bases (cards) */
+.bases-cards-item {
+	padding: 8px 2px 4px;
+	font-weight: var(--font-normal);
+	transition: box-shadow var(--anim-duration-superfast) var(--anim-motion-smooth);
+}
+.bases-cards-property.mod-title {
+	> .bases-cards-line {
+		color: var(--color-base-100);
+		font-size: 1.125em;
+		font-weight: var(--font-medium);
+		line-height: 1.375;
+		padding-block: 0;
+	}
+}
+.bases-cards-property {
+	> .bases-cards-label {
+		color: var(--bases-cards-label-color);
+		font-size: var(--bases-cards-label-size);
+	}
+	a.tag {
+		font-weight: var(--font-medium);
+		line-height: 1.25rem;
 	}
 }
 
@@ -3891,7 +3933,7 @@ input.prompt-input:hover {
 	}
 	.combobox-button.filter-operator {
 		font-style: italic;
-		min-width: 25%;
+		min-width: 11.25%;
 		padding-inline: 6px;
 		--text-normal: var(--color-base-80);
 	}
@@ -3946,23 +3988,31 @@ input.prompt-input:hover {
 }
 .mod-properties .bases-toolbar-items .suggestion-group[data-group="properties"] {
 	padding-block: 8px 0;
-	& > * {
+	> * {
 		border-radius: var(--radius-xl);
 		padding: 6px 8px;
 	}
-	& .bases-toolbar-menu-item .bases-toolbar-menu-item-info {
+	.bases-toolbar-menu-item .bases-toolbar-menu-item-info {
 		order: -1;
+		overflow: visible;
 	}
-	& .bases-toolbar-menu-item > .clickable-icon {
+	.bases-toolbar-menu-item > .clickable-icon {
 		background-color: var(--background-modifier-hover);
 		border-radius: var(--radius-xl);
 		padding-inline: 12px;
 	}
-	& .bases-toolbar-menu-item.mod-implicit > .clickable-icon:hover {
+	.bases-toolbar-menu-item.mod-implicit > .clickable-icon:hover {
 		--background-modifier-hover: var(--hr-color);
 	}
-	& .bases-toolbar-menu-item.mod-hidden > .clickable-icon {
+	.bases-toolbar-menu-item.mod-hidden > .clickable-icon {
 		--background-modifier-hover: var(--trans-faint-00);
+	}
+	.bases-toolbar-menu-item-info-icon {
+		contain: content;
+		transition: var(--anim-duration-superfast) var(--anim-motion-swing);
+	}
+	.bases-toolbar-menu-item-info-icon:is(:hover, :active) {
+		color: var(--color-accent);
 	}
 }
 /* Formula editor */
