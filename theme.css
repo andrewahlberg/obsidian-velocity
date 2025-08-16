@@ -3621,9 +3621,6 @@ input.prompt-input:hover {
 	font-weight: var(--font-normal);
 	letter-spacing: -0.5px;
 }
-.bases-embed .bases-td .metadata-input {
-	letter-spacing: -0.75px;
-}
 
 /* Pills/Tags in Bases */
 .bases-td .value-list-container {
