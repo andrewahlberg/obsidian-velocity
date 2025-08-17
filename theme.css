@@ -4528,32 +4528,51 @@ button.kanban-plugin__new-item-button {
 
 /*--> Vertical Tabs <--*/
 
-/* tabs */
-body:not(.is-mobile) .obsidian-vertical-tabs-container * {
-    cursor: default !important;
+body:not(.is-mobile) .vertical-tabs .nav-header .clickable-icon {
+	color: var(--color-base-40);
+	&:not(.is-disabled) {
+		color: var(--text-muted);
+	}
 }
-.obsidian-vertical-tabs-container .tree-item.is-tab {
-	margin-left: 0;
-}
-.obsidian-vertical-tabs-container .tree-item.is-tab .tree-item-self {
-	padding-inline-start: 28px;
-	column-gap: 2px;
-	--icon-color: var(--collapse-icon-color);
-}
-.obsidian-vertical-tabs-container .tree-item.is-tab.is-highlighted .tree-item-self {
-    background-color: var(--nav-item-background-active);
-    font-weight: var(--nav-file-weight);
-	--icon-color: unset;
+body:not(.is-mobile) .vertical-tabs > .obsidian-vertical-tabs-container {
+	padding-block-start: 12px;
+	.tree-item.is-group .tree-item-children {
+		display: flex;
+		flex-direction: column;
+		row-gap: 4px;
+	}
+	.tree-item.is-tab {
+		height: 32px;
+		margin-left: 0;
+	}
+	.tree-item.is-tab > .tree-item-self.tree-item-self.is-clickable {
+		color: var(--color-base-80);
+		font-weight: inherit;
+		margin-block: 0;
+		padding-inline-start: 28px;
+	}
+	.tree-item.is-tab.is-highlighted > .tree-item-self.is-clickable {
+		color: var(--text-normal);
+		font-weight: inherit;
+		background-color: var(--nav-item-background-active);
+	}
+	.tree-item.is-tab-slot .tree-item-self {
+		height: 32px;
+	}
 }
 /* other elements */
-.obsidian-vertical-tabs-container .is-group-slot {
+body:not(.is-mobile) .obsidian-vertical-tabs-container .is-group-slot {
     margin-top: 4px;
-}
-.obsidian-vertical-tabs-container .is-group-slot .tree-item-self {
-    padding-inline-start: 28px;
-	margin-top: 4px;
-	transition: color var(--anim-duration-superfast) var(--anim-motion-swing);
-	--nav-item-background-hover: var(--trans-faint-05);
+	--background-modifier-border: var(--trans-faint-25);
+	.tree-item-self {
+		padding-inline-start: 28px;
+		margin-top: 4px;
+		transition: color var(--anim-duration-superfast) var(--anim-motion-swing);
+		--nav-item-background-hover: var(--color-accent-5);
+		&:hover {
+			color: var(--link-color);
+		}
+	}
 }
 
 /*--> Pomodoro Timer <--*/
