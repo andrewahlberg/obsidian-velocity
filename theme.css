@@ -4712,31 +4712,11 @@ body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-ta
     padding-right: 6px;
 }
 
-/*--> Sidebar Highlights <--*/
+/*--> Recent Files <--*/
 
-/* .highlights-search-container, 
-.highlights-tabs-container {
-	--background-primary: transparent;
+.recent-files-file .nav-file-tag {
+	margin-inline-start: 4px;
 }
-.highlights-list > * {
-	font-weight: var(--font-medium);
-}
-.highlight-item-card {
-    background-color: var(--search-result-background) !important;
-	border-left-width: 4px;
-}
-.highlight-item-card.highlight-native-comment {
-    border-left-color: var(--text-faint) !important;
-}
-.highlight-item-card.highlight-native-comment.highlight-selected {
-    box-shadow: 0 0 0 1.5px var(--text-faint), var(--shadow-s) !important;
-}
-.highlight-item-card.highlight-color-yellow {
-    border-left-color: var(--text-highlight-color);
-}
-.highlight-item-card.highlight-color-yellow.highlight-selected {
-    box-shadow: 0 0 0 1.5px var(--text-highlight-color), var(--shadow-s);
-} */
 
 /*--> Style Settings <--*/
 
