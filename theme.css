@@ -333,8 +333,9 @@ body {
 	/* Paragraphs */
 
 	/* PDF view */
-
-	/* Popovers - file previews */
+	--pdf-shadow: none !important;
+	--pdf-spread-shadow: none;
+	--pdf-thumbnail-shadow: var(--shadow-code), var(--shadow-s);
 
 	/* Prompts - e.g. quick switcher, command palette */
 	--prompt-border-color: var(--trans-faint-40);
@@ -3011,6 +3012,96 @@ body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked
     padding: 0 0 0 4px;
 }
 
+/*--> PDF toolbar <--*/
+
+.pdf-toolbar {
+    padding: 12px 16px 4px;
+}
+
+.pdf-toolbar-left {
+	.clickable-icon {
+		padding: 6px 12px;
+		--icon-stroke: 1.875px;
+		--icon-color: var(--text-muted);
+	}
+	> :is(.pdf-toolbar-spacer, .pdf-toolbar-divider)
+	+ .clickable-icon {
+		contain: content;
+		background-color: var(--background-primary);
+		box-shadow: var(--shadow-fab);
+		padding: 8px 12px;
+		> * {
+			transition: var(--anim-duration-fast) var(--anim-motion-swing);
+		}
+			&:active > * {
+			transform: scale(0.8125);
+		}
+	}
+	.pdf-toolbar-divider {
+		visibility: hidden;
+		margin-inline: -4.5px;
+	}
+	.pdf-toolbar-spacer + .clickable-icon {
+		border-radius: 40px 0 0 40px;
+		padding-inline-end: 10px;
+		transform-origin: right;
+		clip-path: inset(-8px 0 -8px -8px);
+	}
+	.pdf-toolbar-divider + .clickable-icon {
+		border-radius: 0 40px 40px 0;
+		padding-inline-start: 10px;
+		margin-inline-end: 4px;
+		transform-origin: left;
+		clip-path: inset(-8px -8px -8px 0);
+	}	
+	.pdf-page-input {
+		margin-inline-end: 2px;
+		width: 7.5ch;
+		--input-height: 26px;
+		--input-radius: var(--radius-s);
+	}
+}
+.pdf-sidebar-container .thumbnail {
+	border-radius: var(--radius-ml);
+}
+.pdf-sidebar-container .thumbnail > img,
+.pdf-sidebar-container .thumbnail::before  {
+	border-radius: var(--radius-s);
+}
+/* Sidebar PDF viewer */
+.mod-sidedock .workspace-leaf-content[data-type="pdf"] {
+	margin-block: -6px;
+	.pdf-toolbar {
+		padding: 8px 10px 6px;
+	}
+	.view-content {
+		border-radius: var(--radius-m);
+		box-shadow: var(--shadow-sidebar);
+		margin: 4px 4px 0;
+		width: calc(100% - 8px);
+		height: calc(100% - 4px);
+	}
+}
+
+/* Sidebar with special workspace-leaf-content */
+.mod-sidedock .workspace-leaf-content:is([data-type="kanban"]) {
+	background-color: var(--background-primary);
+	border-radius: var(--radius-m);
+	box-shadow: var(--shadow-sidebar);
+	margin: 2px 8px 10px;
+	padding-block-end: 0 !important;
+	width: calc(100% - 16px);
+	height: calc(100% - 12px);
+	::-webkit-scrollbar {
+		display: initial;
+	}
+}
+.mod-right-split .workspace-leaf-content:is([data-type="kanban"]) {
+	&:only-of-type {
+		height: calc(100% - 48px);
+		margin-bottom: 46px;
+	}
+}
 /*
 =========================== ===========================
 			4 - Modals
