@@ -111,6 +111,22 @@ settings:
 	description: Decreases the margin sizes of smaller headings.
 	type: class-toggle
 -
+	id: code-special
+	title: Enable unique color for inline code
+	type: variable-select
+	default: var(--code-normal)
+	allowEmpty: false
+	options:
+	- 
+		label: Text
+		value: var(--code-normal)
+	- 
+		label: Red
+		value: var(--color-red)
+	- 
+		label: Green
+		value: var(--color-green)
+- 
 	description: (WIP) Enable snippets
 	type: info-text
 	markdown: true
@@ -185,9 +201,10 @@ body {
 	--checklist-done-color: color-mix(in oklab, var(--color-base-50), var(--color-base-60));
 
 	/* Code */
+	--code-radius: 5px;
 	--code-border-width: 1px;
 	--code-normal: color-mix(in oklab, var(--color-base-80), var(--text-normal));
-	--code-radius: 5px;
+	--code-special: var(--code-normal);
 
 	/* Collapse icons */
 
@@ -1495,6 +1512,7 @@ body:not(.disable-callout-styling)
 /*--> Code <--*/
 
 .markdown-rendered code {
+	color: var(--code-special);
 	font-variation-settings: 'wght' 600;
 	border-width: 0;
 	box-shadow: var(--shadow-code);
@@ -1504,7 +1522,7 @@ pre[class*="language-"] code,
 .markdown-rendered pre code {
 	box-shadow: none;
 	padding-inline: 0.125em;
-	
+	--code-special: var(--code-normal);
 }
 .markdown-rendered pre  {
 	border: none;
@@ -3114,8 +3132,6 @@ body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked
 .modal {
 	background-color: var(--background-secondary);
 	font-weight: var(--font-normal);
-	--background-modifier-form-field: var(--background-primary);
-	--background-modifier-form-field-hover: var(--background-primary);
 }
 .mod-confirmation .modal {
 	background-color: var(--trans-strong-10);
@@ -4128,15 +4144,24 @@ input.prompt-input:hover {
 .mod-root .workspace-tab-header-inner-icon {
     padding-inline: 2px 0;
 }
-
+/* Address input */
 .webviewer-address input {
-	background-color: var(--color-base-00);
-	color: var(--text-normal);
-    box-shadow: var(--shadow-sidebar);
+    box-shadow: var(--shadow-input);
 	font-weight: var(--font-normal);
 	padding-inline-start: 12px;
+	--background-modifier-form-field-hover: var(--color-base-00);
+	--input-height: 32px;
 }
-
+.suggestion-container:has(.webviewer-addressbar-suggestion) {
+	max-height: none;
+}
+.suggestion-container .webviewer-addressbar-suggestion {
+	padding-block: 12px;
+}
+.suggestion-container .webviewer-addressbar-suggestion:last-of-type {
+	margin-block-end: 0;
+}
+/* Page content Search */
 .webviewer-content .document-search-container {
 	box-shadow: var(--shadow-workspace-multi), var(--shadow-s);
 	top: 44px;
@@ -4292,14 +4317,14 @@ div[class*="el-h"] + * .dataview-container .contains-task-list {
 
 #calendar-container {
 	padding-inline: 0;
-    --color-dot: var(--color-orange);
+    --color-dot: var(--color-accent-1);
     --color-arrow: var(--color-base-50);
     --color-button: var(--text-muted);
-    --color-text-today: var(--color-orange);
+    --color-text-today: var(--color-accent-1);
     --color-text-weeknum: var(--text-muted);
 	--table-row-alt-background: none;
 	--table-row-alt-background-hover: none;
-	--table-highlight: oklch(from var(--color-orange) l 0.25 h / 0.075);
+	--table-highlight: var(--color-accent-5);
 	--interactive-accent: transparent;
 }
 .callout #calendar-container {
@@ -4546,6 +4571,7 @@ button.editingToolbarSettingsButton {
 button:not(.mod-cta):not(.mod-warning).editingToolbarSettingsIcon {
 	box-shadow: var(--shadow-input) !important;
 }
+
 /*--> Kanban <--*/
 
 .kanban-plugin__scroll-container {
