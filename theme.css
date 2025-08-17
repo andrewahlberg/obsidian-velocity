@@ -3030,12 +3030,15 @@ body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked
     padding: 0 0 0 4px;
 }
 
-/*--> PDF toolbar <--*/
+/*--> PDF viewer <--*/
+
+.pdfViewer .page {
+    border: 0;
+}
 
 .pdf-toolbar {
     padding: 12px 16px 4px;
 }
-
 .pdf-toolbar-left {
 	.clickable-icon {
 		padding: 6px 12px;
@@ -3045,7 +3048,7 @@ body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked
 	> :is(.pdf-toolbar-spacer, .pdf-toolbar-divider)
 	+ .clickable-icon {
 		contain: content;
-		background-color: var(--background-primary);
+		background-color: var(--fab-bg);
 		box-shadow: var(--shadow-fab);
 		padding: 8px 12px;
 		> * {
