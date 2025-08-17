@@ -2591,7 +2591,9 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 }
 .workspace-tab-header-inner-close-button,
 .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
+	border-radius: var(--radius-xs);
     color: var(--icon-color);
+	padding: 4px;
 	--icon-stroke: 2.125px;
 }
 
@@ -2659,6 +2661,9 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 .view-header {
 	padding-inline: 8px;
 	z-index: var(--layer-popover);
+}
+.view-header > .view-header-left .clickable-icon {
+	--icon-color: var(--text-muted);
 }
 .view-header > 
 :is(.view-header-left, .view-actions) {
