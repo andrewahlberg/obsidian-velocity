@@ -1957,8 +1957,12 @@ a.tag:active {
 
 /*--> Icons <--*/
 
-.clickable-icon {
-	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
+button.clickable-icon {
+	transition: filter var(--anim-duration-superfast) var(--anim-motion-swing);
+}
+.clickable-icon[aria-disabled='true'] {
+    opacity: unset;
+	filter: opacity(0.4);
 }
 :is(.workspace-sidedock-vault-profile,.view-header) .clickable-icon {
     padding: 8px;
@@ -2312,6 +2316,9 @@ body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-op
 	}
 	.mod-horizontal:not(.last-child) {
 		border-right: 1px solid var(--divider-color);
+	}
+	.empty-state {
+		padding-block-end: 8px;
 	}
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .side-dock-ribbon {
@@ -3123,6 +3130,129 @@ body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked
 		margin-bottom: 46px;
 	}
 }
+
+/*--> Empty State <--*/
+
+.empty-state-container {
+	width: 200px;
+	height: 200px;
+}
+.empty-state-container > .empty-state-title {
+	display: none;
+}
+.empty-state-container > .empty-state-action-list {
+	display: flex;
+	flex-wrap: wrap;
+	height: 100%;
+	margin: 0;
+	background-color: var(--trans-faint-00);
+	border-radius: var(--radius-l);
+
+	> .empty-state-action {
+		flex: 1 1;
+		align-content: center;
+		justify-items: center;
+		min-width: 100px;
+		height: 100px;
+		color: var(--text-faint);
+		font-size: 0;
+		--icon-margin-base: 40px;
+		--icon-margin-sizer: calc(var(--icon-margin-base) * 2);
+		&:hover {
+			background-color: var(--trans-strong-20);
+			&::after {
+				filter: brightness(1.25);
+			}
+		}
+		&::before {
+			content: "";
+			display: block;
+			align-items: center;
+			height: 100%;
+			width: 100%;
+			background-color: currentColor;
+			transition: var(--anim-duration-superfast) var(--anim-motion-smooth);
+			-webkit-mask-size: 33.33%;
+			-webkit-mask-position: 50% calc(50% - 6px);	
+			-webkit-mask-repeat: no-repeat;
+		}
+		&::after {
+			content: "New note";
+			color: var(--icon-color);
+			display: block;
+			align-items: center;
+			font-size: var(--font-ui-smaller);
+			font-weight: var(--font-semibold);
+			transform: translateY(-215%);
+		}
+	}
+	> .empty-state-action:nth-of-type(1) {
+		border-top-left-radius: var(--radius-l);
+		box-shadow: 
+		-0.375px -0.375px 0px 0.5px var(--hr-color),
+		inset 1px 2px 2px 0px var(--trans-strong-00),
+		inset -0.125px -0.125px 0 0 var(--color-base-50);
+		&::before {
+			-webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZpbGUtcGx1czItaWNvbiBsdWNpZGUtZmlsZS1wbHVzLTIiPjxwYXRoIGQ9Ik00IDIyaDE0YTIgMiAwIDAgMCAyLTJWN2wtNS01SDZhMiAyIDAgMCAwLTIgMnY0Ii8+PHBhdGggZD0iTTE0IDJ2NGEyIDIgMCAwIDAgMiAyaDQiLz48cGF0aCBkPSJNMyAxNWg2Ii8+PHBhdGggZD0iTTYgMTJ2NiIvPjwvc3ZnPg==");
+		}
+	}
+	> .empty-state-action:nth-of-type(2) {
+		border-top-right-radius: var(--radius-l);
+		box-shadow: 
+		0.375px -0.375px 0px 0.5px var(--hr-color),
+		inset -1px 2px 2px 0px var(--trans-strong-00),
+		inset -0.125px -0.125px 0 0 var(--color-base-50);
+		&::before {
+			-webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZvbGRlci1zZWFyY2gtaWNvbiBsdWNpZGUtZm9sZGVyLXNlYXJjaCI+PHBhdGggZD0iTTEwLjcgMjBINGEyIDIgMCAwIDEtMi0yVjVhMiAyIDAgMCAxIDItMmgzLjlhMiAyIDAgMCAxIDEuNjkuOWwuODEgMS4yYTIgMiAwIDAgMCAxLjY3LjlIMjBhMiAyIDAgMCAxIDIgMnY0LjEiLz48cGF0aCBkPSJtMjEgMjEtMS45LTEuOSIvPjxjaXJjbGUgY3g9IjE3IiBjeT0iMTciIHI9IjMiLz48L3N2Zz4=");
+		}
+		&::after {
+			content: "Search";
+		}
+	}
+	> .empty-state-action:nth-of-type(3) {
+		border-bottom-left-radius: var(--radius-l);
+		box-shadow: 
+		-0.375px 0.375px 0px 0.5px var(--hr-color),
+		inset 1px 0px 2px 0px var(--trans-strong-00),
+		inset -0.125px -0.125px 0 0 var(--color-base-50);
+		&::before {
+			-webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWxpYnJhcnktYmlnLWljb24gbHVjaWRlLWxpYnJhcnktYmlnIj48cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iMyIgcng9IjEiLz48cGF0aCBkPSJNNyAzdjE4Ii8+PHBhdGggZD0iTTIwLjQgMTguOWMuMi41LS4xIDEuMS0uNiAxLjNsLTEuOS43Yy0uNS4yLTEuMS0uMS0xLjMtLjZMMTEuMSA1LjFjLS4yLS41LjEtMS4xLjYtMS4zbDEuOS0uN2MuNS0uMiAxLjEuMSAxLjMuNloiLz48L3N2Zz4=");
+		}
+		&::after {
+			content: "Recent";
+		}
+	}
+	> .empty-state-action:nth-of-type(4) {
+		border-bottom-right-radius: var(--radius-l);
+		box-shadow: 
+		0.375px 0.375px 0px 0.5px var(--hr-color),
+		inset -1px 0px 2px 0px var(--trans-strong-00),
+		inset -0.125px -0.125px 0 0 var(--color-base-50);
+		&::before {
+			-webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdsb2JlLWljb24gbHVjaWRlLWdsb2JlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0xMiAyYTE0LjUgMTQuNSAwIDAgMCAwIDIwIDE0LjUgMTQuNSAwIDAgMCAwLTIwIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=");
+		}
+		&::after {
+			content: "Web View";
+		}
+	}
+	> .empty-state-action.mod-close {
+		border-bottom-right-radius: var(--radius-l);
+		box-shadow: 
+		0.25px 0.25px 0px 0.5px var(--hr-color),
+		inset -1px 0px 2px 0px var(--trans-strong-00),
+		inset -0.125px -0.125px 0 0 var(--color-base-50);
+		&::before {
+			-webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjc1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWdsb2JlLWljb24gbHVjaWRlLWdsb2JlIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCIvPjxwYXRoIGQ9Ik0xMiAyYTE0LjUgMTQuNSAwIDAgMCAwIDIwIDE0LjUgMTQuNSAwIDAgMCAwLTIwIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=");
+		}
+		&::after {
+			content: "Close";
+		}
+	}
+	> .empty-state-action:nth-of-type(5) {
+		display: none;
+	}
+}
+
 /*
 =========================== ===========================
 			4 - Modals
@@ -4149,12 +4279,14 @@ input.prompt-input:hover {
 }
 /* Address input */
 .webviewer-address input {
-    box-shadow: var(--shadow-input);
 	font-weight: var(--font-normal);
-	padding-inline-start: 12px;
-	--background-modifier-form-field-hover: var(--color-base-00);
-	--input-height: 32px;
+	transition: var(--anim-duration-fast) ease-in-out;
+	--background-modifier-form-field: var(--background-primary);
+	--background-modifier-form-field-hover: var(--background-primary);
+	--input-height: 30px;
+	--shadow-input-active: var(--shadow-input), var(--shadow-s);
 }
+
 .suggestion-container:has(.webviewer-addressbar-suggestion) {
 	max-height: none;
 }
@@ -4164,6 +4296,11 @@ input.prompt-input:hover {
 .suggestion-container .webviewer-addressbar-suggestion:last-of-type {
 	margin-block-end: 0;
 }
+
+.webviewer-content {
+	border-top: none;
+}
+
 /* Page content Search */
 .webviewer-content .document-search-container {
 	box-shadow: var(--shadow-workspace-multi), var(--shadow-s);
@@ -4320,7 +4457,7 @@ div[class*="el-h"] + * .dataview-container .contains-task-list {
 
 #calendar-container {
 	padding-inline: 0;
-    --color-dot: var(--color-accent-1);
+    --color-dot: var(--color-base-50);
     --color-arrow: var(--color-base-50);
     --color-button: var(--text-muted);
     --color-text-today: var(--color-accent-1);
@@ -4399,7 +4536,7 @@ div[class*="el-h"] + * .dataview-container .contains-task-list {
 }
 #calendar-container .month,
 #calendar-container .year {
-	color: var(--color-base-80);
+	color: var(--text-normal);
 	font-size: 1.5rem;
 }
 #calendar-container .month {
