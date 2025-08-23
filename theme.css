@@ -1646,9 +1646,11 @@ input[type=checkbox] {
 }
 .HyperMD-task-line[data-task="x"],
 .HyperMD-task-line[data-task="f"],
-.task-list-item.is-checked {
-	--bold-color: var(--strikethrough-color);
-	--italic-color: var(--strikethrough-color);
+.task-list-item.is-checked:not([data-task="/"]) {
+	--bold-color: var(--checklist-done-color);
+	--italic-color: var(--checklist-done-color);
+	--code-special: var(--checklist-done-color);
+	--text-normal: var(--trans-faint-60);
 }
 input[type=checkbox]:checked {
     background-image: var(--success-gradient);
@@ -1667,6 +1669,7 @@ input[type=checkbox]:is(:focus,:hover) {
 }
 
 /* Alternative Checkboxes */
+
 input[type=checkbox][data-task="/"]:checked,
 .task-list-item.is-checked[data-task="/"] input[type=checkbox]:checked {
 	background-image: 
