@@ -3833,13 +3833,20 @@ input.prompt-input:hover {
 
 /*--> Obsidian Bases <--*/
 
-/* Obsidian Bases (general) */
+
 .bases-table-container {
 	--interactive-accent: var(--color-base-40);
 	--metadata-input-text-color: var(--text-normal);
 	--tag-padding-x: 0.625rem;
 	--tag-size: 0.8rem;
 	--tag-weight: var(--font-medium);
+}
+/* fix for missing border radius visual bug */
+.mod-root .workspace-leaf-content[data-type="bases"] {
+	border-radius: var(--radius-ml);
+}
+.mod-sidedock .workspace-leaf-content[data-type="bases"] > .view-content {
+	padding-block-start: 4px;
 }
 
 .bases-thead {
@@ -3951,7 +3958,7 @@ input.prompt-input:hover {
 	padding: 2px 6px;
 	--background-modifier-active-hover: transparent;
 }
-.query-toolbar-item:not(.mod-views, .bases-toolbar-result-count) > .text-icon-button {
+.mod-root .query-toolbar-item:not(.mod-views, .bases-toolbar-result-count) > .text-icon-button {
 	padding: 0 8px;
 }
 .query-toolbar-item.mod-views > .text-icon-button,
@@ -3968,6 +3975,7 @@ input.prompt-input:hover {
 
 /* Obsidian Bases (cards) */
 .bases-cards-item {
+	border-radius: var(--radius-s);
 	padding: 8px 2px 4px;
 	font-weight: var(--font-normal);
 	transition: box-shadow var(--anim-duration-superfast) var(--anim-motion-smooth);
@@ -4331,7 +4339,7 @@ input.prompt-input:hover {
 
 /*--> Iconic <--*/
 
-.tree-item-self > .iconic-sidekick {
+.iconic-sidekick {
     --icon-size: var(--icon-xs);
     --icon-stroke: var(--icon-stroke-thick);
 	margin-inline: -1px 5px;
