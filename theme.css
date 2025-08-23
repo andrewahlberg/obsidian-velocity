@@ -1247,19 +1247,17 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .mod-sidedock .workspace-leaf-content ::-webkit-scrollbar {
     display: none;
 }
-.mod-root .view-content > * > ::-webkit-scrollbar-track,
-.markdown-source-view .cm-scroller::-webkit-scrollbar-track {
+.cm-scroller::-webkit-scrollbar-track,
+.markdown-preview-view::-webkit-scrollbar-track,
+.bases-view::-webkit-scrollbar-track {
 	margin-block: 0 2px;
 }
 .mod-settings .vertical-tab-content::-webkit-scrollbar-track,
 .mod-dim .modal:not(.mod-settings, .prompt)::-webkit-scrollbar-track {
 	margin-block: 12px;
 }
-.modal.mod-community-modal ::-webkit-scrollbar-track {
+.modal.mod-community-modal .community-modal-search-results-wrapper::-webkit-scrollbar-track {
 	margin-block: 40px 12px;
-}
-.modal-sidebar:has( + .community-modal-details) ::-webkit-scrollbar-track {
-	margin-block: 40px 0;
 }
 .prompt.theme-picker-modal > .prompt-results::-webkit-scrollbar-track {
 	margin-block: 0 8px;
@@ -2602,7 +2600,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 		background-color: transparent;
 	}
 	.workspace-tab-header-inner {
-		padding-inline: 6px;
+		padding-inline: 6px 5px;
 	}
 	.workspace-tab-header:hover .workspace-tab-header-inner {
 		color: var(--tab-text-color-active);
@@ -2622,7 +2620,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 .mod-root .workspace-tab-header .workspace-tab-header-inner-close-button {
 	border-radius: var(--radius-xs);
     color: var(--icon-color);
-	padding: 0.375cqh;
+	padding: 4px;
 	--icon-stroke: var(--icon-s-stroke-width);
 }
 
@@ -4276,7 +4274,7 @@ input.prompt-input:hover {
 /*--> Web Viewer <--*/
 
 .mod-root .workspace-tab-header-inner-icon {
-    padding-inline-start: 0.25cqh;
+    padding-inline-start: 2px;
 }
 .view-header-reload-button {
 	--icon-color: var(--text-muted);
@@ -4881,7 +4879,7 @@ body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-ta
 /*--> Recent Files <--*/
 
 .recent-files-file .nav-file-tag {
-	margin-inline-start: 4px;
+	margin-inline-start: 6px;
 }
 
 /*--> Style Settings <--*/
