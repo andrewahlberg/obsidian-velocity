@@ -700,7 +700,7 @@ body {
 	--shadow-setting-item: 
 		0px 4px 12px 0 var(--trans-strong-40);
 	}
-	& .mod-sidedock, .view-header {
+	& .mod-sidedock, .view-header, .document-search-container {
 	--shadow-sidebar: 
 		0 0.25px 0 0.75px var(--trans-faint-20),
 		0 1.5px 6px -3px var(--trans-faint-20);
@@ -2541,6 +2541,42 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
     padding: 6px 2px 8px;
 }
 
+/*--> Sidebar Leaves with special content <--*/
+
+body:not(.is-mobile) .mod-sidedock .workspace-leaf-content:is(
+	[data-type="bases"],
+	[data-type="kanban"],
+	[data-type="pdf"],
+	[data-type="webviewer"]) {
+	background-color: var(--background-primary);
+	border-radius: var(--radius-ml);
+	box-shadow: var(--shadow-sidebar);
+	width: calc(100% - 8px);
+	height: calc(100% - 10px);
+	margin: 1px 4px 9px;
+	padding-block-end: 0;
+
+	> .view-content {
+		padding-block-start: 0;
+	}
+}
+body:not(.is-mobile) .mod-sidedock .workspace-tabs:last-child .workspace-leaf-content:is(
+	[data-type="bases"],
+	[data-type="kanban"],
+	[data-type="pdf"],
+	[data-type="webviewer"]) {
+	height: calc(100% - 2px);
+	margin-block-end: 1px;
+}
+body:not(.is-mobile) .mod-sidedock.mod-right-split .workspace-tabs:last-child .workspace-leaf-content:is(
+	[data-type="bases"],
+	[data-type="kanban"],
+	[data-type="pdf"],
+	[data-type="webviewer"]) {
+	height: calc(100% - 44px);
+	margin-block-end: 44px;
+}
+
 /*--> Workspace Tabs <--*/
 
 .workspace-tab-header-new-tab .clickable-icon {
@@ -2786,29 +2822,26 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 		order: 1;
 	}
 }
-/* For document search overlaying FAB */
-.view-header:has( 
-	+ .view-content .document-search-container ~ .cm-editor,  
-	+ .view-content .markdown-reading-view .document-search-container) {
-	--fab-bg: var(--background-primary);
-	--shadow-fab: none;
-	--shadow-fab-active: none;
-	}
+
+body:not(.is-mobile) .mod-sidedock .workspace-leaf-content .view-header {
+	background-color: transparent;
+}
 
 /*--> Document Search <--*/
 
 .document-search-container {
+	contain: paint;
 	background-color: var(--background-primary);
 	border-radius: var(--radius-xxl);
-	box-shadow: var(--shadow-xs), var(--shadow-themes);
-	padding: 4px;
+	box-shadow: var(--shadow-fab);
+	padding: 6px;
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: 1px;
 	gap: 4px;
 	margin: 4px 8px;
-	--background-primary: var(--background-secondary);
-	--search-icon-color: var(--text-muted);
+	--background-primary: var(--fab-bg);
+	--search-icon-color: var(--color-base-55);
 }
 .mod-right-split .document-search-container {
 	right: unset;
@@ -2818,17 +2851,17 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 	flex-direction: row-reverse;
 }
 .mod-root .document-search-container {
-	box-shadow: var(--shadow-fab);
-	right: 12px;
-	top: 14px;
-	gap: 4px;
+	right: 60px;
+	top: 15px;
+	--background-primary: var(--fab-bg);
 }
 .document-search-container :is(.document-search, .document-replace) {
 	background-color: transparent;
-	padding-inline: 0;
+	padding-inline: unset;
 	gap: 4px;
 }
 :is(.document-search-input, .document-replace) input {
+	box-shadow: var(--shadow-sidebar);
     border-radius: var(--radius-l);
 	--background-modifier-form-field: var(--search-result-background);
 	--background-modifier-form-field-hover: var(--search-result-background);
@@ -3098,41 +3131,8 @@ body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked
 	border-radius: var(--radius-s);
 }
 /* Sidebar PDF viewer */
-.mod-sidedock .workspace-leaf-content[data-type="pdf"] {
-	margin-block-start: -6px;
-	.pdf-toolbar {
-		padding: 8px 10px 6px;
-	}
-	.view-content {
-		border-radius: var(--radius-m);
-		box-shadow: var(--shadow-sidebar);
-		margin: 4px 4px 0;
-		width: calc(100% - 8px);
-		height: calc(100% - 4px);
-	}
-}
-.mod-sidedock.mod-right-split .workspace-leaf-content[data-type="pdf"] {
-	padding-block-end: 40px;
-}
-
-/* Sidebar with special workspace-leaf-content */
-.mod-sidedock .workspace-leaf-content:is([data-type="kanban"]) {
-	background-color: var(--background-primary);
-	border-radius: var(--radius-m);
-	box-shadow: var(--shadow-sidebar);
-	margin: 2px 8px 10px;
-	padding-block-end: 0 !important;
-	width: calc(100% - 16px);
-	height: calc(100% - 12px);
-	::-webkit-scrollbar {
-		display: initial;
-	}
-}
-.mod-right-split .workspace-leaf-content:is([data-type="kanban"]) {
-	&:only-of-type {
-		height: calc(100% - 48px);
-		margin-bottom: 46px;
-	}
+.mod-sidedock .pdf-toolbar {
+    padding: 8px 10px;
 }
 
 /*--> Empty State <--*/
@@ -3836,6 +3836,7 @@ input.prompt-input:hover {
 
 
 .bases-table-container {
+	--bases-table-header-background: var(--background-primary);
 	--interactive-accent: var(--color-base-40);
 	--metadata-input-text-color: var(--text-normal);
 	--tag-padding-x: 0.625rem;
@@ -3846,8 +3847,12 @@ input.prompt-input:hover {
 .mod-root .workspace-leaf-content[data-type="bases"] {
 	border-radius: var(--radius-ml);
 }
-.mod-sidedock .workspace-leaf-content[data-type="bases"] > .view-content {
-	padding-block-start: 4px;
+/* Bases in sidebar */
+.mod-sidedock .workspace-leaf-content[data-type="bases"] .bases-header {
+	margin: 4px 2px;
+}
+.mod-sidedock .workspace-leaf-content[data-type="bases"] .query-toolbar .text-icon-button {
+	border-radius: var(--radius-s);
 }
 
 .bases-thead {
@@ -4291,6 +4296,9 @@ input.prompt-input:hover {
 }
 /* Address input */
 .webviewer-address-container {
+	padding-inline: 4px;
+}
+.mod-root .webviewer-address-container {
 	padding-inline: 12px;
 }
 .webviewer-address input {
@@ -4318,18 +4326,19 @@ input.prompt-input:hover {
 
 /* Page content Search */
 .webviewer-content .document-search-container {
-	box-shadow: var(--shadow-workspace-multi), var(--shadow-s);
-	top: 44px;
+	box-shadow: var(--shadow-workspace-multi), var(--shadow-l);
+	top: 52px;
 	right: 16px;
 }
 .mod-sidedock .webviewer-content .document-search-container {
 	top: 48px;
 	left: unset;
-	right: 4px;
+	right: 16px;
 }
 .mod-right-split .webviewer-content .document-search-container {
-	left: 4px;
+	left: unset;
 	right: unset;
+	margin-right: 24px;
 }
 
 .webviewer-content .error-notice {
