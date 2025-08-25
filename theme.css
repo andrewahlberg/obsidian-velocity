@@ -4349,14 +4349,16 @@ input.prompt-input:hover {
 /*--> List Callouts <--*/
 
 .markdown-rendered .lc-list-callout {
-	--list-spacing: 0.075em;
+	padding-block: var(--list-spacing-default);
+	--list-spacing-default: 0.075em;
 }
+/* does nothing if list spacing is default (i.e., when line height is Compact) */
 .lc-list-callout > .list-bullet {
-	padding-top: 0.075em;
+	padding-top: calc(var(--list-spacing) - var(--list-spacing-default));
 }
 .lc-li-wrapper {
+	padding-block: calc(var(--list-spacing) - var(--list-spacing-default));
     padding-inline-end: 0.75em;
-	padding-block: 0.075em;
 	z-index: 0;
 }
 .lc-li-wrapper::after {
