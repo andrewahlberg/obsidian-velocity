@@ -187,7 +187,7 @@ body {
 
 	/* Bold */
 	--bold-color: var(--color-base-100);
-	--bold-modifier: 225;
+	--bold-modifier: 250;
 
 	/* Buttons */
 	--button-radius: var(--radius-s);
@@ -2545,6 +2545,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 
 body:not(.is-mobile) .mod-sidedock .workspace-leaf-content:is(
 	[data-type="bases"],
+	[data-type="canvas"],
 	[data-type="kanban"],
 	[data-type="pdf"],
 	[data-type="webviewer"]) {
@@ -2562,6 +2563,7 @@ body:not(.is-mobile) .mod-sidedock .workspace-leaf-content:is(
 }
 body:not(.is-mobile) .mod-sidedock .workspace-tabs:last-child .workspace-leaf-content:is(
 	[data-type="bases"],
+	[data-type="canvas"],
 	[data-type="kanban"],
 	[data-type="pdf"],
 	[data-type="webviewer"]) {
@@ -2570,6 +2572,7 @@ body:not(.is-mobile) .mod-sidedock .workspace-tabs:last-child .workspace-leaf-co
 }
 body:not(.is-mobile) .mod-sidedock.mod-right-split .workspace-tabs:last-child .workspace-leaf-content:is(
 	[data-type="bases"],
+	[data-type="canvas"],
 	[data-type="kanban"],
 	[data-type="pdf"],
 	[data-type="webviewer"]) {
