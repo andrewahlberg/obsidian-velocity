@@ -1291,9 +1291,12 @@ thead,
 =========================== ===========================
 */
 
-/* .markdown-rendered div.el-div + div > :is(h1,h2,h3,h4,h5,h6) {
-  margin-top: var(--heading-spacing);
-} */
+.markdown-rendered .el-div + div > :is(h1,h2,h3,h4,h5,h6,p) {
+  margin-top: calc(var(--p-spacing) * 2);
+}
+.markdown-rendered .el-div + .el-p > p {
+  margin-top: calc(var(--heading-spacing) - var(--p-spacing));
+}
 
 /*--> Headings H1-H6 <--*/
 
@@ -1410,7 +1413,6 @@ body:not(.disable-callout-styling) {
 		box-shadow: 
 		0 0 0 2px rgb(var(--callout-color), var(--callout-border-opacity));
 		margin-inline: 1px;
-		margin-block: 0.75rem 1.25rem;
 		outline: 1px solid var(--background-primary);
 		--bold-color: var(--text-normal);
 	}
