@@ -136,11 +136,6 @@ settings:
 	description: Highlights the active line with slight backdrop for easier text navigation.  
 	type: class-toggle
 - 	
-	id: enable-performance-tweaks
-	title: Enable experimental performance tweaks
-	description: Special CSS hacks which may/may not improve editor performance.
-	type: class-toggle
-- 	
 	id: enable-dim-img
 	title: Enable image dimming in Dark mode
 	description: Reduces the brightness of images in Dark mode except when hovered.
@@ -151,6 +146,16 @@ settings:
 	description: Decreases the margin sizes of smaller headings.
 	type: class-toggle
 -
+	id: hide-bases-header
+	title: Enable minimal Bases display for Reading mode
+	description: Hides the filter toolbar options for embedded Bases in Reading mode.
+	type: class-toggle
+- 	
+	id: enable-performance-tweaks
+	title: Enable experimental performance tweaks
+	description: Activates special CSS hacks which typically improve editor performance. Leave off if stability or performance is negatively affected.
+	type: class-toggle
+- 	
 	id: code-special
 	title: Enable unique color for inline code
 	type: variable-select
@@ -3884,6 +3889,14 @@ input.prompt-input:hover {
 	font-size: var(--bases-cards-text-size);
 }
 
+body.hide-bases-header .markdown-preview-view {
+	.bases-view {
+		margin-top: 1.5rem;
+	}
+	.bases-embed .bases-header {
+		display: none;
+	}
+}
 /* popover Bases */
 .popover .bases-header {
 	padding-inline: 7px; 
