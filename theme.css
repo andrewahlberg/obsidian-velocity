@@ -207,7 +207,7 @@ body {
 	/* Code */
 	--code-radius: 5px;
 	--code-border-width: 1px;
-	--code-normal: color-mix(in oklab, var(--color-base-80), var(--text-normal));
+	--code-normal: var(--text-normal);
 	--code-special: var(--code-normal);
 
 	/* Collapse icons */
@@ -499,14 +499,14 @@ body {
 	--color-base-10: oklch(96.20% var(--base-sat-str) var(--base-hue));
 	--color-base-20: oklch(92.00% var(--base-sat-str) var(--base-hue));
 	--color-base-25: oklch(88.25% var(--base-sat-str) var(--base-hue)); 
-	--color-base-30: oklch(85.79% var(--base-sat-med) var(--base-hue)); 
+	--color-base-30: oklch(85.75% var(--base-sat-str) var(--base-hue)); 
 	--color-base-35: oklch(78.75% var(--base-sat-str) var(--base-hue)); 
-	--color-base-40: oklch(75.25% var(--base-sat-med) var(--base-hue)); 
+	--color-base-40: oklch(75.25% var(--base-sat-str) var(--base-hue)); 
 	--color-base-50: oklch(71.50% var(--base-sat-xtr) var(--base-hue)); 
 	--color-base-55: oklch(65.00% var(--base-sat-xtr) var(--base-hue)); 
-	--color-base-60: oklch(53.75% var(--base-sat-xtr) var(--base-hue));
-	--color-base-70: oklch(46.00% var(--base-sat-xtr) var(--base-hue));
-	--color-base-80: oklch(41.25% var(--base-sat-low) var(--base-hue)); 
+	--color-base-60: oklch(55.00% var(--base-sat-xtr) var(--base-hue));
+	--color-base-70: oklch(45.00% var(--base-sat-xtr) var(--base-hue));
+	--color-base-80: oklch(42.00% var(--base-sat-str) var(--base-hue)); 
 	--color-base-90: oklch(28.25% var(--base-sat-low) var(--base-hue)); 
    --color-base-100: oklch(22.50% var(--base-sat-low) var(--base-hue)); 
 
@@ -516,8 +516,8 @@ body {
 	--trans-strong-30: oklch(from var(--color-base-00) l c h / 0.400);
 	--trans-strong-40: oklch(from var(--color-base-50) l c h / 0.100);
 	
-	--trans-faint-00: oklch(62.65% 0 0 / 0.0300);
-	--trans-faint-05: oklch(25.20% 0 0 / 0.0275);
+	--trans-faint-00: oklch(62.50% 0 0 / 0.0300);
+	--trans-faint-05: oklch(25.00% 0 0 / 0.0275);
 	--trans-faint-10: oklch(0.000% 0 0 / 0.0500);
 	--trans-faint-20: oklch(0.000% 0 0 / 0.0600);
 	--trans-faint-25: oklch(0.000% 0 0 / 0.0700);
@@ -543,7 +543,7 @@ body {
 	--modal-border-color: var(--color-base-40);
 	
 	--background-gradient: radial-gradient( at 50% calc(50% + 22px), 
-		var(--color-base-05) 40%, 
+		var(--color-base-05) 37.5%, 
 		var(--color-base-50) 225%
 		);
 	--background-gradient-menu: radial-gradient( at 64% 50%, 
@@ -572,7 +572,7 @@ body {
 	--color-accent-6: color-mix(in oklch, var(--text-selection) 40%, transparent 100%);
 
 	--bases-cards-background: oklch(from var(--trans-faint-05) l 0.075 var(--base-hue));
-	--blockquote-color: var(--code-normal);
+	--blockquote-color: var(--color-base-80);
 	--blockquote-border-color: var(--color-base-25);
 	--blockquote-background-color: var(--trans-faint-00);
 
@@ -1244,6 +1244,14 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 
 /*--> Scrollbar / scrollbar padding <--*/
 
+/* Special performance improvements to scroll */
+.markdown-preview-view {
+	will-change: scroll-position;
+}
+.markdown-preview-view > .markdown-preview-pusher {
+	will-change: margin-bottom;
+}
+
 .mod-sidedock .workspace-leaf-content ::-webkit-scrollbar {
     display: none;
 }
@@ -1376,9 +1384,9 @@ body.prop-headings {
 .el-blockquote blockquote,
 .callout-content blockquote {
 	border-radius: var(--radius-sm);
-	box-shadow: var(--shadow-xs);
-	padding-block: 0.75em;
-	padding-inline: 1.125em;
+	box-shadow: var(--shadow-code);
+	padding-block: 12px;
+	padding-inline: 1em;
 	position: relative;
 	& * {
 	--bold-color: var(--blockquote-color);	
@@ -1394,7 +1402,7 @@ body.prop-headings {
 }
 body:not(.disable-callout-styling) {
 	--callout-border-opacity: 0.15;
-	--callout-radius: var(--radius-sm);
+	--callout-radius: var(--radius-m);
 	--callout-padding: 16px 16px 8px 16px;
 	--callout-title-padding: 0 0 0 2px;
 	/* Callout colors */
@@ -1529,23 +1537,21 @@ body:not(.disable-callout-styling)
 
 /*--> Code <--*/
 
+.markdown-rendered :is(code, pre) {
+	border: unset;
+	box-shadow: var(--shadow-code);
+}
 .markdown-rendered code {
 	color: var(--code-special);
-	font-variation-settings: 'wght' 600;
-	border-width: 0;
-	box-shadow: var(--shadow-code);
     padding-inline: 0.375em;
+}
+.markdown-rendered pre  {
+	--code-radius: var(--radius-sm);
 }
 pre[class*="language-"] code,
 .markdown-rendered pre code {
-	box-shadow: none;
-	padding-inline: 0.125em;
+	box-shadow: unset;
 	--code-special: var(--code-normal);
-}
-.markdown-rendered pre  {
-	border: none;
-    box-shadow: var(--shadow-xs);
-	--code-radius: var(--radius-sm);
 }
 
 /*--> Embeds <--*/
@@ -1856,7 +1862,7 @@ mjx-math {
 .metadata-property:not([data-property-key="tags"]) .multi-select-pill {
 	box-shadow: var(--shadow-input);
 	padding-inline: var(--pill-padding-x);
-	--pill-color: var(--icon-color);
+	--pill-color: var(--text-muted);
     --pill-padding-x: 0.625em 0.3125em; 
     --pill-padding-y: 0.125em;
 }
@@ -1879,7 +1885,6 @@ mjx-math {
 }
 .metadata-property[data-property-key="tags"] .multi-select-pill {
 	background: var(--tag-background-image);
-	box-shadow: var(--tag-shadow);
 	font-size: var(--font-smaller);
 	font-weight: var(--font-medium);
 	line-height: 1.0625;
@@ -2270,7 +2275,6 @@ body:not(.is-mobile) .workspace {
 }
 body:not(.is-mobile) .mod-root {
     padding-bottom: 8px;
-	--collapse-icon-color: var(--color-base-50);
 }
 .workspace-split.mod-root,
 .workspace-tabs .workspace-leaf,
@@ -3857,7 +3861,6 @@ input.prompt-input:hover {
 .bases-table-container {
 	--bases-table-header-background: var(--background-primary);
 	--interactive-accent: var(--color-base-40);
-	--metadata-input-text-color: var(--text-normal);
 	--tag-padding-x: 0.625rem;
 	--tag-size: 0.8rem;
 	--tag-weight: var(--font-medium);
