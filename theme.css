@@ -4,7 +4,7 @@ id: obsidian-velocity
 settings:
 -
 	id: theme-mode
-	title: Select driving profile (WIP)
+	title: Select vehicle driving profile (WIP)
 	type: class-select
 	default: theme-strada
 	options:
@@ -14,6 +14,14 @@ settings:
 		  value: theme-strada
         - label: Race
           value: theme-corsa
+- 	
+	id: theme-paint
+	title: Select vehicle paint job (WIP)
+	type: variable-select
+	default: WIP
+	options:
+        - label: N/A
+          value: WIP
 - 	
 	id: color-highlight-rgb
 	title: Select highlight color
@@ -44,7 +52,6 @@ settings:
 - 	
 	id: line-height-normal
 	title: Set line height and spacing
-	description: Set the readable line width in relative units (rem).
 	type: variable-select
 	default: '1.6'
 	allowEmpty: false
@@ -68,6 +75,7 @@ settings:
 -
 	id: switch-edit-icons
 	title: Invert editing toggle icons
+	description: By default, the editing mode toggle shows the mode it will switch to when pressed. Enable this setting to make it show the current mode instead.
 	type: class-toggle
 -
 	title: Additional settings
@@ -274,7 +282,9 @@ body {
 	--font-bold: 750;
 	--font-extrabold: 850;
 	--font-black: 900;
-	--cta-font-weight: var(--font-normal);
+
+	--font-semi-medium: calc(var(--font-normal) + 50);
+	--font-cta-button: var(--font-normal);
 
 	/* Footnotes */
 
@@ -1049,12 +1059,12 @@ body:not(.mod-windows, .mod-linux) {
 	--h4-weight: 625;
 	--h5-weight: 650;
 	--h6-weight: 675;
-	--cta-font-weight: 575;
+	--font-cta-button: 575;
 }
 /* Linux font weight tweak (WIP test if needed on macOS) */
 .mod-linux button[class*="mod-"]:not([class="mod-cancel"]),
 :is(.mod-root, .popover) .metadata-add-button {
-	font-weight: var(--cta-font-weight);
+	font-weight: var(--font-cta-button);
 }
 
 /* Windows */
@@ -1089,8 +1099,7 @@ body:not(.is-mobile) :is(
 	select,
 	.clickable-icon,
 	.dropdown,
-	.metadata-add-button,
-	.tree-item-self.is-clickable) {
+	.metadata-add-button) {
 	-electron-corner-smoothing: 60%;	
 	}
 
@@ -1261,7 +1270,7 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 	var(--shadow-themes);
 }
 .notice {
-	font-weight: calc(calc(var(--font-normal) + var(--font-medium)) / 2);
+	font-weight: var(--font-semi-medium);
 }
 
 .drag-ghost {
@@ -2519,7 +2528,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 .backlink-pane .search-result-file-title .tree-item-inner,
 .outgoing-link-pane .tree-item-inner-text {
 	color: var(--link-color-sidebar);
-	font-weight: calc(var(--font-normal) + 50);
+	font-weight: var(--font-semi-medium);
 }
 .mod-sidedock .search-result-file-matches {
     box-shadow: var(--shadow-sidebar);
@@ -2797,6 +2806,7 @@ body:not(.is-mobile) .mod-sidedock.mod-right-split .workspace-tabs:last-child .w
 }
 .workspace-leaf-content > .view-header > .view-header-title-container > .view-header-title {
 	color: var(--color-base-80);
+	font-weight: var(--font-semi-medium);
 }
 .view-header-title-parent {
 	color: var(--color-base-55);
@@ -3401,7 +3411,7 @@ body:not(.is-mobile)
 /*--> Right-click Menu <--*/
 
 .menu {
-	font-weight: calc(calc(var(--font-normal) + var(--font-medium)) / 2);
+	font-weight: var(--font-semi-medium);
 }
 .menu-item {
 	border-radius: 7px;
@@ -4157,7 +4167,7 @@ input.prompt-input:hover {
 	--metadata-label-background: var(--color-base-00);
 	--dropdown-background: transparent;
 	--dropdown-background-hover: var(--trans-strong-40);
-	--bases-query-input-weight: calc(var(--font-normal) + 50);
+	--bases-query-input-weight: var(--font-semi-medium);
 	
 	.combobox-button {
 		color: var(--color-base-50);
