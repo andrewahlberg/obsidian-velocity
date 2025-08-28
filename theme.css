@@ -128,6 +128,11 @@ settings:
 	description: Highlights the active line with slight backdrop for easier text navigation.  
 	type: class-toggle
 - 	
+	id: enable-performance-tweaks
+	title: Enable experimental performance tweaks
+	description: Special CSS hacks which may/may not improve editor performance.
+	type: class-toggle
+- 	
 	id: enable-dim-img
 	title: Enable image dimming in Dark mode
 	description: Reduces the brightness of images in Dark mode except when hovered.
@@ -150,14 +155,7 @@ settings:
 	- 
 		label: Red
 		value: var(--color-red)
-	- 
-		label: Green
-		value: var(--color-green)
 - 
-	description: (WIP) Enable snippets
-	type: info-text
-	markdown: true
-- 	
 */
 
 /* 
@@ -1085,6 +1083,17 @@ body:not(.is-mobile) {
 
 /*--> Buttons <--*/
 
+/* Electron Corner-smoothing */
+body:not(.is-mobile) :is(
+	button,
+	select,
+	.clickable-icon,
+	.dropdown,
+	.metadata-add-button,
+	.tree-item-self.is-clickable) {
+	-electron-corner-smoothing: 60%;	
+	}
+
 button,
 button:active,
 .metadata-add-button {
@@ -1261,14 +1270,6 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 
 /*--> Scrollbar / scrollbar padding <--*/
 
-/* Special performance improvements to scroll */
-.markdown-preview-view {
-	will-change: scroll-position;
-}
-.markdown-preview-view > .markdown-preview-pusher {
-	will-change: margin-bottom;
-}
-
 .mod-sidedock .workspace-leaf-content ::-webkit-scrollbar {
     display: none;
 }
@@ -1290,6 +1291,17 @@ body:not(.is-mobile) input[type='range']:focus::-webkit-slider-thumb:not(:hover)
 .suggestion-container > ::-webkit-scrollbar-track,
 .popover ::-webkit-scrollbar-track {
 	margin-block: 4px;
+}
+
+/* Special performance tweaks */
+
+body:not(.is-mobile).enable-performance-tweaks {
+	.markdown-preview-view {
+		will-change: scroll-position;
+	}
+	.markdown-preview-view > .markdown-preview-pusher {
+		will-change: margin-bottom;
+	}
 }
 
 /*--> Typography variation settings <--*/
@@ -2318,15 +2330,19 @@ body:not(.is-mobile) .mod-sidedock .workspace-tab-container {
 /* MIT License */
 
 /* Main tab margins */
-body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root>.workspace-tabs:last-of-type .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal:last-of-type>.workspace-tabs .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal>.workspace-split .workspace-tabs:last-of-type .workspace-tab-container {
+body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type > .workspace-tab-container,
+body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal:last-of-type > .workspace-tabs > .workspace-tab-container,
+body:not(.is-mobile) .workspace:not(.is-right-sidedock-open) .mod-root .mod-horizontal > .workspace-split .workspace-tabs:last-of-type > .workspace-tab-container {
     margin-inline-end: 8px;
 }
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root>.workspace-tabs:first-of-type .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .mod-horizontal:first-of-type>.workspace-tabs .workspace-tab-container, body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .mod-horizontal>.workspace-split .workspace-tabs:first-of-type .workspace-tab-container {
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root > .workspace-tabs:first-of-type > .workspace-tab-container, 
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .mod-horizontal:first-of-type > .workspace-tabs .workspace-tab-container, 
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open) .mod-root .mod-horizontal > .workspace-split .workspace-tabs:first-of-type > .workspace-tab-container {
     margin-inline-start: 8px;
 }
 /* Margin OFF when sidebars closed */
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type .workspace-tab-container,
-body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-split.mod-horizontal .workspace-tabs .workspace-tab-container {
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-tabs:last-of-type > .workspace-tab-container,
+body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) .mod-root > .workspace-split.mod-horizontal .workspace-tabs > .workspace-tab-container {
     margin-inline: unset;
 }
 body:not(.is-mobile) .workspace:not(.is-left-sidedock-open,.is-right-sidedock-open) {
