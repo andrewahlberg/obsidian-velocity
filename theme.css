@@ -15,6 +15,33 @@ settings:
         - label: Race
           value: theme-corsa
 - 	
+	id: color-highlight-rgb
+	title: Select highlight color
+	type: variable-select
+	default: var(--color-yellow-rgb)
+	options:
+	- 
+		label: Pink
+		value: var(--color-pink-rgb)
+	- 
+		label: Red
+		value: var(--color-red-rgb)
+	- 
+		label: Orange
+		value: var(--color-orange-rgb)
+	- 
+		label: Yellow
+		value: var(--color-yellow-rgb)
+	- 
+		label: Green
+		value: var(--color-green-rgb)
+	- 
+		label: Aqua
+		value: var(--color-blue-rgb)
+	- 
+		label: Pink
+		value: var(--color-pink-rgb)
+- 	
 	id: line-height-normal
 	title: Set line height and spacing
 	description: Set the readable line width in relative units (rem).
@@ -455,7 +482,7 @@ body {
 	--background-modifier-form-field: transparent;
 	--background-modifier-form-field-hover: transparent;
 
-	--color-highlight: var(--color-yellow);
+	--color-highlight: rgb(var(--color-highlight-rgb));
 	--color-highlight-rgb: var(--color-yellow-rgb);
 
 	/* Inputs */
