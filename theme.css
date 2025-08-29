@@ -1025,12 +1025,12 @@ body:not(.mod-windows, .mod-linux) {
 	--font-semibold: 600;
 	--font-bold: 700;
 	--font-extrabold: 800;
-	--h1-weight-alt: 525;
-	--h1-weight: 275;
-	--h2-weight: 525;
-	--h3-weight: 525;
-	--h4-weight: 600;
-	--h5-weight: 625;
+	--h1-weight-alt: 500;
+	--h1-weight: 250;
+	--h2-weight: 500;
+	--h3-weight: 500;
+	--h4-weight: 575;
+	--h5-weight: 600;
 	--h6-weight: 650;
 	/* frame spacing and autohide override */
 	--frame-right-space-override: 36px;
