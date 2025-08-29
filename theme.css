@@ -198,6 +198,10 @@ settings:
 
 body {
 	/* Animation timing */
+	--anim-fast-swing: var(--anim-duration-fast) var(--anim-motion-swing);
+	--anim-fast-smooth: var(--anim-duration-fast) var(--anim-motion-smooth);
+	--anim-super-swing: var(--anim-duration-superfast) var(--anim-motion-swing);
+	--anim-super-smooth: var(--anim-duration-superfast) var(--anim-motion-smooth);
 
 	/* Bases */
 	--bases-embed-border-radius: 0;
@@ -503,7 +507,6 @@ body {
 	/* Text */
 	--interactive-normal: var(--color-base-00);
     --interactive-hover: var(--background-secondary);
-
 }
 .theme-light {
 
@@ -1108,7 +1111,7 @@ body:not(.is-mobile) :is(
 button,
 button:active,
 .metadata-add-button {
-	transition: filter var(--anim-duration-superfast) var(--anim-motion-swing);
+	transition: filter var(--anim-super-swing);
 }
 button:not(.clickable-icon):hover,
 .metadata-add-button:hover {
@@ -1453,7 +1456,7 @@ body:not(.disable-callout-styling) {
 	.markdown-source-view .cm-content > .cm-callout[contenteditable=false] {
 		border-radius: var(--callout-radius);
 		contain: none !important;
-		transition: box-shadow var(--anim-duration-fast) var(--anim-motion-swing);
+		transition: box-shadow var(--anim-fast-swing);
 		&:hover {
 			box-shadow: 0 0 0 2px var(--trans-faint-50);
 		}
@@ -1663,7 +1666,7 @@ body:not(.disable-naked-embeds) {
 }
 body.enable-dim-img.theme-dark :is(.image-embed img, .markdown-rendered img) {
 	filter: opacity(0.75);
-	transition: filter var(--anim-duration-fast) var(--anim-motion-smooth);
+	transition: filter var(--anim-fast-smooth);
 }
 body.enable-dim-img.theme-dark :is(.image-embed img, .markdown-rendered img):hover {
 	filter: unset;
@@ -2005,7 +2008,7 @@ a.tag {
 }
 a.tag:active {
 	filter: opacity(50%);
-	transition: var(--anim-duration-fast) var(--anim-motion-swing);
+	transition: var(--anim-fast-swing);
 }
 
 /*
@@ -2017,7 +2020,7 @@ a.tag:active {
 /*--> Icons <--*/
 
 button.clickable-icon {
-	transition: filter var(--anim-duration-fast) var(--anim-motion-swing);
+	transition: filter var(--anim-fast-swing);
 }
 .clickable-icon[aria-disabled='true'] {
     opacity: unset;
@@ -2394,7 +2397,7 @@ body:not(.is-mobile) {
 		align-items: center;
 		padding: 4px 4px 0;
 		margin-block: 6px -12px;
-		transition: var(--anim-duration-fast) var(--anim-motion-swing);
+		transition: var(--anim-fast-swing);
 	}
 	.nav-buttons-container {
 		display: flex;
@@ -2405,7 +2408,7 @@ body:not(.is-mobile) {
 		background-color: var(--nav-header-bg);
 		flex-wrap: nowrap;
 		transform: scale(25%, 20%) translateY(-60px);
-		transition: var(--anim-duration-fast) var(--anim-motion-smooth);
+		transition: var(--anim-fast-smooth);
 		& > * {
 			filter: opacity(0);
 		}
@@ -2458,7 +2461,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 
 /* Folders */
 .nav-files-container .tree-item-self.mod-collapsible {
-	transition: background-color var(--anim-duration-fast) var(--anim-motion-swing);
+	transition: background-color var(--anim-fast-swing);
 }
 .nav-files-container .tree-item:not(.is-collapsed) .tree-item-self.mod-collapsible:not(.is-being-dragged) {
 	color: var(--link-color);
@@ -2504,7 +2507,7 @@ body:not(.is-mobile) :not(.view-content,.workspace-leaf-content) > .nav-header >
 
 .mod-sidedock > :not(.mod-top) .workspace-tab-header-container {
 	border-block: 1px solid transparent;
-	transition: border var(--anim-duration-moderate) ease-in-out;
+	transition: border var(--anim-fast-smooth);
 	&:hover {
 		border-top-color: var(--trans-faint-20);
 	}
@@ -2706,7 +2709,7 @@ body:not(.is-mobile) .mod-sidedock.mod-right-split .workspace-tabs:last-child .w
 		background-color: var(--background-modifier-hover);
 	}
 	.workspace-tab-header-inner-title {
-		transition: color var(--anim-duration-superfast) var(--anim-motion-smooth);
+		transition: color var(--anim-super-smooth);
 	}
 	.workspace-tab-header:is([data-type="empty"],[data-type="markdown"]) 
 	.workspace-tab-header-inner-title {
@@ -2982,7 +2985,7 @@ body:not(.is-mobile) .mod-sidedock .workspace-leaf-content .view-header {
 	max-height: 26px;
 	margin-bottom: 9px;
 	padding-inline: 12px;
-	transition: all var(--anim-duration-superfast) ease-in;
+	transition: all var(--anim-super-smooth);
 }
 body:not(.disable-status-fade) {
 	& .status-bar:not(:hover) {
@@ -3058,7 +3061,7 @@ body:not(.is-mobile)
 			background-color: oklch(from var(--text-error) l c h / 0.1);
 			border-radius: var(--radius-sm);
 			color: var(--text-error);
-			transition: all var(--anim-duration-fast) var(--anim-motion-swing);
+			transition: all var(--anim-fast-swing);
 		}
 	}
 	body:not(.is-mobile, .is-popout-window, .disable-autohide) .workspace .mod-root .workspace-tabs:first-of-type.mod-top .workspace-tab-header-container {
@@ -3154,7 +3157,7 @@ body:not(.is-mobile) .workspace .mod-root .workspace-tabs.mod-stacked
 		box-shadow: var(--shadow-fab);
 		padding: 8px 12px;
 		> * {
-			transition: var(--anim-duration-fast) var(--anim-motion-swing);
+			transition: var(--anim-fast-swing);
 		}
 			&:active > * {
 			transform: scale(0.8125);
@@ -3313,7 +3316,7 @@ body:not(.is-mobile)
 }
 .menu-item:not(.is-disabled).selected .svg-icon {
 	color: var(--text-normal);
-	transition: color var(--anim-duration-superfast) var(--anim-motion-swing);
+	transition: color var(--anim-super-swing);
 }
 .menu-item.is-warning:not(.is-disabled).selected .svg-icon {
     filter: unset;
@@ -3943,7 +3946,7 @@ body.hide-bases-header .markdown-preview-view {
 	border-radius: var(--radius-s);
 	padding: 8px 2px 4px;
 	font-weight: var(--font-normal);
-	transition: box-shadow var(--anim-duration-superfast) var(--anim-motion-smooth);
+	transition: box-shadow var(--anim-super-smooth);
 }
 .bases-cards-property.mod-title {
 	> .bases-cards-line {
@@ -4046,7 +4049,7 @@ body.hide-bases-header .markdown-preview-view {
 /* Filter & Sort menus shared variables */
 .base-toolbar-sort-item .metadata-property,
 .bases-query-container .filter-expression {
-	transition: box-shadow var(--anim-duration-superfast) var(--anim-motion-smooth);
+	transition: box-shadow var(--anim-super-smooth);
 	--input-height: 30px;
 	--metadata-input-background: var(--color-base-00);
 	--metadata-input-background-hover: var(--color-base-00);
@@ -4217,7 +4220,7 @@ body.hide-bases-header .markdown-preview-view {
 	}
 	.bases-toolbar-menu-item-info-icon {
 		contain: content;
-		transition: var(--anim-duration-superfast) var(--anim-motion-swing);
+		transition: var(--anim-super-swing);
 	}
 	.bases-toolbar-menu-item-info-icon:is(:hover, :active) {
 		color: var(--text-accent);
@@ -4262,7 +4265,7 @@ body.hide-bases-header .markdown-preview-view {
 }
 .webviewer-address input {
 	font-weight: var(--font-normal);
-	transition: var(--anim-duration-fast) ease-in-out;
+	transition: var(--anim-fast-smooth);
 	--background-modifier-form-field: var(--background-primary);
 	--background-modifier-form-field-hover: var(--background-primary);
 	--input-height: 30px;
@@ -4491,7 +4494,7 @@ div[class*="el-h"] + * .dataview-container .contains-task-list {
 	border-radius: 0;
 	padding: 3px 4px 26px 4px;
 	text-align: end;
-	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
+	transition: var(--anim-super-swing);
 }
 #calendar-container .day:hover,
 #calendar-container .day:active {
@@ -4807,7 +4810,7 @@ body:not(.is-mobile) .obsidian-vertical-tabs-container .is-group-slot {
 	.tree-item-self {
 		padding-inline-start: 28px;
 		margin-top: 4px;
-		transition: color var(--anim-duration-superfast) var(--anim-motion-swing);
+		transition: color var(--anim-super-swing);
 		--nav-item-background-hover: var(--color-accent-5);
 		&:hover {
 			color: var(--link-color);
@@ -4834,7 +4837,7 @@ body:not(.is-mobile) .workspace-leaf-content .view-content .btn-group .control {
 	border-radius: var(--radius-s);
 	padding: 7.5px 8px 2.5px 8px;
 	padding-inline: 8px;
-	transition: var(--anim-duration-superfast) var(--anim-motion-swing);
+	transition: var(--anim-super-swing);
 }
 .btn-group .control:hover {
 	background-color: var(--nav-item-background-hover);
@@ -4904,7 +4907,7 @@ body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-ta
 }
 .style-settings-heading .setting-item-name {
     color: var(--text-muted);
-	transition: color var(--anim-duration-superfast) var(--anim-motion-swing);
+	transition: color var(--anim-super-swing);
 }
 .style-settings-heading:not(.is-collapsed) .setting-item-name {
     color: var(--text-normal);
