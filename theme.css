@@ -298,10 +298,7 @@ body {
 	/* Footnotes */
 
 	/* Graphs */
-	--graph-controls-width: 208px;
-	--graph-line: var(--color-base-40);
-	--graph-node: var(--icon-color);
-	--graph-node-unresolved: var(--color-base-50);
+	--graph-controls-width: 220px;
 	--graph-node-focused: transparent;
 
 	/* Headings */
@@ -627,6 +624,7 @@ body {
 	--code-border-color: var(--trans-faint-20);
 
 	--fab-bg: var(--background-primary);
+	--fab-color: var(--text-muted);
 
 	--hr-color: var(--trans-faint-30);
 
@@ -670,6 +668,7 @@ body {
 	--tag-background-image: linear-gradient(to top, var(--text-selection) -30%, var(--color-accent-6) 60%);
 
 	--vault-profile-color: var(--text-normal);
+	--workspace-border-color: var(--trans-faint-25);
 
 	--input-shadow: 
 		0 0.125px 0 0.5px var(--trans-faint-30),
@@ -751,91 +750,94 @@ body {
 }
 .theme-dark {
 	
-	--accent-h: 208;	
+	--accent-h: 200;	
 	--accent-s: 100%;	
 	--accent-l: 49%;
 
-	--color-red-rgb: 255, 65, 51;
-	--color-red: rgb(255, 65, 51);
-	--color-orange-rgb: 250, 154, 29;
-	--color-orange: rgb(250, 154, 29);
-	--color-yellow-rgb: 230, 183, 13;
-	--color-yellow: rgb(230, 183, 13);
-	--color-green-rgb: 25, 202, 45;
-	--color-green: rgb(25, 202, 45);
-	--color-cyan-rgb: 17, 200, 210;
-	--color-cyan: rgb(17, 200, 210);
-	--color-blue-rgb: 44, 157, 250;
-	--color-blue: rgb(44, 157, 250);
-	--color-purple-rgb: 200, 109, 249;
-	--color-purple: rgb(200, 109, 249);
-	--color-pink-rgb: 225, 70, 147;
-	--color-pink: rgb(225, 70, 147);
+	--color-red-rgb: 251, 72, 79;
+	--color-red: rgb(251, 72, 79);
+	--color-orange-rgb: 233, 151, 63;
+	--color-orange: rgb(233, 151, 63);
+	--color-yellow-rgb: 224, 218, 113;
+	--color-yellow: rgb(224, 218, 113);
+	--color-green-rgb: 90, 199, 106;
+	--color-green: rgb(90, 199, 106);
+	--color-cyan-rgb: 89, 221, 184;
+	--color-cyan: rgb(89, 221, 184);
+	--color-blue-rgb: 27, 151, 223;
+	--color-blue: rgb(27, 151, 223);
+	--color-purple-rgb: 180, 126, 231;
+	--color-purple: rgb(180, 126, 231);
+	--color-pink-rgb: 250, 153, 205;
+	--color-pink: rgb(250, 153, 205);
 
-	--base-hue: 279;
-	--base-hue-text: 279;
-	--base-sat-str: 0.0020;
-	--base-sat-med: 0.0010;
-	--base-sat-low: 0.0005;
-	--color-base-00: oklch(23.60% var(--base-sat-str) var(--base-hue));
-	--color-base-05: oklch(24.60% var(--base-sat-str) var(--base-hue));
-	--color-base-10: oklch(26.10% var(--base-sat-str) var(--base-hue));
-  	--color-base-20: oklch(27.70% var(--base-sat-str) var(--base-hue));
-	--color-base-25: oklch(28.85% var(--base-sat-str) var(--base-hue));
-  	--color-base-30: oklch(32.25% var(--base-sat-med) var(--base-hue));
-	--color-base-35: oklch(36.10% var(--base-sat-med) var(--base-hue));
-	--color-base-40: oklch(44.90% var(--base-sat-med) var(--base-hue));
-	--color-base-50: oklch(50.25% var(--base-sat-str) var(--base-hue-text));
-	--color-base-55: oklch(60.00% var(--base-sat-str) var(--base-hue-text));
-	--color-base-60: oklch(65.50% var(--base-sat-str) var(--base-hue));
-	--color-base-70: oklch(69.75% var(--base-sat-str) var(--base-hue-text));
-	--color-base-80: oklch(75.50% var(--base-sat-med) var(--base-hue-text));
-	--color-base-90: oklch(86.00% var(--base-sat-med) var(--base-hue-text));
-   --color-base-100: oklch(91.00% var(--base-sat-low) var(--base-hue-text));
+	--callout-quote: 150, 150, 160;
+
+	--base-hue: 275;
+	--base-hue-text: 275;
+	--base-sat-xtr: 0.01250;
+	--base-sat-str: 0.00625;
+	--base-sat-med: 0.00500;
+	--base-sat-low: 0.00375;
+	--color-base-00: oklch(24.00% var(--base-sat-low) var(--base-hue));
+	--color-base-05: oklch(25.75% var(--base-sat-med) var(--base-hue));
+	--color-base-10: oklch(27.50% var(--base-sat-str) var(--base-hue));
+  	--color-base-20: oklch(28.75% var(--base-sat-str) var(--base-hue));
+	--color-base-25: oklch(31.25% var(--base-sat-str) var(--base-hue));
+  	--color-base-30: oklch(34.50% var(--base-sat-str) var(--base-hue));
+	--color-base-35: oklch(36.25% var(--base-sat-str) var(--base-hue));
+	--color-base-40: oklch(43.75% var(--base-sat-xtr) var(--base-hue));
+	--color-base-50: oklch(52.50% var(--base-sat-xtr) var(--base-hue-text));
+	--color-base-55: oklch(58.75% var(--base-sat-xtr) var(--base-hue-text));
+	--color-base-60: oklch(64.25% var(--base-sat-xtr) var(--base-hue-text));
+	--color-base-70: oklch(71.25% var(--base-sat-str) var(--base-hue-text));
+	--color-base-80: oklch(77.75% var(--base-sat-str) var(--base-hue-text));
+	--color-base-90: oklch(87.50% var(--base-sat-low) var(--base-hue-text));
+   --color-base-100: oklch(93.75% var(--base-sat-low) var(--base-hue-text));
 
     --trans-dark-00: oklch(from black l c h / 0.375);
 	--trans-dark-10: oklch(from black l c h / 0.250);
 	--trans-strong-00: oklch(from var(--color-base-00) l c h / 0.750);
-	--trans-strong-05: oklch(from var(--color-base-00) l c h / 0.375);
+	--trans-strong-05: oklch(from var(--color-base-00) l c h / 0.625);
 	--trans-strong-10: oklch(from var(--color-base-05) l c h / 0.375);
 	--trans-strong-20: oklch(from var(--color-base-20) l c h / 0.500);
-	--trans-strong-30: oklch(from var(--color-base-25) l c h / 0.750);
+	--trans-strong-30: oklch(from var(--color-base-30) l c h / 0.500);
 	--trans-strong-40: oklch(from var(--color-base-30) l c h / 0.500);
 
-	--trans-faint-00: oklch(100% 0 283 / 0.0150);
-	--trans-faint-05: oklch(100% 0 283 / 0.0250);
-	--trans-faint-10: oklch(100% 0 283 / 0.0500);
-	--trans-faint-20: oklch(100% 0 283 / 0.0625);
-	--trans-faint-25: oklch(100% 0 283 / 0.0750);
-	--trans-faint-30: oklch(100% 0 283 / 0.1000);
-	--trans-faint-40: oklch(100% 0 283 / 0.1250);
-	--trans-faint-50: oklch(100% 0 283 / 0.2000);
-	--trans-faint-60: oklch(100% 0 283 / 0.3500);
+	--trans-faint-00: oklch(100% 0.075 283 / 0.0150);
+	--trans-faint-05: oklch(100% 0.060 283 / 0.0250);
+	--trans-faint-10: oklch(100% 0.050 283 / 0.0500);
+	--trans-faint-20: oklch(100% 0.050 283 / 0.0625);
+	--trans-faint-25: oklch(100% 0.050 283 / 0.0750);
+	--trans-faint-30: oklch(100% 0.040 283 / 0.1000);
+	--trans-faint-40: oklch(100% 0.040 283 / 0.1250);
+	--trans-faint-50: oklch(100% 0.020 283 / 0.2000);
+	--trans-faint-60: oklch(100% 0.020 283 / 0.3500);
 	
 	--text-normal: var(--color-base-90);
 	--text-selection: hsla(var(--color-accent-hsl), 0.15);
 	--text-success-bg: oklch(from var(--color-green) 0.53125 0.4 h);
 	--text-success-faint: color-mix(in oklab, var(--color-green), transparent 37.5%);
 
-	--text-highlight-bg: oklch(from var(--color-highlight) 0.75 c h / 0.25);
+	--text-highlight-bg: oklch(from var(--color-highlight) 0.75 0.25 h / 0.25);
 	--text-highlight-bg-rgb: var(--color-highlight-rgb);
-	--text-highlight-ul-color: oklch(from var(--color-highlight) 0.75 c h);
+	--text-highlight-ul-color: oklch(from var(--color-highlight) 0.75 0.2 h);
 	--text-highlight-bg-search: var(--text-highlight-bg);
 	--text-highlight-bg-search-active: oklch(from var(--color-highlight) 0.875 c h / 0.55);
 
 	--modal-border-color: var(--color-base-30);
 	
 	--background-gradient: radial-gradient( at 50% calc(50% + 22px), 
-		var(--color-base-20) 60%, 
-		var(--background-primary) 132%
+		var(--color-base-20) 32%, 
+		var(--background-primary) 128%
 		);
 	--background-gradient-menu: radial-gradient( at 64% 50%, 
-		var(--color-base-20) 20%, 
-		var(--background-primary) 200%
+		var(--color-base-20) 32%, 
+		var(--background-primary) 175%
 		); 
 	--background-gradient-community: radial-gradient( at 50% 50%, 
-		var(--color-base-20) 20%, 
-		var(--background-primary) 200%
+		var(--color-base-20) 32%, 
+		var(--background-primary) 175%
 		); 
 	--background-modifier-border: var(--trans-faint-20);
 	--background-modifier-border-focus: transparent;
@@ -847,7 +849,7 @@ body {
 	--toggle-gradient: linear-gradient(to bottom, var(--color-accent) -30%, var(--color-accent-4) 180%);
 	--warning-gradient: linear-gradient(to top, var(--color-red) -30%, var(--trans-strong-20) 180%);
 	
-	--color-accent-1: color-mix(in oklab, var(--color-accent) 52%, #fff 35%);
+	--color-accent-1: color-mix(in oklab, var(--color-accent) 52%, #fff 38%);
 	--color-accent-2: color-mix(in oklab, var(--color-accent-1), transparent 7%);
 	--color-accent-3: color-mix(in oklab, var(--color-accent), #fff 20%);
 	--color-accent-4: color-mix(in oklab, var(--color-accent) 50%, transparent 75%);
@@ -863,10 +865,11 @@ body {
 	--checkbox-border-color-hover: var(--color-base-40);
 
 	--code-background: var(--trans-faint-05);
-	--code-background-alt: var(--trans-strong-40);
+	--code-background-alt: var(--trans-faint-10);
 	--code-border-color: var(--trans-faint-20);
 
-	--fab-bg: var(--color-base-20);
+	--fab-bg: var(--color-base-10);
+	--fab-color: var(--color-base-80);
 
 	--hr-color: var(--trans-faint-30);
 
@@ -879,20 +882,20 @@ body {
 	--list-dash-color: var(--trans-faint-60);
 
 	--nav-heading-color: var(--color-base-80);
-	--nav-header-bg: var(--background-modifier-hover);
+	--nav-header-bg: var(--divider-color);
 	--nav-text-color: var(--text-normal);
 	--nav-folder-color: var(--color-base-80);
 
-	--scrollbar-thumb-bg: var(--color-base-30);
-	--scrollbar-active-thumb-bg: var(--color-base-40);
+	--scrollbar-thumb-bg: var(--color-base-25);
+	--scrollbar-active-thumb-bg: var(--color-base-35);
 
 	--search-result-background: var(--trans-strong-05);
 
 	--setting-item-bg: var(--color-base-05);
-	--setting-item-border-color: var(--trans-faint-25);
+	--setting-item-border-color: var(--trans-faint-20);
 
-	--slider-track-background: var(--trans-faint-30);
-	--toggle-track-bg: var(--color-base-40);
+	--slider-track-background: var(--trans-faint-40);
+	--toggle-track-bg: var(--trans-faint-50);
 
 	--status-bar-background: color-mix(in oklab, var(--background-primary), #000 10%);
 	--status-bar-filter: opacity(0.375) blur(0.25px);
@@ -904,10 +907,11 @@ body {
 	--tab-sidebar-bg: var(--trans-faint-30);
 	--tab-sidebar-bg-top: var(--trans-faint-30);
 	--tab-sidebar-bg-top-left: var(--trans-faint-40);
-	--tab-sidebar-container-bg: radial-gradient(at 50% 112.5%, var(--trans-faint-00), var(--trans-strong-10) 87.5%);
+	--tab-sidebar-container-bg: radial-gradient(at 50% 125%, var(--trans-faint-00), var(--trans-strong-10) 80%);
 	--tag-background-image: linear-gradient(to top, var(--text-selection) -50%, var(--color-accent-6) 100%);
 	
-	--vault-profile-color: var(--text-normal);
+	--vault-profile-color: var(--color-base-80);
+	--workspace-border-color: var(--trans-faint-25);
 
 	--input-shadow: 
 		0 -0.5px 0 0.5px var(--trans-faint-40),
@@ -956,17 +960,17 @@ body {
 	--bases-cards-shadow-hover: 
 		0 0 0 0.375px var(--trans-faint-60);
 	--shadow-workspace: 
-		0px 6px 36px -4px var(--color-base-05),
-		0px 1.5px 3px -1.5px var(--trans-dark-00);
+		0px 12px 24px var(--color-base-00),
+		0px 2px 4px 0 var(--trans-strong-00);
 	--shadow-workspace-multi: none;
 	--shadow-fab: 
-		inset 0 1.25px 2px 0px var(--trans-faint-20),
-		inset 0 -1px 2.5px 0px var(--trans-strong-05),
-		0 4px 12px -4px var(--trans-dark-10);
+		inset 0 1.25px 2px 0px var(--trans-faint-10),
+		inset 0 -1px 2.5px 0px var(--trans-strong-00),
+		0 3px 12px -3px var(--trans-dark-10);
 	--shadow-fab-active: 
 		inset 0 1.25px 2px 0px var(--color-accent-5),
-		inset 0 1.25px 2px 0px var(--trans-faint-10),
-		inset 0 -1px 2.5px 0px var(--trans-strong-05),
+		inset 0 1.25px 2px 0px var(--trans-faint-05),
+		inset 0 -1px 2.5px 0px var(--trans-strong-00),
 		0 5px 15px -1.5px var(--color-accent-5),
 		0 5px 15px -3px var(--trans-dark-00);
 	}
@@ -979,8 +983,8 @@ body {
 		0 -1px 0 0.25px var(--trans-faint-00),
 		0 1px 0 -0.125px var(--color-base-05);
 	--tab-container-shadow: 
-		inset 0 -0.5px 0 0 var(--trans-faint-30),
-		inset 0 0.375px 3px 0px var(--trans-dark-10);
+		inset 0 -0.625px 1px 0 var(--trans-faint-20),
+		inset 0 0.375px 1.375px 0px var(--trans-dark-00);
 	}
 }
 
@@ -1159,9 +1163,30 @@ button.mod-warning {
 
 /*--> Graph & Controls <--*/
 
-.graph-controls:not(.is-close) {
-	border-color: transparent;
-	top: 8px;
+.graph-controls {
+	inset: 6px 8px auto auto;
+}
+.graph-controls.is-close {
+	border: none;
+	inset: 8px 2px auto auto;
+}
+.graph-controls > .mod-reset {
+	margin-inline-end: 8px;
+}
+.graph-control-section  {
+	padding-block: 8px;
+	.setting-item.mod-slider > .setting-item-control {
+		padding-block: 2px 6px;
+	}
+	.tree-item-children:last-child {
+		padding-block-end: unset;
+	}
+	.tree-item-self {
+		margin-block-end: unset;
+	}
+}
+.graph-color-button-container {
+    margin-block-end: 2px;
 }
 
 /*--> Inputs <--*/
@@ -2026,7 +2051,11 @@ button.clickable-icon {
     opacity: unset;
 	filter: opacity(0.4);
 }
-:is(.workspace-sidedock-vault-profile,.view-header) .clickable-icon {
+:is(.workspace-sidedock-vault-profile, 
+	.view-header, 
+	.workspace-ribbon, 
+	.graph-controls) 
+	.clickable-icon {
     padding: 8px;
 }
 /* sidebar toggle alignment */
@@ -2051,8 +2080,8 @@ body:not(.is-mobile)
 	.workspace-drawer-vault-actions > .clickable-icon,
 body:not(.is-mobile) 
 	.view-header-left > .view-header-nav-buttons > .clickable-icon,
-body:not(.is-mobile) 
-	.view-actions > .view-action:last-child {
+body:not(.is-mobile) .view-actions > .view-action:last-child,
+body:not(.is-mobile) .graph-controls-button {
 	padding-inline: 10px;
 }
 
@@ -2273,7 +2302,7 @@ body:not(.is-mobile) .mod-root .workspace-tabs > :is(.workspace-tab-container, .
 }
 body:not(.is-mobile) .mod-root .workspace-tab-container {
     box-shadow: var(--shadow-workspace);
-	outline: 1px solid var(--trans-faint-25);
+	outline: 1px solid var(--workspace-border-color);
 }
 body:not(.is-mobile) .mod-root .workspace-tabs:not(:only-of-type) .workspace-tab-container {
     box-shadow: var(--shadow-workspace-multi);
@@ -2840,9 +2869,9 @@ body:not(.is-mobile) .mod-sidedock.mod-right-split .workspace-tabs:last-child .w
 	}
 	& .view-actions .clickable-icon.view-action:not(:last-child, .mod-bookmark) {
 		--icon-size: var(--icon-m);
-		--icon-color: var(--text-muted);
-		--icon-color-hover: var(--text-muted);
-		--icon-color-focused: var(--text-muted);
+		--icon-color: var(--fab-color);
+		--icon-color-hover: var(--fab-color);
+		--icon-color-focused: var(--fab-color);
 		height: 40px;
 		width: 40px;
 		border-radius: 50%;
@@ -2969,7 +2998,6 @@ body:not(.is-mobile) .mod-sidedock .workspace-leaf-content .view-header {
 	padding-inline-start: 8px;
 }
 .clickable-icon.side-dock-ribbon-action {
-	padding: 8px;
 	--icon-color: var(--text-muted);
 	--icon-color-hover: var(--color-base-100);
 }
