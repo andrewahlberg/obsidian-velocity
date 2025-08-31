@@ -594,6 +594,9 @@ body {
 		var(--color-base-10) 30%, 
 		var(--color-base-25) 160%
 		); 
+
+	--background-button-hover: var(--background-primary);
+
 	--background-modifier-border: var(--trans-faint-20);
 	--background-modifier-border-focus: transparent;
 	--background-modifier-cover: color-mix(in oklch, var(--color-base-90) 50%, transparent 100%);
@@ -823,7 +826,7 @@ body {
 	--text-highlight-bg-rgb: var(--color-highlight-rgb);
 	--text-highlight-ul-color: oklch(from var(--color-highlight) 0.75 0.2 h);
 	--text-highlight-bg-search: var(--text-highlight-bg);
-	--text-highlight-bg-search-active: oklch(from var(--color-highlight) 0.875 c h / 0.55);
+	--text-highlight-bg-search-active: oklch(from var(--color-highlight) 0.875 0.375 h / 0.55);
 
 	--modal-border-color: var(--color-base-30);
 	
@@ -839,6 +842,9 @@ body {
 		var(--color-base-20) 32%, 
 		var(--background-primary) 175%
 		); 
+
+	--background-button-hover: var(--color-base-35);
+
 	--background-modifier-border: var(--trans-faint-20);
 	--background-modifier-border-focus: transparent;
 	--background-modifier-cover: color-mix(in oklch, #000000 75%, transparent 100%);
@@ -876,6 +882,8 @@ body {
 	--icon-color: var(--color-base-60);
 	--icon-color-hover: var(--text-normal);
 
+	--interactive-normal: var(--color-base-30);
+
 	--link-color-sidebar: var(--color-accent-2);
 
 	--list-bullet-color: var(--color-base-80);
@@ -897,7 +905,7 @@ body {
 	--slider-track-background: var(--trans-faint-40);
 	--toggle-track-bg: var(--trans-faint-50);
 
-	--status-bar-background: color-mix(in oklab, var(--background-primary), #000 10%);
+	--status-bar-background: var(--trans-strong-00);
 	--status-bar-filter: opacity(0.375) blur(0.25px);
 
 	--strikethrough-color: var(--text-faint);
@@ -914,9 +922,9 @@ body {
 	--workspace-border-color: var(--trans-faint-25);
 
 	--input-shadow: 
-		0 -0.5px 0 0.5px var(--trans-faint-40),
-		inset 0 0.0625px 0 0.25px var(--trans-faint-40),
-		0px 1px 2.5px 0.5px var(--trans-dark-10);
+		inset 0 1px 1px 0.5px var(--trans-faint-25),
+		inset 0 0.0625px 0 0.25px var(--trans-strong-40),
+		0px 1.25px 2.5px 0px var(--trans-dark-10);
 	--input-shadow-hover: var(--input-shadow);
 	--shadow-xs: 
 		0 -0.25px 0px 1px var(--trans-faint-25),
@@ -1119,7 +1127,7 @@ button:active,
 }
 button:not(.clickable-icon):hover,
 .metadata-add-button:hover {
-	background-color: var(--background-primary);
+	background-color: var(--background-button-hover);
 	filter: brightness(0.97);
 }
 button:not(.clickable-icon):active,
@@ -1153,7 +1161,7 @@ button.mod-warning {
 /*--> Dropdown <--*/
 
 :is(select,.dropdown):hover {
-	background-color: var(--background-primary);
+	background-color: var(--background-button-hover);
 	filter: brightness(0.97);
 } 
 .modal button:not(.clickable-icon):focus,
@@ -4953,6 +4961,48 @@ body:not(.is-mobile) .workspace-leaf-content .pomodoro-tasks-header .pomodoro-ta
 }
 .setting-item + div > .setting-item-heading, .setting-item + .setting-item-heading {
     margin-top: 8px;
+}
+
+/*--> Widgets <--*/
+
+/* Clock */
+.Clock_Divider {
+	background: unset;
+    margin-block: 0 var(--p-spacing);
+}
+.Clock_Date {
+    font-weight: var(--font-medium);
+}
+.Clock__time-container {
+	font-size: 4.25rem;
+	font-weight: var(--font-thin);
+	letter-spacing: -0.0625rem;
+	padding-block-end: 1rem;
+}
+.Clock__am-pm {
+    display: none;
+}
+/* Quote */
+.Quote_Container,
+.Countdown_Item {
+    background-color: var(--code-background);
+    border: unset;
+    border-radius: var(--radius-m);
+	box-shadow: var(--shadow-code);
+}
+/* Countdown */
+.Countdown_Container {
+    margin-block: var(--p-spacing);
+}
+.Countdown_Item {
+	> h3 {
+		color: var(--color-base-80);
+		font-weight: var(--h1-weight);
+		margin-block-end: 0 !important;
+	}
+	> small {
+		font-weight: var(--font-medium);
+	}
 }
 
 /*
