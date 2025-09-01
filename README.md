@@ -81,7 +81,7 @@ Velocity comes with a set of **CSSclasses** which can be used to alter the styli
 | `hide-title`          | Hides the inline-title for that particular note.           |
 | `show-title`          | Shows the inline-title for that particular note.           |
 | `style-justify` / `justified` | Justifies paragraph, blockquote and callout text.  |
-| `style-margin-top'    | Adds additional padding to the top of the note.            |
+| `style-margin-top`    | Adds additional padding to the top of the note.            |
 | `style-wide`  | Sets maximum note width, equivalent to disabling readable width.   |
 | `superheading`        | Turns editor H1 into a large Swiss Design heading.         |
 | `supertitle`          | Turns editor H1 into a very large Swiss Design heading.    |
