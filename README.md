@@ -11,7 +11,6 @@ Velocity has now reached the first stage of ``beta`` development, after **nearly
 
 ## Table of Contents
 
-- About
 - [Installation](#Installation)
 - [Images](#Images)
 - [FAQ](#FAQ)
@@ -54,7 +53,7 @@ Alternatively, you can opt to download the files manually. You will need the ``t
   - If there is ONE reason to at least _try_ Velocity, it is because nearly no other theme is crafted with as much attention to detail in the user interface department. Countless hours have been spent making sure interactions, spacing, color balance and texture feel _just right_. In simple terms, Velocity is designed to make you feel as if you were using a premium, paid app - to make you forget even for a moment that you're in Obsidian.
   - It is one of the leading themes to implement styling tweaks to the new and highly acclaimed **Bases** core plugin. The level of modification and improvements to the UI of Bases is unrivalled by any existing theme.
   - Markdown has received much love, too. Velocity offers typographic alignment tweaks and features that might please some typography enthusiasts. 
-	  - It is the _only_ theme which accounts for heading indent misalignment with larger headings. It is also perhaps best-in-class when it comes to callout manipulation - you can put just about anything inside of them, such as headings, code, Dataview queries and more, and it _will look good_. 
+  - It is the _only_ theme which accounts for heading indent misalignment with larger headings. It is also perhaps best-in-class when it comes to callout manipulation - you can put just about anything inside of them, such as headings, code, Dataview queries and more, and it _will look good_. 
   - And if all of this fails to convince you, maybe just the novelty of a theme designed over the course of nearly a whole year, with an inspiration as idiosyncratic as _racing game user interfaces_, might convince you.
   - Every single word in this README was written **without the use of language models (AI)**. The same goes for the theme itself.
 - **Will you add feature X/Y/Z to Velocity?**
@@ -71,7 +70,28 @@ Alternatively, you can opt to download the files manually. You will need the ``t
 
 ## Features [^](#Table-of-Contents)
 
+### CSSClasses
 
+Velocity comes with a set of **CSSclasses** which can be used to alter the styling of elements on a note-by-note basis:
+
+| Name                  | Function                                                   |
+| :-------------------- | :----------------------------------------------------------|
+| `override`            | Quick utility to disable any other cssclasses in the note. |
+| `hide-metadata`       | Hides any properties visible in the note.                  |
+| `hide-title`          | Hides the inline-title for that particular note.           |
+| `show-title`          | Shows the inline-title for that particular note.           |
+| `style-justify` / `justified` | Justifies paragraph, blockquote and callout text.  |
+| `style-margin-top'    | Adds additional padding to the top of the note.            |
+| `style-wide`  | Sets maximum note width, equivalent to disabling readable width.   |
+| `superheading`        | Turns editor H1 into a large Swiss Design heading.         |
+| `supertitle`          | Turns editor H1 into a very large Swiss Design heading.    |
+| `simple-title`        | Gives the inline title the standard heading style.         |
+
+### Auto-Hide
+
+Velocity comes with a novel feature first pioneered in Micro Mike: the ability to automatically hide the sidebars whenever the window's width is too narrow. This prevents the main panel from becoming too cramped or unreadable.
+
+**Auto-Hide can be disabled** in the theme's Style Settings.
 
 ## Roadmap [^](#Table-of-Contents)
 
