@@ -89,7 +89,7 @@ Velocity comes with a set of **CSSclasses** which can be used to alter the styli
 
 ### Auto-Hide
 
-Velocity comes with a novel feature first pioneered in Micro Mike: the ability to automatically hide the sidebars whenever the window's width is too narrow. This prevents the main panel from becoming too cramped or unreadable.
+Velocity comes with a novel feature first pioneered in **[Micro Mike](https://github.com/ThisTheThe/MicroMike)**: the ability to automatically hide the sidebars whenever the window's width is too narrow. This prevents the main panel from becoming too cramped or unreadable.
 
 **Auto-Hide can be disabled** in the theme's Style Settings.
 
@@ -106,7 +106,7 @@ Expect a full release _during, or shortly after Obsidian October._ Due to real-l
 - Canvas styling 
 - Empty page styling
 - **Full mobile support** and special styling
-- Implementation of Damian Korcz's **Alternative Checkboxes** reference set
+- Implementation of Damian Korcz's **[Alternative Checkboxes](github.com/damiankorcz/Alternative-Checkboxes-Reference-Set)** reference set
 
 The expected version number for release is ``Velocity 1.5.0``.
 
@@ -118,16 +118,18 @@ The story I want to reflect on, about working on this theme and how it has chang
 
 #### Themes:
 
-**Sanctum** - the main theme I used in the past and a major influence on Velocity's typography, as well as its choice of icon modifications.
+**[Sanctum](https://github.com/jdanielmourao/obsidian-sanctum)** - the main theme I used in the past and a major influence on Velocity's typography, as well as its choice of icon modifications. 
 
-**Border, Primary & Mado** - major influences and sources of code for earlier versions of Velocity. While barely any Mado or Border code remains in Velocity, I wouldn't have managed to get the theme to this state without learning from their example. Primary in particular informs this theme's approach to never leave any detail untouched.
+**[Border](https://github.com/Akifyss/obsidian-border), [Mado](https://github.com/hydescarf/Obsidian-Theme-Mado-Miniflow), [Composer](https://github.com/vran-dev/obsidian-composer)** - major influences and sources of code for earlier versions of Velocity. While no Mado or Border, or Composer code remains in Velocity, I wouldn't have managed to get the theme to this state without learning from their example. In fact, the early prototypes for `1.0.0-alpha` were built atop Composer in order to speed up development.
 
-**Cupertino & Composer** - modern themes which influenced the current iteration of Velocity. 
+**[Primary](https://github.com/primary-theme/obsidian)** - Primary informs this theme's perfectionism, its synthesis of traditional modernist movements and new aesthetic subcultures, and my approach to never leave any detail untouched.
 
-**Willemstad** - a source of inspiration for the modified community themes page in both old and new versions of Velocity.
+**[Cupertino](https://github.com/aaaaalexis/obsidian-cupertino)** - A modern and influential macOS-inspired theme which influenced the current iteration of Velocity. 
 
-**Micro Mike** - its "mini-mode" is the basis for Velocity's Auto-hide feature.
+**[Willemstad](https://github.com/tingmelvin/willemstad-x)** - a source of inspiration for the modified community themes page in both old and new versions of Velocity.
+
+**[Micro Mike](https://github.com/ThisTheThe/MicroMike)** - its "mini-mode" is the basis for Velocity's Auto-hide feature.
 
 ### People:
 
-Under construction
+Under construction...
