@@ -93,7 +93,7 @@ Velocity comes with a novel feature first pioneered in Micro Mike: the ability t
 
 **Auto-Hide can be disabled** in the theme's Style Settings.
 
-![Autohide](./assets/autohide.mp4)
+![Autohide](./assets/autohide.gif)
 
 ## Roadmap [^](#Table-of-Contents)
 
