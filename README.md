@@ -93,6 +93,8 @@ Velocity comes with a novel feature first pioneered in Micro Mike: the ability t
 
 **Auto-Hide can be disabled** in the theme's Style Settings.
 
+![Autohide](./assets/autohide.mp4)
+
 ## Roadmap [^](#Table-of-Contents)
 
 Expect a full release _during, or shortly after Obsidian October._ Due to real-life concerns, I will not be able to work much on the theme for most of September, but I will still be on the look-out for new issues.
