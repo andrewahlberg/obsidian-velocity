@@ -27,16 +27,12 @@ Alternatively, you can opt to download the files manually. You will need the ``t
 
 ## Images [^](#Table-of-Contents) 
 
-#### Editor 
 ![Headings](./assets/headings.png)
-![Callouts](./assets/callouts.png)
-![Multiple tabs](./assets/multiple-tabs.png)
-
-#### Interface
-![Command Palette](./assets/command-palette.png)
-![Bookmark](./assets/bookmark.png)
 ![Settings](./assets/settings.png)
+![Multiple tabs](./assets/multitask.png)
 ![Graph Controls](./assets/graph-controls.png)
+![Bases](./assets/bases.png)
+![Command Palette](./assets/command-palette.png)
 
 ## FAQ [^](#Table-of-Contents)
 - **Do I have to buy Velocity?**
