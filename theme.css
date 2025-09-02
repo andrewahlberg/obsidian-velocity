@@ -29,6 +29,9 @@ settings:
 	default: var(--color-yellow-rgb)
 	options:
 	- 
+		label: Pink
+		value: var(--color-pink-rgb)
+	- 
 		label: Red
 		value: var(--color-red-rgb)
 	- 
@@ -44,11 +47,11 @@ settings:
 		label: Cyan
 		value: var(--color-cyan-rgb)
 	- 
-		label: Aqua
+		label: Blue
 		value: var(--color-blue-rgb)
 	- 
-		label: Pink
-		value: var(--color-pink-rgb)
+		label: Purple
+		value: var(--color-purple-rgb)
 - 	
 	id: line-height-normal
 	title: Set line height and spacing
@@ -512,15 +515,15 @@ body {
 	--accent-l: 48%;
 	
 	--color-red-rgb: 250, 30, 14;
-	--color-red: rgb(250, 30, 14);
-	--color-orange-rgb: 250, 144, 0;
-	--color-orange: rgb(252, 146, 0);
+	--color-red: rgb(240, 42, 28);
+	--color-orange-rgb: 255, 143, 0;
+	--color-orange: rgb(255, 143, 0);
 	--color-yellow-rgb: 233, 188, 0;
 	--color-yellow: rgb(233, 188, 0);
 	--color-green-rgb: 9, 180, 29;
 	--color-green: rgb(9, 180, 29);
-	--color-cyan-rgb: 5, 179, 188;
-	--color-cyan: rgb(5, 179, 188);
+	--color-cyan-rgb: 4, 176, 167;
+	--color-cyan: rgb(4, 176, 167);
 	--color-blue-rgb: 0, 132, 255;
 	--color-blue: rgb(0, 132, 255);
 	--color-purple-rgb: 180, 68, 241;
@@ -760,19 +763,19 @@ body {
 	--color-red-rgb: 251, 72, 79;
 	--color-red: rgb(251, 72, 79);
 	--color-orange-rgb: 233, 151, 63;
-	--color-orange: rgb(233, 151, 63);
+	--color-orange: rgb(228, 144, 55);
 	--color-yellow-rgb: 224, 218, 113;
 	--color-yellow: rgb(224, 218, 113);
-	--color-green-rgb: 90, 199, 106;
-	--color-green: rgb(90, 199, 106);
-	--color-cyan-rgb: 89, 221, 184;
-	--color-cyan: rgb(89, 221, 184);
-	--color-blue-rgb: 27, 151, 223;
-	--color-blue: rgb(27, 151, 223);
-	--color-purple-rgb: 180, 126, 231;
-	--color-purple: rgb(180, 126, 231);
-	--color-pink-rgb: 250, 153, 205;
-	--color-pink: rgb(250, 153, 205);
+	--color-green-rgb: 91, 208, 109;
+	--color-green: rgb(91, 208, 109);
+	--color-cyan-rgb: 89, 208, 196;
+	--color-cyan: rgb(89, 208, 196);
+	--color-blue-rgb: 40, 165, 238;
+	--color-blue: rgb(40, 165, 238);
+	--color-purple-rgb: 194, 126, 233;
+	--color-purple: rgb(194, 126, 233);
+	--color-pink-rgb: 245, 141, 179;
+	--color-pink: rgb(245, 141, 179);
 
 	--callout-quote: 150, 150, 160;
 
