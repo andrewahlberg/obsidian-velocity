@@ -29,9 +29,6 @@ settings:
 	default: var(--color-yellow-rgb)
 	options:
 	- 
-		label: Pink
-		value: var(--color-pink-rgb)
-	- 
 		label: Red
 		value: var(--color-red-rgb)
 	- 
@@ -43,6 +40,9 @@ settings:
 	- 
 		label: Green
 		value: var(--color-green-rgb)
+	- 
+		label: Cyan
+		value: var(--color-cyan-rgb)
 	- 
 		label: Aqua
 		value: var(--color-blue-rgb)
@@ -519,8 +519,8 @@ body {
 	--color-yellow: rgb(233, 188, 0);
 	--color-green-rgb: 9, 180, 29;
 	--color-green: rgb(9, 180, 29);
-	--color-cyan-rgb: 6, 188, 197;
-	--color-cyan: rgb(6, 188, 197);
+	--color-cyan-rgb: 5, 179, 188;
+	--color-cyan: rgb(5, 179, 188);
 	--color-blue-rgb: 0, 132, 255;
 	--color-blue: rgb(0, 132, 255);
 	--color-purple-rgb: 180, 68, 241;
