@@ -20,9 +20,9 @@ Velocity has now reached the first stage of ``beta`` development, after **nearly
 - [Credits](#Credits)
 
 ## Installation [^](#Table-of-Contents)
-Velocity is not officially released on the Obsidian store. Currently, the easiest method to install the theme is by using the **BRAT** plugin in Obsidian. Simply paste the link of the main branch of the repository in the BRAT plugin's settings. BRAT automatically handles changes made upstream by checking for any new changes in the repo upon launching Obsidian, ensuring that you always have the most up-to-date version of Velocity.
+As of 03/09/2025, Velocity is **officially released** on the Obsidian store. Simply download it inside the app itself!
 
-Alternatively, you can opt to download the files manually. You will need the ``theme.css`` and ``manifest.json`` files. Create a folder named "Velocity" inside the Obsidian themes folder, located at ``your-vault/.obsidian/themes``, and place the files inside. The theme should show up in the Appearance tab the next time you open the vault.
+For those who have tested the theme since its ``alpha`` development phase using BRAT, the theme should already be marked as installed in the theme store. You can simply remove Velocity from the beta themes list in BRAT if you wish, or even just disable the plugin entirely. However I recommend keeping the plugin around, since it is useful for testing useful plugins in development, as well as any interesting new themes.
 
 ## Images [^](#Table-of-Contents) 
 
