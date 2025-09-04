@@ -1380,8 +1380,8 @@ thead,
 
 /*--> Heading and Paragraph spacing/margins <--*/
 
-.markdown-rendered .el-div + div > :is(h1,h2,h3,h4,h5,h6) {
-  margin-block-start: 2rem;
+.markdown-rendered :is(.el-div, .el-blockquote) + div > :is(h1,h2,h3,h4,h5,h6) {
+  margin-block-start: var(--heading-spacing);
 }
 .markdown-rendered .el-div + .el-p > p,
 .markdown-rendered :is(.el-ul, .el-ol) + .el-div > .callout {
